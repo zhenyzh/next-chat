@@ -13,11 +13,11 @@ export function SidebarNavigation({ linkItem, pathname, collapsed }: Props) {
   return (
     <nav className={s.nav}>
       {linkItem.map((item) => {
-        const active = pathname === item.href;
+        const active = pathname === item.link;
         return (
           <Link
-            key={item.href}
-            href={item.href}
+            key={item.link}
+            href={item.link}
             className={clsx(s.navItem, active && s.activeLink)}
           >
             <span className={s.navIcon}>{item.icon}</span>

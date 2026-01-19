@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { MessageCircleMore, Settings, UserPen } from "lucide-react";
 
-import type { LinkType } from "@/widgets/sidebar/model";
+import type { LinkType } from "@/widgets";
+import { ROUTES } from "@/shared";
 
 import { SideBarHeader } from "./sidebar-header";
 import { SidebarNavigation } from "./sidebar-navigation";
@@ -18,19 +19,19 @@ export function Sidebar() {
 
   const linkItem: LinkType[] = [
     {
-      href: "/profile",
+      link: ROUTES.profile,
       label: "Профиль",
       icon: <UserPen />,
       collapsed: collapsed,
     },
     {
-      href: "/chat",
+      link: ROUTES.chat,
       label: "Чат",
       icon: <MessageCircleMore />,
       collapsed: collapsed,
     },
     {
-      href: "/settings",
+      link: ROUTES.settings,
       label: "Настройки",
       icon: <Settings />,
       collapsed: collapsed,
@@ -40,7 +41,7 @@ export function Sidebar() {
   return (
     <aside className={clsx(s.sidebar, collapsed ? s.collapsed : s.expanded)}>
       <SideBarHeader
-        baseLink={linkItem[0].href}
+        defaultLink={ROUTES.profile}
         collapsed={collapsed}
         setCollapsed={setCollapsed}
       />

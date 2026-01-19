@@ -1,5 +1,5 @@
 export type LinkType = {
-  href: string;
+  link: string;
   label: string;
   icon: React.ReactNode;
   collapsed: boolean;

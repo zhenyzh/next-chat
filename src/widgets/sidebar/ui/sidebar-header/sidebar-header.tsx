@@ -5,22 +5,23 @@ import LogoIcon from "@/shared/assets/images/logo.png";
 import s from "./sidebar-header.module.scss";
 
 type Props = {
-  baseLink: string;
+  defaultLink: string;
   collapsed: boolean;
   setCollapsed: (collapse: boolean) => void;
 };
 
-export function SideBarHeader({ baseLink, collapsed, setCollapsed }: Props) {
+export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
   return (
     <header className={s.header}>
       {!collapsed && (
-        <Link href={baseLink}>
+        <Link href={defaultLink}>
           <Image
             src={LogoIcon}
             alt="logo"
             width={50}
             height={50}
             loading="eager"
+            className={s.logo}
           />
         </Link>
       )}
