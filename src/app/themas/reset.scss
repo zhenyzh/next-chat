@@ -1,18 +1,13 @@
-/* Modern CSS Reset: https://piccalil.li/blog/a-more-modern-css-reset */
-
-/* Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Prevent font size inflation */
 html {
   text-size-adjust: none;
 }
 
-/* Remove default margin in favour of better control in authored CSS */
 body,
 h1,
 h2,
@@ -33,13 +28,11 @@ ol {
   list-style: none;
 }
 
-/* Set core body defaults */
 body {
   min-height: 100vh;
   line-height: 1.5;
 }
 
-/* Set shorter line heights on headings and interactive elements */
 h1,
 h2,
 h3,
@@ -51,7 +44,6 @@ label {
   line-height: 1.1;
 }
 
-/* Balance text wrapping on headings */
 h1,
 h2,
 h3,
@@ -59,20 +51,17 @@ h4 {
   text-wrap: balance;
 }
 
-/* A elements that don't have a class get default themas */
 a {
   color: currentcolor;
   text-decoration: none;
 }
 
-/* Make images easier to work with */
 img,
 picture {
   display: block;
   max-width: 100%;
 }
 
-/* Inherit fonts for inputs and buttons */
 input,
 button,
 textarea,
@@ -81,7 +70,6 @@ select {
   font-size: inherit;
 }
 
-/* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 5ex;
 }
