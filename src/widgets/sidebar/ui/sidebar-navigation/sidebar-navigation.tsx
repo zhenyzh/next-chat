@@ -1,7 +1,7 @@
 import Link from "next/link";
 import clsx from "clsx";
 import s from "./sidebar-navigation.module.scss";
-import type { LinkType } from "@/widgets/sidebar/model";
+import type { LinkType } from "@/widgets";
 
 type Props = {
   linkItem: LinkType[];

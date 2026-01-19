@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import clsx from "clsx";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import LogoIcon from "@/shared/assets/images/logo.png";
 import s from "./sidebar-header.module.scss";
-import clsx from "clsx";
 
 type Props = {
   defaultLink: string;
