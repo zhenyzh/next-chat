@@ -15,7 +15,13 @@ export function SideBarHeader({ baseLink, collapsed, setCollapsed }: Props) {
     <header className={s.header}>
       {!collapsed && (
         <Link href={baseLink}>
-          <Image src={LogoIcon} alt="logo" width={50} height={50} />
+          <Image
+            src={LogoIcon}
+            alt="logo"
+            width={50}
+            height={50}
+            loading="eager"
+          />
         </Link>
       )}
       <button onClick={() => setCollapsed(!collapsed)} className={s.toggleBtn}>

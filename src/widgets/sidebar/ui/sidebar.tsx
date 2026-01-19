@@ -18,7 +18,7 @@ export function Sidebar() {
 
   const linkItem: LinkType[] = [
     {
-      href: "/home",
+      href: "/profile",
       label: "Профиль",
       icon: <UserPen />,
       collapsed: collapsed,
