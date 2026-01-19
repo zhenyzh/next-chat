@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Sidebar } from "@/widgets";
-import "./styles/global.scss";
+import "./themas/global.scss";
 import s from "./layout.module.scss";
 
 export const metadata: Metadata = {
