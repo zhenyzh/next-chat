@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sidebar } from "@/widgets";
 import "./styles/global.scss";
+import s from "./layout.module.scss";
 
 export const metadata: Metadata = {
   title: "Next chat",
@@ -14,9 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body style={{ display: "flex" }}>
+      <body className={s.container}>
         <Sidebar />
-        <main style={{ flex: 1, padding: "24px" }}>{children}</main>
+        <main className={s.main}>{children}</main>
       </body>
     </html>
   );
