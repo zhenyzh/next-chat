@@ -9,13 +9,13 @@ import type { LinkType } from "@/widgets";
 import { ROUTES } from "@/shared";
 
 import { SideBarHeader } from "./sidebar-header";
-import { SidebarNavigation } from "./sidebar-navigation";
+import { SideBarNavigation } from "./sidebar-navigation";
 
 import s from "./sidebar.module.scss";
 
 export function Sidebar() {
-  const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
+  const [collapsed, setCollapsed] = useState(false);
 
   const linkItem: LinkType[] = [
     {
@@ -45,7 +45,7 @@ export function Sidebar() {
         collapsed={collapsed}
         setCollapsed={setCollapsed}
       />
-      <SidebarNavigation
+      <SideBarNavigation
         linkItem={linkItem}
         pathname={pathname}
         collapsed={collapsed}

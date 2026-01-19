@@ -9,7 +9,7 @@ type Props = {
   collapsed: boolean;
 };
 
-export function SidebarNavigation({ linkItem, pathname, collapsed }: Props) {
+export function SideBarNavigation({ linkItem, pathname, collapsed }: Props) {
   return (
     <nav className={s.nav}>
       {linkItem.map((item) => {
