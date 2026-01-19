@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Sidebar } from "@/widgets";
 import "./styles/global.scss";
 
 export const metadata: Metadata = {
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body style={{ display: "flex" }}>
+        <Sidebar />
+        <main style={{ flex: 1, padding: "24px" }}>{children}</main>
+      </body>
     </html>
   );
 }

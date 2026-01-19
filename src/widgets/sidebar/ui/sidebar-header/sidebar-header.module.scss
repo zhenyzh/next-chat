@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 12px;
+  color: var(--color-bg-primary);
+}

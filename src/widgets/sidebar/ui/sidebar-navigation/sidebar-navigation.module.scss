@@ -1,0 +1,34 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 8px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.navItem:hover {
+  color: var(--color-link);
+}
+
+.activeLink {
+  background-color: var(--color-accent);
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.navLabel {
+  white-space: nowrap;
+}
