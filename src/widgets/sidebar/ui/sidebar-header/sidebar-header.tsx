@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import LogoIcon from "@/shared/assets/images/logo.png";
 import s from "./sidebar-header.module.scss";
+import clsx from "clsx";
 
 type Props = {
   defaultLink: string;
@@ -13,18 +14,16 @@ type Props = {
 export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
   return (
     <header className={s.header}>
-      {!collapsed && (
-        <Link href={defaultLink}>
-          <Image
-            src={LogoIcon}
-            alt="logo"
-            width={50}
-            height={50}
-            loading="eager"
-            className={s.logo}
-          />
-        </Link>
-      )}
+      <Link href={defaultLink} className={clsx(collapsed && s.hidden)}>
+        <Image
+          src={LogoIcon}
+          alt="logo"
+          width={50}
+          height={50}
+          loading="eager"
+          className={s.logo}
+        />
+      </Link>
       <button onClick={() => setCollapsed(!collapsed)} className={s.toggleBtn}>
         {collapsed ? (
           <ChevronRight width={20} height={20} />
