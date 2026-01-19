@@ -1,4 +1,3 @@
-$color-text-primary: var(--color-text-primary);
 $color-bg-primary: var(--color-bg-primary);
 
 .sidebar {
@@ -6,7 +5,7 @@ $color-bg-primary: var(--color-bg-primary);
   flex-direction: column;
   min-height: 100%;
   background-color: $color-bg-primary;
-  color: $color-text-primary;
+  color: var(--color-text-primary);
   transition: width 0.6s;
   overflow: hidden;
 }

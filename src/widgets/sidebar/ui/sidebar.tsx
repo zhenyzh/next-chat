@@ -36,7 +36,7 @@ export function Sidebar() {
       icon: <Settings />,
       collapsed: collapsed,
     },
-  ] as const;
+  ];
 
   return (
     <aside className={clsx(s.sidebar, collapsed ? s.collapsed : s.expanded)}>
