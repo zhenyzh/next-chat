@@ -1,5 +1,5 @@
-import s from "./styles.module.scss";
+"use client";
 
 export default function ChatPage() {
-  return <div className={s.container}>fddf</div>;
+  return <div>fddf</div>;
 }

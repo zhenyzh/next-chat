@@ -10,7 +10,7 @@
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
-  border-radius: 4px;
+  border-radius: var(--border-radius-size-xxxs);
   text-decoration: none;
   transition: background-color 0.2s;
 }
@@ -31,4 +31,10 @@
 
 .navLabel {
   white-space: nowrap;
+}
+
+@include max-width(480px) {
+  .navLabel {
+    display: none;
+  }
 }

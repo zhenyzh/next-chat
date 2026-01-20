@@ -30,7 +30,7 @@ $color-bg-primary: var(--color-bg-primary);
   display: flex;
   align-items: center;
   padding: 5px;
-  border-radius: 4px;
+  border-radius: var(--border-radius-size-xxxs);
   cursor: pointer;
   color: $color-bg-primary;
   font-size: var(----font-size-xs);
@@ -48,7 +48,7 @@ $color-bg-primary: var(--color-bg-primary);
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
-  border-radius: 4px;
+  border-radius: var(--border-radius-size-xxxs);
   text-decoration: none;
   transition: background-color 0.2s;
 }
@@ -69,4 +69,10 @@ $color-bg-primary: var(--color-bg-primary);
 
 .navLabel {
   white-space: nowrap;
+}
+
+@include max-width(480px) {
+  .sidebar {
+    width: 60px !important;
+  }
 }
