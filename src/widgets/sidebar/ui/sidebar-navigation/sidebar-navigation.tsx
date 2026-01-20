@@ -1,5 +1,6 @@
 import Link from "next/link";
 import clsx from "clsx";
+import { Typography } from "@zhenyzh/common-ui/components";
 import type { LinkType } from "@/widgets";
 import s from "./sidebar-navigation.module.scss";
 
@@ -20,8 +21,10 @@ export function SideBarNavigation({ linkItem, pathname, collapsed }: Props) {
             href={item.link}
             className={clsx(s.navItem, active && s.activeLink)}
           >
-            <span className={s.navIcon}>{item.icon}</span>
-            {!collapsed && <span className={s.navLabel}>{item.label}</span>}
+            <Typography className={s.navIcon}>{item.icon}</Typography>
+            {!collapsed && (
+              <Typography className={s.navLabel}>{item.label}</Typography>
+            )}
           </Link>
         );
       })}

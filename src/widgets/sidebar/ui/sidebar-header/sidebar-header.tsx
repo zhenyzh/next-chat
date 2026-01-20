@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button, Card } from "@zhenyzh/common-ui/components";
+
 import LogoIcon from "@/shared/assets/images/logo.png";
 import s from "./sidebar-header.module.scss";
 
@@ -13,7 +15,7 @@ type Props = {
 
 export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
   return (
-    <div className={s.header}>
+    <Card className={s.header}>
       <Link href={defaultLink} className={clsx(collapsed && s.hidden)}>
         <Image
           src={LogoIcon}
@@ -24,13 +26,13 @@ export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
           className={s.logo}
         />
       </Link>
-      <button onClick={() => setCollapsed(!collapsed)} className={s.toggleBtn}>
+      <Button onClick={() => setCollapsed(!collapsed)} className={s.toggleBtn}>
         {collapsed ? (
           <ChevronRight width={20} height={20} />
         ) : (
           <ChevronLeft width={20} height={20} />
         )}
-      </button>
-    </div>
+      </Button>
+    </Card>
   );
 }

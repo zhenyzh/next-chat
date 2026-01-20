@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   align-items: center;
   padding: 8px;
 }
@@ -24,4 +25,5 @@
   cursor: pointer;
   padding: 10px 12px;
   color: var(--color-bg-primary);
+  background-color: var(--color-bg-primary-reverse);
 }

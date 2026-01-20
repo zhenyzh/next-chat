@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Sidebar } from "@/widgets";
+import "@zhenyzh/common-ui/styles";
 import "./themas/global.scss";
+import { Sidebar } from "@/widgets";
 import s from "./layout.module.scss";
 
 export const metadata: Metadata = {
