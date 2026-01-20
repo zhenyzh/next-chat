@@ -20,7 +20,7 @@ export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
           alt="logo"
           width={50}
           height={50}
-          loading="eager"
+          priority
           className={s.logo}
         />
       </Link>
