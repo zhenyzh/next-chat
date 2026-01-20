@@ -5,11 +5,8 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { MessageCircleMore, Settings, UserPen } from "lucide-react";
 
-import type { LinkType } from "@/widgets";
+import { type LinkType, SideBarHeader, SideBarNavigation } from "@/widgets";
 import { ROUTES } from "@/shared";
-
-import { SideBarHeader } from "./sidebar-header";
-import { SideBarNavigation } from "./sidebar-navigation";
 
 import s from "./sidebar.module.scss";
 
