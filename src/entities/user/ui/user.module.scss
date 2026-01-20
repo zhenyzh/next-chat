@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.content {
+  border-radius: var(--border-radius-size-xxxs);
+  border: 1px solid var(--color-bg-primary);
+}
+
+.userIcon {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+}

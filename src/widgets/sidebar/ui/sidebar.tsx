@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { Card } from "@zhenyzh/common-ui/components";
+import { Box } from "@zhenyzh/common-ui/components";
 import { MessageCircleMore, Settings, UserPen } from "lucide-react";
 import { type LinkType, SideBarHeader, SideBarNavigation } from "@/widgets";
 import { ROUTES } from "@/shared";
@@ -35,7 +35,7 @@ export function Sidebar() {
   ];
 
   return (
-    <Card
+    <Box
       as="aside"
       className={clsx(s.sidebar, collapsed ? s.collapsed : s.expanded)}
     >
@@ -49,6 +49,6 @@ export function Sidebar() {
         pathname={pathname}
         collapsed={collapsed}
       />
-    </Card>
+    </Box>
   );
 }
