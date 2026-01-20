@@ -1,6 +1,6 @@
 import Link from "next/link";
 import clsx from "clsx";
-import { Typography } from "@zhenyzh/common-ui/components";
+import { Card, Typography } from "@zhenyzh/common-ui/components";
 import type { LinkType } from "@/widgets";
 import s from "./sidebar-navigation.module.scss";
 
@@ -12,7 +12,7 @@ type Props = {
 
 export function SideBarNavigation({ linkItem, pathname, collapsed }: Props) {
   return (
-    <nav className={s.nav}>
+    <Card as="nav" className={s.nav}>
       {linkItem.map((item) => {
         const active = pathname === item.link;
         return (
@@ -28,6 +28,6 @@ export function SideBarNavigation({ linkItem, pathname, collapsed }: Props) {
           </Link>
         );
       })}
-    </nav>
+    </Card>
   );
 }
