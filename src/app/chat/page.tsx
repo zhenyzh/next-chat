@@ -1,12 +1,11 @@
 "use client";
 
-import { User } from "@/entities/user/ui/user";
-import s from "./page.module.scss";
+import { User } from "@/entities";
 
 export default function ChatPage() {
   return (
     <>
-      <User />
+      <User name={"Иванов Иван"} message="fddffdfdfdfddffd" />
     </>
   );
 }

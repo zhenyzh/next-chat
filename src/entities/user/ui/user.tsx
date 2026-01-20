@@ -1,22 +1,38 @@
+"use client";
+
 import Image from "next/image";
-import clsx from "clsx";
 import { Card, Typography, Box } from "@zhenyzh/common-ui/components";
 import UserIcon from "@/shared/assets/images/logo.png";
 import s from "./user.module.scss";
 
-export function User() {
+type Props = {
+  name: string;
+  message?: string;
+  widthSize?: number;
+  heightSize?: number;
+};
+
+export function User(props: Props) {
+  const { name, message, widthSize = 60, heightSize = 60 } = props;
+
   return (
-    <Box className={clsx(s.container, s.content)}>
+    <Box className={s.container}>
       <Image
         src={UserIcon}
         alt="user"
-        width={60}
-        height={60}
+        width={widthSize}
+        height={heightSize}
         className={s.userIcon}
       />
-      <Card>
-        <Typography variant="h2">Иван Сидоров</Typography>
-        <Typography variant="label">Привет Маша пошли в кс</Typography>
+      <Card className={s.cardContent}>
+        <Typography variant="h2" className={s.ellipsis}>
+          {name}
+        </Typography>
+        {message && (
+          <Typography variant="label" className={s.ellipsis}>
+            {message}
+          </Typography>
+        )}
       </Card>
     </Box>
   );
