@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@zhenyzh/common-ui/components";
 import s from "./auth.module.scss";
-import { ROUTES } from "@/shared";
+import { ROUTES } from "@/shared/routes";
 
 export function Auth() {
   const [room, setRoom] = useState("");

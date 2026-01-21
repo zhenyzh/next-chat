@@ -7,7 +7,7 @@ import { Box } from "@zhenyzh/common-ui/components";
 import { MessageCircleMore, Settings, UserPen } from "lucide-react";
 import { SideBarHeader, SideBarNavigation } from "@/widgets/sidebar/ui";
 import type { LinkType } from "@/widgets/sidebar/model";
-import { ROUTES } from "@/shared";
+import { ROUTES } from "@/shared/routes";
 import s from "./sidebar.module.scss";
 
 export function Sidebar() {
