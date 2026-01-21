@@ -17,13 +17,7 @@
 }
 
 .link {
-  margin-top:10px;
   cursor: pointer;
   text-decoration: underline;
   color: var(--color-link);
-
-  &:hover {
-    opacity: 0.8;
-    transition: opacity 0.2s;
-  }
 }

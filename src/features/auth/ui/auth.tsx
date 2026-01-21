@@ -1,6 +1,8 @@
 "use client";
+
 import { useState } from "react";
 import clsx from "clsx";
+import { UserPen, DoorClosed } from "lucide-react";
 import {
   Box,
   Button,
@@ -23,17 +25,19 @@ export function Auth() {
           label="Введите название комнаты"
           value={room}
           onChange={(e) => setRoom(e.target.value)}
+          icon={<DoorClosed />}
         />
         <TextField
           label="Введите свое имя"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          icon={<UserPen />}
         />
       </Box>
       <Button fullWidth>Войти в аккаунт</Button>
-      <Typography variant="label" className={clsx(s.text, s.link)}>
+      <Button fullWidth variant="outline" className={clsx(s.text, s.link)}>
         Зарегистрироваться
-      </Typography>
+      </Button>
     </Box>
   );
 }
