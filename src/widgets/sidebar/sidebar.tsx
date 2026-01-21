@@ -16,19 +16,19 @@ export function Sidebar() {
 
   const linkItem: LinkType[] = [
     {
-      link: ROUTES.profile,
+      link: ROUTES.profile(),
       label: "Профиль",
       icon: <UserPen />,
       collapsed: collapsed,
     },
     {
-      link: ROUTES.chat,
+      link: ROUTES.chat(),
       label: "Чат",
       icon: <MessageCircleMore />,
       collapsed: collapsed,
     },
     {
-      link: ROUTES.settings,
+      link: ROUTES.settings(),
       label: "Настройки",
       icon: <Settings />,
       collapsed: collapsed,
@@ -41,7 +41,7 @@ export function Sidebar() {
       className={clsx(s.sidebar, collapsed ? s.collapsed : s.expanded)}
     >
       <SideBarHeader
-        defaultLink={ROUTES.profile}
+        defaultLink={ROUTES.profile()}
         collapsed={collapsed}
         setCollapsed={setCollapsed}
       />

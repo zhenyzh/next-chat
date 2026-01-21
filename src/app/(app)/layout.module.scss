@@ -1,8 +1,8 @@
 .container {
   display: flex;
+  min-height: 100vh;
 }
 
 .main {
   flex: 1;
-  background-color: var(--color-bg-primary-v1);
 }

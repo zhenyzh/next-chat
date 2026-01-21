@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "@zhenyzh/common-ui/styles";
 import "./themas/global.scss";
-import { Sidebar } from "@/widgets";
-import s from "./layout.module.scss";
 
 export const metadata: Metadata = {
   title: "Next chat",
@@ -16,9 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={s.container}>
-        <Sidebar />
-        <main className={s.main}>{children}</main>
+      <body>
+        <main>{children}</main>
       </body>
     </html>
   );
