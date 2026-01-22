@@ -4,13 +4,17 @@ import { Card, Typography } from "@zhenyzh/common-ui/components";
 import type { LinkType } from "@/widgets/sidebar/model";
 import s from "./sidebar-navigation.module.scss";
 
-type Props = {
+type SideBarNavigationProps = {
   linkItem: LinkType[];
   pathname: string;
   collapsed: boolean;
 };
 
-export function SideBarNavigation({ linkItem, pathname, collapsed }: Props) {
+export function SideBarNavigation({
+  linkItem,
+  pathname,
+  collapsed,
+}: SideBarNavigationProps) {
   return (
     <Card as="nav" className={s.nav}>
       {linkItem.map((item) => {
