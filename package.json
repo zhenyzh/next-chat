@@ -9,8 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@zhenyzh/common-ui": "^2.9.2",
+    "@zhenyzh/common-ui": "^2.9.3",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "lucide-react": "^0.562.0",
     "next": "16.1.2",
     "prettier": "^3.8.0",
