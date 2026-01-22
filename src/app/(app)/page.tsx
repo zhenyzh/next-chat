@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import { ROUTES } from "@/shared/routes";
+import { Paths } from "../../shared/configs";
 
 export default function Home() {
-  redirect(ROUTES.profile());
+  redirect(Paths.profile());
 }

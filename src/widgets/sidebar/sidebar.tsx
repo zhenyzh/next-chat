@@ -7,7 +7,7 @@ import { Box } from "@zhenyzh/common-ui/components";
 import { MessageCircleMore, Settings, UserPen } from "lucide-react";
 import { SideBarHeader, SideBarNavigation } from "@/widgets/sidebar/ui";
 import type { LinkType } from "@/widgets/sidebar/model";
-import { ROUTES } from "@/shared/routes";
+import { Paths } from "../../shared/configs";
 import s from "./sidebar.module.scss";
 
 export function Sidebar() {
@@ -16,19 +16,19 @@ export function Sidebar() {
 
   const linkItem: LinkType[] = [
     {
-      link: ROUTES.profile(),
+      link: Paths.profile(),
       label: "Профиль",
       icon: <UserPen />,
       collapsed: collapsed,
     },
     {
-      link: ROUTES.chat(),
+      link: Paths.chat(),
       label: "Чат",
       icon: <MessageCircleMore />,
       collapsed: collapsed,
     },
     {
-      link: ROUTES.settings(),
+      link: Paths.settings(),
       label: "Настройки",
       icon: <Settings />,
       collapsed: collapsed,
@@ -41,7 +41,7 @@ export function Sidebar() {
       className={clsx(s.sidebar, collapsed ? s.collapsed : s.expanded)}
     >
       <SideBarHeader
-        defaultLink={ROUTES.profile()}
+        defaultLink={Paths.profile()}
         collapsed={collapsed}
         setCollapsed={setCollapsed}
       />

@@ -1,4 +1,4 @@
-export const ROUTES = {
+export const Paths = {
   home: () => "/",
   signin: () => "/signin",
   signup: () => "/signup",

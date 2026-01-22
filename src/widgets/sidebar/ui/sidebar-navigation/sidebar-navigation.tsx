@@ -1,6 +1,6 @@
 import Link from "next/link";
 import clsx from "clsx";
-import { Card, Typography } from "@zhenyzh/common-ui/components";
+import { Button, Card, Typography } from "@zhenyzh/common-ui/components";
 import type { LinkType } from "@/widgets/sidebar/model";
 import s from "./sidebar-navigation.module.scss";
 

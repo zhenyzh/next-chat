@@ -10,15 +10,15 @@ import {
   TextField,
   Typography,
 } from "@zhenyzh/common-ui/components";
-import { ROUTES } from "@/shared/routes";
+import { Paths } from "../../../../shared/configs";
 import s from "../auth.module.scss";
 
 export function SignIn() {
   const [room, setRoom] = useState("");
   const [name, setName] = useState("");
 
-  const transitionHome = () => redirect(ROUTES.home());
-  const transitionSignUp = () => redirect(ROUTES.signup());
+  const transitionHome = () => redirect(Paths.home());
+  const transitionSignUp = () => redirect(Paths.signup());
 
   return (
     <Box className={s.container}>
