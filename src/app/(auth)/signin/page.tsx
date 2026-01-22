@@ -1,5 +1,5 @@
-import { Auth } from "@/features/auth";
+import { SignIn } from "@/features/auth";
 
 export default function AuthPage() {
-  return <Auth />;
+  return <SignIn />;
 }
