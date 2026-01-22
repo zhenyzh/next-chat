@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { Card, Typography } from "@zhenyzh/common-ui/components";
+import { Card, Typography, Avatar } from "@zhenyzh/common-ui/components";
 import UserIcon from "@/shared/assets/images/logo.png";
 import s from "./user-card.module.scss";
 
@@ -25,9 +24,8 @@ export function UserCard(props: UserCardProps) {
 
   return (
     <Link href={defaultLink} className={s.container}>
-      <Image
-        src={UserIcon}
-        alt="user"
+      <Avatar
+        image={UserIcon.src}
         width={widthSize}
         height={heightSize}
         className={s.userIcon}
