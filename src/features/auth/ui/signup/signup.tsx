@@ -10,7 +10,7 @@ import {
   TextField,
   Typography,
 } from "@zhenyzh/common-ui/components";
-import { Paths } from "../../../../shared/configs";
+import { Paths } from "@/shared/configs";
 import s from "../auth.module.scss";
 
 export function SignUp() {
