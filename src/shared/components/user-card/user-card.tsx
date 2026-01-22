@@ -14,7 +14,7 @@ export type UserCardProps = {
 };
 
 export function UserCard(props: UserCardProps) {
-  const { name, message, size = 60, defaultLink = "" } = props;
+  const { name, message, size, defaultLink = "" } = props;
 
   return (
     <Link href={defaultLink} className={s.container}>

@@ -19,7 +19,7 @@ export function SideBarHeader({
   return (
     <Box className={s.header}>
       <Link href={defaultLink} className={clsx(collapsed && s.hidden)}>
-        <Avatar image={LogoIcon.src} variant="logo" />
+        <Avatar image={LogoIcon.src} variant="whole" />
       </Link>
       <Button onClick={() => setCollapsed(!collapsed)} className={s.toggleBtn}>
         {collapsed ? (
