@@ -11,10 +11,9 @@
   &Bubble {
     position: relative;
     background-color: var(--color-accent);
-    box-shadow: 0 5px 5px var(--color-shadow-light);
     border-radius: 12px 12px 12px 0;
     padding: 10px;
-
+    
     &::after {
       content: "";
       position: absolute;

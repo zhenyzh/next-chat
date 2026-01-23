@@ -15,7 +15,7 @@ export type MessageProps = {
 export function Message({ avatar, user = {}, text, date }: MessageProps) {
   return (
     <Card className={s.message}>
-      <AvatarWrapper image={Foto.src} className={s.messageAvatar} />
+      <AvatarWrapper image={avatar} className={s.messageAvatar} />
       <Card>
         <Box className={s.messageBubble}>
           <Typography variant="h3" className={s.messageText}>
