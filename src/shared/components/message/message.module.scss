@@ -1,3 +1,31 @@
-.container {
+.message {
+  flex-direction: row;
+  width: 100%;
+  max-width: 500px;
 
+  &Avatar {
+    flex-shrink: 0;
+    align-self: flex-end;
+    margin-bottom: 30px;
+  }
+
+  &Bubble {
+    background-color: var(--color-accent);
+    box-shadow: 0 5px 5px var(--color-shadow-light);
+    border-radius: 12px 12px 12px 0;
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+
+  &Text {
+    color: var(--color-text-primary);
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  &Date {
+    font-size: var(--font-size-xs);
+    align-self: flex-end;
+  }
 }

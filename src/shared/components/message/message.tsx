@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, Box, Typography } from "@zhenyzh/common-ui/components";
+import { Box, Card, Typography, Avatar } from "@zhenyzh/common-ui/components";
 import s from "./message.module.scss";
 
 export type MessageProps = {
@@ -12,16 +12,18 @@ export type MessageProps = {
 
 export function Message({ avatar, user = {}, text, date }: MessageProps) {
   return (
-    <Box className={s.message}>
-      <Avatar image={avatar} />
-      <Box className={s.messageContent}>
+    <Card className={s.message}>
+      <Avatar image={avatar} variant="whole" className={s.messageAvatar} />
+      <Card>
         <Box className={s.messageBubble}>
-          <Typography as="p" className={s.messageText}>
+          <Typography variant="h3" className={s.messageText}>
             {text}
           </Typography>
         </Box>
-        <Typography>{date} Вчера, в 13:55</Typography>
-      </Box>
-    </Box>
+        <Typography variant="label" className={s.messageDate}>
+          вчера, 10:23
+        </Typography>
+      </Card>
+    </Card>
   );
 }
