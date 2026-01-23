@@ -18,12 +18,15 @@ export function Message({ avatar, user = {}, text, date }: MessageProps) {
       <AvatarWrapper image={avatar} className={s.messageAvatar} />
       <Card>
         <Box className={s.messageBubble}>
+          <Typography variant="h3" className={s.messageName}>
+            {"Иванов Иван"}
+          </Typography>
           <Typography variant="h3" className={s.messageText}>
             {text}
           </Typography>
         </Box>
         <Typography variant="label" className={s.messageDate}>
-          вчера, 10:23
+          {date}
         </Typography>
       </Card>
     </Card>
