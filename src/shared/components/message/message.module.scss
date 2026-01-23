@@ -9,10 +9,21 @@
   }
 
   &Bubble {
+    position: relative;
     background-color: var(--color-accent);
     box-shadow: 0 5px 5px var(--color-shadow-light);
     border-radius: 12px 12px 12px 0;
     padding: 10px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -10px;
+      bottom: 0;
+      border-top: 20px solid var(--color-accent);
+      border-right: 20px solid transparent;
+      transform: rotate(180deg);
+    }
   }
 
   &Text {
