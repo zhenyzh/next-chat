@@ -1,7 +1,9 @@
 "use client";
 
-import { Box, Card, Typography, Avatar } from "@zhenyzh/common-ui/components";
+import { Box, Card, Typography } from "@zhenyzh/common-ui/components";
+import { AvatarWrapper } from "@/shared/components";
 import s from "./message.module.scss";
+import Foto from "./download.jpg";
 
 export type MessageProps = {
   avatar: string;
@@ -13,7 +15,7 @@ export type MessageProps = {
 export function Message({ avatar, user = {}, text, date }: MessageProps) {
   return (
     <Card className={s.message}>
-      <Avatar image={avatar} variant="whole" className={s.messageAvatar} />
+      <AvatarWrapper image={Foto.src} className={s.messageAvatar} />
       <Card>
         <Box className={s.messageBubble}>
           <Typography variant="h3" className={s.messageText}>

@@ -4,17 +4,14 @@
   max-width: 500px;
 
   &Avatar {
-    flex-shrink: 0;
     align-self: flex-end;
     margin-bottom: 30px;
   }
 
   &Bubble {
     background-color: var(--color-accent);
-    box-shadow: 0 5px 5px var(--color-shadow-light);
     border-radius: 12px 12px 12px 0;
     padding: 10px;
-    margin-bottom: 8px;
   }
 
   &Text {

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Card, Typography } from "@zhenyzh/common-ui/components";
-import { AvatarCard } from "@/shared/components";
+import { AvatarWrapper } from "@/shared/components";
 import UserIcon from "@/shared/assets/images/logo.svg";
 import s from "./user-card.module.scss";
 
@@ -18,7 +18,7 @@ export function UserCard(props: UserCardProps) {
 
   return (
     <Link href={defaultLink} className={s.container}>
-      <AvatarCard image={UserIcon.src} size={size} />
+      <AvatarWrapper image={UserIcon.src} size={size} />
       <Card className={s.cardContent}>
         <Typography variant="h2" className={s.ellipsis}>
           {name}
