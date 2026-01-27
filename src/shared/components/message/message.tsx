@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import { AvatarWrapper } from "@/shared/components";
 import s from "./message.module.scss";
@@ -9,11 +10,12 @@ export type MessageProps = {
   user: object;
   text: string;
   date: string;
+  isMe?: boolean;
 };
 
-export function Message({ avatar, user = {}, text, date }: MessageProps) {
+export function Message({ avatar, user = {}, text, date, isMe }: MessageProps) {
   return (
-    <Card className={s.message}>
+    <Card className={clsx(s.message, isMe && s.me)}>
       <AvatarWrapper image={avatar} className={s.messageAvatar} />
       <Card>
         <Box className={s.messageBubble}>

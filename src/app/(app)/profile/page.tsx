@@ -15,6 +15,15 @@ export default function ProfilePage() {
         text={"Читал статью очень понравилась!"}
         date={formatDateDistanceToNow("Fri Jan 23 2026 16:02:57")}
       />
+      <Message
+        avatar={LogoP.src}
+        user={{}}
+        text={
+          "Читаsdfcfjsdiofsdiohfuisdhfiuodjfiosdjfiosdjfisdjifospdifdsopfjidsfjsidpfjopsdifdsopлfdfdsdjfsdfhsdhfsdhfuishdfuoisdhfusdiofhdsofuhsdofhsdhfsudio!"
+        }
+        date={formatDateDistanceToNow("Fri Jan 26 2026 16:02:57")}
+        isMe
+      />
     </>
   );
 }

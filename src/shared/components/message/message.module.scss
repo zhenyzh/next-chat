@@ -21,7 +21,6 @@
       height: 15px;
     }
 
-
     &:before {
       left: -7px;
       width: 18px;
@@ -54,5 +53,40 @@
   &Date {
     font-size: var(--font-size-xs);
     align-self: flex-end;
+  }
+}
+
+
+// me message
+
+.me {
+  flex-direction: row-reverse;
+  margin-left: auto;
+
+  .messageAvatar {
+    border-color: var(--color-secondary);
+  }
+
+  .messageBubble {
+    background-color: var(--color-secondary);
+
+    &:before {
+      left: auto;
+      right: -7px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 16px 14px;
+      background-color: var(--color-secondary);
+    }
+
+    &:after {
+      left: auto;
+      right: -26px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 10px;
+    }
+  }
+
+  .messageDate {
+    align-self: flex-start;
   }
 }
