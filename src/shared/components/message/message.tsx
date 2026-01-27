@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { CheckCheck } from "lucide-react";
 import { Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import { AvatarWrapper } from "@/shared/components";
 import s from "./message.module.scss";
@@ -16,20 +17,21 @@ export type MessageProps = {
 export function Message({ avatar, user = {}, text, date, isMe }: MessageProps) {
   return (
     <Card className={clsx(s.message, isMe && s.me)}>
-      <AvatarWrapper image={avatar} className={s.messageAvatar} />
+      <AvatarWrapper image={avatar} className={s.avatar} />
       <Card>
-        <Box className={s.messageBubble}>
-          <Typography variant="h3" className={s.messageName}>
+        <Box className={s.bubble}>
+          <Typography variant="h3" className={s.name}>
             {"Иванов Иван"}
           </Typography>
-          <Typography variant="h3" className={s.messageText}>
+          <Typography variant="h3" className={s.text}>
             {text}
           </Typography>
         </Box>
-        <Typography variant="label" className={s.messageDate}>
+        <Typography variant="label" className={s.date}>
           {date}
         </Typography>
       </Card>
+      <CheckCheck className={s.checkIcons} />
     </Card>
   );
 }
