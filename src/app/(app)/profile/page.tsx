@@ -18,9 +18,7 @@ export default function ProfilePage() {
       <Message
         avatar={LogoP.src}
         user={{}}
-        text={
-          "Читаsdfcfjsdiofsdiohfuisdhfiuodjfiosdjfiosdjfisdjifospdifdsopfjidsfjsidpfjopsdifdsopлfdfdsdjfsdfhsdhfsdhfuishdfuoisdhfusdiofhdsofuhsdofhsdhfsudio!"
-        }
+        text={"Приколвоаовыаровароаролыващшуокавыстаривпртвлаьулдлвылоа"}
         date={formatDateDistanceToNow("Fri Jan 26 2026 16:02:57")}
         isMe
       />
