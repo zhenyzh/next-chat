@@ -3,6 +3,7 @@
 import { AvatarWrapper, Message } from "@/shared/components";
 import LogoIcon from "@/shared/assets/images/logo.svg";
 import LogoP from "@/shared/assets/images/logo.png";
+import { formatDateDistanceToNow } from "@/shared/utils";
 
 export default function ProfilePage() {
   return (
@@ -12,7 +13,7 @@ export default function ProfilePage() {
         avatar={LogoP.src}
         user={{}}
         text={"Читал статью очень понравилась!"}
-        date=" вчера, 10:23"
+        date={formatDateDistanceToNow("Fri Jan 23 2026 16:02:57")}
       />
     </>
   );

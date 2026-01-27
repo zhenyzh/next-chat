@@ -3,7 +3,6 @@
 import { Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import { AvatarWrapper } from "@/shared/components";
 import s from "./message.module.scss";
-import Foto from "./download.jpg";
 
 export type MessageProps = {
   avatar: string;

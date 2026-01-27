@@ -5,22 +5,35 @@
   &Avatar {
     align-self: flex-end;
     margin-bottom: 30px;
+    z-index: 1;
   }
 
   &Bubble {
     position: relative;
     background-color: var(--color-accent);
-    border-radius: 12px 12px 12px 0;
+    border-radius: 15px;
     padding: 0 10px 10px;
 
-    &::after {
+    &:before, &:after {
       content: "";
       position: absolute;
-      left: -10px;
       bottom: 0;
-      border-top: 20px solid var(--color-accent);
-      border-right: 20px solid transparent;
-      transform: rotate(180deg);
+      height: 15px;
+    }
+
+
+    &:before {
+      left: -7px;
+      width: 18px;
+      background-color: var(--color-accent);
+      border-bottom-right-radius: 16px 14px;
+    }
+
+    &:after {
+      left: -26px;
+      width: 26px;
+      background-color: var(--color-bg-primary-v1);
+      border-bottom-right-radius: 10px;
     }
   }
 
