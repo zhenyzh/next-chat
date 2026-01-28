@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { CheckCheck } from "lucide-react";
+import { CheckCheck, Check } from "lucide-react";
 import { Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import { AvatarWrapper } from "@/shared/components";
 import s from "./message.module.scss";
@@ -31,7 +31,7 @@ export function Message({ avatar, user = {}, text, date, isMe }: MessageProps) {
           {date}
         </Typography>
       </Card>
-      <CheckCheck className={s.checkIcons} />
+      {isMe && <CheckCheck className={s.checkIcons} />}
     </Card>
   );
 }
