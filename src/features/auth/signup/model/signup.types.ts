@@ -1,4 +1,4 @@
 import { z } from "zod";
-import { signupSchema } from "./signup.shema";
+import { signUpSchema } from "./signup.shema";
 
-export type SignupFormValues = z.infer<typeof signupSchema>;
+export type SignUpFormValues = z.infer<typeof signUpSchema>;

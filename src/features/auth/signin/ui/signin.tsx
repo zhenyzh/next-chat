@@ -8,7 +8,7 @@ import { UserPen, LockKeyhole } from "lucide-react";
 
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
 
-import { type SigninFormValues, signinSchema } from "@/features/auth/signin";
+import { type SignInFormValues, signInSchema } from "@/features/auth/signin";
 import { FormTextField } from "@/shared/components";
 import { Paths } from "@/shared/configs";
 import s from "../../auth.module.scss";
@@ -17,15 +17,15 @@ export function SignIn() {
   const transitionHome = () => redirect(Paths.home());
   const transitionSignUp = () => redirect(Paths.signup());
 
-  const form = useForm<SigninFormValues>({
+  const form = useForm<SignInFormValues>({
     defaultValues: {
       name: "",
       password: "",
     },
-    resolver: zodResolver(signinSchema),
+    resolver: zodResolver(signInSchema),
   });
 
-  const onSubmit = (data: SigninFormValues) => {
+  const onSubmit = (data: SignInFormValues) => {
     console.log("dataSignIp", data);
     transitionHome();
   };
