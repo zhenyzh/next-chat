@@ -64,6 +64,7 @@ export function SignUp() {
         <Button
           fullWidth
           variant="outline"
+          type="button"
           className={clsx(s.text, s.link)}
           onClick={transitionSignIn}
         >
