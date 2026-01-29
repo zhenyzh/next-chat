@@ -1,14 +1,16 @@
 "use client";
 
-import { AvatarWrapper, Bubble, Message } from "@/shared/components";
-import LogoIcon from "@/shared/assets/images/logo.svg";
+import { Bubble, Message, UserCard } from "@/shared/components";
 import LogoP from "@/shared/assets/images/logo.png";
 import { formatDateDistanceToNow } from "@/shared/utils";
 
 export default function ProfilePage() {
   return (
     <>
-      <AvatarWrapper image={LogoIcon.src} />
+      <UserCard
+        name={"Сирафима Зайцева121212"}
+        message={"Прикьнь тут такrfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd"}
+      />
       <Message
         avatar={LogoP.src}
         user={{}}

@@ -1,18 +1,36 @@
 .container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  max-width: 400px;
   border-radius: var(--border-radius-size-xxxs);
   border: 1px solid var(--color-bg-primary);
 }
 
-.cardContent {
-  min-width: 0;
+.content {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+}
+
+.avatar {
+  grid-column: 1;
+}
+
+.basicInfo {
+  grid-column: 2;
+  min-width: 100%;
+}
+
+.additionalInfo {
+  grid-column: 3;
+  display: grid;
+  justify-items: center;
 }
 
 .ellipsis {
-  white-space: nowrap;
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+  white-space: nowrap;
 
+}

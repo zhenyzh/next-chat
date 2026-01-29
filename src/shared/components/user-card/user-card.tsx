@@ -1,34 +1,44 @@
 "use client";
 
-import Link from "next/link";
-import { Card, Typography } from "@zhenyzh/common-ui/components";
-import { AvatarWrapper } from "@/shared/components";
+import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import UserIcon from "@/shared/assets/images/logo.svg";
 import s from "./user-card.module.scss";
+import { CheckCheck } from "lucide-react";
+import clsx from "clsx";
 
 export type UserCardProps = {
   name: string;
   message?: string;
-  size?: number;
-  defaultLink?: string;
+  className?: string;
 };
 
 export function UserCard(props: UserCardProps) {
-  const { name, message, size, defaultLink = "" } = props;
+  const { name, message, className } = props;
 
   return (
-    <Link href={defaultLink} className={s.container}>
-      <AvatarWrapper image={UserIcon.src} size={size} />
-      <Card className={s.cardContent}>
-        <Typography variant="h2" className={s.ellipsis}>
-          {name}
-        </Typography>
-        {message && (
-          <Typography variant="label" className={s.ellipsis}>
-            {message}
+    <Box className={clsx(s.container, className)}>
+      <Box className={s.content}>
+        <Avatar
+          image={UserIcon.src}
+          variant="whole"
+          size={60}
+          className={s.avatar}
+        />
+        <Box className={s.basicInfo}>
+          <Typography variant="h2" className={s.ellipsis}>
+            {name}
           </Typography>
-        )}
-      </Card>
-    </Link>
+          {message && (
+            <Typography variant="label" className={s.ellipsis}>
+              {message}
+            </Typography>
+          )}
+        </Box>
+        <Box className={s.additionalInfo}>
+          <Typography variant="label">{"11:34"}</Typography>
+          <CheckCheck />
+        </Box>
+      </Box>
+    </Box>
   );
 }
