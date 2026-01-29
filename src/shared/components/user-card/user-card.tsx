@@ -9,14 +9,14 @@ import clsx from "clsx";
 export type UserCardProps = {
   name: string;
   message?: string;
-  className?: string;
+  date?: string;
 };
 
 export function UserCard(props: UserCardProps) {
-  const { name, message, className } = props;
+  const { name, message, date } = props;
 
   return (
-    <Box className={clsx(s.container, className)}>
+    <Box className={s.container}>
       <Box className={s.content}>
         <Avatar
           image={UserIcon.src}
@@ -35,7 +35,7 @@ export function UserCard(props: UserCardProps) {
           )}
         </Box>
         <Box className={s.additionalInfo}>
-          <Typography variant="label">{"11:34"}</Typography>
+          <Typography variant="label">{date}</Typography>
           <CheckCheck />
         </Box>
       </Box>

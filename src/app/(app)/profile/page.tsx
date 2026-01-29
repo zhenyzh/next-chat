@@ -10,6 +10,7 @@ export default function ProfilePage() {
       <UserCard
         name={"Сирафима Зайцева121212"}
         message={"Прикьнь тут такrfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd"}
+        date={formatDateDistanceToNow("Fri Jan 26 2026 16:02:57", false)}
       />
       <Message
         avatar={LogoP.src}
