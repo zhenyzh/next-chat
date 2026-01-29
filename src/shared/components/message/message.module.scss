@@ -1,3 +1,5 @@
+$borderRadius: var(--border-radius-size-s);
+
 .message {
   flex-direction: row;
   max-width: 500px;
@@ -11,7 +13,7 @@
   .bubble {
     position: relative;
     background-color: var(--color-accent);
-    border-radius: 15px;
+    border-radius: $borderRadius;
     padding: 0 10px 10px;
 
     &:before, &:after {

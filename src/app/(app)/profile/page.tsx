@@ -1,6 +1,6 @@
 "use client";
 
-import { AvatarWrapper, Message } from "@/shared/components";
+import { AvatarWrapper, Bubble, Message } from "@/shared/components";
 import LogoIcon from "@/shared/assets/images/logo.svg";
 import LogoP from "@/shared/assets/images/logo.png";
 import { formatDateDistanceToNow } from "@/shared/utils";
@@ -22,6 +22,7 @@ export default function ProfilePage() {
         date={formatDateDistanceToNow("Fri Jan 26 2026 16:02:57")}
         isMe
       />
+      <Bubble avatar={LogoP.src} />
     </>
   );
 }

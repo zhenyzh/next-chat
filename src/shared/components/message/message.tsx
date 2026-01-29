@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { CheckCheck, Check } from "lucide-react";
+import { CheckCheck } from "lucide-react";
 import { Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import { AvatarWrapper } from "@/shared/components";
 import s from "./message.module.scss";
