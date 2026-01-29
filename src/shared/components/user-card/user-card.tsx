@@ -1,20 +1,21 @@
 "use client";
 
+import { CheckCheck } from "lucide-react";
 import { Avatar, Box, Typography } from "@zhenyzh/common-ui/components";
+import { UnreadIndicator } from "@/shared/components";
 import UserIcon from "@/shared/assets/images/logo.svg";
 import s from "./user-card.module.scss";
-import { CheckCheck } from "lucide-react";
+import clsx from "clsx";
 
 export type UserCardProps = {
   name: string;
   message?: string;
   date?: string;
   isReader?: boolean;
-  count?: number;
 };
 
 export function UserCard(props: UserCardProps) {
-  const { name, message, date, isReader, count = 3 } = props;
+  const { name, message, date, isReader } = props;
 
   return (
     <Box className={s.container}>
@@ -30,22 +31,14 @@ export function UserCard(props: UserCardProps) {
             {name}
           </Typography>
           {message && (
-            <Typography variant="label" className={s.ellipsis}>
+            <Typography variant="label" className={clsx(s.message, s.ellipsis)}>
               {message}
             </Typography>
           )}
         </Box>
         <Box className={s.additionalInfo}>
           <Typography variant="label">{date}</Typography>
-          {isReader ? (
-            <CheckCheck />
-          ) : (
-            <Box className={s.roundetContainer}>
-              <Typography className={s.textRoundet}>
-                {count > 99 ? "99+" : count}
-              </Typography>
-            </Box>
-          )}
+          {isReader ? <CheckCheck /> : <UnreadIndicator />}
         </Box>
       </Box>
     </Box>
