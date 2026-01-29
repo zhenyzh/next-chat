@@ -14,31 +14,39 @@ export type UserCardProps = {
   isReader?: boolean;
 };
 
-export function UserCard(props: UserCardProps) {
-  const { name, message, date, isReader } = props;
-
+export function UserCard({ name, message, date, isReader }: UserCardProps) {
   return (
     <Box className={s.container}>
       <Box className={s.content}>
         <Avatar
           image={UserIcon.src}
           variant="whole"
-          size={60}
+          size={65}
           className={s.avatar}
         />
-        <Box className={s.basicInfo}>
-          <Typography variant="h2" className={s.ellipsis}>
-            {name}
-          </Typography>
-          {message && (
-            <Typography variant="label" className={clsx(s.message, s.ellipsis)}>
-              {message}
+
+        <Box className={s.infoSection}>
+          <Box className={s.basicInfo}>
+            <Typography variant="h2" className={s.ellipsis}>
+              {name}
             </Typography>
+            {date && (
+              <Typography variant="label" className={s.date}>
+                {date}
+              </Typography>
+            )}
+          </Box>
+
+          {message && (
+            <Box className={clsx(s.basicInfo, s.additionalInfo)}>
+              <Typography variant="label" className={s.ellipsis}>
+                {message}
+              </Typography>
+              <Box className={s.additionalInfo}>
+                {isReader ? <CheckCheck /> : <UnreadIndicator />}
+              </Box>
+            </Box>
           )}
-        </Box>
-        <Box className={s.additionalInfo}>
-          <Typography variant="label">{date}</Typography>
-          {isReader ? <CheckCheck /> : <UnreadIndicator />}
         </Box>
       </Box>
     </Box>

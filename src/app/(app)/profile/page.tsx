@@ -8,13 +8,13 @@ export default function ProfilePage() {
   return (
     <>
       <UserCard
-        name={"Сирафима Зайцева121212"}
-        message={"Прикьнь тут такrfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd"}
+        name={"Сирафима Зайцевdffddffdfddfdfdfdf"}
+        message={"Прикьнь тут такrfdfddfffffffffffffffffffffff"}
         date={formatSmartDate("Fri Jan 12 1992 16:02:57")}
       />
       <UserCard
-        name={"Петр Иванов"}
-        message={"(.)(.)"}
+        name={"Петр Иванов3223323dffddfdfdffd"}
+        message={"fdjgjkfdkgfgifjiosdjp43erererererererer"}
         date={formatSmartDate("Fri Jan 29 2026 16:02:57")}
         isReader={true}
       />

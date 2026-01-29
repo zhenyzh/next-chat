@@ -1,4 +1,9 @@
-import { format, formatDistanceToNow, isToday } from "date-fns";
+import {
+  format,
+  formatDistanceToNow,
+  isToday,
+  formatDistanceToNowStrict,
+} from "date-fns";
 import { ru } from "date-fns/locale";
 
 export const formatDateDistanceToNow = (date: string, addSuffix = true) =>
@@ -9,11 +14,14 @@ export const formatDateDistanceToNow = (date: string, addSuffix = true) =>
 
 export const formatSmartDate = (date: string, addSuffix = false) => {
   const parseDate = new Date(date);
+
   if (isToday(parseDate)) {
-    return formatDistanceToNow(parseDate, {
-      addSuffix: addSuffix,
+    return formatDistanceToNowStrict(parseDate, {
+      addSuffix,
       locale: ru,
+      roundingMethod: "floor",
     });
   }
+
   return format(parseDate, "dd.MM.yyyy");
 };
