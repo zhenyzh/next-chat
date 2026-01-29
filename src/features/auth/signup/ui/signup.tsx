@@ -1,31 +1,25 @@
 "use client";
 
 import { redirect } from "next/navigation";
-import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider } from "react-hook-form";
 import clsx from "clsx";
 import { UserPen, LockKeyhole, Mail } from "lucide-react";
 
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
 
-import { type SignUpFormValues, signUpSchema } from "@/features/auth/signup";
+import {
+  type SignUpFormValues,
+  useFormValidation,
+} from "@/features/auth/signup";
 import { Paths } from "@/shared/configs";
 import { FormTextField } from "@/shared/components";
 
 import s from "../../auth.module.scss";
 
 export function SignUp() {
-  const transitionSignIn = () => redirect(Paths.signin());
+  const form = useFormValidation();
 
-  const form = useForm<SignUpFormValues>({
-    defaultValues: {
-      email: "",
-      name: "",
-      password: "",
-      confirmPassword: "",
-    },
-    resolver: zodResolver(signUpSchema),
-  });
+  const transitionSignIn = () => redirect(Paths.signin());
 
   const onSubmit = (data: SignUpFormValues) => {
     console.log("dataSignUp", data);

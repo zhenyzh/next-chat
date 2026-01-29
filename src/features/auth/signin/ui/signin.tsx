@@ -2,28 +2,24 @@
 
 import { redirect } from "next/navigation";
 import clsx from "clsx";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider } from "react-hook-form";
 import { UserPen, LockKeyhole } from "lucide-react";
 
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
 
-import { type SignInFormValues, signInSchema } from "@/features/auth/signin";
+import {
+  type SignInFormValues,
+  useFormValidation,
+} from "@/features/auth/signin";
 import { FormTextField } from "@/shared/components";
 import { Paths } from "@/shared/configs";
 import s from "../../auth.module.scss";
 
 export function SignIn() {
+  const form = useFormValidation();
+
   const transitionHome = () => redirect(Paths.home());
   const transitionSignUp = () => redirect(Paths.signup());
-
-  const form = useForm<SignInFormValues>({
-    defaultValues: {
-      name: "",
-      password: "",
-    },
-    resolver: zodResolver(signInSchema),
-  });
 
   const onSubmit = (data: SignInFormValues) => {
     console.log("dataSignIp", data);
