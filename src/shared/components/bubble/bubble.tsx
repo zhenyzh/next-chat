@@ -11,7 +11,7 @@ type BubbleProps = {
 export function Bubble({ avatar }: BubbleProps) {
   return (
     <Card className={s.container}>
-      {avatar && <AvatarWrapper image={avatar} />}
+      {avatar && <AvatarWrapper image={avatar} className={s.avatar} />}
       <Box className={s.chatBubble}>
         <Box className={s.typingDots}>
           <Box as="span"></Box>

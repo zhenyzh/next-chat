@@ -4,7 +4,12 @@
   gap: 5px;
 }
 
+.avatar {
+  z-index: 1;
+}
+
 .chatBubble {
+  position: relative;
   display: flex;
   align-items: center;
   max-width: 60px;
@@ -12,6 +17,29 @@
   padding: 15px;
   background: var(--color-accent);
   border-radius: var(--border-radius-size-s);
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 15px;
+  }
+
+  &:before {
+    left: -7px;
+    width: 18px;
+    background-color: var(--color-accent);
+    border-bottom-right-radius: 16px 14px;
+  }
+
+  &:after {
+    left: -26px;
+    width: 26px;
+    background-color: var(--color-bg-primary-v1);
+    border-bottom-right-radius: 10px;
+  }
+
+
 }
 
 .typingDots {
