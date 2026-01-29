@@ -1,8 +1,8 @@
 "use client";
 
 import { Bubble, Message, UserCard } from "@/shared/components";
+import { formatDateDistanceToNow, formatSmartDate } from "@/shared/utils";
 import LogoP from "@/shared/assets/images/logo.png";
-import { formatDateDistanceToNow } from "@/shared/utils";
 
 export default function ProfilePage() {
   return (
@@ -10,8 +10,15 @@ export default function ProfilePage() {
       <UserCard
         name={"Сирафима Зайцева121212"}
         message={"Прикьнь тут такrfdfdfdfdfdfdfdfdfdfdfdfdfdfdfd"}
-        date={formatDateDistanceToNow("Fri Jan 26 2026 16:02:57", false)}
+        date={formatSmartDate("Fri Jan 12 1992 16:02:57")}
       />
+      <UserCard
+        name={"Петр Иванов"}
+        message={"(.)(.)"}
+        date={formatSmartDate("Fri Jan 29 2026 16:02:57")}
+        isReader={true}
+      />
+
       <Message
         avatar={LogoP.src}
         user={{}}
