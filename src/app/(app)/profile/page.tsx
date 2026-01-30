@@ -15,7 +15,7 @@ export default function ProfilePage() {
       <UserCard
         name={"Петр Иванов3223323dffddfdfdffd"}
         message={"fdjgjkfdkgfgifjiosdjp43erererererererer"}
-        date={formatSmartDate("Fri Jan 29 2026 16:02:57")}
+        date={formatSmartDate("Fri Jan 30 2026 10:32:16")}
         isReader={true}
       />
 
@@ -29,7 +29,7 @@ export default function ProfilePage() {
         avatar={LogoP.src}
         user={{}}
         text={"Приколвоаовыаровароаролыващшуокавыстаривпртвлаьулдлвылоа"}
-        date={formatDateDistanceToNow("Fri Jan 26 2026 16:02:57")}
+        date={formatDateDistanceToNow("Fri Jan 30 2026 10:32:16")}
         isMe
       />
       <Bubble />

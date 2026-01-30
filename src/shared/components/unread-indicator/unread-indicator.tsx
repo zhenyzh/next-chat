@@ -7,7 +7,7 @@ export type UnreadIndicatorProps = {
   count?: number;
 };
 
-export function UnreadIndicator({ count = 3 }: UnreadIndicatorProps) {
+export function UnreadIndicator({ count = 0 }: UnreadIndicatorProps) {
   return (
     <Box className={s.container}>
       <Typography className={s.indicator}>
