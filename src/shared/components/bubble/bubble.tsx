@@ -1,24 +1,21 @@
 "use client";
 
-import { Box, Card } from "@zhenyzh/common-ui/components";
-import { AvatarWrapper } from "@/shared/components";
+import clsx from "clsx";
+import { Box } from "@zhenyzh/common-ui/components";
 import s from "./bubble.module.scss";
 
 type BubbleProps = {
-  avatar?: string;
+  withTail?: boolean;
 };
 
-export function Bubble({ avatar }: BubbleProps) {
+export function Bubble({ withTail = false }: BubbleProps) {
   return (
-    <Card className={s.container}>
-      {avatar && <AvatarWrapper image={avatar} className={s.avatar} />}
-      <Box className={s.chatBubble}>
-        <Box className={s.typingDots}>
-          <Box as="span"></Box>
-          <Box as="span"></Box>
-          <Box as="span"></Box>
-        </Box>
+    <Box className={clsx(s.chatBubble, withTail && s.withTail)}>
+      <Box className={s.typingDots}>
+        <Box as="span"></Box>
+        <Box as="span"></Box>
+        <Box as="span"></Box>
       </Box>
-    </Card>
+    </Box>
   );
 }

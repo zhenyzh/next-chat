@@ -32,7 +32,7 @@ export default function ProfilePage() {
         date={formatDateDistanceToNow("Fri Jan 26 2026 16:02:57")}
         isMe
       />
-      <Bubble avatar={LogoP.src} />
+      <Bubble />
     </>
   );
 }
