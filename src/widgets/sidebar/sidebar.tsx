@@ -5,9 +5,11 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { Box } from "@zhenyzh/common-ui/components";
 import { MessageCircleMore, Settings, UserPen } from "lucide-react";
+
 import { SideBarHeader, SideBarNavigation } from "@/widgets/sidebar/ui";
 import type { LinkType } from "@/widgets/sidebar/model";
 import { Paths } from "@/shared/configs";
+
 import s from "./sidebar.module.scss";
 
 export function Sidebar() {

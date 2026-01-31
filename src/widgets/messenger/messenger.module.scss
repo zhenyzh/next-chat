@@ -1,0 +1,32 @@
+$padding: 10px;
+$border: 2px solid var(--color-bg-primary);
+
+.container {
+  height: 96vh;
+  display: grid;
+  border: $border;
+  border-radius: var(--border-radius-size-s);
+
+  grid-template:
+    "card-user header-user" auto
+    "card-user content-message" 1fr
+    / minmax(50px, 500px) 1fr;
+}
+
+.userCard {
+  grid-area: card-user;
+  padding: $padding $padding 0 $padding;
+  border-right: $border;
+}
+
+.headerUser {
+  grid-area: header-user;
+  padding: $padding;
+  border-bottom: $border;
+}
+
+.contentMessage {
+  grid-area: content-message;
+  padding: $padding;
+}
+

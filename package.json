@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "@zhenyzh/common-ui": "^2.9.9",
+    "@zhenyzh/common-ui": "^2.9.10",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.562.0",

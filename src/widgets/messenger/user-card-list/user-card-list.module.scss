@@ -1,0 +1,22 @@
+.container {
+  height: 100%;
+
+  background-color: var(--color-bg-primary-v1);
+  border-radius: var(--border-radius-size-s);
+
+  cursor: pointer;
+}
+
+.scroll {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: var(--color-accent) transparent;
+}
+
+.userCard {
+  &:hover {
+    background-color: var(--color-bg-hover);
+    border-radius: var(--border-radius-size-s);
+  }
+}
