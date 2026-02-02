@@ -21,7 +21,7 @@ export function MessageList() {
             <Message
               avatar={LogoP.src}
               user={{}}
-              text={"Приколвоаовыаровароаролыващшуокавыстаривпртвлаьулдлвылоа"}
+              text={"Прикол"}
               date={formatDateDistanceToNow("Fri Jan 30 2026 10:32:16")}
               isMe
             />

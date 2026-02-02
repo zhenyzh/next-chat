@@ -15,7 +15,6 @@ $border: 2px solid var(--color-bg-primary);
 
 .userCard {
   grid-area: card-user;
-  padding: $padding $padding 0 $padding;
   border-right: $border;
   min-height: 0;
 }
@@ -28,7 +27,6 @@ $border: 2px solid var(--color-bg-primary);
 
 .contentMessage {
   grid-area: content-message;
-  padding: $padding $padding 0 $padding;
   min-height: 0;
 }
 
