@@ -3,7 +3,7 @@
 import { CheckCheck } from "lucide-react";
 import { Avatar, Box, Typography } from "@zhenyzh/common-ui/components";
 import { UnreadIndicator } from "@/shared/components";
-import UserIcon from "@/shared/assets/images/logo.svg";
+import LogoP from "@/shared/assets/images/download.jpg";
 import s from "./user-card.module.scss";
 import clsx from "clsx";
 
@@ -19,9 +19,9 @@ export function UserCard({ name, message, date, isReader }: UserCardProps) {
     <Box className={s.container}>
       <Box className={s.content}>
         <Avatar
-          image={UserIcon.src}
-          variant="whole"
-          size={65}
+          image={LogoP.src}
+          variant="cropped"
+          size={55}
           className={s.avatar}
         />
 

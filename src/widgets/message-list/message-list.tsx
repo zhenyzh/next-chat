@@ -1,11 +1,12 @@
 import React from "react";
 import { Box } from "@zhenyzh/common-ui/components";
-import { Message, ScrollBar } from "@/shared/components";
+import { Message } from "@/features/message";
+import { ScrollBar } from "@/shared/components";
 import { formatDateDistanceToNow } from "@/shared/utils";
-import s from "./messange-list.module.scss";
-import LogoP from "@/shared/assets/images/logo.png";
+import s from "./message-list.module.scss";
+import LogoP from "@/shared/assets/images/download.jpg";
 
-export function MessangeList() {
+export function MessageList() {
   return (
     <Box className={s.container}>
       <ScrollBar>

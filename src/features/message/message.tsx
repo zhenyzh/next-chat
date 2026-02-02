@@ -2,8 +2,7 @@
 
 import clsx from "clsx";
 import { CheckCheck } from "lucide-react";
-import { Box, Card, Typography } from "@zhenyzh/common-ui/components";
-import { AvatarWrapper } from "@/shared/components";
+import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import s from "./message.module.scss";
 
 export type MessageProps = {
@@ -17,7 +16,7 @@ export type MessageProps = {
 export function Message({ avatar, user = {}, text, date, isMe }: MessageProps) {
   return (
     <Card className={clsx(s.message, isMe && s.me)}>
-      <AvatarWrapper image={avatar} className={s.avatar} />
+      <Avatar image={avatar} className={s.avatar} />
       <Card>
         <Box className={s.bubble}>
           <Typography variant="h3" className={s.name}>

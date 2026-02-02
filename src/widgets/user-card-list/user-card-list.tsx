@@ -1,7 +1,8 @@
-import { ScrollBar, UserCard } from "@/shared/components";
+import { ScrollBar } from "@/shared/components";
 import { formatSmartDate } from "@/shared/utils";
 import { Box } from "@zhenyzh/common-ui/components";
 import s from "./user-card-list.module.scss";
+import { UserCard } from "@/features/user-card";
 
 export function UserCardList() {
   return (

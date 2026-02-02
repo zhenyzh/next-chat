@@ -5,6 +5,7 @@ $borderRadius: var(--border-radius-size-s);
   max-width: 500px;
 
   .avatar {
+    flex-shrink: 0;
     align-self: flex-end;
     margin-bottom: 30px;
     z-index: 1;

@@ -11,7 +11,32 @@
 }
 
 .avatar {
+  position: relative;
   flex-shrink: 0;
+}
+
+.online {
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: var(--color-online);
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    right: 0;
+    bottom: 3px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    right: 0;
+    bottom: 3px;
+  }
 }
 
 .infoSection {
@@ -38,3 +63,4 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
