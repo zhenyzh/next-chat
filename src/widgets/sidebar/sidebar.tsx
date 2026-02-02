@@ -21,19 +21,16 @@ export function Sidebar() {
       link: Paths.profile(),
       label: "Профиль",
       icon: <UserPen />,
-      collapsed: collapsed,
     },
     {
       link: Paths.chat(),
       label: "Чат",
       icon: <MessageCircleMore />,
-      collapsed: collapsed,
     },
     {
       link: Paths.settings(),
       label: "Настройки",
       icon: <Settings />,
-      collapsed: collapsed,
     },
   ];
 
