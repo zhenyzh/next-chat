@@ -1,5 +1,5 @@
-import { Messenger } from "@/widgets/messenger";
+import { Chat } from "@/widgets/chat";
 
 export default function ChatPage() {
-  return <Messenger />;
+  return <Chat />;
 }

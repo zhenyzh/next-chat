@@ -7,13 +7,6 @@
   cursor: pointer;
 }
 
-.scroll {
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-color: var(--color-accent) transparent;
-}
-
 .userCard {
   &:hover {
     background-color: var(--color-bg-hover);
