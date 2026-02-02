@@ -24,7 +24,6 @@ export function UserCard({ name, message, date, isReader }: UserCardProps) {
           size={55}
           className={s.avatar}
         />
-
         <Box className={s.infoSection}>
           <Box className={s.basicInfo}>
             <Typography variant="h2" className={s.ellipsis}>
