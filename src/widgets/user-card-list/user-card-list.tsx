@@ -11,7 +11,7 @@ export function UserCardList() {
         {Array.from({ length: 20 }, (_, i) => (
           <Box key={i} className={s.userCard}>
             <UserCard
-              name={"Сирафима Зайцевdffddffdfddfdfdfdf"}
+              name={"Иванов Иван"}
               message={
                 "Прикьнь тут такrfdfddfffffffffffffffffffffffdsssssssssssssssssssssssssss"
               }

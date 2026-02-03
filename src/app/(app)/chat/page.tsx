@@ -1,10 +1,11 @@
 "use client";
 
-import { Box, Container, TextField } from "@zhenyzh/common-ui/components";
+import { Box, Container } from "@zhenyzh/common-ui/components";
 import { UserCardList } from "@/widgets/user-card-list";
-import { UserCard } from "@/features/user-card";
 import { MessageList } from "@/widgets/message-list";
-import { SendHorizontal, CirclePlus, Smile } from "lucide-react";
+import { UserCard } from "@/features/user-card";
+import { SendMessage } from "@/features/send-message";
+
 import s from "./page.module.scss";
 
 export default function ChatPage() {
@@ -21,25 +22,8 @@ export default function ChatPage() {
       <Box className={s.contentMessage}>
         <MessageList />
       </Box>
-      <Box className={s.sendMessage}>
-        <TextField
-          placeholder={"Сообщение"}
-          icon={
-            <CirclePlus
-              onClick={() => alert("иконка + ")}
-              className={s.point}
-            />
-          }
-          iconEnd={
-            <>
-              <Smile className={s.point} style={{ marginRight: "20px" }} />
-              <SendHorizontal
-                onClick={() => alert("иконка send ")}
-                className={s.point}
-              />
-            </>
-          }
-        />
+      <Box className={s.contentInput}>
+        <SendMessage />
       </Box>
     </Container>
   );

@@ -36,19 +36,27 @@ export function SignUp() {
           Регистрация
         </Typography>
         <Box className={s.inputContainer}>
-          <FormTextField label="Введите почту" name="email" icon={<Mail />} />
-          <FormTextField label="Введите имя" name="name" icon={<UserPen />} />
+          <FormTextField
+            label="Введите почту"
+            name="email"
+            iconStart={<Mail />}
+          />
+          <FormTextField
+            label="Введите имя"
+            name="name"
+            iconStart={<UserPen />}
+          />
           <FormTextField
             label="Введите пароль"
             name="password"
             type="password"
-            icon={<LockKeyhole />}
+            iconStart={<LockKeyhole />}
           />
           <FormTextField
             label="Введите новый пароль"
             name="confirmPassword"
             type="password"
-            icon={<LockKeyhole />}
+            iconStart={<LockKeyhole />}
           />
         </Box>
         <Button fullWidth type="submit">

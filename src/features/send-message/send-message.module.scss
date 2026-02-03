@@ -1,0 +1,41 @@
+.pointer {
+  cursor: pointer;
+}
+
+.marginEmoji {
+  margin-right: 20px;
+}
+
+.positionPicker {
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+  z-index: 9999;
+}
+
+/* показывать скрывать блоки*/
+
+.container {
+  display: inline-flex;
+  position: relative;
+
+  &:hover .block {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+.block {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(8px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}

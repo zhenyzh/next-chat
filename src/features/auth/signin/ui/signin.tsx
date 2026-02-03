@@ -37,12 +37,16 @@ export function SignIn() {
           Авторизация
         </Typography>
         <Box className={s.inputContainer}>
-          <FormTextField name="name" label="Введите имя" icon={<UserPen />} />
+          <FormTextField
+            name="name"
+            label="Введите имя"
+            iconStart={<UserPen />}
+          />
           <FormTextField
             name="password"
             type="password"
             label="Введите пароль"
-            icon={<LockKeyhole />}
+            iconStart={<LockKeyhole />}
           />
         </Box>
         <Button fullWidth type="submit">

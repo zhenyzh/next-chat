@@ -12,8 +12,8 @@ $border: 2px solid var(--color-bg-primary);
   grid-template:
     "card-user header-user" auto
     "card-user content-message" 1fr
-    "card-user send-message" auto
-    / minmax(50px, 500px) 1fr;
+    "card-user content-input" auto
+    / minmax(50px, 400px) 1fr;
 }
 
 .userCard {
@@ -34,11 +34,8 @@ $border: 2px solid var(--color-bg-primary);
   min-height: 0;
 }
 
-.sendMessage {
-  grid-area: send-message;
+.contentInput {
+  grid-area: content-input;
   padding: 0 $padding $padding $padding;
-}
-
-.point {
-  cursor: pointer;
+  z-index: 1;
 }
