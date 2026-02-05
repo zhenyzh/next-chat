@@ -12,9 +12,16 @@ export type UserCardProps = {
   message?: string;
   date?: string;
   isReader?: boolean;
+  isOnline?: boolean;
 };
 
-export function UserCard({ name, message, date, isReader }: UserCardProps) {
+export function UserCard({
+  name,
+  message,
+  date,
+  isReader,
+  isOnline = false,
+}: UserCardProps) {
   return (
     <Box className={s.container}>
       <Box className={s.content}>
@@ -22,7 +29,7 @@ export function UserCard({ name, message, date, isReader }: UserCardProps) {
           image={LogoP.src}
           variant="cropped"
           size={55}
-          className={s.avatar}
+          className={clsx(s.avatar, isOnline && s.online)}
         />
         <Box className={s.infoSection}>
           <Box className={s.basicInfo}>

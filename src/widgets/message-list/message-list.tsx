@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@zhenyzh/common-ui/components";
-import { Message } from "@/features/message";
+import { Messages } from "@/entities/messages";
 import { ScrollBar } from "@/shared/components";
 import { formatDateDistanceToNow } from "@/shared/utils";
 import s from "./message-list.module.scss";
@@ -12,18 +12,39 @@ export function MessageList() {
       <ScrollBar>
         {Array.from({ length: 20 }, (_, i) => (
           <React.Fragment key={i}>
-            <Message
-              avatar={LogoP.src}
-              user={{}}
-              text={"Читал статью очень понравилась!"}
-              date={formatDateDistanceToNow("Fri Jan 23 2026 16:02:57")}
+            <Messages
+              message={{
+                id: "1",
+                fromMe: false,
+                user: {
+                  id: "u1",
+                  fullName: "Иван Иванов",
+                  avatarUrl: LogoP.src,
+                  email: "ivan@example.com",
+                },
+                content: { text: "Привет! Как дела?" },
+                date: formatDateDistanceToNow("Fri Jan 23 2026 16:02:57"),
+              }}
             />
-            <Message
-              avatar={LogoP.src}
-              user={{}}
-              text={"Прикол"}
-              date={formatDateDistanceToNow("Fri Jan 30 2026 10:32:16")}
-              isMe
+            <Messages
+              message={{
+                id: "1",
+                fromMe: true,
+                user: {
+                  id: "u1",
+                  fullName: "Иван Иванов",
+                  avatarUrl: LogoP.src,
+                  email: "ivan@example.com",
+                },
+                content: {
+                  text: "Привет! Как дела?",
+                  imageUrl: [
+                    "https://koldunov.com/wp-content/uploads/2021/03/06.jpg",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLKy7pYSCRNDVje9qdb4M-JL579JbjutY1w&s",
+                  ],
+                },
+                date: formatDateDistanceToNow("Fri Jan 23 2026 16:02:57"),
+              }}
             />
           </React.Fragment>
         ))}

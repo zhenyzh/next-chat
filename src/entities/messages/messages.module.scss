@@ -6,8 +6,8 @@ $borderRadius: var(--border-radius-size-s);
 
   .avatar {
     flex-shrink: 0;
-    align-self: flex-end;
-    margin-bottom: 30px;
+    align-self: flex-start;
+    margin-top: 15px;
     z-index: 1;
   }
 
@@ -74,11 +74,6 @@ $borderRadius: var(--border-radius-size-s);
   .avatar {
     border-color: var(--color-secondary);
   }
-
-  .text {
-    color: var(--color-text-primary);
-  }
-
 
   .bubble {
     background-color: var(--color-secondary);

@@ -2,7 +2,7 @@ import { ScrollBar } from "@/shared/components";
 import { formatSmartDate } from "@/shared/utils";
 import { Box } from "@zhenyzh/common-ui/components";
 import s from "./user-card-list.module.scss";
-import { UserCard } from "@/features/user-card";
+import { UserCard } from "../../entities/user-card";
 
 export function UserCardList() {
   return (

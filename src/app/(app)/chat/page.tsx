@@ -3,7 +3,7 @@
 import { Box, Container } from "@zhenyzh/common-ui/components";
 import { UserCardList } from "@/widgets/user-card-list";
 import { MessageList } from "@/widgets/message-list";
-import { UserCard } from "@/features/user-card";
+import { UserCard } from "@/entities/user-card";
 import { SendMessage } from "@/features/send-message";
 
 import s from "./page.module.scss";

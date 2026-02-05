@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  max-width: 300px;
+  margin-top: 4px;
+}
+
+.image {
+  border-radius: var(--border-radius-size-s);
+  overflow: hidden;
+  cursor: pointer;
+
+  img {
+    object-fit: cover;
+  }
+}

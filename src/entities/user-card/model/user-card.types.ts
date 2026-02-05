@@ -7,6 +7,7 @@ export type UserCardDto = {
     text: string;
     isReader: boolean;
     date: string;
+    type: string;
   };
 };
 
