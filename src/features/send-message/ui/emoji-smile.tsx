@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import clsx from "clsx";
 import { Smile } from "lucide-react";
 import { Box } from "@zhenyzh/common-ui/components";
-import s from "../send-message.module.scss";
+import s from "../containers/send-message.module.scss";
 
 const EmojiPicker = dynamic(() => import("emoji-picker-react"), { ssr: false });
 

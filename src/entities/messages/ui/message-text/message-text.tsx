@@ -1,5 +1,5 @@
 import { Typography } from "@zhenyzh/common-ui/components";
-import s from "../styles/message-text.module.scss";
+import s from "./message-text.module.scss";
 
 export function MessageText({ text }: { text: string }) {
   return (

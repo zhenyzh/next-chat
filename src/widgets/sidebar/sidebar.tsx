@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { Box } from "@zhenyzh/common-ui/components";
 import { MessageCircleMore, Settings, UserPen } from "lucide-react";
+
+import { Box } from "@zhenyzh/common-ui/components";
 
 import { SideBarHeader, SideBarNavigation } from "@/widgets/sidebar/ui";
 import type { LinkType } from "@/widgets/sidebar/model";

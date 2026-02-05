@@ -1,1 +1,1 @@
-export * from "./send-message";
+export * from "./containers/send-message";

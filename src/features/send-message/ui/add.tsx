@@ -1,5 +1,5 @@
 import { CirclePlus } from "lucide-react";
-import s from "../send-message.module.scss";
+import s from "../containers/send-message.module.scss";
 import clsx from "clsx";
 
 export function Add() {

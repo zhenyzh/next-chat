@@ -8,7 +8,7 @@ import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import type { Message } from "@/entities/messages/model";
 import { MessageContent, MessageText } from "@/entities/messages";
 
-import s from "../styles/messages.module.scss";
+import s from "./messages.module.scss";
 
 type MessageProps = {
   message: Message;
