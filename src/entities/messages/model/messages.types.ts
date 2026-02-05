@@ -8,7 +8,7 @@ export type Message = {
     email: string;
   };
   content: MessageContentType;
-  date: string;
+  createdAt: string;
 };
 
 export type MessageContentType = {

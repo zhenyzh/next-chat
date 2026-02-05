@@ -18,7 +18,7 @@ export function Messages({ message }: MessageProps) {
   const {
     user: { avatarUrl, fullName },
     fromMe,
-    date,
+    createdAt,
     content: { text, ...rest },
   } = message;
 
@@ -39,7 +39,7 @@ export function Messages({ message }: MessageProps) {
         <MessageContent {...rest} />
 
         <Typography variant="label" className={s.date}>
-          {date}
+          {createdAt}
         </Typography>
       </Card>
 

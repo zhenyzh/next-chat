@@ -1,10 +1,13 @@
 import React from "react";
+
 import { Box } from "@zhenyzh/common-ui/components";
+
 import { Messages } from "@/entities/messages";
 import { ScrollBar } from "@/shared/components";
 import { formatDateDistanceToNow } from "@/shared/utils";
-import s from "./message-list.module.scss";
+
 import LogoP from "@/shared/assets/images/download.jpg";
+import s from "./message-list.module.scss";
 
 export function MessageList() {
   return (
@@ -23,7 +26,7 @@ export function MessageList() {
                   email: "ivan@example.com",
                 },
                 content: { text: "Привет! Как дела?" },
-                date: formatDateDistanceToNow("Fri Jan 23 2026 16:02:57"),
+                createdAt: formatDateDistanceToNow("Fri Jan 23 2026 16:02:57"),
               }}
             />
             <Messages
@@ -43,7 +46,7 @@ export function MessageList() {
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLKy7pYSCRNDVje9qdb4M-JL579JbjutY1w&s",
                   ],
                 },
-                date: formatDateDistanceToNow("Fri Jan 23 2026 16:02:57"),
+                createdAt: formatDateDistanceToNow("Fri Jan 23 2026 16:02:57"),
               }}
             />
           </React.Fragment>
