@@ -1,2 +1,2 @@
-export * from "./messages";
-export * from "./ui/content-message";
+export * from "./ui";
+export * from "./model";

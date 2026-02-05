@@ -2,11 +2,13 @@
 
 import clsx from "clsx";
 import { CheckCheck } from "lucide-react";
+
 import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
+
 import type { Message } from "@/entities/messages/model";
-import s from "./messages.module.scss";
-import { ContentMessage } from "@/entities/messages/ui/content-message";
-import { MessageText } from "@/entities/messages/ui/content-message/message-text/message-text";
+import { MessageContent, MessageText } from "@/entities/messages";
+
+import s from "../styles/messages.module.scss";
 
 type MessageProps = {
   message: Message;
@@ -34,7 +36,7 @@ export function Messages({ message }: MessageProps) {
           </Box>
         )}
 
-        <ContentMessage {...rest} />
+        <MessageContent {...rest} />
 
         <Typography variant="label" className={s.date}>
           {date}

@@ -7,11 +7,11 @@ export type Message = {
     avatarUrl: string;
     email: string;
   };
-  content: MessageContent;
+  content: MessageContentType;
   date: string;
 };
 
-export type MessageContent = {
+export type MessageContentType = {
   text?: string;
   imageUrl?: string[];
   files?: FileAttachment[];

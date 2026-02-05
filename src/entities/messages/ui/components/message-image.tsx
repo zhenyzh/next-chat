@@ -1,5 +1,5 @@
 import { Avatar, Box } from "@zhenyzh/common-ui/components";
-import s from "./message-image.module.scss";
+import s from "../styles/message-image.module.scss";
 
 export function MessageImage({ imageUrl }: { imageUrl: string[] }) {
   return (
