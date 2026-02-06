@@ -1,12 +1,10 @@
-import clsx from "clsx";
-
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 
 type ContentListProps<T> = {
   title?: string;
   data: T[] | undefined;
-  renderItem: (item?: T) => React.ReactNode;
-  className?: string;
+  renderItem: (item: T) => React.ReactNode;
+  containerClassName?: string;
   listClassName?: string;
   isLoading?: boolean;
   skeleton?: React.ReactNode;
@@ -20,7 +18,7 @@ export const ContentList = <T,>({
   title,
   data = [],
   renderItem,
-  className,
+  containerClassName,
   listClassName,
   isLoading,
   skeleton,
@@ -29,13 +27,15 @@ export const ContentList = <T,>({
   return (
     <Box as="section">
       {title && <Typography variant="h2">{title}</Typography>}
-      <Box className={clsx(className, listClassName)}>
+      <Box className={containerClassName}>
         {isLoading
-          ? Array.from({ length: SKELETON_ITEM_COUNT || skeletonCount }).map(
+          ? Array.from({ length: skeletonCount || SKELETON_ITEM_COUNT }).map(
               (_, i) => <Box key={i}>{skeleton}</Box>,
             )
           : data.map((item, index) => (
-              <Box key={index}>{renderItem(item)}</Box>
+              <Box key={index} className={listClassName}>
+                {renderItem(item)}
+              </Box>
             ))}
       </Box>
     </Box>

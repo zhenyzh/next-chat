@@ -1,0 +1,32 @@
+.container {
+  padding: 10px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.avatar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.infoSection {
+  min-width: 0;
+}
+
+.basicInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+@include max-width(710px) {
+  .basicInfo {
+    display: block;
+  }
+}

@@ -7,14 +7,14 @@ import { Box, Typography } from "@zhenyzh/common-ui/components";
 
 import { UnreadIndicator } from "@/shared/ui";
 
-import s from "./sub-content.module.scss";
+import s from "./chat-sub-content.module.scss";
 
 type Props = {
-  message?: string;
+  message: string | null;
   isRead?: boolean;
 };
 
-export function SubContent({ message, isRead }: Props) {
+export function ChatSubContent({ message, isRead }: Props) {
   return (
     <Box className={clsx(s.container, s.shrink)}>
       <Typography variant="label" className={s.ellipsis}>
