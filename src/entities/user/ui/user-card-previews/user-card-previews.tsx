@@ -4,9 +4,10 @@ import React from "react";
 import clsx from "clsx";
 import { Avatar, Box, Typography } from "@zhenyzh/common-ui/components";
 
-import s from "./user-previews.module.scss";
+import AvatarIcon from "@/shared/assets/images/download.jpg";
+import s from "./user-card-previews.module.scss";
 
-export type ProfilePreviewsProps = {
+export type UserCardPreviewsProps = {
   name: string;
   avatarUrl?: string;
   rightInfoSlot?: React.ReactNode;
@@ -14,18 +15,18 @@ export type ProfilePreviewsProps = {
   status?: "online" | "offline";
 };
 
-export function UserPreviews({
+export function UserCardPreviews({
   name,
   avatarUrl,
   rightInfoSlot, // дата, метка, кнопка
   subInfoSlot, // сообщение, статус прочтения, иконки
   status,
-}: ProfilePreviewsProps) {
+}: UserCardPreviewsProps) {
   return (
     <Box className={s.container}>
       <Box className={s.content}>
         <Avatar
-          image={avatarUrl}
+          image={avatarUrl || AvatarIcon.src}
           variant="cropped"
           size={55}
           className={clsx(s.avatar, status === "online" && s.online)}
@@ -39,11 +40,7 @@ export function UserPreviews({
             {rightInfoSlot}
           </Box>
 
-          {subInfoSlot && (
-            <Box className={clsx(s.basicInfo, s.additionalInfo)}>
-              {subInfoSlot}
-            </Box>
-          )}
+          {subInfoSlot}
         </Box>
       </Box>
     </Box>
