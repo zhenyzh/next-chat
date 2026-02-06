@@ -3,7 +3,7 @@ import React from "react";
 import { Box } from "@zhenyzh/common-ui/components";
 
 import { Messages } from "@/entities/messages";
-import { ScrollBar } from "@/shared/components";
+import { ScrollBar } from "@/shared/ui";
 import { formatDateDistanceToNow } from "@/shared/utils";
 
 import LogoP from "@/shared/assets/images/download.jpg";

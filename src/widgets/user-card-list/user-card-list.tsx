@@ -1,7 +1,6 @@
 import { Box } from "@zhenyzh/common-ui/components";
 
-import { UserCard } from "@/entities/user-card";
-import { ScrollBar } from "@/shared/components";
+import { ScrollBar } from "@/shared/ui";
 import { formatSmartDate } from "@/shared/utils";
 
 import s from "./user-card-list.module.scss";
@@ -12,13 +11,13 @@ export function UserCardList() {
       <ScrollBar>
         {Array.from({ length: 20 }, (_, i) => (
           <Box key={i} className={s.userCard}>
-            <UserCard
-              name={"Иванов Иван"}
-              message={
-                "Прикьнь тут такrfdfddfffffffffffffffffffffffdsssssssssssssssssssssssssss"
-              }
-              date={formatSmartDate("Fri Jan 12 1992 16:02:57")}
-            />
+            {/*<UserCard*/}
+            {/*  name={"Иванов Иван"}*/}
+            {/*  message={*/}
+            {/*    "Прикьнь тут такrfdfddfffffffffffffffffffffffdsssssssssssssssssssssssssss"*/}
+            {/*  }*/}
+            {/*  date={formatSmartDate("Fri Jan 12 1992 16:02:57")}*/}
+            {/*/>*/}
           </Box>
         ))}
       </ScrollBar>
