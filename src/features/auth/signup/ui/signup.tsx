@@ -12,7 +12,7 @@ import {
   useFormValidation,
 } from "@/features/auth/signup";
 import { Paths } from "@/shared/configs";
-import { FormTextField } from "@/shared/components";
+import { FormTextField } from "@/shared/form";
 
 import s from "../../auth.module.scss";
 

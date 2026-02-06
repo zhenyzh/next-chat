@@ -11,7 +11,7 @@ import {
   type SignInFormValues,
   useFormValidation,
 } from "@/features/auth/signin";
-import { FormTextField } from "@/shared/components";
+import { FormTextField } from "@/shared/form";
 import { Paths } from "@/shared/configs";
 import s from "../../auth.module.scss";
 
