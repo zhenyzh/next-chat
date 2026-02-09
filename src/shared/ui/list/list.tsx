@@ -14,7 +14,7 @@ type ContentListProps<T> = {
 
 const SKELETON_ITEM_COUNT = 10;
 
-export const ContentList = <T,>({
+export const List = <T,>({
   title,
   data = [],
   renderItem,

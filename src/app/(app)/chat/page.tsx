@@ -13,7 +13,7 @@ export default function ChatPage() {
       <Box className={s.userCard}>
         <ChatUserList />
       </Box>
-      <Box className={s.headerUser}>
+      <Box className={s.userHead}>
         <Box className={s.contentHeader}>хедер контент</Box>
       </Box>
       <Box className={s.contentMessage}>

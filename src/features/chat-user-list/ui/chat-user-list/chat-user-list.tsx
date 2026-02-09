@@ -4,8 +4,8 @@ import React from "react";
 
 import { ChatSubContent } from "../chat-sub-content";
 import {
-  ContentList,
   DateTime,
+  List,
   ScrollBar,
   UserPreview,
   UserPreviewSkeleton,
@@ -14,9 +14,316 @@ import {
 import { formatSmartDate } from "@/shared/utils";
 
 import s from "./chat-user-list.module.scss";
+import { Box } from "@zhenyzh/common-ui/components";
 
 export function ChatUserList() {
   const data = [
+    {
+      id: "1",
+      name: "Иванов Иван",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr-oM39OqBCgUncMTs88Hk7fWuEPiihQaxmw&s",
+      createdAt: "Fri Jan 12 1992 16:02:57",
+      message: "Привет сосед",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "2",
+      name: "Сидоров Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82RaIA37VV_k1Fpx_2vMsP8MoeOPdC1G94Q&s",
+      createdAt: "Fri Jan 12 2025 16:02:57",
+      message: "Привет сосед",
+      isRead: false,
+      isOnline: true,
+    },
+    {
+      id: "3",
+      name: "Зайцев Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7Ieuq5O_rQsXixe5tbZvpuyPDZfnD-l19w&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message:
+        "би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "4",
+      name: "Райкин Денис",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDVbposLLo-nw-IB2FnHdEBdNrnTLxgENdwA&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message: "Все плохо, везде капут",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "5",
+      name: "Сидоровецкий Станислав",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYRzBbu6C8GUoEpDxO5hZyfuOvZJziRQDRQ&s",
+      createdAt: "Fri Jan 23 2026 16:02:57",
+      message: "Все плохо, везде капут!!!!!!!!!!!!!11111111",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "1",
+      name: "Иванов Иван",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr-oM39OqBCgUncMTs88Hk7fWuEPiihQaxmw&s",
+      createdAt: "Fri Jan 12 1992 16:02:57",
+      message: "Привет сосед",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "2",
+      name: "Сидоров Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82RaIA37VV_k1Fpx_2vMsP8MoeOPdC1G94Q&s",
+      createdAt: "Fri Jan 12 2025 16:02:57",
+      message: "Привет сосед",
+      isRead: false,
+      isOnline: true,
+    },
+    {
+      id: "3",
+      name: "Зайцев Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7Ieuq5O_rQsXixe5tbZvpuyPDZfnD-l19w&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message:
+        "би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "4",
+      name: "Райкин Денис",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDVbposLLo-nw-IB2FnHdEBdNrnTLxgENdwA&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message: "Все плохо, везде капут",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "5",
+      name: "Сидоровецкий Станислав",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYRzBbu6C8GUoEpDxO5hZyfuOvZJziRQDRQ&s",
+      createdAt: "Fri Jan 23 2026 16:02:57",
+      message: "Все плохо, везде капут!!!!!!!!!!!!!11111111",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "1",
+      name: "Иванов Иван",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr-oM39OqBCgUncMTs88Hk7fWuEPiihQaxmw&s",
+      createdAt: "Fri Jan 12 1992 16:02:57",
+      message: "Привет сосед",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "2",
+      name: "Сидоров Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82RaIA37VV_k1Fpx_2vMsP8MoeOPdC1G94Q&s",
+      createdAt: "Fri Jan 12 2025 16:02:57",
+      message: "Привет сосед",
+      isRead: false,
+      isOnline: true,
+    },
+    {
+      id: "3",
+      name: "Зайцев Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7Ieuq5O_rQsXixe5tbZvpuyPDZfnD-l19w&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message:
+        "би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "4",
+      name: "Райкин Денис",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDVbposLLo-nw-IB2FnHdEBdNrnTLxgENdwA&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message: "Все плохо, везде капут",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "5",
+      name: "Сидоровецкий Станислав",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYRzBbu6C8GUoEpDxO5hZyfuOvZJziRQDRQ&s",
+      createdAt: "Fri Jan 23 2026 16:02:57",
+      message: "Все плохо, везде капут!!!!!!!!!!!!!11111111",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "1",
+      name: "Иванов Иван",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr-oM39OqBCgUncMTs88Hk7fWuEPiihQaxmw&s",
+      createdAt: "Fri Jan 12 1992 16:02:57",
+      message: "Привет сосед",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "2",
+      name: "Сидоров Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82RaIA37VV_k1Fpx_2vMsP8MoeOPdC1G94Q&s",
+      createdAt: "Fri Jan 12 2025 16:02:57",
+      message: "Привет сосед",
+      isRead: false,
+      isOnline: true,
+    },
+    {
+      id: "3",
+      name: "Зайцев Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7Ieuq5O_rQsXixe5tbZvpuyPDZfnD-l19w&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message:
+        "би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "4",
+      name: "Райкин Денис",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDVbposLLo-nw-IB2FnHdEBdNrnTLxgENdwA&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message: "Все плохо, везде капут",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "5",
+      name: "Сидоровецкий Станислав",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYRzBbu6C8GUoEpDxO5hZyfuOvZJziRQDRQ&s",
+      createdAt: "Fri Jan 23 2026 16:02:57",
+      message: "Все плохо, везде капут!!!!!!!!!!!!!11111111",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "1",
+      name: "Иванов Иван",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr-oM39OqBCgUncMTs88Hk7fWuEPiihQaxmw&s",
+      createdAt: "Fri Jan 12 1992 16:02:57",
+      message: "Привет сосед",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "2",
+      name: "Сидоров Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82RaIA37VV_k1Fpx_2vMsP8MoeOPdC1G94Q&s",
+      createdAt: "Fri Jan 12 2025 16:02:57",
+      message: "Привет сосед",
+      isRead: false,
+      isOnline: true,
+    },
+    {
+      id: "3",
+      name: "Зайцев Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7Ieuq5O_rQsXixe5tbZvpuyPDZfnD-l19w&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message:
+        "би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "4",
+      name: "Райкин Денис",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDVbposLLo-nw-IB2FnHdEBdNrnTLxgENdwA&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message: "Все плохо, везде капут",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "5",
+      name: "Сидоровецкий Станислав",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYRzBbu6C8GUoEpDxO5hZyfuOvZJziRQDRQ&s",
+      createdAt: "Fri Jan 23 2026 16:02:57",
+      message: "Все плохо, везде капут!!!!!!!!!!!!!11111111",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "1",
+      name: "Иванов Иван",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr-oM39OqBCgUncMTs88Hk7fWuEPiihQaxmw&s",
+      createdAt: "Fri Jan 12 1992 16:02:57",
+      message: "Привет сосед",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "2",
+      name: "Сидоров Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82RaIA37VV_k1Fpx_2vMsP8MoeOPdC1G94Q&s",
+      createdAt: "Fri Jan 12 2025 16:02:57",
+      message: "Привет сосед",
+      isRead: false,
+      isOnline: true,
+    },
+    {
+      id: "3",
+      name: "Зайцев Стас",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7Ieuq5O_rQsXixe5tbZvpuyPDZfnD-l19w&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message:
+        "би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2 би-2",
+      isRead: true,
+      isOnline: false,
+    },
+    {
+      id: "4",
+      name: "Райкин Денис",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDVbposLLo-nw-IB2FnHdEBdNrnTLxgENdwA&s",
+      createdAt: "Fri Jan 12 2026 16:02:57",
+      message: "Все плохо, везде капут",
+      isRead: true,
+      isOnline: true,
+    },
+    {
+      id: "5",
+      name: "Сидоровецкий Станислав",
+      avatarUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeYRzBbu6C8GUoEpDxO5hZyfuOvZJziRQDRQ&s",
+      createdAt: "Fri Jan 23 2026 16:02:57",
+      message: "Все плохо, везде капут!!!!!!!!!!!!!11111111",
+      isRead: true,
+      isOnline: false,
+    },
     {
       id: "1",
       name: "Иванов Иван",
@@ -72,13 +379,12 @@ export function ChatUserList() {
 
   return (
     <ScrollBar>
-      <ContentList
+      <List
         data={data}
         skeleton={<UserPreviewSkeleton />}
         className={s.container}
-        listClassName={s.userCard}
         renderItem={(item) => (
-          <React.Fragment key={item.id}>
+          <Box className={s.userCard} key={item.id}>
             <UserPreview
               name={item.name}
               avatarUrl={item.avatarUrl}
@@ -90,7 +396,7 @@ export function ChatUserList() {
                 <ChatSubContent message={item.message} isRead={item.isRead} />
               }
             />
-          </React.Fragment>
+          </Box>
         )}
       />
     </ScrollBar>

@@ -10,20 +10,20 @@ $border: 2px solid var(--color-bg-primary);
   border-radius: var(--border-radius-size-s);
 
   grid-template:
-    "card-user header-user" auto
-    "card-user content-message" 1fr
-    "card-user content-input" auto
+    "user-card user-head" auto
+    "user-card content-message" 1fr
+    "user-card content-input" auto
     / minmax(50px, 400px) 1fr;
 }
 
 .userCard {
-  grid-area: card-user;
+  grid-area: user-card;
   border-right: $border;
   min-height: 0;
 }
 
-.headerUser {
-  grid-area: header-user;
+.userHead {
+  grid-area: user-head;
   padding: $padding;
   border-bottom: $border;
   min-height: 0;
