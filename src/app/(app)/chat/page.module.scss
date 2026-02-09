@@ -8,6 +8,7 @@ $border: 2px solid var(--color-bg-primary);
   margin: $padding;
 
   border-radius: var(--border-radius-size-s);
+  overflow: hidden;
 
   grid-template:
     "user-card user-head" auto

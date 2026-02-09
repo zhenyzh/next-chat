@@ -1,6 +1,5 @@
 .container {
   height: 100%;
-  background-color: var(--color-bg-primary-v1);
   border-radius: var(--border-radius-size-s);
   cursor: pointer;
 }
@@ -9,7 +8,15 @@
   padding: 0 10px 10px 10px;
 
   &:hover {
+    border-radius: 0;
     background-color: var(--color-bg-hover);
-    border-radius: var(--border-radius-size-s) 0 0 var(--border-radius-size-s);
+  }
+
+  &:first-child {
+    border-top-left-radius: var(--border-radius-size-s);
+  }
+
+  &:last-child {
+    border-bottom-left-radius: var(--border-radius-size-s);
   }
 }
