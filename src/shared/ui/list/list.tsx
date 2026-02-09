@@ -1,14 +1,14 @@
+import React from "react";
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 
 type ContentListProps<T> = {
   title?: string;
   data: T[] | undefined;
-  renderItem: (item: T) => React.ReactNode;
+  renderItem: (item: T, index?: number) => React.ReactNode;
   className?: string;
   listClassName?: string;
   isLoading?: boolean;
   skeleton?: React.ReactNode;
-  emptyMessage?: string;
   skeletonCount?: number;
 };
 
@@ -34,7 +34,7 @@ export const List = <T,>({
             )
           : data.map((item, index) => (
               <Box key={index} className={listClassName}>
-                {renderItem(item)}
+                {renderItem(item, index)}
               </Box>
             ))}
       </Box>
