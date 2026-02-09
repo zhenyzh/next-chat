@@ -1,6 +1,6 @@
 "use client";
 
-import { Box } from "@zhenyzh/common-ui/components";
+import React from "react";
 
 import { ChatSubContent } from "../chat-sub-content";
 import {
@@ -75,9 +75,10 @@ export function ChatUserList() {
       <ContentList
         data={data}
         skeleton={<UserPreviewSkeleton />}
-        containerClassName={s.container}
+        className={s.container}
+        listClassName={s.userCard}
         renderItem={(item) => (
-          <Box key={item.id} className={s.userCard}>
+          <React.Fragment key={item.id}>
             <UserPreview
               name={item.name}
               avatarUrl={item.avatarUrl}
@@ -89,7 +90,7 @@ export function ChatUserList() {
                 <ChatSubContent message={item.message} isRead={item.isRead} />
               }
             />
-          </Box>
+          </React.Fragment>
         )}
       />
     </ScrollBar>

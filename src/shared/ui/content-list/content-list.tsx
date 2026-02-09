@@ -4,7 +4,7 @@ type ContentListProps<T> = {
   title?: string;
   data: T[] | undefined;
   renderItem: (item: T) => React.ReactNode;
-  containerClassName?: string;
+  className?: string;
   listClassName?: string;
   isLoading?: boolean;
   skeleton?: React.ReactNode;
@@ -18,7 +18,7 @@ export const ContentList = <T,>({
   title,
   data = [],
   renderItem,
-  containerClassName,
+  className,
   listClassName,
   isLoading,
   skeleton,
@@ -27,7 +27,7 @@ export const ContentList = <T,>({
   return (
     <Box as="section">
       {title && <Typography variant="h2">{title}</Typography>}
-      <Box className={containerClassName}>
+      <Box className={className}>
         {isLoading
           ? Array.from({ length: skeletonCount || SKELETON_ITEM_COUNT }).map(
               (_, i) => <Box key={i}>{skeleton}</Box>,
