@@ -1,9 +1,9 @@
 "use client";
 
 import { Box, Skeleton } from "@zhenyzh/common-ui/components";
-import s from "./chat-user-skeleton.module.scss";
+import s from "./user-preview.skeleton.module.scss";
 
-export function ChatUserSkeleton() {
+export function UserPreviewSkeleton() {
   return (
     <Box className={s.container}>
       <Box className={s.content}>

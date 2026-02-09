@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { Avatar, Box, Typography } from "@zhenyzh/common-ui/components";
 
 import AvatarIcon from "@/shared/assets/images/download.jpg";
-import s from "./user-card-previews.module.scss";
+import s from "./user-preview.module.scss";
 
 export type UserCardPreviewsProps = {
   name: string;
@@ -15,7 +15,7 @@ export type UserCardPreviewsProps = {
   subInfoSlot?: React.ReactNode;
 };
 
-export function UserCardPreviews({
+export function UserPreview({
   name,
   avatarUrl,
   rightInfoSlot, // дата, метка, кнопка

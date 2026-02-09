@@ -3,9 +3,14 @@
 import { Box } from "@zhenyzh/common-ui/components";
 
 import { ChatSubContent } from "../chat-sub-content";
-import { ChatUserSkeleton } from "../chat-user-skeleton";
-import { UserCardPreviews } from "@/entities/user";
-import { ContentList, DateTime, ScrollBar } from "@/shared/ui";
+import {
+  ContentList,
+  DateTime,
+  ScrollBar,
+  UserPreview,
+  UserPreviewSkeleton,
+} from "@/shared/ui";
+
 import { formatSmartDate } from "@/shared/utils";
 
 import s from "./chat-user-list.module.scss";
@@ -69,11 +74,11 @@ export function ChatUserList() {
     <ScrollBar>
       <ContentList
         data={data}
-        skeleton={<ChatUserSkeleton />}
+        skeleton={<UserPreviewSkeleton />}
         containerClassName={s.container}
         renderItem={(item) => (
           <Box key={item.id} className={s.userCard}>
-            <UserCardPreviews
+            <UserPreview
               name={item.name}
               avatarUrl={item.avatarUrl}
               isOnline={item.isOnline}
