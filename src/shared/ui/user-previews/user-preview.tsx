@@ -4,7 +4,6 @@ import React from "react";
 import clsx from "clsx";
 import { Avatar, Box, Typography } from "@zhenyzh/common-ui/components";
 
-import AvatarIcon from "@/shared/assets/images/download.jpg";
 import s from "./user-preview.module.scss";
 
 export type UserCardPreviewsProps = {
@@ -25,7 +24,7 @@ export function UserPreview({
   return (
     <Box className={s.content}>
       <Avatar
-        image={avatarUrl || AvatarIcon.src}
+        image={avatarUrl}
         variant="cropped"
         size={55}
         className={clsx(s.avatar, isOnline && s.online)}

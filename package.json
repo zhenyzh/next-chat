@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "@zhenyzh/common-ui": "^2.10.3",
+    "@zhenyzh/common-ui": "^2.10.6",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "emoji-picker-react": "^4.17.4",
