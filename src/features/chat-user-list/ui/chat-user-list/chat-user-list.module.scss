@@ -10,6 +10,6 @@
 
   &:hover {
     background-color: var(--color-bg-hover);
-    border-radius: var(--border-radius-size-s);
+    border-radius: var(--border-radius-size-s) 0 0 var(--border-radius-size-s);
   }
 }

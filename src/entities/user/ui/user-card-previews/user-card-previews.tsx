@@ -10,9 +10,9 @@ import s from "./user-card-previews.module.scss";
 export type UserCardPreviewsProps = {
   name: string;
   avatarUrl?: string;
+  isOnline?: boolean;
   rightInfoSlot?: React.ReactNode;
   subInfoSlot?: React.ReactNode;
-  status?: "online" | "offline";
 };
 
 export function UserCardPreviews({
@@ -20,28 +20,26 @@ export function UserCardPreviews({
   avatarUrl,
   rightInfoSlot, // дата, метка, кнопка
   subInfoSlot, // сообщение, статус прочтения, иконки
-  status,
+  isOnline = false,
 }: UserCardPreviewsProps) {
   return (
-    <Box className={s.container}>
-      <Box className={s.content}>
-        <Avatar
-          image={avatarUrl || AvatarIcon.src}
-          variant="cropped"
-          size={55}
-          className={clsx(s.avatar, status === "online" && s.online)}
-        />
-        <Box className={s.infoSection}>
-          <Box className={s.basicInfo}>
-            <Typography variant="h2" className={s.ellipsis}>
-              {name}
-            </Typography>
+    <Box className={s.content}>
+      <Avatar
+        image={avatarUrl || AvatarIcon.src}
+        variant="cropped"
+        size={55}
+        className={clsx(s.avatar, isOnline && s.online)}
+      />
+      <Box className={s.infoSection}>
+        <Box className={s.basicInfo}>
+          <Typography variant="h2" className={s.ellipsis}>
+            {name}
+          </Typography>
 
-            {rightInfoSlot}
-          </Box>
-
-          {subInfoSlot}
+          {rightInfoSlot}
         </Box>
+
+        {subInfoSlot}
       </Box>
     </Box>
   );
