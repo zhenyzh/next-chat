@@ -7,9 +7,9 @@ import { ScrollBar } from "@/shared/ui";
 import { formatDateDistanceToNow } from "@/shared/utils";
 
 import LogoP from "@/shared/assets/images/download.jpg";
-import s from "./message-list.module.scss";
+import s from "./chat-message.module.scss";
 
-export function MessageList() {
+export function ChatMessage() {
   return (
     <Box className={s.container}>
       <ScrollBar>
