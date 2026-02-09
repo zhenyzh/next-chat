@@ -25,7 +25,7 @@ export function ChatUserList() {
       avatarUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr-oM39OqBCgUncMTs88Hk7fWuEPiihQaxmw&s",
       createdAt: "Fri Jan 12 1992 16:02:57",
-      message: "Привет сосед",
+      lastMessage: "Привет сосед",
       isRead: true,
       isOnline: true,
       countMessage: 100,
@@ -50,7 +50,7 @@ export function ChatUserList() {
               }
               subInfoSlot={
                 <ChatSubContent
-                  message={item.message}
+                  message={item.lastMessage}
                   isRead={item.isRead}
                   countMessage={item.countMessage}
                 />

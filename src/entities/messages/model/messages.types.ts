@@ -15,7 +15,7 @@ export type MessageContentType = {
   text?: string;
   imageUrl?: string[];
   files?: FileAttachment[];
-  stickerId?: string;
+  sticker?: string;
 };
 
 export type FileAttachment = {

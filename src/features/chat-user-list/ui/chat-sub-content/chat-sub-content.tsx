@@ -22,7 +22,7 @@ export function ChatSubContent({ message, isRead, countMessage }: Props) {
         {message}
       </Typography>
       <Box className={s.shrink}>
-        {isRead && !countMessage ? (
+        {isRead || !countMessage ? (
           <CheckCheck />
         ) : (
           <UnreadIndicator count={countMessage} />
