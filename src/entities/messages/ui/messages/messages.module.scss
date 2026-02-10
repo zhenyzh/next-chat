@@ -53,9 +53,14 @@ $borderRadius: var(--border-radius-size-s);
     overflow-wrap: break-word;
   }
 
+  .date {
+    font-size: var(--font-size-xs);
+    align-self: flex-end;
+  }
+
   .checkIcons {
     align-self: flex-end;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     flex-shrink: 0;
   }
 }
@@ -87,5 +92,9 @@ $borderRadius: var(--border-radius-size-s);
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 10px;
     }
+  }
+
+  .date {
+    align-self: flex-start;
   }
 }

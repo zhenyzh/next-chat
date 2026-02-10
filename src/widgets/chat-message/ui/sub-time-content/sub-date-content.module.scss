@@ -4,5 +4,12 @@
 
   position: sticky;
   top: 0;
+  padding-top: 5px;
   z-index: 10;
+}
+
+.date {
+  background-color: var(--color-bg-hover);
+  border-radius: var(--border-radius-size-s);
+  padding: 5px 10px;
 }
