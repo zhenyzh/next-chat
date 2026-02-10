@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Container } from "@zhenyzh/common-ui/components";
-import { ChatMessage } from "@/widgets/chat-message";
+import { ChatMessageList } from "@/widgets/chat-message";
 import { SendMessage } from "@/features/send-message";
 import { ChatUserList } from "@/features/chat-user-list";
 
@@ -17,7 +17,7 @@ export default function ChatPage() {
         <Box className={s.contentHeader}>хедер контент</Box>
       </Box>
       <Box className={s.contentMessage}>
-        <ChatMessage />
+        <ChatMessageList />
       </Box>
       <Box className={s.contentInput}>
         <SendMessage />

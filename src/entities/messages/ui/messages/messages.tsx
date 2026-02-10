@@ -38,8 +38,6 @@ export function Messages({ message }: MessageProps) {
         )}
 
         <MessageContent {...rest} />
-
-        <DateTime value={createdAt} className={s.date} />
       </Card>
 
       {fromMe && <CheckCheck className={s.checkIcons} />}
