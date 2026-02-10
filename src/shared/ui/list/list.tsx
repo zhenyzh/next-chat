@@ -4,7 +4,7 @@ import { Box } from "@zhenyzh/common-ui/components";
 type ContentListProps<T> = {
   headerTitle?: React.ReactNode;
   data: T[] | undefined;
-  renderItem: (item: T, index?: number) => React.ReactNode;
+  renderItem: (item: T, index: number) => React.ReactNode;
   className?: string;
   listClassName?: string;
   isLoading?: boolean;
