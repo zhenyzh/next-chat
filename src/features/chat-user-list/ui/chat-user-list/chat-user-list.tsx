@@ -33,6 +33,7 @@ export function ChatUserList() {
       <List
         data={data}
         skeleton={<UserPreviewSkeleton />}
+        isLoading={true}
         className={s.container}
         listClassName={s.userList}
         renderItem={(user) => (
