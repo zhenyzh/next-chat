@@ -34,7 +34,7 @@ export function ChatUserList() {
         data={data}
         skeleton={<UserPreviewSkeleton />}
         className={s.container}
-        listClassName={s.userCard}
+        listClassName={s.userList}
         renderItem={(user) => (
           <Box key={user.id} onClick={() => handleShowChat(user.id)}>
             <ChatUserItem user={user} />
