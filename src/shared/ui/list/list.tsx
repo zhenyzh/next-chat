@@ -1,8 +1,8 @@
 import React from "react";
-import { Box, Typography } from "@zhenyzh/common-ui/components";
+import { Box } from "@zhenyzh/common-ui/components";
 
 type ContentListProps<T> = {
-  title?: string;
+  headerTitle?: React.ReactNode;
   data: T[] | undefined;
   renderItem: (item: T, index?: number) => React.ReactNode;
   className?: string;
@@ -15,7 +15,7 @@ type ContentListProps<T> = {
 const SKELETON_ITEM_COUNT = 10;
 
 export const List = <T,>({
-  title,
+  headerTitle,
   data = [],
   renderItem,
   className,
@@ -26,7 +26,7 @@ export const List = <T,>({
 }: ContentListProps<T>) => {
   return (
     <Box as="section">
-      {title && <Typography variant="h2">{title}</Typography>}
+      {headerTitle && headerTitle}
       <Box className={className}>
         {isLoading
           ? Array.from({ length: skeletonCount || SKELETON_ITEM_COUNT }).map(

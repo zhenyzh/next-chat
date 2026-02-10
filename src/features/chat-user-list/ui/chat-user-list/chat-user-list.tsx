@@ -3,17 +3,9 @@
 import React from "react";
 
 import { Box } from "@zhenyzh/common-ui/components";
-
-import { ChatSubContent } from "../chat-sub-content";
+import { ChatUserItem } from "../chat-user-item";
 import type { ChatUser } from "@/features/chat-user-list/model";
-import {
-  List,
-  DateTime,
-  ScrollBar,
-  UserPreview,
-  UserPreviewSkeleton,
-} from "@/shared/ui";
-import { formatSmartDate } from "@/shared/utils";
+import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
 
 import s from "./chat-user-list.module.scss";
 
@@ -32,6 +24,10 @@ export function ChatUserList() {
     },
   ];
 
+  const handleShowChat = (id: string) => {
+    console.log("id", id);
+  };
+
   return (
     <ScrollBar>
       <List
@@ -39,23 +35,9 @@ export function ChatUserList() {
         skeleton={<UserPreviewSkeleton />}
         className={s.container}
         listClassName={s.userCard}
-        renderItem={(item) => (
-          <Box key={item.id} onClick={() => alert(item.id)}>
-            <UserPreview
-              name={item.name}
-              avatarUrl={item.avatarUrl}
-              isOnline={item.isOnline}
-              rightInfoSlot={
-                <DateTime value={formatSmartDate(item.createdAt)} />
-              }
-              subInfoSlot={
-                <ChatSubContent
-                  message={item.lastMessage}
-                  isRead={item.isRead}
-                  countMessage={item.countMessage}
-                />
-              }
-            />
+        renderItem={(user) => (
+          <Box key={user.id} onClick={() => handleShowChat(user.id)}>
+            <ChatUserItem user={user} />
           </Box>
         )}
       />
