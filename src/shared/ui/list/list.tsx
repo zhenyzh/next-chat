@@ -29,7 +29,7 @@ export const List = <T,>({
       {headerTitle && headerTitle}
       <Box className={className}>
         {isLoading
-          ? Array.from({ length: skeletonCount || SKELETON_ITEM_COUNT }).map(
+          ? Array.from({ length: skeletonCount ?? SKELETON_ITEM_COUNT }).map(
               (_, i) => <Box key={i}>{skeleton}</Box>,
             )
           : data.map((item, index) => (
