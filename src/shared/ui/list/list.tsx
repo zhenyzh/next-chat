@@ -27,7 +27,7 @@ export const List = <T,>({
   skeletonCount,
 }: ContentListProps<T>) => {
   return (
-    <Box as="section">
+    <Box>
       {headerTitle && headerTitle}
       <Box className={className}>
         {isLoading
