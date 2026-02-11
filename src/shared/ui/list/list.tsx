@@ -27,7 +27,7 @@ export const List = <T,>({
   skeletonCount,
 }: ContentListProps<T>) => {
   return (
-    <Box>
+    <>
       {headerTitle && headerTitle}
       <Box className={className}>
         {isLoading
@@ -40,6 +40,6 @@ export const List = <T,>({
               </Box>
             ))}
       </Box>
-    </Box>
+    </>
   );
 };
