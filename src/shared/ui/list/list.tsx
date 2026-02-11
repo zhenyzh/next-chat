@@ -5,6 +5,7 @@ type ContentListProps<T> = {
   headerTitle?: React.ReactNode;
   data: T[] | undefined;
   renderItem: (item: T, index: number) => React.ReactNode;
+  getKey: (key: T) => React.Key;
   className?: string;
   listClassName?: string;
   isLoading?: boolean;
@@ -18,6 +19,7 @@ export const List = <T,>({
   headerTitle,
   data = [],
   renderItem,
+  getKey,
   className,
   listClassName,
   isLoading,
@@ -33,7 +35,7 @@ export const List = <T,>({
               (_, i) => <Box key={i}>{skeleton}</Box>,
             )
           : data.map((item, index) => (
-              <Box key={index} className={listClassName}>
+              <Box key={getKey(item)} className={listClassName}>
                 {renderItem(item, index)}
               </Box>
             ))}

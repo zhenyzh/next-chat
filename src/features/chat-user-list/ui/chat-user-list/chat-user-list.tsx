@@ -32,6 +32,7 @@ export function ChatUserList() {
     <ScrollBar>
       <List
         data={data}
+        getKey={(key) => key.id}
         skeleton={<UserPreviewSkeleton />}
         className={s.container}
         listClassName={s.userList}

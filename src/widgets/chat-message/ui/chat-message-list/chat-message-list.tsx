@@ -262,6 +262,7 @@ export function ChatMessageList() {
     <ScrollBar>
       <List
         data={data}
+        getKey={(key) => key.chatId + key.user.id}
         className={s.container}
         renderItem={(message) => (
           <>
