@@ -4,7 +4,7 @@ import { Box } from "@zhenyzh/common-ui/components";
 type ContentListProps<T> = {
   headerTitle?: React.ReactNode;
   data: T[] | undefined;
-  renderItem: (item: T, index: number) => React.ReactNode;
+  renderItem: (item: T, index: number, array: T[]) => React.ReactNode;
   getKey: (key: T) => React.Key;
   className?: string;
   listClassName?: string;
@@ -34,9 +34,9 @@ export const List = <T,>({
           ? Array.from({ length: skeletonCount ?? SKELETON_ITEM_COUNT }).map(
               (_, i) => <Box key={i}>{skeleton}</Box>,
             )
-          : data.map((item, index) => (
+          : data.map((item, index, array) => (
               <Box key={getKey(item)} className={listClassName}>
-                {renderItem(item, index)}
+                {renderItem(item, index, array)}
               </Box>
             ))}
       </Box>
