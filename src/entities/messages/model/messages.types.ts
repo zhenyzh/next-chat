@@ -8,7 +8,6 @@ export type Message = {
     email: string;
   };
   content: MessageContentType;
-  createdAt: string;
 };
 
 export type MessageContentType = {

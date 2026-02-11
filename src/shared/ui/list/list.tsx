@@ -2,15 +2,15 @@ import React from "react";
 import { Box } from "@zhenyzh/common-ui/components";
 
 type ContentListProps<T> = {
-  headerTitle?: React.ReactNode;
   data: T[] | undefined;
   renderItem: (item: T, index: number, array: T[]) => React.ReactNode;
   getKey: (key: T) => React.Key;
+  headerTitle?: React.ReactNode;
+  skeleton?: React.ReactNode;
   className?: string;
   listClassName?: string;
-  isLoading?: boolean;
-  skeleton?: React.ReactNode;
   skeletonCount?: number;
+  isLoading?: boolean;
 };
 
 const SKELETON_ITEM_COUNT = 10;
