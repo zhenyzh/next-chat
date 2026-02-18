@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import clsx from "clsx";
 import { FormProvider } from "react-hook-form";
-import { UserPen, LockKeyhole } from "lucide-react";
+import { Mail, LockKeyhole } from "lucide-react";
 
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
 
@@ -40,7 +40,7 @@ export function SignIn() {
           <FormTextField
             name="email"
             label="Введите почту"
-            iconStart={<UserPen />}
+            iconStart={<Mail />}
           />
           <FormTextField
             name="password"
