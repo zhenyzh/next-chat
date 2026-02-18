@@ -38,8 +38,8 @@ export function SignIn() {
         </Typography>
         <Box className={s.inputContainer}>
           <FormTextField
-            name="name"
-            label="Введите имя"
+            name="email"
+            label="Введите почту"
             iconStart={<UserPen />}
           />
           <FormTextField

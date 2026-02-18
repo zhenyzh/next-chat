@@ -7,7 +7,7 @@ import { type SignInFormValues, signInSchema } from "@/features/auth/signin";
 export function useFormValidation() {
   return useForm<SignInFormValues>({
     defaultValues: {
-      name: "",
+      email: "",
       password: "",
     },
     resolver: zodResolver(signInSchema),
