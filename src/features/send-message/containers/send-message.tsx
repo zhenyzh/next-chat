@@ -17,6 +17,7 @@ export function SendMessage() {
       onChange={(e) => setMessage(e.target.value)}
       placeholder={"Сообщение"}
       iconStart={<Add />}
+      style={{ paddingRight: 85 }}
       iconEnd={
         <>
           <EmojiSmile />
