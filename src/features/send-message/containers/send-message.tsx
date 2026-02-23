@@ -6,6 +6,7 @@ import {
   useMessageActions,
   useTextMessage,
 } from "@/features/send-message/model/store";
+import { useTextareaFocus } from "@/features/send-message/model/hooks";
 
 import { Add } from "../ui/add";
 import { EmojiSmile } from "../ui/emoji-smile";
@@ -15,9 +16,11 @@ import { Microphone } from "../ui/microphone";
 export function SendMessage() {
   const text = useTextMessage();
   const { setText } = useMessageActions();
+  const { textareaRef } = useTextareaFocus();
 
   return (
     <TextareaAutosizeField
+      ref={textareaRef}
       value={text}
       onChange={(e) => setText(e.target.value)}
       placeholder={"Сообщение"}
