@@ -1,6 +1,6 @@
 "use client";
 
-import { TextField } from "@zhenyzh/common-ui/components";
+import { TextareaAutosizeField } from "@zhenyzh/common-ui/components";
 
 import {
   useMessageActions,
@@ -17,12 +17,12 @@ export function SendMessage() {
   const { setText } = useMessageActions();
 
   return (
-    <TextField
+    <TextareaAutosizeField
       value={text}
       onChange={(e) => setText(e.target.value)}
       placeholder={"Сообщение"}
-      iconStart={<Add />}
       style={{ paddingRight: 85 }}
+      iconStart={<Add />}
       iconEnd={
         <>
           <EmojiSmile />
