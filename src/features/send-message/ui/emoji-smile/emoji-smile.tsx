@@ -8,7 +8,7 @@ import { Box } from "@zhenyzh/common-ui/components";
 
 import { useMessageActions } from "@/features/send-message/model/store";
 
-import s from "../containers/send-message.module.scss";
+import s from "./emoji-smile.module.scss";
 
 export function EmojiSmile() {
   const { appendEmoji } = useMessageActions();

@@ -1,5 +1,5 @@
 import { Mic } from "lucide-react";
 
 export function Microphone() {
-  return <Mic />;
+  return <Mic style={{ cursor: "pointer" }} />;
 }
