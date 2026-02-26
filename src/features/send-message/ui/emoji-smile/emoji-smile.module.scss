@@ -20,22 +20,12 @@
   position: relative;
 
   &:hover .block {
-    opacity: 1;
     visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
+    transform: translateY(15px);
   }
 }
 
 .block {
   position: absolute;
-  bottom: 100%;
-  right: 0;
-
-  opacity: 0;
   visibility: hidden;
-  pointer-events: none;
-
-  transform: translateY(8px);
-  transition: opacity 0.15s ease, transform 0.15s ease;
 }
