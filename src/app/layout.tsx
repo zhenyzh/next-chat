@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@zhenyzh/common-ui/styles";
 import "./themas/global.scss";
+import Provider from "./providers";
 
 export const metadata: Metadata = {
   title: "Next chat",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }
