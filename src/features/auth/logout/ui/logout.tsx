@@ -1,16 +1,8 @@
-import { redirect } from "next/navigation";
 import { LogOut } from "lucide-react";
-import { useLogout } from "@/features/auth/logout/model";
-import { Paths } from "@/shared/configs";
+import { useLogout } from "@/features/auth/logout/model/hooks";
 
 export function Logout() {
-  const logout = useLogout();
+  const { logout } = useLogout();
 
-  const onLogout = () => {
-    logout.handleLogout(undefined, {
-      onSuccess: () => redirect(Paths.login()),
-    });
-  };
-
-  return <LogOut onClick={onLogout} />;
+  return <LogOut onClick={logout} />;
 }

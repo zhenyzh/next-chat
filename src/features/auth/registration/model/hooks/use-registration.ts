@@ -21,11 +21,11 @@ export function useRegistration() {
     mode: "onBlur",
   });
 
-  const submit = (data: RegistrationFormValues) => {
+  const submit = form.handleSubmit((data: RegistrationFormValues) => {
     registrationQuery.handleRegistration(data, {
       onSuccess: () => router.push(Paths.login()),
     });
-  };
+  });
 
   return {
     form,

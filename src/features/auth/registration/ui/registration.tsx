@@ -16,7 +16,7 @@ export function Registration() {
 
   return (
     <FormProvider {...registration.form}>
-      <Box as="form" className={s.container} onSubmit={registration.form}>
+      <Box as="form" className={s.container} onSubmit={registration.submit}>
         <Typography variant="h2" className={s.text}>
           Регистрация
         </Typography>

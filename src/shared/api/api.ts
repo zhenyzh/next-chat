@@ -29,7 +29,7 @@ api.interceptors.response.use(
     ) {
       originalRequest._isRetry = true;
       try {
-        const { data } = await axios.post(`${BASE_URL}/refresh`, {
+        const { data } = await axios.get(`${BASE_URL}/auth/refresh`, {
           withCredentials: true,
         });
         tokenService.set(data.accessToken);

@@ -1,14 +1,21 @@
-import { useMutation } from "@tanstack/react-query";
-import { logoutApi } from "@/features/auth/logout/api";
+import { useRouter } from "next/navigation";
+import { useLogoutQuery } from "./use-logout-query";
+import { Paths } from "@/shared/configs";
+import { tokenService } from "@/shared/token-service";
+import { queryClient } from "@/shared/query-client";
 
 export function useLogout() {
-  const actions = useMutation({
-    mutationFn: logoutApi.logout,
-  });
-
-  return {
-    isPending: actions.isPending,
-    error: actions.error,
-    handleLogout: actions.mutate,
+  const router = useRouter();
+  const logoutQuery = useLogoutQuery();
+  const logout = () => {
+    logoutQuery.handleLogout(undefined, {
+      onSuccess: () => {
+        tokenService.clear();
+        queryClient.removeQueries();
+        router.push(Paths.login());
+      },
+    });
   };
+
+  return { logout, isPending: logoutQuery.isPending };
 }
