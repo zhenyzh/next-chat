@@ -1,2 +1,2 @@
-export * from './json-api-Instance'
-export * from './api'
+export * from "./json-api-instance";
+export * from "./api";
