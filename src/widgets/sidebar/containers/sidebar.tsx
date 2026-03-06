@@ -4,13 +4,14 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { MessageCircleMore, Settings, UserPen } from "lucide-react";
-
 import { Box } from "@zhenyzh/common-ui/components";
-
-import { SideBarHeader, SideBarNavigation } from "@/widgets/sidebar/ui";
+import {
+  SideBarHeader,
+  SideBarNavigation,
+  SidebarLogout,
+} from "@/widgets/sidebar/ui";
 import type { LinkType } from "@/widgets/sidebar/model";
 import { Paths } from "@/shared/configs";
-
 import s from "./sidebar.module.scss";
 
 export function Sidebar() {
@@ -36,20 +37,23 @@ export function Sidebar() {
   ];
 
   return (
-    <Box
-      as="aside"
-      className={clsx(s.sidebar, collapsed ? s.collapsed : s.expanded)}
-    >
-      <SideBarHeader
-        defaultLink={Paths.profile()}
-        collapsed={collapsed}
-        setCollapsed={setCollapsed}
-      />
-      <SideBarNavigation
-        linkItem={linkItem}
-        pathname={pathname}
-        collapsed={collapsed}
-      />
+    <Box className={s.container}>
+      <Box
+        as="aside"
+        className={clsx(s.sidebar, collapsed ? s.collapsed : s.expanded)}
+      >
+        <SideBarHeader
+          defaultLink={Paths.profile()}
+          collapsed={collapsed}
+          setCollapsed={setCollapsed}
+        />
+        <SideBarNavigation
+          linkItem={linkItem}
+          pathname={pathname}
+          collapsed={collapsed}
+        />
+      </Box>
+      <SidebarLogout />
     </Box>
   );
 }

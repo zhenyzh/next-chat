@@ -4,15 +4,12 @@ import { redirect } from "next/navigation";
 import clsx from "clsx";
 import { FormProvider } from "react-hook-form";
 import { Mail, LockKeyhole } from "lucide-react";
-
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
-
 import {
   type LoginFormValues,
   useFormValidation,
   useLogin,
 } from "@/features/auth/login/model";
-
 import { FormTextField } from "@/shared/form";
 import { Paths } from "@/shared/configs";
 import s from "../../auth.module.scss";
@@ -24,7 +21,7 @@ export function Login() {
   const transition = () => redirect(Paths.registration());
 
   const onSubmit = (data: LoginFormValues) => {
-    login.handleRegistration(data, { onSuccess: () => redirect(Paths.home()) });
+    login.handleLogin(data, { onSuccess: () => redirect(Paths.home()) });
   };
 
   return (
@@ -50,7 +47,7 @@ export function Login() {
             iconStart={<LockKeyhole />}
           />
         </Box>
-        <Button fullWidth type="submit">
+        <Button fullWidth type="submit" disabled={login.isPending}>
           Войти в аккаунт
         </Button>
         <Button

@@ -4,9 +4,7 @@ import { redirect } from "next/navigation";
 import { FormProvider } from "react-hook-form";
 import clsx from "clsx";
 import { UserPen, LockKeyhole, Mail } from "lucide-react";
-
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
-
 import {
   type RegistrationFormValues,
   useFormValidation,
@@ -14,7 +12,6 @@ import {
 } from "@/features/auth/registration/model";
 import { Paths } from "@/shared/configs";
 import { FormTextField } from "@/shared/form";
-
 import s from "../../auth.module.scss";
 
 export function Registration() {
@@ -64,13 +61,13 @@ export function Registration() {
         <Button fullWidth type="submit">
           Зарегистрироваться
         </Button>
-
         <Button
           fullWidth
           variant="outline"
           type="button"
           className={clsx(s.text, s.link)}
           onClick={transition}
+          disabled={registration.isPending}
         >
           Авторизоваться
         </Button>
