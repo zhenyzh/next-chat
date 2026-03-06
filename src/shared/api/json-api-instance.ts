@@ -26,7 +26,7 @@ export const jsonApiInstance = async <T>(
       signal: config?.signal,
     });
     return response.data;
-  } catch (err: any) {
+  } catch (err) {
     if (err instanceof AxiosError && err.response) {
       throw new ApiError(err.response);
     }
