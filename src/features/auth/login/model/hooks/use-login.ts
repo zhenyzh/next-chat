@@ -1,14 +1,30 @@
-import { useMutation } from "@tanstack/react-query";
-import { loginApi } from "@/features/auth/login/api";
+import { redirect } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useLoginQuery } from "./use-login-query";
+import type { LoginFormValues } from "@/features/auth/login/model/types";
+import { loginSchema } from "@/features/auth/login/model/shemas";
+import { Paths } from "@/shared/configs";
 
 export function useLogin() {
-  const actions = useMutation({
-    mutationFn: loginApi.login,
+  const loginQuery = useLoginQuery();
+
+  const form = useForm<LoginFormValues>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    resolver: zodResolver(loginSchema),
+    mode: "onBlur",
+  });
+
+  const submit = form.handleSubmit((data) => {
+    loginQuery.handleLogin(data, { onSuccess: () => redirect(Paths.home()) });
   });
 
   return {
-    isPending: actions.isPending,
-    error: actions.error,
-    handleLogin: actions.mutate,
+    form,
+    submit,
+    isPending: loginQuery.isPending,
   };
 }

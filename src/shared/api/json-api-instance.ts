@@ -27,8 +27,9 @@ export const jsonApiInstance = async <T>(
     });
     return response.data;
   } catch (err) {
+    console.log({ err });
     if (err instanceof AxiosError && err.response) {
-      throw new ApiError(err.response);
+      throw new ApiError(err.response.data.message);
     }
     throw err;
   }

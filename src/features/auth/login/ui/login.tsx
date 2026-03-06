@@ -1,36 +1,22 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { FormProvider } from "react-hook-form";
 import { Mail, LockKeyhole } from "lucide-react";
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
-import {
-  type LoginFormValues,
-  useFormValidation,
-  useLogin,
-} from "@/features/auth/login/model";
+import { useLogin } from "@/features/auth/login/model/hooks";
 import { FormTextField } from "@/shared/form";
 import { Paths } from "@/shared/configs";
 import s from "../../auth.module.scss";
 
 export function Login() {
-  const form = useFormValidation();
+  const router = useRouter();
   const login = useLogin();
 
-  const transition = () => redirect(Paths.registration());
-
-  const onSubmit = (data: LoginFormValues) => {
-    login.handleLogin(data, { onSuccess: () => redirect(Paths.home()) });
-  };
-
   return (
-    <FormProvider {...form}>
-      <Box
-        as="form"
-        className={s.container}
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
+    <FormProvider {...login.form}>
+      <Box as="form" className={s.container} onSubmit={login.submit}>
         <Typography variant="h2" className={s.text}>
           Авторизация
         </Typography>
@@ -55,7 +41,7 @@ export function Login() {
           variant="outline"
           type="button"
           className={clsx(s.text, s.link)}
-          onClick={transition}
+          onClick={() => router.push(Paths.registration())}
         >
           Зарегистрироваться
         </Button>

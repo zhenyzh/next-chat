@@ -1,14 +1,36 @@
-import { useMutation } from "@tanstack/react-query";
-import { registrationApi } from "../../api/registration-api";
+import { redirect } from "next/navigation";
+import { useForm } from "react-hook-form";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRegistrationQuery } from "./use-registration-query";
+import type { RegistrationFormValues } from "@/features/auth/registration/model/types";
+import { registrationSchema } from "@/features/auth/registration/model/shemas";
+
+import { Paths } from "@/shared/configs";
 
 export function useRegistration() {
-  const actions = useMutation({
-    mutationFn: registrationApi.registration,
+  const registrationQuery = useRegistrationQuery();
+
+  const form = useForm<RegistrationFormValues>({
+    defaultValues: {
+      email: "",
+      name: "",
+      password: "",
+      confirmPassword: "",
+    },
+    resolver: zodResolver(registrationSchema),
+    mode: "onBlur",
   });
 
+  const submit = (data: RegistrationFormValues) => {
+    registrationQuery.handleRegistration(data, {
+      onSuccess: () => redirect(Paths.login()),
+    });
+  };
+
   return {
-    isPending: actions.isPending,
-    error: actions.error,
-    handleRegistration: actions.mutate,
+    form,
+    submit,
+    isPending: registrationQuery.isPending,
   };
 }
