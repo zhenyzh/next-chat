@@ -1,1 +1,1 @@
-export * from './registration-api'
+export * from "./registration.api";

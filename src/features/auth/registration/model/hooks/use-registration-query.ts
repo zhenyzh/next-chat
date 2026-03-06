@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { registrationApi } from "../../api/registration-api";
+import { registrationApi } from "@/features/auth/registration/api";
 
 export function useRegistrationQuery() {
   const actions = useMutation({

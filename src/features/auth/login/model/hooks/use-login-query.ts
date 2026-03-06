@@ -7,6 +7,7 @@ export function useLoginQuery() {
   });
 
   return {
+    data: actions.data,
     isPending: actions.isPending,
     error: actions.error,
     handleLogin: actions.mutate,
