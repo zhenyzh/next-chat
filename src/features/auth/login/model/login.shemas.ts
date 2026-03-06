@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ERROR_MESSAGES } from "@/shared/utils";
 
-export const signInSchema = z.object({
+export const loginSchema = z.object({
   email: z
     .string()
     .nonempty(ERROR_MESSAGES.REQUIRED)

@@ -1,7 +1,7 @@
 export const Paths = {
   home: () => "/",
-  signin: () => "/signin",
-  signup: () => "/signup",
+  signin: () => "/login",
+  signup: () => "/registration",
   profile: () => "/profile",
   chat: () => "/chat",
   settings: () => "/settings",

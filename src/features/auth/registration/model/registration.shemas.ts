@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ERROR_MESSAGES } from "@/shared/utils";
 
-export const signUpSchema = z
+export const registrationSchema = z
   .object({
     email: z
       .string()
