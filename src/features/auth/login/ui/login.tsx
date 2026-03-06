@@ -7,23 +7,24 @@ import { Mail, LockKeyhole } from "lucide-react";
 
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
 
-import { FormTextField } from "@/shared/form";
-import { Paths } from "@/shared/configs";
-import s from "../../auth.module.scss";
 import {
   type LoginFormValues,
   useFormValidation,
+  useLogin,
 } from "@/features/auth/login/model";
+
+import { FormTextField } from "@/shared/form";
+import { Paths } from "@/shared/configs";
+import s from "../../auth.module.scss";
 
 export function Login() {
   const form = useFormValidation();
+  const login = useLogin();
 
-  const transitionHome = () => redirect(Paths.home());
   const transition = () => redirect(Paths.registration());
 
   const onSubmit = (data: LoginFormValues) => {
-    console.log("dataSignIp", data);
-    transitionHome();
+    login.handleRegistration(data, { onSuccess: () => redirect(Paths.home()) });
   };
 
   return (
