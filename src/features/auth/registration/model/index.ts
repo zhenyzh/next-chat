@@ -1,3 +1,4 @@
-export * from "./registration.types";
-export * from "./registration.shemas";
-export * from "./use-form-validation";
+export * from "./types/registration.types";
+export * from "./shemas/registration.shemas";
+export * from "./hooks/use-form-validation";
+export * from "./hooks/use-registration";

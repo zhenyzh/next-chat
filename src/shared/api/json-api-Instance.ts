@@ -10,7 +10,7 @@ export class ApiError extends Error {
     }
 }
 
-export const request = async <T>(
+export const jsonApiInstance = async <T>(
     url: string,
     config?: { json?: unknown; method?: "GET" | "POST" | "DELETE" | "PUT"; signal?: AbortSignal }
 ): Promise<T> => {

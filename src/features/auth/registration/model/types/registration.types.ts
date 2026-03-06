@@ -1,4 +1,4 @@
 import { z } from "zod";
-import { registrationSchema } from "./registration.shemas";
+import { registrationSchema } from "../shemas/registration.shemas";
 
 export type RegistrationFormValues = z.infer<typeof registrationSchema>;
