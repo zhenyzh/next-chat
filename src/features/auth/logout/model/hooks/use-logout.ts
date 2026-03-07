@@ -1,14 +1,14 @@
 import { useRouter } from "next/navigation";
-import { useLogoutQuery } from "./use-logout-query";
+import { useLogoutMutation } from "./use-logout-mutation";
 import { Paths } from "@/shared/configs";
 import { tokenService } from "@/shared/token-service";
 import { queryClient } from "@/shared/query-client";
 
 export function useLogout() {
   const router = useRouter();
-  const logoutQuery = useLogoutQuery();
+  const mutation = useLogoutMutation();
   const logout = () => {
-    logoutQuery.handleLogout(undefined, {
+    mutation.handleLogout(undefined, {
       onSuccess: () => {
         tokenService.clear();
         queryClient.removeQueries();
@@ -17,5 +17,5 @@ export function useLogout() {
     });
   };
 
-  return { logout, isPending: logoutQuery.isPending };
+  return { logout, isPending: mutation.isPending };
 }
