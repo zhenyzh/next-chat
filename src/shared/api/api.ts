@@ -52,7 +52,9 @@ api.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        const { data } = await api.get("/auth/refresh");
+        const { data } = await axios.get(`${BASE_URL}/auth/refresh`, {
+          withCredentials: true,
+        });
         const newToken = data.accessToken;
         useTokenService.getState().set(newToken);
         onRefreshed(newToken);
