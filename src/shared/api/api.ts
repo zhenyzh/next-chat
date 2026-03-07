@@ -3,6 +3,19 @@ import { useTokenService } from "../token-service";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api`;
 
+let isRefreshing = false;
+
+let refreshSubscribers: ((token: string) => void)[] = [];
+
+function subscribeTokenRefresh(cb: (token: string) => void) {
+  refreshSubscribers.push(cb);
+}
+
+function onRefreshed(token: string) {
+  refreshSubscribers.forEach((cb) => cb(token));
+  refreshSubscribers = [];
+}
+
 export const api = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
@@ -17,26 +30,39 @@ api.interceptors.request.use((config) => {
 });
 
 api.interceptors.response.use(
-  (config) => {
-    return config;
-  },
+  (response) => response,
   async (error) => {
     const originalRequest = error.config;
     if (
       error.response.status === 401 &&
-      error.config &&
-      !error.response._isRetry
+      originalRequest &&
+      !originalRequest._isRetry
     ) {
       originalRequest._isRetry = true;
-      try {
-        const { data } = await axios.get(`${BASE_URL}/auth/refresh`, {
-          withCredentials: true,
+
+      if (isRefreshing) {
+        return new Promise((resolve) => {
+          subscribeTokenRefresh((token) => {
+            originalRequest.headers.Authorization = `Bearer ${token}`;
+            resolve(api(originalRequest));
+          });
         });
-        useTokenService.getState().set(data.accessToken);
-        return api.request(originalRequest);
+      }
+
+      isRefreshing = true;
+
+      try {
+        const { data } = await api.get("/auth/refresh");
+        const newToken = data.accessToken;
+        useTokenService.getState().set(newToken);
+        onRefreshed(newToken);
+        originalRequest.headers.Authorization = `Bearer ${newToken}`;
+        return api(originalRequest);
       } catch {
         console.log("Пользователь не авторизован");
         useTokenService.getState().clear();
+      } finally {
+        isRefreshing = false;
       }
     }
     throw error;

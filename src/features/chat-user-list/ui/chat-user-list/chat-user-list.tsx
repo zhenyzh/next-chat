@@ -4,13 +4,14 @@ import React from "react";
 
 import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../chat-user-item";
-import type { ChatUser } from "@/features/chat-user-list/model";
+import type { ChatUser } from "@/features/chat-user-list/model/types";
 import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
 
 import s from "./chat-user-list.module.scss";
+import { useChatUserQuery } from "@/features/chat-user-list/model/hooks";
 
 export function ChatUserList() {
-  const data: ChatUser[] = [
+  const item: ChatUser[] = [
     {
       id: "1",
       name: "Иванов Иван",
@@ -24,6 +25,9 @@ export function ChatUserList() {
     },
   ];
 
+  const data = useChatUserQuery();
+  console.log({ data });
+
   const handleShowChat = (id: string) => {
     console.log("id", id);
   };
@@ -31,7 +35,7 @@ export function ChatUserList() {
   return (
     <ScrollBar>
       <List
-        data={data}
+        data={item}
         getKey={(key) => key.id}
         skeleton={<UserPreviewSkeleton />}
         className={s.container}

@@ -7,10 +7,14 @@ type TokenService = {
   clear: () => void;
 };
 
-export const useTokenService = create<TokenService>()((set, get) => ({
+const initialState = {
   token: null,
+};
+
+export const useTokenService = create<TokenService>()((set, get) => ({
+  ...initialState,
 
   set: (token) => set({ token }),
   get: () => get().token,
-  clear: () => set({ token: null }),
+  clear: () => set(initialState),
 }));
