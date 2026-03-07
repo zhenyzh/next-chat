@@ -1,14 +1,14 @@
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRegistrationQuery } from "./use-registration-query";
+import { useRegistrationMutation } from "./use-registration-mutation";
 import type { RegistrationFormValues } from "@/features/auth/registration/model/types";
 import { registrationSchema } from "@/features/auth/registration/model/shemas";
 import { Paths } from "@/shared/configs";
 
 export function useRegistration() {
   const router = useRouter();
-  const registrationQuery = useRegistrationQuery();
+  const mutation = useRegistrationMutation();
 
   const form = useForm<RegistrationFormValues>({
     defaultValues: {
@@ -22,7 +22,7 @@ export function useRegistration() {
   });
 
   const submit = form.handleSubmit((data: RegistrationFormValues) => {
-    registrationQuery.handleRegistration(data, {
+    mutation.handleRegistration(data, {
       onSuccess: () => router.push(Paths.login()),
     });
   });
@@ -30,6 +30,6 @@ export function useRegistration() {
   return {
     form,
     submit,
-    isPending: registrationQuery.isPending,
+    isPending: mutation.isPending,
   };
 }

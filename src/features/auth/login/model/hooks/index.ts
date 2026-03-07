@@ -1,2 +1,2 @@
-export * from "./use-login-query";
+export * from "./use-login-mutation";
 export * from "./use-login";

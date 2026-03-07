@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLoginQuery } from "./use-login-query";
+import { useLoginMutation } from "./use-login-mutation";
 import type { LoginFormValues } from "@/features/auth/login/model/types";
 import { loginSchema } from "@/features/auth/login/model/shemas";
 import { Paths } from "@/shared/configs";
@@ -9,7 +9,7 @@ import { tokenService } from "@/shared/token-service";
 
 export function useLogin() {
   const router = useRouter();
-  const loginQuery = useLoginQuery();
+  const mutation = useLoginMutation();
 
   const form = useForm<LoginFormValues>({
     defaultValues: {
@@ -21,7 +21,7 @@ export function useLogin() {
   });
 
   const submit = form.handleSubmit((data) => {
-    loginQuery.handleLogin(data, {
+    mutation.handleLogin(data, {
       onSuccess: (data) => {
         tokenService.set(data.accessToken);
         router.push(Paths.home());
@@ -32,6 +32,6 @@ export function useLogin() {
   return {
     form,
     submit,
-    isPending: loginQuery.isPending,
+    isPending: mutation.isPending,
   };
 }

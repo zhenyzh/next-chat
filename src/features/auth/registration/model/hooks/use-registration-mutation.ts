@@ -1,14 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
 import { registrationApi } from "@/features/auth/registration/api";
 
-export function useRegistrationQuery() {
-  const actions = useMutation({
+export function useRegistrationMutation() {
+  const mutation = useMutation({
     mutationFn: registrationApi.registration,
   });
 
   return {
-    isPending: actions.isPending,
-    error: actions.error,
-    handleRegistration: actions.mutate,
+    isPending: mutation.isPending,
+    error: mutation.error,
+    handleRegistration: mutation.mutate,
   };
 }
