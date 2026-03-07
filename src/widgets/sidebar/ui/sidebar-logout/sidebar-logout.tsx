@@ -13,14 +13,16 @@ export function SidebarLogout({ collapsed }: Props) {
     <>
       <Box className={clsx(s.container, collapsed && s.hidden, s.hiddenMobile)}>
         <UserPreview
-          name={"Иван"}
+          name={"Иванfddfdfdfdfdf"}
           rightInfoSlot={
             <Box className={s.rightInfo}>
               <Logout />
             </Box>
           }
           subInfoSlot={
-            <Typography className={s.subInfo}>{"arv@bk.ru"}</Typography>
+            <Typography className={s.subInfo}>
+              {"arv@bk.rufddffddfdfdf"}
+            </Typography>
           }
         />
       </Box>
