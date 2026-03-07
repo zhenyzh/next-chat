@@ -4,7 +4,6 @@ import { Box, Container } from "@zhenyzh/common-ui/components";
 import { ChatMessageList } from "@/widgets/chat-message";
 import { SendMessage } from "@/features/send-message";
 import { ChatUserList } from "@/features/chat-user-list";
-
 import s from "./page.module.scss";
 
 export default function ChatPage() {
