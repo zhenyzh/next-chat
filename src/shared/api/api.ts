@@ -1,15 +1,16 @@
 import axios from "axios";
-import { tokenService } from "../token-service";
+import { useTokenService } from "../token-service";
 
-const BASE_URL = process.env.NEXT_PUBLIC_APP_BASE_URL;
+const BASE_URL = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api`;
 
 export const api = axios.create({
-  baseURL: `${BASE_URL}/api`,
+  baseURL: BASE_URL,
   withCredentials: true,
 });
 
 api.interceptors.request.use((config) => {
-  const token = tokenService.get();
+  const token = useTokenService.getState().get();
+  console.log({ token });
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -32,11 +33,11 @@ api.interceptors.response.use(
         const { data } = await axios.get(`${BASE_URL}/auth/refresh`, {
           withCredentials: true,
         });
-        tokenService.set(data.accessToken);
+        useTokenService.getState().set(data.accessToken);
         return api.request(originalRequest);
       } catch {
         console.log("Пользователь не авторизован");
-        tokenService.clear();
+        useTokenService.getState().clear();
       }
     }
     throw error;

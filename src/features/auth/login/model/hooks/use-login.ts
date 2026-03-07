@@ -5,11 +5,12 @@ import { useLoginMutation } from "./use-login-mutation";
 import type { LoginFormValues } from "@/features/auth/login/model/types";
 import { loginSchema } from "@/features/auth/login/model/shemas";
 import { Paths } from "@/shared/configs";
-import { tokenService } from "@/shared/token-service";
+import { useTokenService } from "@/shared/token-service";
 
 export function useLogin() {
   const router = useRouter();
   const mutation = useLoginMutation();
+  const tokenService = useTokenService();
 
   const form = useForm<LoginFormValues>({
     defaultValues: {

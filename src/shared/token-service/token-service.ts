@@ -1,13 +1,16 @@
-let accessToken: string | null = null;
+import { create } from "zustand";
 
-export const tokenService = {
-  get() {
-    return accessToken;
-  },
-  set(token: string) {
-    accessToken = token;
-  },
-  clear() {
-    accessToken = null;
-  },
+type TokenService = {
+  token: string | null;
+  set: (token: string | null) => void;
+  get: () => string | null;
+  clear: () => void;
 };
+
+export const useTokenService = create<TokenService>()((set, get) => ({
+  token: null,
+
+  set: (token) => set({ token }),
+  get: () => get().token,
+  clear: () => set({ token: null }),
+}));
