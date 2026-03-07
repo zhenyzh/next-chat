@@ -1,2 +1,42 @@
+.container {
+  position: relative;
+  padding: 10px 8px;
+  width: 200px;
+  transition: width 0.6s, opacity 0.3s;
 
+  &.oneButton {
+    position: absolute;
+    width: 60px;
+    bottom: 10px;
+  }
+}
 
+.rightInfo {
+  position: absolute;
+  right: -40px;
+  top: 22px;
+}
+
+.subInfo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hidden {
+  width: 0;
+  opacity: 0;
+}
+
+@include max-width(480px) {
+  .hiddenMobile {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .visibleMobile {
+    opacity: 1;
+  }
+}

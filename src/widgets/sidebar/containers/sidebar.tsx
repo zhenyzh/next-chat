@@ -53,7 +53,7 @@ export function Sidebar() {
           collapsed={collapsed}
         />
       </Box>
-      <SidebarLogout />
+      <SidebarLogout collapsed={collapsed} />
     </Box>
   );
 }

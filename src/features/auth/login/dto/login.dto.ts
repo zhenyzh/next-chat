@@ -1,8 +1,6 @@
+import type { User } from "@/entities/user/model/types";
+
 export type LoginDto = {
   accessToken: string;
-  user: {
-    email: string;
-    password: string;
-    name: string;
-  };
+  user: User;
 };
