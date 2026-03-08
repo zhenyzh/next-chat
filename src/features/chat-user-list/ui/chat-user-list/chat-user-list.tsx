@@ -1,14 +1,12 @@
 "use client";
 
 import React from "react";
-
 import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../chat-user-item";
 import type { ChatUser } from "@/features/chat-user-list/model/types";
-import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
-
-import s from "./chat-user-list.module.scss";
 import { useChatUserQuery } from "@/features/chat-user-list/model/hooks";
+import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
+import s from "./chat-user-list.module.scss";
 
 export function ChatUserList() {
   const item: ChatUser[] = [
@@ -25,8 +23,8 @@ export function ChatUserList() {
     },
   ];
 
-  const data = useChatUserQuery();
-  console.log({ data });
+  const { userChat, isLoading } = useChatUserQuery();
+  console.log({ userChat });
 
   const handleShowChat = (id: string) => {
     console.log("id", id);
@@ -37,6 +35,7 @@ export function ChatUserList() {
       <List
         data={item}
         getKey={(key) => key.id}
+        isLoading={isLoading}
         skeleton={<UserPreviewSkeleton />}
         className={s.container}
         listClassName={s.userList}
