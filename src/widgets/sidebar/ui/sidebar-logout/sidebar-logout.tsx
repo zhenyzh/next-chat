@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import { Logout } from "@/features/auth/logout";
-import { useUserQuery } from "@/entities/user/model/hooks";
+import { useGetUserQuery } from "@/entities/user/model/hooks";
 import { UserPreview, UserPreviewSkeleton } from "@/shared/ui";
 import s from "./sidebar-logout.module.scss";
 
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export function SidebarLogout({ collapsed }: Props) {
-  const { user, isLoading } = useUserQuery();
+  const { user, isLoading } = useGetUserQuery();
 
   return (
     <>

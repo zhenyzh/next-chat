@@ -3,3 +3,7 @@ export type ChatUserDto = {
   name: string;
   email: string;
 };
+
+export type ChatOpenDto = {
+  chatId: number;
+};

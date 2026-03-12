@@ -9,7 +9,7 @@ export function ChatUserItem({ user }: { user: ChatUser }) {
       name={user.name}
       avatarUrl={user.avatarUrl}
       isOnline={user.isOnline}
-      rightInfoSlot={<DateTime value={formatSmartDate(user.createdAt)} />}
+      // rightInfoSlot={<DateTime value={formatSmartDate(user.createdAt)} />}
       subInfoSlot={
         <ChatSubContent
           message={user.lastMessage}

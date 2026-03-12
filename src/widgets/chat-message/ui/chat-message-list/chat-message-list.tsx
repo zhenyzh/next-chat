@@ -6,6 +6,7 @@ import { List, ScrollBar } from "@/shared/ui";
 
 import LogoP from "@/shared/assets/images/download.jpg";
 import s from "./chat-message-list.module.scss";
+import { useChatOpenMutation } from "@/features/chat-user-list/model/hooks";
 
 export function ChatMessageList() {
   const data = [
@@ -44,6 +45,8 @@ export function ChatMessageList() {
     },
   ];
 
+  const { chatId } = useChatOpenMutation();
+  console.log({ chatId });
   return (
     <ScrollBar>
       <List
