@@ -22,7 +22,6 @@ export function ChatMessageList() {
             email: "ivan@example.com",
           },
           content: { text: "Привет! Как дела?" },
-          createdAt: "Fri Jan 11 2026 16:02:57",
         },
         {
           chatId: "1",
@@ -40,7 +39,6 @@ export function ChatMessageList() {
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLKy7pYSCRNDVje9qdb4M-JL579JbjutY1w&s",
             ],
           },
-          createdAt: "Fri Jan 11 2026 16:02:57",
         },
       ],
     },
