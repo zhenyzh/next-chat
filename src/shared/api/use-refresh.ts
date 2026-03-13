@@ -1,11 +1,12 @@
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useTokenService } from "../token-service";
 import { Paths } from "../configs";
 
 export function useRefresh() {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const refresh = async () => {
@@ -20,9 +21,13 @@ export function useRefresh() {
       } catch {
         useTokenService.getState().clear();
         router.push(Paths.login());
+      } finally {
+        setLoading(false);
       }
     };
 
     refresh().catch((err) => console.log("Ошибка при refresh", err));
   }, [router]);
+
+  return loading;
 }

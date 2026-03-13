@@ -1,6 +1,7 @@
 "use client";
 
 import { Box } from "@zhenyzh/common-ui/components";
+import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
 import { Sidebar } from "@/widgets/sidebar";
 import { useRefresh } from "@/shared/api";
 import s from "./layout.module.scss";
@@ -10,7 +11,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useRefresh();
+  const loading = useRefresh();
+
+  if (loading) return <AnimationLogoIcon />;
 
   return (
     <Box className={s.container}>
