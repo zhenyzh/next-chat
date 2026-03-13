@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { chatMessageApi } from "@/widgets/chat-message/api";
-import { groupMessageByDateSelectors } from "../../lib/selectors";
+import { groupMessagesByDateUtils } from "../../lib/utils";
 import { useChatOpenMutation } from "@/features/chat-user-list/model/hooks";
 import { useGetUserQuery } from "@/entities/user/model/hooks";
 
@@ -14,7 +14,7 @@ export function useGetMessages() {
   });
 
   return {
-    messages: groupMessageByDateSelectors(messagesData, id),
+    messages: groupMessagesByDateUtils(messagesData, id),
     isLoading,
     hasChatId: !!chatId,
   };
