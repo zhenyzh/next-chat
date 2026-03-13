@@ -4,7 +4,7 @@ import { jsonApiInstance } from "@/shared/api";
 
 export const chatMessageApi = {
   baseKey: "chatMessage",
-  getMessageQueryOptions: ({ chatId }: { chatId?: number }) => {
+  getMessageQueryOptions: ({ chatId }: { chatId: number | undefined }) => {
     return queryOptions({
       queryKey: [chatMessageApi.baseKey, "list", chatId],
       queryFn: (meta) =>

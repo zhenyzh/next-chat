@@ -1,14 +1,10 @@
+import type { User } from "@/entities/user/model/types";
+
 export type MessagesDto = {
   id: number;
   chatId: number;
   senderId: number;
-  sender: SenderMessagesDto;
+  sender: User;
   text: string;
   createdAt: string;
-};
-
-export type SenderMessagesDto = {
-  id: number;
-  email: string;
-  name: string;
 };

@@ -1,15 +1,15 @@
 import type { MessagesDto } from "../../dto";
-import type { ChatMessage } from "../../model/types";
+import type { ChatMessageGroup } from "../../model/types";
 
-export function modificationMessageSelectors(
+export function groupMessageByDateSelectors(
   messages: MessagesDto[] | undefined,
   userIdMe: number | undefined,
-): ChatMessage[] {
+): ChatMessageGroup[] {
   if (!messages?.length) {
     return [];
   }
 
-  const modifiedMessages = messages.reduce<Record<string, ChatMessage>>(
+  const modifiedMessages = messages.reduce<Record<string, ChatMessageGroup>>(
     (obj, message) => {
       const date = new Date(message.createdAt).toDateString();
 
