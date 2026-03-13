@@ -11,12 +11,12 @@ export function EmptyContent({ hasMessages, hasChatId }: EmptyContentProps) {
     <Box className={s.container}>
       {!hasMessages && !hasChatId && (
         <Typography variant="label" className={s.text}>
-          Кликните на человека из списка чтобы увидеть чат
+          Кликните на список чтобы увидеть чат
         </Typography>
       )}
       {hasChatId && (
         <Typography variant="label" className={s.text}>
-          У вас еще нету диалога с этим человеком
+          У вас еще нет диалога
         </Typography>
       )}
     </Box>
