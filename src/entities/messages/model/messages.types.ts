@@ -1,10 +1,11 @@
 export type Message = {
-  chatId: string;
+  id: number;
+  chatId: number;
   fromMe: boolean;
-  user: {
-    id: string;
-    fullName: string;
-    avatarUrl: string;
+  sender: {
+    id: number;
+    name: string;
+    avatarUrl?: string;
     email: string;
   };
   content: MessageContentType;

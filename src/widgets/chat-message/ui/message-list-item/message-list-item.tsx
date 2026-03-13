@@ -6,6 +6,6 @@ type Props = {
 
 export const MessageListItem = ({ messages }: Props) => {
   return messages.map((message: Message) => (
-    <Messages key={message.chatId + message.user.id} message={message} />
+    <Messages key={message.id} message={message} />
   ));
 };

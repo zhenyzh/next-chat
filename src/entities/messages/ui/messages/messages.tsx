@@ -16,7 +16,7 @@ type MessageProps = {
 
 export function Messages({ message }: MessageProps) {
   const {
-    user: { avatarUrl, fullName },
+    sender: { avatarUrl, name },
     fromMe,
     content: { text, ...rest },
   } = message;
@@ -29,7 +29,7 @@ export function Messages({ message }: MessageProps) {
         {text && (
           <Box className={s.bubble}>
             <Typography variant="h3" className={s.name}>
-              {fullName}
+              {name}
             </Typography>
             <MessageText text={text} />
           </Box>
