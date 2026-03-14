@@ -1,5 +1,5 @@
-import type { MessagesDto } from "../../dto";
 import type { ChatMessageGroup } from "../../model/types";
+import type { MessagesDto } from "@/entities/messages/api";
 
 export function groupMessagesByDateUtils(
   messages: MessagesDto[] | undefined,
