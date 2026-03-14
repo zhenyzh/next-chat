@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Box } from "@zhenyzh/common-ui/components";
-import { ChatUserItem } from "../chat-user-item";
+import { ChatUserItem } from "../ui/chat-user-item";
 import { useGetChatUserQuery } from "@/features/chat-user-list/model/hooks";
 import { useChatsOpenMutation } from "@/entities/chats/model";
 import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
