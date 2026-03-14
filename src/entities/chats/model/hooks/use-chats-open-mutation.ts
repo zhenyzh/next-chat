@@ -1,6 +1,5 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { chatsApi } from "@/entities/chats/api";
-import type { ChatOpenDto } from "@/entities/chats/dto";
 import { queryClient } from "@/shared/query-client";
 
 export function useChatsOpenMutation() {
@@ -17,14 +16,7 @@ export function useChatsOpenMutation() {
     mutation.mutate({ userIdOther });
   };
 
-  const { data } = useQuery({
-    queryKey,
-    queryFn: () => queryClient.getQueryData<ChatOpenDto>(queryKey),
-    enabled: !!queryClient.getQueryData(queryKey),
-  });
-
   return {
     handleChatOpen,
-    chatId: data?.chatId,
   };
 }
