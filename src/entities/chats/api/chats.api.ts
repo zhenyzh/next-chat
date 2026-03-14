@@ -1,5 +1,5 @@
 import { jsonApiInstance } from "@/shared/api";
-import type { ChatOpenDto } from "../dto";
+import type { ChatOpenDto } from "./chats.dto";
 
 export const chatsApi = {
   baseKey: "chats",

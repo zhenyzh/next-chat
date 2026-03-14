@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../ui/chat-user-item";
 import { useGetChatUserQuery } from "@/features/chat-user-list/model/hooks";

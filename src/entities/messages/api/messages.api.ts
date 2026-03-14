@@ -1,5 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import type { MessagesDto } from "../dto";
+import type { MessagesDto } from "./messages.dto";
 import { jsonApiInstance } from "@/shared/api";
 
 export const messagesApi = {

@@ -2,11 +2,8 @@
 
 import clsx from "clsx";
 import { CheckCheck } from "lucide-react";
-
 import { Box, Typography } from "@zhenyzh/common-ui/components";
-
 import { UnreadIndicator } from "@/shared/ui";
-
 import s from "./chat-sub-content.module.scss";
 
 type Props = {
