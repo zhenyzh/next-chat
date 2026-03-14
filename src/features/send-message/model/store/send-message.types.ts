@@ -7,4 +7,5 @@ export type SendMessage = {
 export type SendMessageActions = {
   setText: (text: string) => void;
   appendEmoji: (emoji: string) => void;
+  clearMessage: () => void;
 };

@@ -1,10 +1,10 @@
 import { SendHorizontal } from "lucide-react";
+import { useSendMessage } from "../../model/hooks";
 
 export function Sending() {
+  const { onSendMessage } = useSendMessage();
+
   return (
-    <SendHorizontal
-      onClick={() => alert("иконка send ")}
-      style={{ cursor: "pointer" }}
-    />
+    <SendHorizontal style={{ cursor: "pointer" }} onClick={onSendMessage} />
   );
 }

@@ -21,6 +21,7 @@ export const useSendMessageStore = create<SendMessageStore>()(
           state.text += emoji;
         });
       },
+      clearMessage: () => set(defaultMessage),
     },
   })),
 );

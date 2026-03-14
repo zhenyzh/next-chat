@@ -3,11 +3,8 @@
 import React from "react";
 import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../chat-user-item";
-import type { ChatUser } from "@/features/chat-user-list/model/types";
-import {
-  useChatOpenMutation,
-  useGetChatUserQuery,
-} from "@/features/chat-user-list/model/hooks";
+import { useGetChatUserQuery } from "@/features/chat-user-list/model/hooks";
+import { useChatsOpenMutation } from "@/entities/chats/model";
 import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
 import s from "./chat-user-list.module.scss";
 
@@ -27,7 +24,7 @@ export function ChatUserList() {
   // ];
 
   const { userChatList, isLoading } = useGetChatUserQuery();
-  const { handleChatOpen } = useChatOpenMutation();
+  const { handleChatOpen } = useChatsOpenMutation();
 
   return (
     <ScrollBar>

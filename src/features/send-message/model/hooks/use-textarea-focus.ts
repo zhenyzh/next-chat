@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-import { useTextMessage } from "@/features/send-message/model/store";
+import { useTextMessage } from "../store";
 
-export const useTextareaFocus = () => {
+export function useTextareaFocus() {
   const text = useTextMessage();
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -13,4 +13,4 @@ export const useTextareaFocus = () => {
   }, [text]);
 
   return { textareaRef };
-};
+}
