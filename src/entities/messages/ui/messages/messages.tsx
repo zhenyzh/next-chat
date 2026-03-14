@@ -2,12 +2,9 @@
 
 import clsx from "clsx";
 import { CheckCheck } from "lucide-react";
-
 import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
-
 import type { Message } from "@/entities/messages/model";
 import { MessageContent, MessageText } from "@/entities/messages";
-
 import s from "./messages.module.scss";
 
 type MessageProps = {
