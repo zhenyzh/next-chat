@@ -1,5 +1,5 @@
 import { useGetUserQuery } from "@/entities/user/model/hooks";
-import { useChatsOpenMutation } from "@/entities/chats/model";
+import { useChatsOpenMutation } from "@/entities/chats/model/hooks";
 import { useMutation } from "@tanstack/react-query";
 import { sendMessageApi } from "@/features/send-message/api";
 import {

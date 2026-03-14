@@ -1,4 +1,4 @@
-import type { MessageContentType } from "@/entities/messages/model";
+import type { MessageContentType } from "@/entities/messages/model/types";
 import { MessageImage } from "@/entities/messages";
 
 export function MessageContent(content: MessageContentType) {

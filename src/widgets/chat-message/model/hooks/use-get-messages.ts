@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { groupMessagesByDateUtils } from "../../lib/utils";
 import { useGetUserQuery } from "@/entities/user/model/hooks";
-import { useChatsOpenMutation } from "@/entities/chats/model";
+import { useChatsOpenMutation } from "@/entities/chats/model/hooks";
 import { messagesApi } from "@/entities/messages/api";
 
 export function useGetMessages() {
