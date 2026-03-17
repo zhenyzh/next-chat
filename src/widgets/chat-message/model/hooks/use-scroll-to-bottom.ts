@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useGetMessages } from "./use-get-messages";
 
-export function useScrollBottom() {
+export function useScrollToBottom() {
   const { messages } = useGetMessages();
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
