@@ -22,7 +22,7 @@ export function useRefresh() {
         useTokenService.getState().clear();
         router.push(Paths.login());
       } finally {
-        setLoading(false);
+        setTimeout(() => setLoading(false), 1000);
       }
     };
 

@@ -1,36 +1,62 @@
-import { useGetUserQuery } from "@/entities/user/model/hooks";
-import { useChatsOpenMutation } from "@/entities/chats/model/hooks";
 import { useMutation } from "@tanstack/react-query";
 import { sendMessageApi } from "@/features/send-message/api";
 import {
   useMessageActions,
   useTextMessage,
 } from "@/features/send-message/model/store";
+import { messagesApi, type MessagesDto } from "@/entities/messages/api";
+import { useGetUserQuery } from "@/entities/user/model/hooks";
+import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
 import { queryClient } from "@/shared/query-client";
-import { messagesApi } from "@/entities/messages/api";
 
 export function useSendMessage() {
-  const { user: { id: senderId } = {} } = useGetUserQuery();
-  const { chatId } = useChatsOpenMutation();
+  const { user } = useGetUserQuery();
+  const { chatId } = useChatsOpenCacheQuery();
   const text = useTextMessage();
   const { clearMessage } = useMessageActions();
 
+  const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;
+
   const mutation = useMutation({
     mutationFn: sendMessageApi.sendMessage,
+    onMutate: async (newMessage) => {
+      await queryClient.cancelQueries({ queryKey });
+
+      const previousMessage = queryClient.getQueryData<MessagesDto[]>(queryKey);
+
+      const messageId = Date.now();
+
+      queryClient.setQueryData(queryKey, (old = []) => [
+        ...old,
+        {
+          id: messageId,
+          chatId: newMessage.chatId,
+          senderId: newMessage.senderId,
+          sender: user,
+          text: newMessage.text,
+          createdAt: new Date().toISOString(),
+        } as MessagesDto,
+      ]);
+
+      return { previousMessage, messageId };
+    },
+
+    onSuccess: (data, _, context) => {
+      queryClient.setQueryData(queryKey, (old = []) =>
+        old.map((msg) => (msg.id === context.messageId ? data : msg)),
+      );
+      clearMessage();
+    },
+
+    onError: (_, __, context) => {
+      queryClient.setQueryData(queryKey, context?.previousMessage);
+    },
+
+    onSettled: () => queryClient.invalidateQueries({ queryKey }),
   });
 
   const onSendMessage = () => {
-    mutation.mutate(
-      { chatId, senderId, text },
-      {
-        onSuccess: () => {
-          queryClient.invalidateQueries({
-            queryKey: messagesApi.getMessageQueryOptions({ chatId }).queryKey,
-          });
-          clearMessage();
-        },
-      },
-    );
+    mutation.mutate({ chatId, senderId: user.id, text });
   };
 
   return {

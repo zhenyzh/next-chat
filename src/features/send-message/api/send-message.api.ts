@@ -1,4 +1,5 @@
 import { jsonApiInstance } from "@/shared/api";
+import type { MessagesDto } from "@/entities/messages/api";
 
 export const sendMessageApi = {
   baseKey: "sendMessage",
@@ -11,7 +12,7 @@ export const sendMessageApi = {
     senderId: number | undefined;
     text: string;
   }) => {
-    return jsonApiInstance("/messages/send-message", {
+    return jsonApiInstance<MessagesDto>("/messages/send-message", {
       method: "POST",
       json: { chatId, senderId, text },
     });

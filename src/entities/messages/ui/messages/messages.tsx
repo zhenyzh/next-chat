@@ -13,7 +13,7 @@ type MessageProps = {
 
 export function Messages({ message }: MessageProps) {
   const {
-    sender: { avatarUrl, name },
+    sender: { avatarUrl, name } = {},
     fromMe,
     content: { text, ...rest },
   } = message;
