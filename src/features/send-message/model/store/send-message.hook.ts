@@ -14,5 +14,5 @@ export const useMessageActions = (): SendMessageStore["actions"] =>
   useSendMessageStore(messageActionsSelector);
 
 export const useAllMessages = (): {
-  text: SendMessageStore["message"];
+  message: SendMessageStore["message"];
 } => useSendMessageStore(useShallow(allMessageSelector));
