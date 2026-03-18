@@ -6,11 +6,11 @@ type WatchSticking = {
   threshold?: number | number[];
 };
 
-export const useStickingObserver = ({
+export function useStickingObserver({
   root = null,
   rootMargin = "0px",
   threshold = 0,
-}: WatchSticking = {}) => {
+}: WatchSticking = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const [isStuck, setIsStuck] = useState(false);
 
@@ -35,4 +35,4 @@ export const useStickingObserver = ({
   }, [root, rootMargin, threshold]);
 
   return { ref, isStuck };
-};
+}
