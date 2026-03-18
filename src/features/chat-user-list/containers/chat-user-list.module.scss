@@ -7,7 +7,7 @@
 .list {
   padding: 0 10px 10px 10px;
 
-  &:hover {
+  &:hover, &.active {
     border-radius: 0;
     background-color: var(--color-bg-hover);
   }

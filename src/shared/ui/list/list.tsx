@@ -9,7 +9,7 @@ type ContentListProps<T> = {
   headerTitle?: React.ReactNode;
   skeleton?: React.ReactNode;
   className?: string;
-  listClassName?: string;
+  listClassName?: string | ((item: T, index: number, array: T[]) => string);
   skeletonCount?: number;
   isLoading?: boolean;
 };
@@ -38,7 +38,14 @@ export const List = <T,>({
             )
           : !!data.length
             ? data.map((item, index, array) => (
-                <Box key={getKey?.(item) ?? index} className={listClassName}>
+                <Box
+                  key={getKey?.(item) ?? index}
+                  className={
+                    typeof listClassName === "function"
+                      ? listClassName(item, index, array)
+                      : listClassName
+                  }
+                >
                   {renderItem(item, index, array)}
                 </Box>
               ))

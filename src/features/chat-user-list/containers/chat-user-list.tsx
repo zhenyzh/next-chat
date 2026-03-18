@@ -6,6 +6,8 @@ import { useGetChatUserQuery } from "@/features/chat-user-list/model/hooks";
 import { useChatsOpenMutation } from "@/entities/chats/model/hooks";
 import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
 import s from "./chat-user-list.module.scss";
+import { useState } from "react";
+import clsx from "clsx";
 
 export function ChatUserList() {
   // const item: ChatUser[] = [
@@ -24,6 +26,7 @@ export function ChatUserList() {
 
   const { userChatList, isLoading } = useGetChatUserQuery();
   const { handleChatOpen } = useChatsOpenMutation();
+  const [activeUserId, setActiveUserId] = useState<number | null>(null);
 
   return (
     <ScrollBar>
@@ -33,9 +36,16 @@ export function ChatUserList() {
         isLoading={isLoading}
         skeleton={<UserPreviewSkeleton />}
         className={s.container}
-        listClassName={s.list}
+        listClassName={(user) =>
+          clsx(s.list, user.id === activeUserId && s.active)
+        }
         renderItem={(user) => (
-          <Box onClick={() => handleChatOpen(user.id)}>
+          <Box
+            onClick={() => {
+              handleChatOpen(user.id);
+              setActiveUserId(user.id);
+            }}
+          >
             <ChatUserItem user={user} />
           </Box>
         )}
