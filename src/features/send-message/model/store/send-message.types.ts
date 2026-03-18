@@ -1,7 +1,7 @@
 export type SendMessageStore = SendMessage & { actions: SendMessageActions };
 
 export type SendMessage = {
-  text: string;
+  message: string;
 };
 
 export type SendMessageActions = {

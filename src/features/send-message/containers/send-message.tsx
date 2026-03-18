@@ -3,7 +3,7 @@
 import { TextareaAutosizeField } from "@zhenyzh/common-ui/components";
 import {
   useMessageActions,
-  useTextMessage,
+  useMessage,
 } from "@/features/send-message/model/store";
 import { useTextareaFocus } from "@/features/send-message/model/hooks";
 import { EmojiSmile } from "../ui/emoji-smile";
@@ -12,14 +12,14 @@ import { Microphone } from "../ui/microphone";
 import { AddDropdownMenu } from "../ui/add-dropdown-menu";
 
 export function SendMessage() {
-  const text = useTextMessage();
+  const message = useMessage();
   const { setText } = useMessageActions();
   const { textareaRef } = useTextareaFocus();
 
   return (
     <TextareaAutosizeField
       ref={textareaRef}
-      value={text}
+      value={message}
       onChange={(e) => setText(e.target.value)}
       placeholder={"Сообщение"}
       style={{ paddingRight: 85 }}
@@ -27,7 +27,7 @@ export function SendMessage() {
       iconEnd={
         <>
           <EmojiSmile />
-          {text.trim() ? <Sending /> : <Microphone />}
+          {message.trim() ? <Sending /> : <Microphone />}
         </>
       }
     />

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import { useTextMessage } from "../store";
+import { useMessage } from "../store";
 
 export function useTextareaFocus() {
-  const text = useTextMessage();
+  const message = useMessage();
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -10,7 +10,7 @@ export function useTextareaFocus() {
     const el = textareaRef.current;
     if (!el) return;
     el.focus();
-  }, [text]);
+  }, [message]);
 
   return { textareaRef };
 }

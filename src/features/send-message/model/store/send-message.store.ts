@@ -3,7 +3,7 @@ import { immer } from "zustand/middleware/immer";
 import type { SendMessageStore } from "./send-message.types";
 
 const defaultMessage = {
-  text: "",
+  message: "",
 };
 
 export const useSendMessageStore = create<SendMessageStore>()(
@@ -13,12 +13,12 @@ export const useSendMessageStore = create<SendMessageStore>()(
     actions: {
       setText: (text) => {
         set((state) => {
-          state.text = text;
+          state.message = text;
         });
       },
       appendEmoji: (emoji) => {
         set((state) => {
-          state.text += emoji;
+          state.message += emoji;
         });
       },
       clearMessage: () => set(defaultMessage),

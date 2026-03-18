@@ -7,12 +7,12 @@ import {
 } from "./send-message.selectors";
 import type { SendMessageStore } from "./send-message.types";
 
-export const useTextMessage = (): SendMessageStore["text"] =>
+export const useMessage = (): SendMessageStore["message"] =>
   useSendMessageStore(textSelector);
 
 export const useMessageActions = (): SendMessageStore["actions"] =>
   useSendMessageStore(messageActionsSelector);
 
 export const useAllMessages = (): {
-  text: SendMessageStore["text"];
+  text: SendMessageStore["message"];
 } => useSendMessageStore(useShallow(allMessageSelector));

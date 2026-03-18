@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { sendMessageApi } from "@/features/send-message/api";
 import {
   useMessageActions,
-  useTextMessage,
+  useMessage,
 } from "@/features/send-message/model/store";
 import { messagesApi, type MessagesDto } from "@/entities/messages/api";
 import { useGetUserQuery } from "@/entities/user/model/hooks";
@@ -12,7 +12,7 @@ import { queryClient } from "@/shared/query-client";
 export function useSendMessage() {
   const { user } = useGetUserQuery();
   const { chatId } = useChatsOpenCacheQuery();
-  const text = useTextMessage();
+  const message = useMessage();
   const { clearMessage } = useMessageActions();
 
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;
@@ -56,7 +56,7 @@ export function useSendMessage() {
   });
 
   const onSendMessage = () => {
-    mutation.mutate({ chatId, senderId: user.id, text });
+    mutation.mutate({ chatId, senderId: user.id, text: message });
   };
 
   return {
