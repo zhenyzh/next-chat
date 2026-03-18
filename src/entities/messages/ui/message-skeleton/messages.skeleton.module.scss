@@ -13,7 +13,7 @@ $borderRadius: var(--border-radius-size-s);
 
   .bubble {
     position: relative;
-    background-color: var(--color-accent);
+    background-color: var(--color-bg-interactive-primary);
     border-radius: $borderRadius;
     padding: 0 10px 10px;
 
@@ -27,7 +27,7 @@ $borderRadius: var(--border-radius-size-s);
     &:before {
       left: -7px;
       width: 18px;
-      background-color: var(--color-accent);
+      background-color: var(--color-bg-interactive-primary);
       border-bottom-right-radius: 16px 14px;
     }
 
@@ -38,31 +38,6 @@ $borderRadius: var(--border-radius-size-s);
       border-bottom-right-radius: 10px;
     }
   }
-
-  .name {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-  }
-
-  .text {
-    color: var(--color-text-primary);
-    white-space: normal;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
-
-  .date {
-    font-size: var(--font-size-xs);
-    align-self: flex-end;
-  }
-
-  .checkIcons {
-    align-self: flex-end;
-    margin-bottom: 5px;
-    flex-shrink: 0;
-  }
 }
 
 /*me*/
@@ -71,19 +46,15 @@ $borderRadius: var(--border-radius-size-s);
   flex-direction: row-reverse;
   margin-left: auto;
 
-  .avatar {
-    border-color: var(--color-secondary);
-  }
-
   .bubble {
-    background-color: var(--color-secondary);
+    background-color: var(--color-bg-interactive-primary);
 
     &:before {
       left: auto;
       right: -7px;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 16px 14px;
-      background-color: var(--color-secondary);
+      background-color: var(--color-bg-interactive-primary);
     }
 
     &:after {
@@ -92,9 +63,5 @@ $borderRadius: var(--border-radius-size-s);
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 10px;
     }
-  }
-
-  .date {
-    align-self: flex-start;
   }
 }

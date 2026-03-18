@@ -1,5 +1,3 @@
-"use client";
-
 import clsx from "clsx";
 import { CheckCheck } from "lucide-react";
 import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
