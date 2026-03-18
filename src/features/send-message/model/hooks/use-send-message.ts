@@ -22,7 +22,7 @@ export function useSendMessage() {
     onMutate: async (newMessage) => {
       await queryClient.cancelQueries({ queryKey });
 
-      const previousMessage = queryClient.getQueryData<MessagesDto[]>(queryKey);
+      const previousMessage = queryClient.getQueryData(queryKey);
 
       const messageId = Date.now();
 
