@@ -24,14 +24,14 @@ export function useSendMessage() {
 
       const previousMessage = queryClient.getQueryData(queryKey);
 
-      const mockMessage: MessagesDto = {
+      const mockMessage = {
         id: Date.now(),
         chatId: newMessage.chatId,
         senderId: newMessage.senderId,
         sender: user,
         text: newMessage.text,
         createdAt: new Date().toISOString(),
-      };
+      } satisfies MessagesDto;
 
       queryClient.setQueryData(queryKey, (old = []) => [...old, mockMessage]);
 
