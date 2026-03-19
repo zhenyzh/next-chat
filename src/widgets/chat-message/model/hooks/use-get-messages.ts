@@ -1,5 +1,5 @@
 import { useGetMessagesQuery } from "./use-get-messages-query";
-import { useSubscribeNewMessageWs } from "./use-subscribe-new-message-ws";
+import { useSubscribeNewMessageWs } from "@/features/send-message/model/hooks";
 import { useSocketChat } from "@/entities/chats/model/hooks";
 
 export function useGetMessages() {
