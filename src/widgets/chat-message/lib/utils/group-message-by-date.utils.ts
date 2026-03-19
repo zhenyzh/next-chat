@@ -16,7 +16,7 @@ export function groupMessagesByDateUtils(
 
     if (!group) {
       group = {
-        data: date,
+        date,
         messages: [],
       };
       map.set(date, group);

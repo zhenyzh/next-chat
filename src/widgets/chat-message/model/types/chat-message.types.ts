@@ -1,6 +1,6 @@
 import type { Message } from "@/entities/messages";
 
 export type ChatMessageGroup = {
-  data: string;
+  date: string;
   messages: Message[];
 };

@@ -16,7 +16,7 @@ export function ChatMessageList() {
         className={s.container}
         renderItem={(group) => (
           <>
-            <SubDateContent date={group.data} />
+            <SubDateContent date={group.date} />
             <MessageListItem messages={group.messages} />
           </>
         )}
