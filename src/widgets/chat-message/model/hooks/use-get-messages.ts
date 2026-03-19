@@ -1,21 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
-import { groupMessagesByDateUtils } from "../../lib/utils";
-import { useGetUserQuery } from "@/entities/user/model/hooks";
-import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
-import { messagesApi } from "@/entities/messages/api";
+import { useGetMessagesQuery } from "./use-get-messages-query";
+import { useSendMessageWs } from "@/features/send-message/model/hooks";
+import { useJoinChatWS } from "@/entities/chats/model/hooks";
 
 export function useGetMessages() {
-  const { chatId } = useChatsOpenCacheQuery();
-  const { user: { id } = {} } = useGetUserQuery();
+  useJoinChatWS();
+  useSendMessageWs();
 
-  const { data: messagesData, isLoading } = useQuery({
-    ...messagesApi.getMessageQueryOptions({ chatId }),
-    enabled: !!chatId,
-  });
+  const { messages, hasChatId, isLoading } = useGetMessagesQuery();
 
   return {
-    messages: groupMessagesByDateUtils(messagesData, id),
+    messages,
+    hasChatId,
     isLoading,
-    hasChatId: !!chatId,
   };
 }
