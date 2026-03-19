@@ -39,8 +39,8 @@ export function useSendMessage() {
     },
 
     onSuccess: (data, _, context) => {
-      queryClient.setQueryData(queryKey, (old = []) =>
-        old.map((msg) => (msg.id === context.id ? data : msg)),
+      queryClient.setQueryData(queryKey, (old) =>
+        (old ?? []).map((msg) => (msg.id === context.id ? data : msg)),
       );
       clearMessage();
     },

@@ -3,12 +3,12 @@ import { useSendMessageStore } from "./send-message.store";
 import {
   messageActionsSelector,
   allMessageSelector,
-  textSelector,
+  messageSelector,
 } from "./send-message.selectors";
 import type { SendMessageStore } from "./send-message.types";
 
 export const useMessage = (): SendMessageStore["message"] =>
-  useSendMessageStore(textSelector);
+  useSendMessageStore(messageSelector);
 
 export const useMessageActions = (): SendMessageStore["actions"] =>
   useSendMessageStore(messageActionsSelector);
