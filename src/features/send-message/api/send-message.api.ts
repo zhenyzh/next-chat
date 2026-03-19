@@ -7,14 +7,16 @@ export const sendMessageApi = {
     chatId,
     senderId,
     text,
+    clientId,
   }: {
     chatId: number | undefined;
     senderId: number | undefined;
     text: string;
+    clientId?: string;
   }) => {
     return jsonApiInstance<MessagesDto>("/messages/send-message", {
       method: "POST",
-      json: { chatId, senderId, text },
+      json: { chatId, senderId, text, clientId },
     });
   },
 };

@@ -7,4 +7,5 @@ export type MessagesDto = {
   sender: User;
   text: string;
   createdAt: string;
+  clientId?: string;
 };

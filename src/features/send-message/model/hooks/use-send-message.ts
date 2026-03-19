@@ -16,6 +16,7 @@ export function useSendMessage() {
   const { clearMessage } = useMessageActions();
 
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;
+  const clientId = crypto.randomUUID();
 
   const mutation = useMutation({
     mutationFn: sendMessageApi.sendMessage,
@@ -26,6 +27,7 @@ export function useSendMessage() {
 
       const mockMessage = {
         id: Date.now(),
+        clientId,
         chatId: newMessage.chatId,
         senderId: newMessage.senderId,
         sender: user,
@@ -35,12 +37,14 @@ export function useSendMessage() {
 
       queryClient.setQueryData(queryKey, (old = []) => [...old, mockMessage]);
 
-      return { previousMessage, id: mockMessage.id };
+      return { previousMessage, clientId };
     },
 
     onSuccess: (data, _, context) => {
       queryClient.setQueryData(queryKey, (old) =>
-        (old ?? []).map((msg) => (msg.id === context.id ? data : msg)),
+        (old ?? []).map((msg) =>
+          msg.clientId === context.clientId ? data : msg,
+        ),
       );
       clearMessage();
     },
@@ -53,7 +57,7 @@ export function useSendMessage() {
   });
 
   const onSendMessage = () => {
-    mutation.mutate({ chatId, senderId: user.id, text: message });
+    mutation.mutate({ chatId, senderId: user.id, text: message, clientId });
   };
 
   return {

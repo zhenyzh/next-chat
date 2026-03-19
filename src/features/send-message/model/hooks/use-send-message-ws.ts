@@ -18,7 +18,7 @@ export function useSendMessageWS() {
         if (message.chatId !== chatId) return;
 
         queryClient.setQueryData(queryKey, (old = []) => {
-          if (old.some((msg) => msg.id === message.id)) return old;
+          if (old.some((msg) => msg.clientId === message.clientId)) return old;
           return [...old, message];
         });
       },
