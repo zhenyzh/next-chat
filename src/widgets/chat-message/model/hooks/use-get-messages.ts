@@ -1,10 +1,10 @@
 import { useGetMessagesQuery } from "./use-get-messages-query";
-import { useSendMessageWs } from "@/features/send-message/model/hooks";
+import { useSendMessageWS } from "@/features/send-message/model/hooks";
 import { useJoinChatWS } from "@/entities/chats/model/hooks";
 
 export function useGetMessages() {
   useJoinChatWS();
-  useSendMessageWs();
+  useSendMessageWS();
 
   const { messages, hasChatId, isLoading } = useGetMessagesQuery();
 
