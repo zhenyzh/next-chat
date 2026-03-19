@@ -4,7 +4,7 @@ import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
 import { socketEvent, socketService } from "@/shared/socket";
 import { queryClient } from "@/shared/query-client";
 
-export function useSendMessageWS() {
+export function useSubscribeNewMessageWs() {
   const { chatId } = useChatsOpenCacheQuery();
 
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;

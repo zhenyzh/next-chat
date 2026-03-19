@@ -1,10 +1,10 @@
 import { useGetMessagesQuery } from "./use-get-messages-query";
-import { useSendMessageWS } from "@/features/send-message/model/hooks";
+import { useSubscribeNewMessageWs } from "./use-subscribe-new-message-ws";
 import { useSocketChat } from "@/entities/chats/model/hooks";
 
 export function useGetMessages() {
   useSocketChat();
-  useSendMessageWS();
+  useSubscribeNewMessageWs();
 
   const { messages, hasChatId, isLoading } = useGetMessagesQuery();
 
