@@ -27,5 +27,5 @@ export function useSendMessageWS() {
     return () => {
       unsubscribe();
     };
-  }, [chatId]);
+  }, [chatId, queryKey]);
 }
