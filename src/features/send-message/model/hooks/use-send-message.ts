@@ -24,26 +24,23 @@ export function useSendMessage() {
 
       const previousMessage = queryClient.getQueryData(queryKey);
 
-      const messageId = Date.now();
+      const mockMessage: MessagesDto = {
+        id: Date.now(),
+        chatId: newMessage.chatId,
+        senderId: newMessage.senderId,
+        sender: user,
+        text: newMessage.text,
+        createdAt: new Date().toISOString(),
+      };
 
-      queryClient.setQueryData(queryKey, (old = []) => [
-        ...old,
-        {
-          id: messageId,
-          chatId: newMessage.chatId,
-          senderId: newMessage.senderId,
-          sender: user,
-          text: newMessage.text,
-          createdAt: new Date().toISOString(),
-        } as MessagesDto,
-      ]);
+      queryClient.setQueryData(queryKey, (old = []) => [...old, mockMessage]);
 
-      return { previousMessage, messageId };
+      return { previousMessage, id: mockMessage.id };
     },
 
     onSuccess: (data, _, context) => {
       queryClient.setQueryData(queryKey, (old = []) =>
-        old.map((msg) => (msg.id === context.messageId ? data : msg)),
+        old.map((msg) => (msg.id === context.id ? data : msg)),
       );
       clearMessage();
     },

@@ -1,6 +1,6 @@
 export type Message = {
   id: number;
-  chatId: number;
+  chatId: number | undefined;
   fromMe: boolean;
   sender: {
     id: number;
