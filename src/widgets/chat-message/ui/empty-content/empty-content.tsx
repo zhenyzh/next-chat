@@ -1,12 +1,12 @@
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import s from "./empty-content.module.scss";
 
-type EmptyContentProps = {
+type Props = {
   hasMessages: boolean;
   hasChatId: boolean;
 };
 
-export function EmptyContent({ hasMessages, hasChatId }: EmptyContentProps) {
+export function EmptyContent({ hasMessages, hasChatId }: Props) {
   return (
     <Box className={s.container}>
       {!hasMessages && !hasChatId && (

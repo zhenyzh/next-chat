@@ -5,7 +5,7 @@ import { Smile } from "lucide-react";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
 import { Box } from "@zhenyzh/common-ui/components";
-import { useMessageActions } from "@/features/send-message/model/store";
+import { useMessageActions } from "../../model/store";
 import s from "./emoji-smile.module.scss";
 
 export function EmojiSmile() {

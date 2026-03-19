@@ -1,5 +1,5 @@
-import { jsonApiInstance } from "@/shared/api";
 import type { LoginDto } from "./login.dto";
+import { jsonApiInstance } from "@/shared/api";
 
 export const loginApi = {
   baseKey: "login",

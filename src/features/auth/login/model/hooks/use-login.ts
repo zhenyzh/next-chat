@@ -2,8 +2,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "./use-login-mutation";
-import type { LoginFormValues } from "@/features/auth/login/model/types";
-import { loginSchema } from "@/features/auth/login/model/shemas";
+import type { LoginFormValues } from "../types";
+import { loginSchema } from "../shemas";
 import { Paths } from "@/shared/configs";
 import { useTokenService } from "@/shared/token-service";
 

@@ -1,6 +1,6 @@
 import { LogOut } from "lucide-react";
 import { Button } from "@zhenyzh/common-ui/components";
-import { useLogout } from "@/features/auth/logout/model/hooks";
+import { useLogout } from "../model/hooks";
 import s from "./logout.module.scss";
 
 export function Logout() {

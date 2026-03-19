@@ -1,20 +1,16 @@
 import Link from "next/link";
 import clsx from "clsx";
 import { Card, Typography } from "@zhenyzh/common-ui/components";
-import type { LinkType } from "@/widgets/sidebar/model";
+import type { LinkType } from "../../model";
 import s from "./sidebar-navigation.module.scss";
 
-type SideBarNavigationProps = {
+type Props = {
   linkItem: LinkType[];
   pathname: string;
   collapsed: boolean;
 };
 
-export function SideBarNavigation({
-  linkItem,
-  pathname,
-  collapsed,
-}: SideBarNavigationProps) {
+export function SideBarNavigation({ linkItem, pathname, collapsed }: Props) {
   return (
     <Card as="nav" className={s.nav}>
       {linkItem.map((item) => {

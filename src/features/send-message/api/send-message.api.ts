@@ -1,5 +1,5 @@
-import { jsonApiInstance } from "@/shared/api";
 import type { MessagesDto } from "@/entities/messages/api";
+import { jsonApiInstance } from "@/shared/api";
 
 export const sendMessageApi = {
   baseKey: "sendMessage",

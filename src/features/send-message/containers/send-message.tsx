@@ -1,11 +1,8 @@
 "use client";
 
 import { TextareaAutosizeField } from "@zhenyzh/common-ui/components";
-import {
-  useMessageActions,
-  useMessage,
-} from "@/features/send-message/model/store";
-import { useTextareaFocus } from "@/features/send-message/model/hooks";
+import { useMessageActions, useMessage } from "../model/store";
+import { useTextareaFocus } from "../model/hooks";
 import { EmojiSmile } from "../ui/emoji-smile";
 import { Sending } from "../ui/sending";
 import { Microphone } from "../ui/microphone";

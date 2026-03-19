@@ -4,7 +4,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../ui/chat-user-item";
-import { useGetChatUserQuery } from "@/features/chat-user-list/model/hooks";
+import { useGetChatUserQuery } from "../model/hooks";
 import { useChatsOpenMutation } from "@/entities/chats/model/hooks";
 import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
 import s from "./chat-user-list.module.scss";

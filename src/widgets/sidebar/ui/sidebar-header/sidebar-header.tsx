@@ -5,17 +5,13 @@ import { Avatar, Box, Button } from "@zhenyzh/common-ui/components";
 import LogoIcon from "@/shared/assets/images/logo.svg";
 import s from "./sidebar-header.module.scss";
 
-type SideBarHeaderProps = {
+type Props = {
   defaultLink: string;
   collapsed: boolean;
   setCollapsed: (collapse: boolean) => void;
 };
 
-export function SideBarHeader({
-  defaultLink,
-  collapsed,
-  setCollapsed,
-}: SideBarHeaderProps) {
+export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
   return (
     <Box className={s.header}>
       <Link href={defaultLink} className={clsx(collapsed && s.hidden)}>

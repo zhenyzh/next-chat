@@ -5,7 +5,7 @@ import { FormProvider } from "react-hook-form";
 import clsx from "clsx";
 import { UserPen, LockKeyhole, Mail } from "lucide-react";
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
-import { useRegistration } from "@/features/auth/registration/model/hooks";
+import { useRegistration } from "../model/hooks";
 import { Paths } from "@/shared/configs";
 import { FormTextField } from "@/shared/form";
 import s from "../../auth.module.scss";

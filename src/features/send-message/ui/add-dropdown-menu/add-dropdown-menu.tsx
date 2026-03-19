@@ -1,14 +1,11 @@
 import React from "react";
-
 import { Camera, CirclePlus, File } from "lucide-react";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@zhenyzh/common-ui/components";
-
 import s from "./add-dropdown-menu.module.scss";
 
 export function AddDropdownMenu() {

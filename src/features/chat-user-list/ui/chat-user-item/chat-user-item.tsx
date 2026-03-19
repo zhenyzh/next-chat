@@ -1,5 +1,5 @@
 import { ChatSubContent } from "../chat-sub-content";
-import type { ChatUser } from "@/features/chat-user-list/model/types";
+import type { ChatUser } from "../../model/types";
 import { DateTime, UserPreview } from "@/shared/ui";
 import { formatSmartDate } from "@/shared/utils";
 

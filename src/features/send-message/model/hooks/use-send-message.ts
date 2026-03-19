@@ -1,9 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { sendMessageApi } from "@/features/send-message/api";
-import {
-  useMessageActions,
-  useMessage,
-} from "@/features/send-message/model/store";
+import { sendMessageApi } from "../../api";
+import { useMessageActions, useMessage } from "../store";
 import { messagesApi, type MessagesDto } from "@/entities/messages/api";
 import { useGetUserQuery } from "@/entities/user/model/hooks";
 import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
@@ -27,12 +24,12 @@ export function useSendMessage() {
 
       const mockMessage = {
         id: Date.now(),
-        clientId,
         chatId: newMessage.chatId,
         senderId: newMessage.senderId,
         sender: user,
         text: newMessage.text,
         createdAt: new Date().toISOString(),
+        clientId,
       } satisfies MessagesDto;
 
       queryClient.setQueryData(queryKey, (old = []) => [...old, mockMessage]);

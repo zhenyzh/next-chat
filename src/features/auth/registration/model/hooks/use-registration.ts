@@ -2,8 +2,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRegistrationMutation } from "./use-registration-mutation";
-import type { RegistrationFormValues } from "@/features/auth/registration/model/types";
-import { registrationSchema } from "@/features/auth/registration/model/shemas";
+import type { RegistrationFormValues } from "../types";
+import { registrationSchema } from "../shemas";
 import { Paths } from "@/shared/configs";
 
 export function useRegistration() {
