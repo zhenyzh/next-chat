@@ -13,7 +13,7 @@ export const MessageListItem = ({ messages, refWatchBottom }: Props) => {
       {messages.map((message: Message) => (
         <Messages key={message.id} message={message} />
       ))}
-      <Box ref={refWatchBottom} style={{ height: 1 }}></Box>
+      <Box ref={refWatchBottom} style={{ height: 1 }} />
     </>
   );
 };

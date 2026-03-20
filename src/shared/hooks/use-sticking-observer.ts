@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-type WatchSticking = {
-  root?: HTMLElement | null;
-  rootMargin?: string;
-  threshold?: number | number[];
-};
+type WatchSticking = Partial<{
+  root: HTMLElement | null;
+  rootMargin: string;
+  threshold: number | number[];
+}>;
 
 export function useStickingObserver({
   root = null,
