@@ -10,16 +10,14 @@ export function useScrollToBottom() {
     dependencies: [messages.length, chatId],
   });
 
-  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const isFirstRender = useRef(true);
-
-  useEffect(() => {
-    isFirstRender.current = true;
-  }, [chatId]);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || !messages.length) return;
+
+    isFirstRender.current = true;
 
     if (isFirstRender.current) {
       el.scrollTop = el.scrollHeight;
