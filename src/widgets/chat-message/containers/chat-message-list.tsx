@@ -6,7 +6,7 @@ import { List, ScrollBar } from "@/shared/ui";
 import s from "./chat-message-list.module.scss";
 
 export function ChatMessageList() {
-  const { scrollRef } = useScrollToBottom();
+  const { scrollRef, refWatchBottom } = useScrollToBottom();
   const { messages, hasChatId } = useGetMessages();
 
   return (
@@ -17,7 +17,10 @@ export function ChatMessageList() {
         renderItem={(group) => (
           <>
             <SubDateContent date={group.date} />
-            <MessageListItem messages={group.messages} />
+            <MessageListItem
+              messages={group.messages}
+              refWatchBottom={refWatchBottom}
+            />
           </>
         )}
         emptyComponent={

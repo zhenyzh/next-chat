@@ -12,12 +12,8 @@ export function useSocketChat() {
     socket.emit(socketEvent.join_chat, chatId);
 
     const unsubscribes = [
-      socketService<ChatOpenDto>(socketEvent.join_chat_success, (chatId) => {
-        console.log("join chat", chatId);
-      }),
-      socketService<ChatOpenDto>(socketEvent.leave_chat_success, (chatId) => {
-        console.log("leave chat", chatId);
-      }),
+      socketService<ChatOpenDto>(socketEvent.join_chat_success, () => {}),
+      socketService<ChatOpenDto>(socketEvent.leave_chat_success, () => {}),
     ];
 
     return () => {
