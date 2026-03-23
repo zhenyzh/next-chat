@@ -14,11 +14,6 @@ export function EmptyContent({ hasMessages, hasChatId }: Props) {
           Кликните на список чтобы увидеть чат
         </Typography>
       )}
-      {hasChatId && (
-        <Typography variant="label" className={s.text}>
-          У вас еще нет диалога
-        </Typography>
-      )}
     </Box>
   );
 }
