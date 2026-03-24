@@ -19,7 +19,7 @@ export function Messages({ message }: MessageProps) {
 
   return (
     <Card className={clsx(s.message, fromMe && s.me)}>
-      <Avatar image={avatarUrl} className={clsx(s.avatar)} />
+      <Avatar image={avatarUrl} className={s.avatar} />
       <Card>
         {text && (
           <Box className={s.bubble}>
