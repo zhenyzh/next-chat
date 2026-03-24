@@ -19,7 +19,7 @@ export function Messages({ message }: MessageProps) {
 
   return (
     <Card className={clsx(s.message, fromMe && s.me)}>
-      <Avatar image={avatarUrl} className={s.avatar} />
+      <Avatar image={avatarUrl} className={clsx(s.avatar)} />
       <Card>
         {text && (
           <Box className={s.bubble}>
@@ -27,9 +27,9 @@ export function Messages({ message }: MessageProps) {
               {name}
             </Typography>
             <MessageText text={text} />
+            <MessageContent {...rest} />
           </Box>
         )}
-        <MessageContent {...rest} />
         <Typography variant="label" className={s.time}>
           {time}
         </Typography>
