@@ -6,8 +6,8 @@ $borderRadius: var(--border-radius-size-s);
 
   .avatar {
     flex-shrink: 0;
-    align-self: flex-start;
-    margin-top: 18px;
+    align-self: flex-end;
+    margin-bottom: 30px;
     z-index: 1;
   }
 
@@ -60,7 +60,7 @@ $borderRadius: var(--border-radius-size-s);
 
   .checkIcons {
     align-self: flex-end;
-    margin-bottom: 5px;
+    margin-bottom: 30px;
     flex-shrink: 0;
   }
 }
@@ -94,7 +94,7 @@ $borderRadius: var(--border-radius-size-s);
     }
   }
 
-  .date {
+  .time {
     align-self: flex-start;
   }
 }
