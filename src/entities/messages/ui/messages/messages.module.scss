@@ -6,8 +6,8 @@ $borderRadius: var(--border-radius-size-s);
 
   .avatar {
     flex-shrink: 0;
-    align-self: flex-end;
-    margin-bottom: 6px;
+    align-self: flex-start;
+    margin-top: 18px;
     z-index: 1;
   }
 
@@ -53,7 +53,7 @@ $borderRadius: var(--border-radius-size-s);
     overflow-wrap: break-word;
   }
 
-  .date {
+  .time {
     font-size: var(--font-size-xs);
     align-self: flex-end;
   }

@@ -1,5 +1,6 @@
 import type { ChatMessageGroup } from "../../model/types";
 import type { MessagesDto } from "@/entities/messages/api";
+import { formatDate_yyyy_MM_dd, formatDate_HH_mm } from "@/shared/utils";
 
 export function groupMessagesByDateUtils(
   messages: MessagesDto[] | undefined,
@@ -10,7 +11,7 @@ export function groupMessagesByDateUtils(
   const map = new Map<string, ChatMessageGroup>();
 
   for (const msg of messages) {
-    const date = new Date(msg.createdAt).toDateString();
+    const date = formatDate_yyyy_MM_dd(msg.createdAt);
 
     let group = map.get(date);
 
@@ -28,6 +29,7 @@ export function groupMessagesByDateUtils(
       chatId: msg.chatId,
       sender: msg.sender,
       content: { text: msg.text },
+      time: formatDate_HH_mm(msg.createdAt),
     });
   }
   return [...map.values()];

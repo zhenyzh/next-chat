@@ -9,6 +9,7 @@ export type Message = {
     email: string;
   };
   content: MessageContentType;
+  time?: string;
 };
 
 export type MessageContentType = {

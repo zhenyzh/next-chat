@@ -7,3 +7,11 @@ export function formatSmartDate(date: string) {
   if (isYesterday(parsedDate)) return "Вчера";
   return format(parsedDate, "dd MMMM yyyy", { locale: ru });
 }
+
+export function formatDate_yyyy_MM_dd(date: string) {
+  return format(new Date(date), "yyyy-MM-dd");
+}
+
+export function formatDate_HH_mm(date: string) {
+  return format(new Date(date), "HH:mm");
+}

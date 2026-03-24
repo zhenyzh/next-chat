@@ -14,12 +14,12 @@ export function Messages({ message }: MessageProps) {
     sender: { avatarUrl, name } = {},
     fromMe,
     content: { text, ...rest },
+    time,
   } = message;
 
   return (
     <Card className={clsx(s.message, fromMe && s.me)}>
       <Avatar image={avatarUrl} className={s.avatar} />
-
       <Card>
         {text && (
           <Box className={s.bubble}>
@@ -29,10 +29,11 @@ export function Messages({ message }: MessageProps) {
             <MessageText text={text} />
           </Box>
         )}
-
         <MessageContent {...rest} />
+        <Typography variant="label" className={s.time}>
+          {time}
+        </Typography>
       </Card>
-
       {fromMe && <CheckCheck className={s.checkIcons} />}
     </Card>
   );
