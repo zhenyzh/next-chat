@@ -21,15 +21,13 @@ export function Messages({ message }: MessageProps) {
     <Card className={clsx(s.message, fromMe && s.me)}>
       <Avatar image={avatarUrl} className={s.avatar} />
       <Card>
-        {text && (
-          <Box className={s.bubble}>
-            <Typography variant="h3" className={s.name}>
-              {name}
-            </Typography>
-            <MessageText text={text} />
-            <MessageContent {...rest} />
-          </Box>
-        )}
+        <Box className={s.bubble}>
+          <Typography variant="h3" className={s.name}>
+            {name}
+          </Typography>
+          {text && <MessageText text={text} />}
+          <MessageContent {...rest} />
+        </Box>
         <Typography variant="label" className={s.time}>
           {time}
         </Typography>
