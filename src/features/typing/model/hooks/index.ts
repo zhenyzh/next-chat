@@ -1,2 +1,2 @@
-export * from "./use-typing-actions-ws";
-export * from "./use-typing-connection-ws";
+export * from "./use-typing-actions-socket";
+export * from "./use-socket-typing";

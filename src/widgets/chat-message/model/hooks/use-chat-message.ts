@@ -1,12 +1,12 @@
 import { useGetMessagesQuery } from "./use-get-messages-query";
-import { useSubscribeNewMessageWS } from "@/features/send-message/model/hooks";
-import { useTypingConnectionWS } from "@/features/typing/model/hooks";
+import { useSubscribeNewMessageSocket } from "@/features/send-message/model/hooks";
+import { useSocketTyping } from "@/features/typing/model/hooks";
 import { useSocketChat } from "@/entities/chats/model/hooks";
 
 export function useChatMessage() {
   useSocketChat();
-  useSubscribeNewMessageWS();
-  useTypingConnectionWS();
+  useSubscribeNewMessageSocket();
+  useSocketTyping();
 
   const { messages, hasChatId, isLoading } = useGetMessagesQuery();
 

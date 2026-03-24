@@ -3,7 +3,7 @@ import { useGetUserQuery } from "@/entities/user/model/hooks";
 import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
 import { getSocket, socketEvent } from "@/shared/socket";
 
-export function useTypingActionsWS(delay: number = 2000) {
+export function useTypingActionsSocket(delay: number = 2000) {
   const { chatId } = useChatsOpenCacheQuery();
   const { user: { id: userId } = {} } = useGetUserQuery();
 

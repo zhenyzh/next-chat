@@ -7,13 +7,13 @@ import { EmojiSmile } from "../ui/emoji-smile";
 import { Sending } from "../ui/sending";
 import { Microphone } from "../ui/microphone";
 import { AddDropdownMenu } from "../ui/add-dropdown-menu";
-import { useTypingActionsWS } from "@/features/typing/model/hooks";
+import { useTypingActionsSocket } from "@/features/typing/model/hooks";
 
 export function SendMessage() {
   const message = useMessage();
   const { setText } = useMessageActions();
   const { textareaRef } = useTextareaFocus();
-  const { sendTyping } = useTypingActionsWS();
+  const { sendTyping } = useTypingActionsSocket();
 
   return (
     <TextareaAutosizeField

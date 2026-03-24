@@ -1,12 +1,12 @@
 import { SendHorizontal } from "lucide-react";
 import { useSendMessage } from "../../model/hooks";
-import { useTypingActionsWS } from "@/features/typing/model/hooks";
+import { useTypingActionsSocket } from "@/features/typing/model/hooks";
 import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
 
 export function Sending() {
   const { chatId } = useChatsOpenCacheQuery();
   const { onSendMessage } = useSendMessage();
-  const { stopTyping } = useTypingActionsWS();
+  const { stopTyping } = useTypingActionsSocket();
 
   const onSending = () => {
     if (!chatId) return;
