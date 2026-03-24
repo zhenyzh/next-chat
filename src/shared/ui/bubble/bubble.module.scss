@@ -1,32 +1,6 @@
 .chatBubble {
   position: relative;
-  padding: 15px;
-  background: var(--color-accent);
-  border-radius: var(--border-radius-size-s);
-  max-width: 60px;
-}
-
-.withTail {
-  &::before, &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 15px;
-  }
-
-  &::before {
-    left: -7px;
-    width: 18px;
-    background-color: var(--color-accent);
-    border-bottom-right-radius: 16px 14px;
-  }
-
-  &::after {
-    left: -26px;
-    width: 26px;
-    background-color: var(--color-bg-primary-v1);
-    border-bottom-right-radius: 10px;
-  }
+  max-width: 100px;
 }
 
 .typingDots {
@@ -35,9 +9,9 @@
 }
 
 .typingDots span {
-  width: 8px;
-  height: 8px;
-  background: var(--color-tertiary);
+  width: 5px;
+  height: 5px;
+  background: var(--color-bg-primary);
   border-radius: 50%;
   animation: bubble 1s infinite;
 }
