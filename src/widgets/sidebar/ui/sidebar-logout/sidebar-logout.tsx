@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import { Logout } from "@/features/auth/logout";
-import { useGetUserQuery } from "@/entities/user/model/hooks";
+import { useGetUserQuery, useHasUserStatus } from "@/entities/user/model/hooks";
 import { UserPreview, UserPreviewSkeleton } from "@/shared/ui";
 import s from "./sidebar-logout.module.scss";
 
@@ -11,6 +11,7 @@ type Props = {
 
 export function SidebarLogout({ collapsed }: Props) {
   const { user, isLoading } = useGetUserQuery();
+  const isOnline = useHasUserStatus(user?.id);
 
   return (
     <>
@@ -21,14 +22,15 @@ export function SidebarLogout({ collapsed }: Props) {
           </Box>
         ) : (
           <UserPreview
-            name={user.name}
+            name={user?.name}
+            isOnline={isOnline}
             rightInfoSlot={
               <Box className={s.rightInfo}>
                 <Logout />
               </Box>
             }
             subInfoSlot={
-              <Typography className={s.subInfo}>{user.email}</Typography>
+              <Typography className={s.subInfo}>{user?.email}</Typography>
             }
           />
         )}

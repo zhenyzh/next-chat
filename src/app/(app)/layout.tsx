@@ -3,6 +3,7 @@
 import { Box } from "@zhenyzh/common-ui/components";
 import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
 import { Sidebar } from "@/widgets/sidebar";
+import { useUserStatusSocket } from "@/entities/user/model/hooks";
 import { useRefresh } from "@/shared/api";
 import s from "./layout.module.scss";
 
@@ -12,6 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const loading = useRefresh();
+  useUserStatusSocket();
 
   if (loading) return <AnimationLogoIcon />;
 

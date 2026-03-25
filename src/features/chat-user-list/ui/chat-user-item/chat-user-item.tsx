@@ -1,14 +1,17 @@
 import { ChatSubContent } from "../chat-sub-content";
 import type { ChatUser } from "../../model/types";
+import { useHasUserStatus } from "@/entities/user/model/hooks";
 import { DateTime, UserPreview } from "@/shared/ui";
 import { formatSmartDate } from "@/shared/utils";
 
 export function ChatUserItem({ user }: { user: ChatUser }) {
+  const isOnline = useHasUserStatus(user.id);
+
   return (
     <UserPreview
       name={user.name}
       avatarUrl={user.avatarUrl}
-      isOnline={user.isOnline}
+      isOnline={isOnline}
       // rightInfoSlot={<DateTime value={formatSmartDate(user.createdAt)} />}
       subInfoSlot={
         <ChatSubContent

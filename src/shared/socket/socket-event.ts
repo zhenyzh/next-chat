@@ -8,6 +8,11 @@ export const socketEvent = {
   stop_typing: "stop_typing",
   user_typing: "user_typing",
   user_stop_typing: "user_stop_typing",
+  user_online_connect: "user_online_connect",
+  user_online: "user_online",
+  user_offline: "user_offline",
+  get_online_users: "get_online_users",
+  online_users: "online_users",
 } as const;
 
 export type SocketEvent = (typeof socketEvent)[keyof typeof socketEvent];
