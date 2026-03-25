@@ -6,10 +6,12 @@ type ContentListProps<T> = {
   renderItem: (item: T, index: number, array: T[]) => React.ReactNode;
   getKey?: (key: T) => React.Key;
   empty?: React.ReactNode;
+  footer?: React.ReactNode;
   headerTitle?: React.ReactNode;
   skeleton?: React.ReactNode;
   className?: string;
   listClassName?: string | ((item: T, index: number, array: T[]) => string);
+  footerClassName?: string;
   skeletonCount?: number;
   isLoading?: boolean;
 };
@@ -21,10 +23,12 @@ export const List = <T,>({
   renderItem,
   getKey,
   empty,
+  footer,
   headerTitle,
   skeleton,
   className,
   listClassName,
+  footerClassName,
   skeletonCount,
   isLoading,
 }: ContentListProps<T>) => {
@@ -50,6 +54,7 @@ export const List = <T,>({
                 </Box>
               ))
             : empty}
+        {footer && <Box className={footerClassName}>{footer}</Box>}
       </Box>
     </>
   );
