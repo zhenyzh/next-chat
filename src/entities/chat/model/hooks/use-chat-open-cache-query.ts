@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { chatsApi } from "@/entities/chats/api";
-import type { ChatOpenDto } from "@/entities/chats/api";
+import { chatApi } from "@/entities/chat/api";
+import type { ChatOpenDto } from "@/entities/chat/api";
 import { queryClient } from "@/shared/query-client";
 
-export function useChatsOpenCacheQuery() {
-  const queryKey = [chatsApi.baseKey];
+export function useChatOpenCacheQuery() {
+  const queryKey = [chatApi.baseKey];
 
   const { data, isLoading } = useQuery({
     queryKey,

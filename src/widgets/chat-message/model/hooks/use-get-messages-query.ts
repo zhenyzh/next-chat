@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { groupMessagesByDateUtils } from "../../lib/utils";
-import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
+import { useChatOpenCacheQuery } from "@/entities/chat/model/hooks";
 import { useGetUserQuery } from "@/entities/user/model/hooks";
 import { messagesApi } from "@/entities/messages/api";
 
 export function useGetMessagesQuery() {
-  const { chatId } = useChatsOpenCacheQuery();
+  const { chatId } = useChatOpenCacheQuery();
   const { user: { id } = {} } = useGetUserQuery();
 
   const { data: messagesData, isLoading } = useQuery({

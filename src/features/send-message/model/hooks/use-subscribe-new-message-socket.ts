@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { messagesApi, type MessagesDto } from "@/entities/messages/api";
-import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
+import { useChatOpenCacheQuery } from "@/entities/chat/model/hooks";
 import { socketEvent, socketService } from "@/shared/socket";
 import { queryClient } from "@/shared/query-client";
 
 export function useSubscribeNewMessageSocket() {
-  const { chatId } = useChatsOpenCacheQuery();
+  const { chatId } = useChatOpenCacheQuery();
 
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;
 

@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../ui/chat-user-item";
 import { useGetChatUserQuery } from "../model/hooks";
-import { useChatsOpenMutation } from "@/entities/chats/model/hooks";
+import { useChatOpenMutation } from "@/entities/chat/model/hooks";
 import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
 import s from "./chat-user-list.module.scss";
 
@@ -25,7 +25,7 @@ export function ChatUserList() {
   // ];
 
   const { userChatList, isLoading } = useGetChatUserQuery();
-  const { handleChatOpen } = useChatsOpenMutation();
+  const { handleChatOpen } = useChatOpenMutation();
   const [activeUserId, setActiveUserId] = useState<number | null>(null);
 
   return (

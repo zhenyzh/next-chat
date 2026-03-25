@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { useGetUserQuery } from "@/entities/user/model/hooks";
-import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
+import { useChatOpenCacheQuery } from "@/entities/chat/model/hooks";
 import { getSocket, socketEvent } from "@/shared/socket";
 
 export function useTypingActionsSocket(delay: number = 2000) {
-  const { chatId } = useChatsOpenCacheQuery();
+  const { chatId } = useChatOpenCacheQuery();
   const { user: { id: userId } = {} } = useGetUserQuery();
 
   const socket = getSocket();

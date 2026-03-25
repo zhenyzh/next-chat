@@ -3,12 +3,12 @@ import { sendMessageApi } from "../../api";
 import { useMessageActions, useMessage } from "../store";
 import { messagesApi, type MessagesDto } from "@/entities/messages/api";
 import { useGetUserQuery } from "@/entities/user/model/hooks";
-import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
+import { useChatOpenCacheQuery } from "@/entities/chat/model/hooks";
 import { queryClient } from "@/shared/query-client";
 
 export function useSendMessage() {
   const { user } = useGetUserQuery();
-  const { chatId } = useChatsOpenCacheQuery();
+  const { chatId } = useChatOpenCacheQuery();
   const message = useMessage();
   const { clearMessage } = useMessageActions();
 

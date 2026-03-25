@@ -1,12 +1,12 @@
 import { useEffect, useRef } from "react";
 import { useChatMessage } from "./use-chat-message";
 import { useTypingUsersIds } from "@/features/typing/model/store";
-import { useChatsOpenCacheQuery } from "@/entities/chats/model/hooks";
+import { useChatOpenCacheQuery } from "@/entities/chat/model/hooks";
 import { useBottomObserver } from "@/shared/hooks";
 
 export function useScrollToBottom() {
   const { messages } = useChatMessage();
-  const { chatId } = useChatsOpenCacheQuery();
+  const { chatId } = useChatOpenCacheQuery();
   const typingUsersIds = useTypingUsersIds();
 
   const { ref: refWatchBottom, isBottom } = useBottomObserver({

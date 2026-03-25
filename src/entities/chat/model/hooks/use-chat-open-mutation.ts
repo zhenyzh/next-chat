@@ -1,12 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
-import { chatsApi } from "@/entities/chats/api";
+import { chatApi } from "@/entities/chat/api";
 import { queryClient } from "@/shared/query-client";
 
-export function useChatsOpenMutation() {
-  const queryKey = [chatsApi.baseKey];
+export function useChatOpenMutation() {
+  const queryKey = [chatApi.baseKey];
 
   const mutation = useMutation({
-    mutationFn: chatsApi.chatOpen,
+    mutationFn: chatApi.chatOpen,
     onSuccess: (data) => {
       queryClient.setQueryData(queryKey, data);
     },
