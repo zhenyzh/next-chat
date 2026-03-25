@@ -6,7 +6,6 @@ import { useChatMessage, useScrollToBottom } from "../model/hooks";
 import { useTypingUsersIds } from "@/features/typing/model/store";
 import { MessagesSkeleton } from "@/entities/messages";
 import { List, ScrollBar } from "@/shared/ui";
-import s from "./chat-message-list.module.scss";
 
 export function ChatMessageList() {
   const { messages, isLoading, hasChatId } = useChatMessage();
@@ -17,7 +16,6 @@ export function ChatMessageList() {
     <ScrollBar ref={scrollRef}>
       <List
         data={messages}
-        className={s.container}
         isLoading={isLoading}
         skeleton={<MessagesSkeleton />}
         renderItem={(group) => (
@@ -27,7 +25,6 @@ export function ChatMessageList() {
               messages={group.messages}
               refWatchBottom={refWatchBottom}
             />
-            {!!typingUsersIds.length && isBottom && <TypingIndicator />}
           </>
         )}
         emptyComponent={
@@ -37,6 +34,7 @@ export function ChatMessageList() {
           />
         }
       />
+      {!!typingUsersIds.length && isBottom && <TypingIndicator />}
     </ScrollBar>
   );
 }
