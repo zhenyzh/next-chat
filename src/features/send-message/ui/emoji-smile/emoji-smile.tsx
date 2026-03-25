@@ -6,10 +6,12 @@ import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
 import { Box } from "@zhenyzh/common-ui/components";
 import { useMessageActions } from "../../model/store";
+import { useTypingActionsSocket } from "@/features/typing/model/hooks";
 import s from "./emoji-smile.module.scss";
 
 export function EmojiSmile() {
   const { appendEmoji } = useMessageActions();
+  const { sendTyping } = useTypingActionsSocket();
 
   return (
     <Box className={s.container}>
@@ -23,6 +25,7 @@ export function EmojiSmile() {
           searchPosition="none"
           onEmojiSelect={(emoji: { native: string }) => {
             appendEmoji(emoji.native);
+            sendTyping();
           }}
         />
       </Box>
