@@ -1,5 +1,6 @@
 .scroll {
   height: 100%;
+  position: relative;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-color: var(--color-bg-hover) transparent;

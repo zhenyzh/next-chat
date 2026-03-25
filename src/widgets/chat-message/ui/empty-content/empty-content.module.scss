@@ -1,14 +1,14 @@
 .container {
-  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .text {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   border-radius: var(--border-radius-size-xxxs);
-  padding: 5px 20px;
+  padding: 5px 30px;
 }

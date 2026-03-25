@@ -5,7 +5,7 @@ type ContentListProps<T> = {
   data: T[] | undefined;
   renderItem: (item: T, index: number, array: T[]) => React.ReactNode;
   getKey?: (key: T) => React.Key;
-  emptyComponent?: React.ReactNode;
+  empty?: React.ReactNode;
   headerTitle?: React.ReactNode;
   skeleton?: React.ReactNode;
   className?: string;
@@ -20,7 +20,7 @@ export const List = <T,>({
   data = [],
   renderItem,
   getKey,
-  emptyComponent,
+  empty,
   headerTitle,
   skeleton,
   className,
@@ -49,7 +49,7 @@ export const List = <T,>({
                   {renderItem(item, index, array)}
                 </Box>
               ))
-            : emptyComponent}
+            : empty}
       </Box>
     </>
   );

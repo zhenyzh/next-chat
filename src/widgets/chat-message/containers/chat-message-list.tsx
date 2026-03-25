@@ -1,3 +1,4 @@
+import { Box } from "@zhenyzh/common-ui/components";
 import { SubDateContent } from "../ui/sub-time-content";
 import { MessageListItem } from "../ui/message-list-item";
 import { EmptyContent } from "../ui/empty-content";
@@ -21,13 +22,10 @@ export function ChatMessageList() {
         renderItem={(group) => (
           <>
             <SubDateContent date={group.date} />
-            <MessageListItem
-              messages={group.messages}
-              refWatchBottom={refWatchBottom}
-            />
+            <MessageListItem messages={group.messages} />
           </>
         )}
-        emptyComponent={
+        empty={
           <EmptyContent
             hasMessages={!!messages?.length}
             hasChatId={hasChatId}
@@ -35,6 +33,7 @@ export function ChatMessageList() {
         }
       />
       {!!typingUsersIds.length && isBottom && <TypingIndicator />}
+      <Box ref={refWatchBottom} style={{ height: 1 }} />
     </ScrollBar>
   );
 }

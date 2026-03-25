@@ -22,13 +22,15 @@ export function useScrollToBottom() {
 
   useEffect(() => {
     const el = scrollRef.current;
-    if (!el || !messages.length) return;
+    if (!el) return;
 
     if (isFirstRender.current) {
       el.scrollTop = el.scrollHeight;
       isFirstRender.current = false;
       return;
     }
+
+    if (!messages.length) return;
 
     const lastGroup = messages[messages.length - 1].messages;
     const lastMessage = lastGroup[lastGroup.length - 1];
