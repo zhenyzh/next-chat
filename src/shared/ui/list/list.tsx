@@ -11,6 +11,7 @@ type ContentListProps<T> = {
   skeleton?: React.ReactNode;
   className?: string;
   listClassName?: string | ((item: T, index: number, array: T[]) => string);
+  headerTitleClassName?: string;
   footerClassName?: string;
   skeletonCount?: number;
   isLoading?: boolean;
@@ -28,13 +29,14 @@ export const List = <T,>({
   skeleton,
   className,
   listClassName,
+  headerTitleClassName,
   footerClassName,
   skeletonCount,
   isLoading,
 }: ContentListProps<T>) => {
   return (
     <>
-      {headerTitle && headerTitle}
+      {headerTitle && <Box className={headerTitleClassName}>{headerTitle}</Box>}
       <Box className={className}>
         {isLoading
           ? Array.from({ length: skeletonCount ?? SKELETON_ITEM_COUNT }).map(
