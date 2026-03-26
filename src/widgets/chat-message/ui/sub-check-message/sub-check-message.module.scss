@@ -1,0 +1,9 @@
+.checkIcons {
+  align-self: flex-end;
+  margin-bottom: 30px;
+  flex-shrink: 0;
+}
+
+.activeCheck {
+  color: var(--color-secondary);
+}
