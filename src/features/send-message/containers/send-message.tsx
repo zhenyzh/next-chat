@@ -7,7 +7,7 @@ import { EmojiSmile } from "../ui/emoji-smile";
 import { Sending } from "../ui/sending";
 import { Microphone } from "../ui/microphone";
 import { AddDropdownMenu } from "../ui/add-dropdown-menu";
-import { useTypingActionsSocket } from "@/features/typing/model/hooks";
+import { useTypingActionsSocket } from "@/features/typing/model/socket";
 
 export function SendMessage() {
   const message = useMessage();

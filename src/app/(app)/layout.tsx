@@ -3,7 +3,7 @@
 import { Box } from "@zhenyzh/common-ui/components";
 import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
 import { Sidebar } from "@/widgets/sidebar";
-import { useUserStatusSocket } from "@/entities/user/model/hooks";
+import { useUserStatusSocket } from "@/entities/user/model/socket";
 import { useRefresh } from "@/shared/api";
 import s from "./layout.module.scss";
 

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useGetUserQuery } from "./use-get-user-query";
+import { useGetUserQuery } from "../hooks/use-get-user-query";
 import { useUsersStatusActions } from "../store/user-status";
 import { socketEvent, getSocket, socketService } from "@/shared/socket";
 

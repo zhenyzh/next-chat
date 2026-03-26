@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import type { ChatOpenDto } from "../../api";
-import { useChatOpenCacheQuery } from "./use-chat-open-cache-query";
+import { useChatOpenCacheQuery } from "../hooks";
 import { getSocket, socketEvent, socketService } from "@/shared/socket";
 
 export function useSocketChat() {

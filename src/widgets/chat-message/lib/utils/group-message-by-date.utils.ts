@@ -29,6 +29,11 @@ export function groupMessagesByDateUtils(
       chatId: msg.chatId,
       sender: msg.sender,
       content: { text: msg.text },
+      statusMessage: {
+        isSent: msg.isSent,
+        isDelivered: msg.isDelivered,
+        isRead: msg.isRead,
+      },
       time: formatDate_HH_mm(msg.createdAt),
     });
   }

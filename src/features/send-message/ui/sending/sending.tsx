@@ -1,6 +1,6 @@
 import { SendHorizontal } from "lucide-react";
 import { useSendMessage } from "../../model/hooks";
-import { useTypingActionsSocket } from "@/features/typing/model/hooks";
+import { useTypingActionsSocket } from "@/features/typing/model/socket";
 import { useChatOpenCacheQuery } from "@/entities/chat/model/hooks";
 
 export function Sending() {

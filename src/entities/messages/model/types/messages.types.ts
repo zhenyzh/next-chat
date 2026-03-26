@@ -9,6 +9,7 @@ export type Message = {
     email: string;
   };
   content: MessageContentType;
+  statusMessage: StatusMessage;
   time?: string;
 };
 
@@ -22,4 +23,10 @@ export type MessageContentType = {
 export type FileAttachment = {
   fileName: string;
   fileUrl: string;
+};
+
+export type StatusMessage = {
+  isSent: boolean;
+  isDelivered: boolean;
+  isRead: boolean;
 };

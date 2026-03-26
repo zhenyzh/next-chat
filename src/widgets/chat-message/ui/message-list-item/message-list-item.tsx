@@ -6,8 +6,6 @@ type Props = {
 };
 
 export const MessageListItem = ({ messages }: Props) => {
-  const isRead = true;
-  console.log({ messages });
   return (
     <>
       {messages.map((message: Message) => (
@@ -15,7 +13,10 @@ export const MessageListItem = ({ messages }: Props) => {
           key={message.id}
           message={message}
           subContent={
-            <SubCheckMessage fromMe={message.fromMe} isRead={isRead} />
+            <SubCheckMessage
+              fromMe={message.fromMe}
+              statusMessage={message.statusMessage}
+            />
           }
         />
       ))}

@@ -1,7 +1,7 @@
 import { useGetMessagesQuery } from "./use-get-messages-query";
-import { useSubscribeNewMessageSocket } from "@/features/send-message/model/hooks";
-import { useSocketTyping } from "@/features/typing/model/hooks";
-import { useSocketChat } from "@/entities/chat/model/hooks";
+import { useSubscribeNewMessageSocket } from "@/features/send-message/model/socket";
+import { useSocketTyping } from "@/features/typing/model/socket";
+import { useSocketChat } from "@/entities/chat/model/socket";
 
 export function useChatMessage() {
   useSocketChat();
