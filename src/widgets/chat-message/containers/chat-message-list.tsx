@@ -36,7 +36,7 @@ export function ChatMessageList() {
         }
         footer={
           <>
-            {!!typingUsersIds.length && <TypingIndicator />}
+            {!!typingUsersIds.length && isBottom && <TypingIndicator />}
             <Box ref={refWatchBottom} style={{ height: 1 }} />
           </>
         }

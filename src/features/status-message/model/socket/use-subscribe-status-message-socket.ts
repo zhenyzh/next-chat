@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { messagesApi } from "@/entities/messages/api";
 import { useChatOpenCacheQuery } from "@/entities/chat/model/hooks";
-import { queryClient } from "@/shared/query-client";
+import { queryClient } from "@/shared/api";
 import { socketEvent, socketService } from "@/shared/socket";
 
 export function useSubscribeStatusMessageSocket() {
