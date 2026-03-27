@@ -3,7 +3,7 @@ import { useLogoutMutation } from "./use-logout-mutation";
 import { useUserActions } from "@/entities/user/model/store";
 import { Paths } from "@/shared/configs";
 import { useTokenService } from "@/shared/token-service";
-import { queryClient } from "@/shared/query-client";
+import { queryClient } from "@/shared/api";
 import { getSocket } from "@/shared/socket";
 
 export function useLogout() {

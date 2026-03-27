@@ -4,7 +4,7 @@ import { useMessageActions, useMessage } from "../store";
 import { messagesApi, type MessagesDto } from "@/entities/messages/api";
 import { useChatOpenCacheQuery } from "@/entities/chat/model/hooks";
 import { useUser } from "@/entities/user/model/store";
-import { queryClient } from "@/shared/query-client";
+import { queryClient } from "@/shared/api";
 
 export function useSendMessage() {
   const user = useUser();

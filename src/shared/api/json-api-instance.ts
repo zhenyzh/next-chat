@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { api } from "./api"; // твой существующий экземпляр
+import { api } from "./api";
 
 export class ApiError extends Error {
   response?: any;
