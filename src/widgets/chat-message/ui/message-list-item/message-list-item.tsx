@@ -1,4 +1,4 @@
-import { SubStatusMessage } from "../sub-check-message";
+import { SubStatusMessage } from "../sub-status-message";
 import { useStatusMessageConnectSocket } from "@/features/status-message/model/socket";
 import { type Message, Messages } from "@/entities/messages";
 
