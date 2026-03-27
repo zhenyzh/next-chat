@@ -21,9 +21,11 @@ export function useChangeStatusMessage({
     if (!fromMe && !isDelivered) {
       onDelivered?.();
     }
+  }, [fromMe, isDelivered, onDelivered]);
 
+  useEffect(() => {
     if (!fromMe && !isRead && isBottom) {
       onRead?.();
     }
-  }, [isDelivered, isRead, fromMe, isBottom, onDelivered, onRead]);
+  }, [fromMe, isRead, isBottom, onRead]);
 }
