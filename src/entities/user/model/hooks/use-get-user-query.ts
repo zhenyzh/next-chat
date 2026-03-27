@@ -7,7 +7,7 @@ export function useGetUserQuery() {
   });
 
   return {
-    user: query.data!,
+    user: query.data,
     isLoading: query.isLoading,
   };
 }

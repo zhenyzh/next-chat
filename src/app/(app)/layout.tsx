@@ -5,6 +5,7 @@ import { Box } from "@zhenyzh/common-ui/components";
 import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
 import { Sidebar } from "@/widgets/sidebar";
 import { useUsersStatusSocket } from "@/features/users-status/model/socket";
+import { useInitializeUser } from "@/entities/user/model/hooks";
 import { useRefresh } from "@/shared/api";
 import s from "./layout.module.scss";
 
@@ -13,10 +14,11 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const loading = useRefresh();
+  const loadingRefresh = useRefresh();
+  const loadingUser = useInitializeUser();
   useUsersStatusSocket();
 
-  if (loading) return <AnimationLogoIcon />;
+  if (loadingRefresh || loadingUser) return <AnimationLogoIcon />;
 
   return (
     <Box className={s.container}>

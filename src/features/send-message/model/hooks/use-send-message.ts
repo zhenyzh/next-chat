@@ -2,12 +2,12 @@ import { useMutation } from "@tanstack/react-query";
 import { sendMessageApi } from "../../api";
 import { useMessageActions, useMessage } from "../store";
 import { messagesApi, type MessagesDto } from "@/entities/messages/api";
-import { useGetUserQuery } from "@/entities/user/model/hooks";
 import { useChatOpenCacheQuery } from "@/entities/chat/model/hooks";
+import { useUser } from "@/entities/user/model/store";
 import { queryClient } from "@/shared/query-client";
 
 export function useSendMessage() {
-  const { user } = useGetUserQuery();
+  const user = useUser();
   const { chatId } = useChatOpenCacheQuery();
   const message = useMessage();
   const { clearMessage } = useMessageActions();

@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useUsersStatusActions } from "../store";
-import { useGetUserQuery } from "@/entities/user/model/hooks";
+import { useUser } from "@/entities/user/model/store";
 import { socketEvent, getSocket, socketService } from "@/shared/socket";
 
 export function useUsersStatusSocket() {
-  const { user: { id: userId } = {} } = useGetUserQuery();
-
+  const { id: userId } = useUser();
   const { setOnlineUsers, setOnlineUser, setOfflineUser } =
     useUsersStatusActions();
 

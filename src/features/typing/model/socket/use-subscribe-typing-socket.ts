@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useTypingUserIdsActions } from "../store";
+import { useTypingUsersIdsActions } from "../store";
 import { socketEvent, socketService } from "@/shared/socket";
 
 export function useSubscribeTypingSocket() {
-  const { addTypingUsers, removeTypingUsers } = useTypingUserIdsActions();
+  const { addTypingUsers, removeTypingUsers } = useTypingUsersIdsActions();
 
   useEffect(() => {
     const unsubscribes = [

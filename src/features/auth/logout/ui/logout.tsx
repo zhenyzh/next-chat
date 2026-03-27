@@ -8,7 +8,12 @@ export function Logout() {
 
   return (
     <Button className={s.container} disabled={isPending}>
-      <LogOut className={s.logout} width={28} height={28} onClick={logout} />
+      <LogOut
+        className={s.loguseUserActionsout}
+        width={28}
+        height={28}
+        onClick={logout}
+      />
     </Button>
   );
 }

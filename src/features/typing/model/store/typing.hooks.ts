@@ -8,5 +8,5 @@ import type { TypingStore } from "./typing.types";
 export const useTypingUsersIds = (): TypingStore["typingUsersIds"] =>
   useTypingStore(typingUsersIdsSelector);
 
-export const useTypingUserIdsActions = (): TypingStore["actions"] =>
+export const useTypingUsersIdsActions = (): TypingStore["actions"] =>
   useTypingStore(typingUsersActionsSelector);
