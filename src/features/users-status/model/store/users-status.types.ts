@@ -1,10 +1,10 @@
-export type UserStatusStore = UserStatus & { actions: UserStatusActions };
+export type UsersStatusStore = UsersStatus & { actions: UsersStatusActions };
 
-export type UserStatus = {
+export type UsersStatus = {
   usersStatus: number[];
 };
 
-export type UserStatusActions = {
+export type UsersStatusActions = {
   setOnlineUsers: (users: number[]) => void;
   setOnlineUser: (id: number) => void;
   setOfflineUser: (id: number) => void;

@@ -1,7 +1,8 @@
 import clsx from "clsx";
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import { Logout } from "@/features/auth/logout";
-import { useGetUserQuery, useHasUserStatus } from "@/entities/user/model/hooks";
+import { useHasUserStatus } from "@/features/users-status/model/hooks";
+import { useGetUserQuery } from "@/entities/user/model/hooks";
 import { UserPreview, UserPreviewSkeleton } from "@/shared/ui";
 import s from "./sidebar-logout.module.scss";
 

@@ -1,12 +1,12 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import type { UserStatus, UserStatusStore } from "./user-status.types";
+import type { UsersStatus, UsersStatusStore } from "./users-status.types";
 
-const defaultMessage: UserStatus = {
+const defaultMessage: UsersStatus = {
   usersStatus: [],
 };
 
-export const useUsersStatusStore = create<UserStatusStore>()(
+export const useUsersStatusStore = create<UsersStatusStore>()(
   immer((set) => ({
     ...defaultMessage,
 

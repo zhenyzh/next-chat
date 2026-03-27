@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useGetUserQuery } from "../hooks/use-get-user-query";
-import { useUsersStatusActions } from "../store/user-status";
+import { useUsersStatusActions } from "../store";
+import { useGetUserQuery } from "@/entities/user/model/hooks";
 import { socketEvent, getSocket, socketService } from "@/shared/socket";
 
-export function useUserStatusSocket() {
+export function useUsersStatusSocket() {
   const { user: { id: userId } = {} } = useGetUserQuery();
 
   const { setOnlineUsers, setOnlineUser, setOfflineUser } =

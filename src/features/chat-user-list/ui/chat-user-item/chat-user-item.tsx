@@ -1,6 +1,6 @@
 import { ChatSubContent } from "../chat-sub-content";
 import type { ChatUser } from "../../model/types";
-import { useHasUserStatus } from "@/entities/user/model/hooks";
+import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import { DateTime, UserPreview } from "@/shared/ui";
 import { formatSmartDate } from "@/shared/utils";
 

@@ -1,4 +1,4 @@
-import { useUsersStatus } from "../store/user-status";
+import { useUsersStatus } from "../store";
 
 export function useHasUserStatus(userId: number) {
   const usersStatus = useUsersStatus();
