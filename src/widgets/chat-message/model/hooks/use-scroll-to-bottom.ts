@@ -30,12 +30,11 @@ export function useScrollToBottom() {
     const lastGroup = messages[messages.length - 1].messages;
     const isLastFromMe = lastGroup[lastGroup.length - 1].fromMe;
 
-    if (isLastFromMe || isBottom) {
+    if (isLastFromMe) {
       scrollToBottom();
     }
-  }, [messages, isBottom, chatId]);
+  }, [messages]);
 
-  // находимся в конце, под скроллим новые сообщения
   useEffect(() => {
     if (isBottom) {
       scrollToBottom();
