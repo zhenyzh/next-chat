@@ -1,4 +1,5 @@
 import type { User } from "@/entities/user/model/types";
+import type { StatusMessage } from "@/entities/messages";
 
 export type MessagesDto = {
   id: number;
@@ -7,8 +8,5 @@ export type MessagesDto = {
   sender: User;
   text: string;
   createdAt: string;
-  isSent: boolean;
-  isDelivered: boolean;
-  isRead: boolean;
   clientId?: string;
-};
+} & StatusMessage;
