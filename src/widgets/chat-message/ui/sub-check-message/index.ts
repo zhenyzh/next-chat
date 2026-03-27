@@ -1,1 +1,1 @@
-export * from "./sub-check-message";
+export * from "./sub-status-message";

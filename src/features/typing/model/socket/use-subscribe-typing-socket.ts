@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useTypingUserIdsActions } from "../store";
 import { socketEvent, socketService } from "@/shared/socket";
 
-export function useSocketTyping() {
+export function useSubscribeTypingSocket() {
   const { addTypingUsers, removeTypingUsers } = useTypingUserIdsActions();
 
   useEffect(() => {

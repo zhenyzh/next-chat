@@ -1,2 +1,2 @@
 export * from "./use-typing-actions-socket";
-export * from "../socket/use-socket-typing";
+export * from "./use-subscribe-typing-socket";

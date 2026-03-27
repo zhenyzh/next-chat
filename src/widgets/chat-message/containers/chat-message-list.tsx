@@ -25,7 +25,7 @@ export function ChatMessageList() {
         renderItem={(group) => (
           <>
             <SubDateContent date={group.date} />
-            <MessageListItem messages={group.messages} />
+            <MessageListItem messages={group.messages} isBottom={isBottom} />
           </>
         )}
         empty={

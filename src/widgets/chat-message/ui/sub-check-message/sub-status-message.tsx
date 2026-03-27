@@ -1,20 +1,39 @@
 import clsx from "clsx";
 import { CheckCheck, Check } from "lucide-react";
+import { useChangeStatusMessage } from "../../model/hooks";
 import type { StatusMessage } from "@/entities/messages";
-import s from "./sub-check-message.module.scss";
+import s from "./sub-status-message.module.scss";
 
 type Props = {
   fromMe: boolean;
   statusMessage: StatusMessage;
+  onDelivered?: () => void;
+  onRead?: () => void;
+  isBottom?: boolean;
 };
 
-export function SubCheckMessage({ fromMe, statusMessage }: Props) {
+export function SubStatusMessage({
+  fromMe,
+  statusMessage,
+  onDelivered,
+  onRead,
+  isBottom,
+}: Props) {
   const { isSent, isDelivered, isRead } = statusMessage;
+
+  useChangeStatusMessage({
+    fromMe,
+    isDelivered,
+    isRead,
+    onDelivered,
+    onRead,
+    isBottom,
+  });
 
   return (
     fromMe && (
       <>
-        {isSent && <Check className={s.checkIcons} />}
+        {isSent && !isDelivered && <Check className={s.checkIcons} />}
         {isDelivered && (
           <CheckCheck
             className={clsx(

@@ -13,6 +13,8 @@ export const socketEvent = {
   user_offline: "user_offline",
   get_online_users: "get_online_users",
   online_users: "online_users",
+  message_delivered: "message_delivered",
+  message_read: "message_read",
 } as const;
 
 export type SocketEvent = (typeof socketEvent)[keyof typeof socketEvent];
