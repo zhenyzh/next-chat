@@ -3,12 +3,12 @@ import { SubDateContent } from "../ui/sub-time-content";
 import { MessageListItem } from "../ui/message-list-item";
 import { EmptyContent } from "../ui/empty-content";
 import { TypingIndicator } from "../ui/typing-indicator";
+import { DownButton } from "../ui/down-button";
 import { useChatMessage, useScrollToBottom } from "../model/hooks";
 import { useTypingUsersIds } from "@/features/typing/model/store";
 import { MessagesSkeleton } from "@/entities/messages";
 import { List, ScrollBar } from "@/shared/ui";
 import s from "./chat-message-list.module.scss";
-import { DownButton } from "@/widgets/chat-message/ui/down-button";
 
 export function ChatMessageList() {
   const { messages, isLoading, hasChatId } = useChatMessage();
