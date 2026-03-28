@@ -4,7 +4,7 @@ import { Button } from "@zhenyzh/common-ui/components";
 import { useMessageFieldHeightResize } from "@/features/message-field-height-resize/model/store";
 import s from "./down-button.module.scss";
 
-export function DownButton({ onClick }: { onClick?: () => void }) {
+export function DownButton({ onClick }: { onClick: () => void }) {
   const height = useMessageFieldHeightResize();
 
   return (
