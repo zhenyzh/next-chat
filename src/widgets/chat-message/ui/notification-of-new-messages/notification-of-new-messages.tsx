@@ -5,7 +5,7 @@ export function NotificationOfNewMessages() {
   return (
     <Box className={s.container}>
       <Typography variant="label" className={s.text}>
-        У вас новое сообщение
+        Непрочитанные сообщения
       </Typography>
     </Box>
   );
