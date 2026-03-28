@@ -7,6 +7,7 @@ import { messagesApi } from "@/entities/messages/api";
 export function useGetMessagesQuery() {
   const { chatId } = useChatOpenCacheQuery();
   const { id } = useUser();
+
   const { data: messagesData, isLoading } = useQuery({
     ...messagesApi.getMessageQueryOptions({ chatId }),
     enabled: !!chatId,

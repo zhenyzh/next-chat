@@ -1,0 +1,13 @@
+.container {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border-radius: var(--border-radius-size-xxxs);
+  margin: 0 10px;
+}
+
+.text {
+  display: block;
+  text-align: center;
+  color: var(--color-text-primary);
+}
+
