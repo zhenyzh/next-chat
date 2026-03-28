@@ -3,7 +3,6 @@
 import React from "react";
 import clsx from "clsx";
 import { Avatar, Box, Typography } from "@zhenyzh/common-ui/components";
-
 import s from "./user-preview.module.scss";
 
 export type UserCardPreviewsProps = {
