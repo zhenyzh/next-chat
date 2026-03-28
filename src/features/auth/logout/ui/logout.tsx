@@ -7,13 +7,8 @@ export function Logout() {
   const { logout, isPending } = useLogout();
 
   return (
-    <Button className={s.container} disabled={isPending}>
-      <LogOut
-        className={s.loguseUserActionsout}
-        width={28}
-        height={28}
-        onClick={logout}
-      />
+    <Button className={s.container} disabled={isPending} onClick={logout}>
+      <LogOut width={28} height={28} />
     </Button>
   );
 }

@@ -47,5 +47,5 @@ export function useScrollToBottom() {
     }
   }, [typingUsersIds, isBottom]);
 
-  return { scrollRef, refWatchBottom, isBottom };
+  return { scrollRef, refWatchBottom, isBottom, scrollToBottom };
 }

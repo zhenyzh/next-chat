@@ -8,11 +8,13 @@ import { useTypingUsersIds } from "@/features/typing/model/store";
 import { MessagesSkeleton } from "@/entities/messages";
 import { List, ScrollBar } from "@/shared/ui";
 import s from "./chat-message-list.module.scss";
+import { DownButton } from "@/widgets/chat-message/ui/down-button";
 
 export function ChatMessageList() {
   const { messages, isLoading, hasChatId } = useChatMessage();
-  const { scrollRef, refWatchBottom, isBottom } = useScrollToBottom();
   const typingUsersIds = useTypingUsersIds();
+  const { scrollRef, refWatchBottom, isBottom, scrollToBottom } =
+    useScrollToBottom();
 
   return (
     <ScrollBar className={s.scrollList} ref={scrollRef}>
@@ -36,6 +38,7 @@ export function ChatMessageList() {
         }
         footer={
           <>
+            {hasChatId && !isBottom && <DownButton onClick={scrollToBottom} />}
             {!!typingUsersIds.length && isBottom && <TypingIndicator />}
             <Box ref={refWatchBottom} style={{ height: 1 }} />
           </>
