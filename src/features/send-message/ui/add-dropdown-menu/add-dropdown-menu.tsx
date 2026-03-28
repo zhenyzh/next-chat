@@ -1,6 +1,7 @@
 import React from "react";
 import { Camera, CirclePlus, File } from "lucide-react";
 import {
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -17,7 +18,9 @@ export function AddDropdownMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className={s.triggerMenu}>
-        <CirclePlus className={s.pointer} />
+        <Button style={{ display: "contents" }} variant="outline">
+          <CirclePlus className={s.pointer} />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         {dropdownMenuItem.map((item, i) => (

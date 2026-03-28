@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { Smile } from "lucide-react";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
-import { Box } from "@zhenyzh/common-ui/components";
+import { Box, Button } from "@zhenyzh/common-ui/components";
 import { useMessageActions } from "../../model/store";
 import { useTypingActionsSocket } from "@/features/typing/model/socket";
 import s from "./emoji-smile.module.scss";
@@ -15,7 +15,10 @@ export function EmojiSmile() {
 
   return (
     <Box className={s.container}>
-      <Smile className={clsx(s.pointer, s.marginEmoji)} />
+      <Button className={s.button} variant="outline">
+        <Smile className={s.marginEmoji} />
+      </Button>
+
       <Box className={clsx(s.positionPicker, s.block)}>
         <Picker
           data={data}
