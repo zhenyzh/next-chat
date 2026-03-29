@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLoginMutation } from "./use-login-mutation";
+import { useLoginAction } from "./use-login-action";
 import type { LoginFormValues } from "../types";
 import { loginSchema } from "../shemas";
 import { Paths } from "@/shared/configs";
@@ -9,7 +9,7 @@ import { useTokenService } from "@/shared/token-service";
 
 export function useLogin() {
   const router = useRouter();
-  const mutation = useLoginMutation();
+  const mutation = useLoginAction();
   const tokenService = useTokenService();
 
   const form = useForm<LoginFormValues>({

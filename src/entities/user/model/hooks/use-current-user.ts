@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { userApi } from "@/entities/user/api";
 
-export function useGetUserQuery() {
+export function useCurrentUser() {
   const query = useQuery({
     ...userApi.getUserQueryOptions(),
   });

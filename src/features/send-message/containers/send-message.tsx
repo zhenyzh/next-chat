@@ -7,13 +7,13 @@ import { EmojiSmile } from "../ui/emoji-smile";
 import { Sending } from "../ui/sending";
 import { Microphone } from "../ui/microphone";
 import { AddDropdownMenu } from "../ui/add-dropdown-menu";
-import { useTypingActionsSocket } from "@/features/typing/model/socket";
+import { useTypingActions } from "@/features/typing/model/socket";
 import { useMessageFieldAutoHeight } from "@/features/message-field-auto-height/model/hooks";
 
 export function SendMessage() {
   const message = useMessage();
   const { setText } = useMessageActions();
-  const { sendTyping } = useTypingActionsSocket();
+  const { sendTyping } = useTypingActions();
   const { textareaRef } = useTextareaFocus();
   const { heightResizeRef } = useMessageFieldAutoHeight();
 

@@ -3,7 +3,7 @@ import { chatApi } from "@/entities/chat/api";
 import type { ChatOpenDto } from "@/entities/chat/api";
 import { queryClient } from "@/shared/api";
 
-export function useChatOpenCacheQuery() {
+export function useOpenCurrentChat() {
   const queryKey = [chatApi.baseKey];
 
   const { data, isLoading } = useQuery({

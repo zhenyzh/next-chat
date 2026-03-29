@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useGetUserQuery } from "./use-get-user-query";
+import { useCurrentUser } from "./use-current-user";
 import { useUserActions } from "../store";
 
 export function useInitializeUser() {
-  const { user, isLoading } = useGetUserQuery();
+  const { user, isLoading } = useCurrentUser();
   const { setUser } = useUserActions();
 
   useEffect(() => {

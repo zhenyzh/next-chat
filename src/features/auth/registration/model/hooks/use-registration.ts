@@ -1,14 +1,14 @@
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRegistrationMutation } from "./use-registration-mutation";
+import { useRegistrationAction } from "./use-registration-action";
 import type { RegistrationFormValues } from "../types";
 import { registrationSchema } from "../shemas";
 import { Paths } from "@/shared/configs";
 
 export function useRegistration() {
   const router = useRouter();
-  const mutation = useRegistrationMutation();
+  const mutation = useRegistrationAction();
 
   const form = useForm<RegistrationFormValues>({
     defaultValues: {

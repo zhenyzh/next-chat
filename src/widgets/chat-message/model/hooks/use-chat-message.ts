@@ -1,16 +1,16 @@
-import { useGetMessagesQuery } from "./use-get-messages-query";
-import { useSubscribeNewMessageSocket } from "@/features/send-message/model/socket";
-import { useSubscribeTypingSocket } from "@/features/typing/model/socket";
-import { useSubscribeStatusMessageSocket } from "@/features/status-message/model/socket";
-import { useSocketChat } from "@/entities/chat/model/socket";
+import { useMessages } from "./use-messages";
+import { useSubscribeNewMessage } from "@/features/send-message/model/socket";
+import { useSubscribeTyping } from "@/features/typing/model/socket";
+import { useSubscribeStatusMessage } from "@/features/status-message/model/socket";
+import { useChatConnection } from "@/entities/chat/model/socket";
 
 export function useChatMessage() {
-  useSocketChat();
-  useSubscribeNewMessageSocket();
-  useSubscribeTypingSocket();
-  useSubscribeStatusMessageSocket();
+  useChatConnection();
+  useSubscribeNewMessage();
+  useSubscribeTyping();
+  useSubscribeStatusMessage();
 
-  const { messages, hasChatId, isLoading } = useGetMessagesQuery();
+  const { messages, hasChatId, isLoading } = useMessages();
 
   return {
     messages,

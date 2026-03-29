@@ -1,2 +1,2 @@
-export * from "./use-get-user-query";
+export * from "./use-current-user";
 export * from "./use-initialize-user";

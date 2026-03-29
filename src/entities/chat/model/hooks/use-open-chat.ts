@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { chatApi } from "@/entities/chat/api";
 import { queryClient } from "@/shared/api";
 
-export function useChatOpenMutation() {
+export function useOpenChat() {
   const queryKey = [chatApi.baseKey];
 
   const mutation = useMutation({

@@ -1,2 +1,2 @@
-export * from "./use-chat-open-mutation";
-export * from "./use-chat-open-cache-query";
+export * from "./use-open-chat";
+export * from "./use-open-current-chat";

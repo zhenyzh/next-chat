@@ -1,1 +1,1 @@
-export * from "./use-subscribe-new-message-socket";
+export * from "./use-subscribe-new-message";

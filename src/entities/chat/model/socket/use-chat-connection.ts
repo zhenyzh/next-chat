@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import type { ChatOpenDto } from "../../api";
-import { useChatOpenCacheQuery } from "../hooks";
+import { useOpenCurrentChat } from "../hooks";
 import { getSocket, socketEvent, socketService } from "@/shared/socket";
 
-export function useSocketChat() {
-  const { chatId } = useChatOpenCacheQuery();
+export function useChatConnection() {
+  const { chatId } = useOpenCurrentChat();
 
   useEffect(() => {
     if (!chatId) return;

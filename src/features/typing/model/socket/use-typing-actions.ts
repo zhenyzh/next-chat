@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { useUser } from "@/entities/user/model/store";
-import { useChatOpenCacheQuery } from "@/entities/chat/model/hooks";
+import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
 import { getSocket, socketEvent } from "@/shared/socket";
 
-export function useTypingActionsSocket(delay: number = 2000) {
-  const { chatId } = useChatOpenCacheQuery();
+export function useTypingActions(delay: number = 2000) {
+  const { chatId } = useOpenCurrentChat();
   const { id: userId } = useUser();
 
   const socket = getSocket();

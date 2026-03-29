@@ -3,7 +3,7 @@ import { useUsersStatusActions } from "../store";
 import { useUser } from "@/entities/user/model/store";
 import { socketEvent, getSocket, socketService } from "@/shared/socket";
 
-export function useUsersStatusSocket() {
+export function useSubscribeUsersStatus() {
   const { id: userId } = useUser();
   const { setOnlineUsers, setOnlineUser, setOfflineUser } =
     useUsersStatusActions();

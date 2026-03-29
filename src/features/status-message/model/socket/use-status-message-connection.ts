@@ -1,6 +1,6 @@
 import { getSocket, socketEvent } from "@/shared/socket";
 
-export function useStatusMessageConnectSocket() {
+export function useStatusMessageConnection() {
   const socket = getSocket();
 
   const markAsDelivered = (messageId: number, chatId: number | undefined) => {

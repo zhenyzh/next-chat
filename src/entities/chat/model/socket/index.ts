@@ -1,1 +1,1 @@
-export * from "./use-socket-chat";
+export * from "./use-chat-connection";

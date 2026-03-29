@@ -2,7 +2,7 @@ import type { ChatMessageGroup } from "../../model/types";
 import type { MessagesDto } from "@/entities/messages/api";
 import { formatDate_yyyy_MM_dd, formatDate_HH_mm } from "@/shared/utils";
 
-export function groupMessagesByDateUtils(
+export function groupMessagesByDate(
   messages: MessagesDto[] | undefined,
   userIdMe?: number,
 ): ChatMessageGroup[] {

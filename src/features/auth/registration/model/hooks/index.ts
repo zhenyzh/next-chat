@@ -1,2 +1,2 @@
-export * from "./use-registration-mutation";
+export * from "./use-registration-action";
 export * from "./use-registration";

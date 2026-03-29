@@ -1,6 +1,6 @@
 import type { Message } from "@/entities/messages";
 
-export function firstIndexUnreadMessageUtils(messages: Message[]) {
+export function firstIndexUnreadMessage(messages: Message[]) {
   const firstIndexUnread = messages.findIndex(
     (msg) => !msg.fromMe && !msg.statusMessage.isRead,
   );

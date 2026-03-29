@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import { Box } from "@zhenyzh/common-ui/components";
 import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
 import { Sidebar } from "@/widgets/sidebar";
-import { useUsersStatusSocket } from "@/features/users-status/model/socket";
+import { useSubscribeUsersStatus } from "@/features/users-status/model/socket";
 import { useInitializeUser } from "@/entities/user/model/hooks";
 import { useRefresh } from "@/shared/api";
 import s from "./layout.module.scss";
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   const loadingRefresh = useRefresh();
   const loadingUser = useInitializeUser();
-  useUsersStatusSocket();
+  useSubscribeUsersStatus();
 
   if (loadingRefresh || loadingUser) return <AnimationLogoIcon />;
 
