@@ -1,7 +1,7 @@
 import { Box, Typography } from "@zhenyzh/common-ui/components";
-import s from "./notification-of-new-messages.module.scss";
+import s from "./unread-messages.module.scss";
 
-export function NotificationOfNewMessages() {
+export function UnreadMessages() {
   return (
     <Box className={s.container}>
       <Typography variant="label" className={s.text}>

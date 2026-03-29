@@ -1,8 +1,8 @@
-import { useMessageFieldHeightResizeActions } from "../store";
+import { useMessageFieldHeightActions } from "../store";
 import { useHeightResizeObserver } from "@/shared/hooks";
 
-export function useMessageFieldHeightResize() {
-  const { setHeight } = useMessageFieldHeightResizeActions();
+export function useMessageFieldAutoHeight() {
+  const { setHeight } = useMessageFieldHeightActions();
   const { ref: heightResizeRef } = useHeightResizeObserver((height) =>
     setHeight(height),
   );

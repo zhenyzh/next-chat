@@ -1,11 +1,11 @@
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@zhenyzh/common-ui/components";
-import { useMessageFieldHeightResize } from "@/features/message-field-height-resize/model/store";
+import { useMessageFieldHeight } from "@/features/message-field-auto-height/model/store";
 import s from "./down-button.module.scss";
 
 export function DownButton({ onClick }: { onClick: () => void }) {
-  const height = useMessageFieldHeightResize();
+  const height = useMessageFieldHeight();
 
   return (
     <Button

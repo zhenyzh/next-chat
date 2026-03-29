@@ -8,14 +8,14 @@ import { Sending } from "../ui/sending";
 import { Microphone } from "../ui/microphone";
 import { AddDropdownMenu } from "../ui/add-dropdown-menu";
 import { useTypingActionsSocket } from "@/features/typing/model/socket";
-import { useMessageFieldHeightResize } from "@/features/message-field-height-resize/model/hooks";
+import { useMessageFieldAutoHeight } from "@/features/message-field-auto-height/model/hooks";
 
 export function SendMessage() {
   const message = useMessage();
   const { setText } = useMessageActions();
   const { sendTyping } = useTypingActionsSocket();
   const { textareaRef } = useTextareaFocus();
-  const { heightResizeRef } = useMessageFieldHeightResize();
+  const { heightResizeRef } = useMessageFieldAutoHeight();
 
   return (
     <TextareaAutosizeField

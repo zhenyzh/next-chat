@@ -1,6 +1,6 @@
 import { Box } from "@zhenyzh/common-ui/components";
 import { SubStatusMessage } from "../sub-status-message";
-import { NotificationOfNewMessages } from "../notification-of-new-messages";
+import { UnreadMessages } from "../unread-messages";
 import { firstIndexUnreadMessageUtils } from "../../lib/utils";
 import { useStatusMessageConnectSocket } from "@/features/status-message/model/socket";
 import { type Message, Messages } from "@/entities/messages";
@@ -18,7 +18,7 @@ export const MessageListItem = ({ messages, isBottom }: Props) => {
     <>
       {messages.map((message: Message, index) => (
         <Box key={message.id}>
-          {firstIndex === index && !isBottom && <NotificationOfNewMessages />}
+          {firstIndex === index && !isBottom && <UnreadMessages />}
           <Messages
             message={message}
             subContent={

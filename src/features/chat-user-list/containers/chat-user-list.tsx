@@ -19,7 +19,6 @@ export function ChatUserList() {
   //     createdAt: "Fri Jan 12 1992 16:02:57",
   //     lastMessage: "Привет сосед",
   //     isRead: true,
-  //     isOnline: true,
   //     countMessage: 100,
   //   },
   // ];
