@@ -8,9 +8,9 @@ import { useChatMessage, useScrollToBottom } from "../model/hooks";
 import { useTypingUsersIds } from "@/features/typing/model/store";
 import { MessagesSkeleton } from "@/entities/messages";
 import { List, ScrollBar } from "@/shared/ui";
-import s from "./chat-message-list.module.scss";
+import s from "./chat-messages-list.module.scss";
 
-export function ChatMessageList() {
+export function ChatMessagesList() {
   const { messages, isLoading, hasChatId } = useChatMessage();
   const typingUsersIds = useTypingUsersIds();
   const { scrollRef, refWatchBottom, isBottom, scrollToBottom } =
