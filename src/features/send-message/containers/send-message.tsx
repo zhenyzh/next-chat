@@ -8,7 +8,7 @@ import { Sending } from "../ui/sending";
 import { Microphone } from "../ui/microphone";
 import { AddDropdownMenu } from "../ui/add-dropdown-menu";
 import { useTypingActions } from "@/features/typing/model/socket";
-import { useMessageFieldAutoHeight } from "@/features/message-field-auto-height/model/hooks";
+import { useMessageFieldAutoHeight } from "@/features/message-field-height/model/hooks";
 
 export function SendMessage() {
   const message = useMessage();
