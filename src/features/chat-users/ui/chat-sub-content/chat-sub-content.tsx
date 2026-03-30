@@ -11,13 +11,21 @@ type Props = {
   message: string | null;
   status: StatusMessage;
   countMessage?: number;
+  typingMe?: boolean;
 };
 
-export function ChatSubContent({ message, status, countMessage }: Props) {
+export function ChatSubContent({
+  message,
+  status,
+  countMessage,
+  typingMe,
+}: Props) {
+  const printMe = typingMe && `Вы:${message}`;
+
   return (
     <Box className={clsx(s.container, s.shrink)}>
       <Typography variant="label" className={s.ellipsis}>
-        {message}
+        {typingMe ? printMe && `Вы:${message}` : message}
       </Typography>
       <Box className={s.shrink}>
         {status?.isRead || !countMessage ? (

@@ -6,4 +6,5 @@ export type ChatUsers = {
   lastMessage: string;
   countUnreadMessage: number;
   status: StatusMessage;
+  typingMe: boolean;
 } & Omit<User, "email">;
