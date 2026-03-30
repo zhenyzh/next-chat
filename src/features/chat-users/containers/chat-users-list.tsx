@@ -10,42 +10,29 @@ import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
 import s from "./chat-users-list.module.scss";
 
 export function ChatUsersList() {
-  // const item: ChatUsers[] = [
-  //   {
-  //     id: "1",
-  //     name: "Иванов Иван",
-  //     avatarUrl:
-  //       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr-oM39OqBCgUncMTs88Hk7fWuEPiihQaxmw&s",
-  //     createdAt: "Fri Jan 12 1992 16:02:57",
-  //     lastMessage: "Привет сосед",
-  //     isRead: true,
-  //     countMessage: 100,
-  //   },
-  // ];
-
-  const { userChatList, isLoading } = useUsersChat();
+  const { usersChat, isLoading } = useUsersChat();
   const { handleChatOpen } = useOpenChat();
   const [activeUserId, setActiveUserId] = useState<number | null>(null);
 
   return (
     <ScrollBar>
       <List
-        data={userChatList}
+        data={usersChat}
         getKey={(key) => key.id}
         isLoading={isLoading}
         skeleton={<UserPreviewSkeleton />}
         className={s.container}
-        listClassName={(user) =>
-          clsx(s.list, user.id === activeUserId && s.active)
+        listClassName={(item) =>
+          clsx(s.list, item.id === activeUserId && s.active)
         }
-        renderItem={(user) => (
+        renderItem={(item) => (
           <Box
             onClick={() => {
-              handleChatOpen(user.id);
-              setActiveUserId(user.id);
+              handleChatOpen(item.id);
+              setActiveUserId(item.id);
             }}
           >
-            <ChatUserItem user={user} />
+            <ChatUserItem data={item} />
           </Box>
         )}
       />

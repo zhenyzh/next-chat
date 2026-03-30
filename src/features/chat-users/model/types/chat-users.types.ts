@@ -1,10 +1,9 @@
+import type { User } from "@/entities/user/model/types";
+import type { StatusMessage } from "@/entities/messages";
+
 export type ChatUsers = {
-  id: number;
-  name: string;
   createdAt: string;
   lastMessage: string;
-  isRead: boolean;
-  isOnline: boolean;
-  countMessage: number;
-  avatarUrl?: string;
-};
+  countUnreadMessage: number;
+  status: StatusMessage;
+} & Omit<User, "email">;

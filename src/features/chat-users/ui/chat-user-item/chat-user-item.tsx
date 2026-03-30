@@ -4,20 +4,20 @@ import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import { DateTime, UserPreview } from "@/shared/ui";
 import { formatSmartDate } from "@/shared/utils";
 
-export function ChatUserItem({ user }: { user: ChatUsers }) {
-  const isOnline = useHasUserStatus(user.id);
+export function ChatUserItem({ data }: { data: ChatUsers }) {
+  const isOnline = useHasUserStatus(data.id);
 
   return (
     <UserPreview
-      name={user.name}
-      avatarUrl={user.avatarUrl}
+      name={data.name}
+      avatarUrl={data?.avatarUrl}
       isOnline={isOnline}
-      // rightInfoSlot={<DateTime value={formatSmartDate(user.createdAt)} />}
+      rightInfoSlot={<DateTime value={formatSmartDate(data.createdAt)} />}
       subInfoSlot={
         <ChatSubContent
-          message={user.lastMessage}
-          isRead={user.isRead}
-          countMessage={user.countMessage}
+          message={data.lastMessage}
+          status={data.status}
+          countMessage={data.countUnreadMessage}
         />
       }
     />

@@ -9,7 +9,7 @@ export const chatUsersApi = {
     return queryOptions({
       queryKey: [chatUsersApi.baseKey, "list"],
       queryFn: (meta) =>
-        jsonApiInstance<ChatUsersDto[]>("users", { signal: meta.signal }),
+        jsonApiInstance<ChatUsersDto[]>("chat-users", { signal: meta.signal }),
     });
   },
 };
