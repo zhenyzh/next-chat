@@ -5,7 +5,7 @@ export function firstIndexUnreadMessage(messages: Message[]) {
     (msg) => !msg.fromMe && !msg.statusMessage.isRead,
   );
 
-  if (firstIndexUnread === -1) return;
-
-  return firstIndexUnread;
+  if (firstIndexUnread !== -1) {
+    return firstIndexUnread;
+  }
 }
