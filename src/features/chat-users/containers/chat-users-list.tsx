@@ -7,10 +7,10 @@ import { ChatUserItem } from "../ui/chat-user-item";
 import { useUsersChat } from "../model/hooks";
 import { useOpenChat } from "@/entities/chat/model/hooks";
 import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
-import s from "./chat-user-list.module.scss";
+import s from "./chat-users-list.module.scss";
 
-export function ChatUserList() {
-  // const item: ChatUser[] = [
+export function ChatUsersList() {
+  // const item: ChatUsers[] = [
   //   {
   //     id: "1",
   //     name: "Иванов Иван",

@@ -1,10 +1,10 @@
 import { ChatSubContent } from "../chat-sub-content";
-import type { ChatUser } from "../../model/types";
+import type { ChatUsers } from "../../model/types";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import { DateTime, UserPreview } from "@/shared/ui";
 import { formatSmartDate } from "@/shared/utils";
 
-export function ChatUserItem({ user }: { user: ChatUser }) {
+export function ChatUserItem({ user }: { user: ChatUsers }) {
   const isOnline = useHasUserStatus(user.id);
 
   return (

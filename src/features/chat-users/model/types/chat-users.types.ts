@@ -1,4 +1,4 @@
-export type ChatUser = {
+export type ChatUsers = {
   id: number;
   name: string;
   createdAt: string;
