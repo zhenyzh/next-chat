@@ -11,6 +11,7 @@ import s from "./chat-users-list.module.scss";
 
 export function ChatUsersList() {
   const { usersChat, isLoading } = useUsersChat();
+
   const { handleChatOpen } = useOpenChat();
   const [activeUserId, setActiveUserId] = useState<number | null>(null);
 

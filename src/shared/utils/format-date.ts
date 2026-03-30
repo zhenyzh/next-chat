@@ -1,7 +1,8 @@
 import { format, isToday, isYesterday } from "date-fns";
 import { ru } from "date-fns/locale";
 
-export function formatSmartDate(date: string) {
+export function formatSmartDate(date: string | null) {
+  if (!date) return;
   const parsedDate = new Date(date);
   if (isToday(parsedDate)) return "Сегодня";
   if (isYesterday(parsedDate)) return "Вчера";
