@@ -8,7 +8,7 @@ export function useSubscribeChatUsers() {
 
   useEffect(() => {
     const unsubscribe = socketService<ChatUsersDto[]>(
-      socketEvent.users_with_chats_update,
+      socketEvent.chat_users_update,
       (data) => queryClient.setQueryData(queryKey, data),
     );
 
