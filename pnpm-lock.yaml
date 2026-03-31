@@ -21,8 +21,8 @@ importers:
         specifier: ^5.90.21
         version: 5.90.21(react@19.2.3)
       '@zhenyzh/common-ui':
-        specifier: ^2.13.1
-        version: 2.13.1(@types/react@19.2.11)
+        specifier: ^2.14.0
+        version: 2.14.0(@types/react@19.2.11)
       axios:
         specifier: ^1.13.6
         version: 1.13.6
@@ -829,8 +829,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@zhenyzh/common-ui@2.13.1':
-    resolution: {integrity: sha512-Rnx7DGeP6xH/iEWh2binKzTqqicretF/nZq/YHwVigH2amIpE6DwN9ORv40T34QwezoAEaHiwJ3g7RhP1igaYA==, tarball: https://npm.pkg.github.com/download/@zhenyzh/common-ui/2.13.1/dc1aed7bcc97cefe3f2e31ca48421be53bc12cb0}
+  '@zhenyzh/common-ui@2.14.0':
+    resolution: {integrity: sha512-7rEOtdyBhfSepzpggRjq8WRM1C6HGhw8qHpWx9DoncIHV81erfloB6IlHRJMURImcaGZ3QUORN/JSe4AFK3ejQ==, tarball: https://npm.pkg.github.com/download/@zhenyzh/common-ui/2.14.0/417176877e8f29b8d76de3c9cd2858f113d5d4d7}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -1684,6 +1684,9 @@ packages:
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
 
+  normalize-wheel@1.0.1:
+    resolution: {integrity: sha512-1OnlAPZ3zgrk8B91HyRj+eVv+kS5u+Z0SCsak6Xil/kmgEia50ga7zfkumayonZrImffAxPU/5WcyGhzetHNPA==}
+
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
@@ -1792,6 +1795,12 @@ packages:
     resolution: {integrity: sha512-yELu4WmLPw5Mr/lmeEpox5rw3RETacE++JgHqQzd2dg+YbJuat3jH4ingc+WPZhxaoFzdv9y33G+F7Nl5O0GBg==}
     peerDependencies:
       react: ^19.2.3
+
+  react-easy-crop@5.5.7:
+    resolution: {integrity: sha512-kYo4NtMeXFQB7h1U+h5yhUkE46WQbQdq7if54uDlbMdZHdRgNehfvaFrXnFw5NR1PNoUOJIfTwLnWmEx/MaZnA==}
+    peerDependencies:
+      react: '>=16.4.0'
+      react-dom: '>=16.4.0'
 
   react-hook-form@7.71.1:
     resolution: {integrity: sha512-9SUJKCGKo8HUSsCO+y0CtqkqI5nNuaDqTxyqPsZPqIwudpj4rCrAz/jZV+jn57bx5gtZKOh3neQu94DXMc+w5w==}
@@ -2890,13 +2899,14 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@zhenyzh/common-ui@2.13.1(@types/react@19.2.11)':
+  '@zhenyzh/common-ui@2.14.0(@types/react@19.2.11)':
     dependencies:
       '@headlessui/react': 2.2.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       clsx: 2.1.1
       prettier: 3.8.1
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
+      react-easy-crop: 5.5.7(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-textarea-autosize: 8.5.9(@types/react@19.2.11)(react@19.2.3)
     transitivePeerDependencies:
       - '@types/react'
@@ -3932,6 +3942,8 @@ snapshots:
 
   node-releases@2.0.27: {}
 
+  normalize-wheel@1.0.1: {}
+
   object-assign@4.1.1: {}
 
   object-inspect@1.13.4: {}
@@ -4041,6 +4053,13 @@ snapshots:
     dependencies:
       react: 19.2.3
       scheduler: 0.27.0
+
+  react-easy-crop@5.5.7(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      normalize-wheel: 1.0.1
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+      tslib: 2.8.1
 
   react-hook-form@7.71.1(react@19.2.3):
     dependencies:
