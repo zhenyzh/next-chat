@@ -28,5 +28,5 @@ export function useSubscribeUpdateChatUsers(isBottom: boolean) {
     );
 
     return () => unsubscribe();
-  }, [queryKey, isBottom]);
+  }, [chatId, queryKey, isBottom]);
 }
