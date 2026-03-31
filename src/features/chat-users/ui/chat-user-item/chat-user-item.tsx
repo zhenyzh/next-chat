@@ -18,7 +18,7 @@ export function ChatUserItem({ data }: { data: ChatUsers }) {
           message={data.lastMessage}
           status={data.status}
           countMessage={data.countUnreadMessage}
-          typedMe={data.typedMe}
+          typedI={data.typedI}
         />
       }
     />
