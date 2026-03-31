@@ -1,1 +1,1 @@
-export * from "./modified-chat-users-dto.selectors";
+export * from "./modified-chat-users-model.selectors";

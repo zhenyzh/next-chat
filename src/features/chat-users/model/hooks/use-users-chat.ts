@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { chatUsersApi } from "../../api";
-import { modifiedChatUsersDto } from "../../lib/selectors";
+import { modifiedChatUsersModel } from "../../lib/selectors";
 
 export function useUsersChat() {
   const { data, isLoading } = useQuery({
@@ -8,7 +8,7 @@ export function useUsersChat() {
   });
 
   return {
-    usersChat: modifiedChatUsersDto(data),
+    usersChat: modifiedChatUsersModel(data),
     isLoading,
   };
 }
