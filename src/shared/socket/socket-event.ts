@@ -15,6 +15,7 @@ export const socketEvent = {
   online_users: "online_users",
   message_delivered: "message_delivered",
   message_read: "message_read",
+  users_with_chats_update: "users_with_chats_update",
 } as const;
 
 export type SocketEvent = (typeof socketEvent)[keyof typeof socketEvent];

@@ -5,6 +5,6 @@ export type ChatUsersDto = {
   createdAt: string;
   lastMessage: string;
   countUnreadMessage: number;
-  typedMe: boolean;
+  typedI: boolean;
 } & Omit<User, "email"> &
   StatusMessage;

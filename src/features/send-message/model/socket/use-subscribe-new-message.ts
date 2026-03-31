@@ -24,8 +24,6 @@ export function useSubscribeNewMessage() {
       },
     );
 
-    return () => {
-      unsubscribe();
-    };
+    return () => unsubscribe();
   }, [chatId, queryKey]);
 }

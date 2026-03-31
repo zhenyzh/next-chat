@@ -1,14 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import { chatUsersApi } from "../../api";
-import { modifiedChatUsersModel } from "../../lib/selectors";
+import { useUsersChatList } from "./use-users-chat-list";
+import { useSubscribeChatUsers } from "../socket";
 
 export function useUsersChat() {
-  const { data, isLoading } = useQuery({
-    ...chatUsersApi.getChatUsersAllQueryOptions(),
-  });
+  useSubscribeChatUsers();
 
+  const { usersChat, isLoading } = useUsersChatList();
   return {
-    usersChat: modifiedChatUsersModel(data),
+    usersChat,
     isLoading,
   };
 }
