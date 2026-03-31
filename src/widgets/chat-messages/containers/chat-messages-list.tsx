@@ -19,8 +19,8 @@ export function ChatMessagesList() {
     scrollToBottom,
     typingUsersIds,
   } = useScrollToBottom();
-  const { messages, hasChatId, isLoading } = useMessages();
   useChatMessageSubscribes(isBottom);
+  const { messages, hasChatId, isLoading } = useMessages();
 
   return (
     <ScrollBar className={s.scrollList} ref={scrollRef}>
