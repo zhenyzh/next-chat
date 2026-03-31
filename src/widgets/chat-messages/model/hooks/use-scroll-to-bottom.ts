@@ -47,5 +47,11 @@ export function useScrollToBottom() {
     }
   }, [typingUsersIds, isBottom]);
 
-  return { scrollRef, refWatchBottom, isBottom, scrollToBottom };
+  return {
+    scrollRef,
+    refWatchBottom,
+    isBottom,
+    typingUsersIds,
+    scrollToBottom,
+  };
 }

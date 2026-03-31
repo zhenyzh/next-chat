@@ -1,1 +1,1 @@
-export * from "./use-users-chat";
+export * from "./use-chat-users-list";

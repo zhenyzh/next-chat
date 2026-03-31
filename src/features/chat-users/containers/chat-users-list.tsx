@@ -4,13 +4,13 @@ import { useState } from "react";
 import clsx from "clsx";
 import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../ui/chat-user-item";
-import { useUsersChat } from "../model/hooks";
+import { useChatUsersList } from "../model/hooks";
 import { useOpenChat } from "@/entities/chat/model/hooks";
 import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
 import s from "./chat-users-list.module.scss";
 
 export function ChatUsersList() {
-  const { usersChat, isLoading } = useUsersChat();
+  const { usersChat, isLoading } = useChatUsersList();
   const { handleChatOpen } = useOpenChat();
   const [activeUserId, setActiveUserId] = useState<number | null>(null);
 

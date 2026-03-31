@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { chatUsersApi } from "../../api";
 import { modifiedChatUsersModel } from "../../lib/selectors";
 
-export function useUsersChatList() {
+export function useChatUsersList() {
   const { data, isLoading } = useQuery({
     ...chatUsersApi.getChatUsersAllQueryOptions(),
   });

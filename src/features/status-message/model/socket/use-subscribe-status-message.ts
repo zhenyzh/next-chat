@@ -10,8 +10,6 @@ export function useSubscribeStatusMessage() {
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;
 
   useEffect(() => {
-    if (!chatId) return;
-
     const unsubscribes = [
       socketService<number>(socketEvent.message_delivered, (messageId) => {
         queryClient.setQueryData(queryKey, (old) =>

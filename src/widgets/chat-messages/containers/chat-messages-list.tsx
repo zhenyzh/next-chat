@@ -4,17 +4,23 @@ import { MessageListItem } from "../ui/message-list-item";
 import { EmptyContent } from "../ui/empty-content";
 import { TypingIndicator } from "../ui/typing-indicator";
 import { DownButton } from "../ui/down-button";
-import { useChatMessage, useScrollToBottom } from "../model/hooks";
-import { useTypingUsersIds } from "@/features/typing/model/store";
+import { useMessages } from "../model/hooks";
+import { useScrollToBottom } from "../model/hooks";
+import { useChatMessageSubscribes } from "../model/socket";
 import { MessagesSkeleton } from "@/entities/messages";
 import { List, ScrollBar } from "@/shared/ui";
 import s from "./chat-messages-list.module.scss";
 
 export function ChatMessagesList() {
-  const { messages, isLoading, hasChatId } = useChatMessage();
-  const typingUsersIds = useTypingUsersIds();
-  const { scrollRef, refWatchBottom, isBottom, scrollToBottom } =
-    useScrollToBottom();
+  const {
+    scrollRef,
+    refWatchBottom,
+    isBottom,
+    scrollToBottom,
+    typingUsersIds,
+  } = useScrollToBottom();
+  const { messages, hasChatId, isLoading } = useMessages();
+  useChatMessageSubscribes(isBottom);
 
   return (
     <ScrollBar className={s.scrollList} ref={scrollRef}>
