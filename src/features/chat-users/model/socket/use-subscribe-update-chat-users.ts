@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { chatUsersApi, type ChatUsersDto } from "@/features/chat-users/api";
+import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
 import { socketService, socketEvent } from "@/shared/socket";
 import { queryClient } from "@/shared/api";
 
 export function useSubscribeUpdateChatUsers(isBottom: boolean) {
+  const { chatId } = useOpenCurrentChat();
+
   const queryKey = chatUsersApi.getChatUsersAllQueryOptions().queryKey;
 
   useEffect(() => {
@@ -13,7 +16,7 @@ export function useSubscribeUpdateChatUsers(isBottom: boolean) {
         queryClient.setQueryData(
           queryKey,
           data.map((chat) =>
-            isBottom
+            !!chatId && isBottom
               ? {
                   ...chat,
                   countUnreadMessage: 0,
