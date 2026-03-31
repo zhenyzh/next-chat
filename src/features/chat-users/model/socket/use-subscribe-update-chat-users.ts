@@ -15,14 +15,14 @@ export function useSubscribeUpdateChatUsers(isBottom: boolean) {
       (data) =>
         queryClient.setQueryData(
           queryKey,
-          data.map((item) =>
-            !!chatId && isBottom
+          data.map((chat) =>
+            chat.id === chatId && isBottom
               ? {
-                  ...item,
+                  ...chat,
                   countUnreadMessage: 0,
                   isRead: true,
                 }
-              : item,
+              : chat,
           ),
         ),
     );
