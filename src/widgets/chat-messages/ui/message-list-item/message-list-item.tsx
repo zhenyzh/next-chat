@@ -16,17 +16,17 @@ export const MessageListItem = ({ messages, isBottom }: Props) => {
 
   return (
     <>
-      {messages.map((message: Message, index) => (
-        <Box key={message.id}>
+      {messages.map((msg: Message, index) => (
+        <Box key={msg.id}>
           {firstIndex === index && !isBottom && <UnreadMessages />}
           <Messages
-            message={message}
+            message={msg}
             subContent={
               <SubStatusMessage
-                fromMe={message.fromMe}
-                statusMessage={message.statusMessage}
-                onDelivered={() => markAsDelivered(message.id, message.chatId)}
-                onRead={() => markAsRead(message.id, message.chatId)}
+                fromMe={msg.fromMe}
+                statusMessage={msg.statusMessage}
+                onDelivered={() => markAsDelivered(msg.id, msg.chatId)}
+                onRead={() => markAsRead(msg.id, msg.chatId)}
                 isBottom={isBottom}
               />
             }

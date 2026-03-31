@@ -14,13 +14,11 @@ type Props = {
 
 export function SubStatusMessage({
   fromMe,
-  statusMessage,
+  statusMessage: { isSent, isDelivered, isRead },
   onDelivered,
   onRead,
   isBottom,
 }: Props) {
-  const { isSent, isDelivered, isRead } = statusMessage;
-
   useChangeStatusMessage({
     fromMe,
     isDelivered,
