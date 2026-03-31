@@ -10,8 +10,8 @@ import s from "./chat-sub-content.module.scss";
 type Props = {
   message: string | null;
   status: StatusMessage;
-  countMessage?: number;
-  typedI?: boolean;
+  countMessage: number;
+  typedI: boolean;
 };
 
 export function ChatSubContent({
