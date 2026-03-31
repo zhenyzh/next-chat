@@ -13,9 +13,9 @@ export function useSubscribeUpdateChatUsers(isBottom: boolean) {
     const unsubscribe = socketService<ChatUsersDto[]>(
       socketEvent.chat_users_update,
       (data) =>
-        queryClient.setQueryData(queryKey, (old) => {
-          if (!old) return data;
-          old.map((chat) =>
+        queryClient.setQueryData(
+          queryKey,
+          data.map((chat) =>
             chat.id === chatId && isBottom
               ? {
                   ...chat,
@@ -23,8 +23,8 @@ export function useSubscribeUpdateChatUsers(isBottom: boolean) {
                   isRead: true,
                 }
               : chat,
-          );
-        }),
+          ),
+        ),
     );
 
     return () => unsubscribe();
