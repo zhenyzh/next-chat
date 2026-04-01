@@ -19,7 +19,7 @@ export function AddUserAvatar({ onClose }: Props) {
       <ImageUploader
         className={s.imageUploader}
         onImageSelect={(file) => onSelect(file)}
-        placeholder="Выберите или перетащите фото"
+        placeholder="Выберите или перетащите изображение"
         cropShape="round"
         enableCrop={true}
         onRemoveFile={() => onSelect(null)}
