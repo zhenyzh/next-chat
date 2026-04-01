@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export function useCloseToCollapsed({
+export function useClose({
   collapsed,
   onClose,
 }: {

@@ -8,18 +8,12 @@ import {
 import { MoreIcon } from "@zhenyzh/common-ui/icons";
 import { useLogout } from "@/features/auth/logout/model/hooks";
 import { AddUserAvatar } from "@/features/add-user-avatar";
-import { useCloseToCollapsed, useModal } from "@/shared/hooks";
+import { useModal } from "@/shared/hooks";
 import s from "./add-dropdown-menu.module.scss";
 
-type Props = {
-  collapsed?: boolean;
-};
-
-export function AddDropdownMenu({ collapsed }: Props) {
+export function AddDropdownMenu() {
   const { isOpen, handleOpen, handleClose } = useModal();
   const { logout, isPending } = useLogout();
-
-  useCloseToCollapsed({ collapsed, onClose: handleClose });
 
   return (
     <>
@@ -38,7 +32,7 @@ export function AddDropdownMenu({ collapsed }: Props) {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      {isOpen && <AddUserAvatar collapsed={collapsed} onClose={handleClose} />}
+      {isOpen && <AddUserAvatar onClose={handleClose} />}
     </>
   );
 }
