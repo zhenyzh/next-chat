@@ -4,7 +4,7 @@ import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
 import { useUser } from "@/entities/user/model/store";
 import { messagesApi } from "@/entities/messages/api";
 
-export function useMessages() {
+export function useMessagesList() {
   const { chatId } = useOpenCurrentChat();
   const { id } = useUser();
 
