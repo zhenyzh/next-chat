@@ -1,7 +1,7 @@
 import Link from "next/link";
 import clsx from "clsx";
 import { Card, Typography } from "@zhenyzh/common-ui/components";
-import type { LinkType } from "../../model";
+import type { LinkType } from "../../model/types";
 import s from "./sidebar-navigation.module.scss";
 
 type Props = {

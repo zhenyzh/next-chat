@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { MessageCircleMore, Settings, UserPen } from "lucide-react";
 import { Box } from "@zhenyzh/common-ui/components";
 import { SideBarHeader, SideBarNavigation, SidebarLogout } from "../ui";
-import type { LinkType } from "../model";
+import type { LinkType } from "../model/types";
 import { Paths } from "@/shared/configs";
 import s from "./sidebar.module.scss";
 

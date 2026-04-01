@@ -5,25 +5,29 @@ import { Logout } from "@/features/auth/logout";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import { useUser } from "@/entities/user/model/store";
 import { UserPreview } from "@/shared/ui";
-import { useModal } from "@/shared/hooks";
+import { useCloseToCollapsed, useModal } from "@/shared/hooks";
 import s from "./sidebar-logout.module.scss";
 
 type Props = {
-  collapsed: boolean;
+  collapsed?: boolean;
 };
 
 export function SidebarLogout({ collapsed }: Props) {
   const user = useUser();
   const isOnline = useHasUserStatus(user.id);
-  const { isOpen: show, handle: handleShow } = useModal();
+  const { isOpen, handle: handleShow, handleClose } = useModal();
+
+  useCloseToCollapsed({ collapsed, onClose: handleClose });
 
   return (
     <>
-      <Box className={clsx(s.container, collapsed && s.hidden, s.hiddenMobile)}>
+      <Box
+        className={clsx(s.container, collapsed && s.hidden, s.hiddenMobile)}
+        onClick={() => handleShow()}
+      >
         <UserPreview
           name={user.name}
           isOnline={isOnline}
-          onClick={() => handleShow()}
           rightInfoSlot={
             <Box className={s.rightInfo}>
               <Logout />
@@ -33,7 +37,7 @@ export function SidebarLogout({ collapsed }: Props) {
             <Typography className={s.subInfo}>{user.email}</Typography>
           }
         />
-        {show && <AddDropdownMenu />}
+        {isOpen && <AddDropdownMenu collapsed={collapsed} />}
       </Box>
       <Box
         className={clsx(
