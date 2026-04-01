@@ -1,12 +1,9 @@
 import clsx from "clsx";
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import { AddDropdownMenu } from "../add-dropdown-menu";
-import { useClose } from "../../model/hooks";
-import { Logout } from "@/features/auth/logout";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import { useUser } from "@/entities/user/model/store";
 import { UserPreview } from "@/shared/ui";
-import { useModal } from "@/shared/hooks";
 import s from "./sidebar-logout.module.scss";
 
 type Props = {
@@ -16,29 +13,22 @@ type Props = {
 export function SidebarLogout({ collapsed }: Props) {
   const user = useUser();
   const isOnline = useHasUserStatus(user.id);
-  const { isOpen, handleClose, handleOpen } = useModal();
-
-  useClose({ collapsed, onClose: handleClose });
 
   return (
     <>
-      <Box
-        className={clsx(s.container, collapsed && s.hidden, s.hiddenMobile)}
-        onClick={handleOpen}
-      >
+      <Box className={clsx(s.container, collapsed && s.hidden, s.hiddenMobile)}>
         <UserPreview
           name={user.name}
           isOnline={isOnline}
           rightInfoSlot={
             <Box className={s.rightInfo}>
-              <Logout />
+              <AddDropdownMenu />
             </Box>
           }
           subInfoSlot={
             <Typography className={s.subInfo}>{user.email}</Typography>
           }
         />
-        {isOpen && <AddDropdownMenu />}
       </Box>
       <Box
         className={clsx(
@@ -48,7 +38,7 @@ export function SidebarLogout({ collapsed }: Props) {
           s.visibleMobile,
         )}
       >
-        <Logout />
+        <AddDropdownMenu />
       </Box>
     </>
   );

@@ -1,6 +1,11 @@
 .container {
-  position: absolute;
-  top: 3px;
-  left: 115px;
-  z-index: 1;
+  width: 100%;
+  border-radius: var(--border-radius-size-xxxs);
+  padding: 8px;
+  color: var(--color-bg-primary);
+  background-color: var(--color-bg-primary-reverse);
+}
+
+.logout {
+  flex-shrink: 0;
 }
