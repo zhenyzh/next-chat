@@ -19,7 +19,7 @@ export function AddDropdownMenu({ collapsed }: Props) {
   const { isOpen, handleOpen, handleClose } = useModal();
   const { logout, isPending } = useLogout();
 
-  useCloseToCollapsed({ collapsed, onClose: handleOpen });
+  useCloseToCollapsed({ collapsed, onClose: handleClose });
 
   return (
     <>

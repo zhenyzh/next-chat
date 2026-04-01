@@ -23,7 +23,7 @@ export function SidebarLogout({ collapsed }: Props) {
     <>
       <Box
         className={clsx(s.container, collapsed && s.hidden, s.hiddenMobile)}
-        onClick={() => handleShow()}
+        onClick={handleShow}
       >
         <UserPreview
           name={user.name}
