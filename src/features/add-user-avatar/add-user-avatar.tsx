@@ -9,8 +9,8 @@ type Props = {
 
 export function AddUserAvatar({ onClose }: Props) {
   const [avatarUrl, setAvatarUrl] = useState<File | null>(null);
-  console.log({ avatarUrl });
-  const handleAvatarUrlSelect = (file: File) => {
+
+  const onSelect = (file: File | null) => {
     setAvatarUrl(file);
   };
 
@@ -18,10 +18,11 @@ export function AddUserAvatar({ onClose }: Props) {
     <Card className={s.container}>
       <ImageUploader
         className={s.imageUploader}
-        onImageSelect={(file) => handleAvatarUrlSelect(file)}
+        onImageSelect={(file) => onSelect(file)}
         placeholder="Выберите или перетащите фото"
         cropShape="round"
         enableCrop={true}
+        onRemoveFile={() => onSelect(null)}
       />
       <Button className={s.button} disabled={!avatarUrl}>
         <Save />
