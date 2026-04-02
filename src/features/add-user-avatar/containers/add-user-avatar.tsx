@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Save } from "lucide-react";
-import { ImageUploader, Button, Card } from "@zhenyzh/common-ui/components";
+import {
+  ImageUploader,
+  Button,
+  Card,
+  Box,
+} from "@zhenyzh/common-ui/components";
 import s from "./add-user-avatar.module.scss";
 
 type Props = {
@@ -14,19 +19,27 @@ export function AddUserAvatar({ onClose }: Props) {
     setAvatarUrl(file);
   };
 
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose?.();
+    }
+  };
+
   return (
-    <Card className={s.container}>
-      <ImageUploader
-        className={s.imageUploader}
-        onImageSelect={(file) => onSelect(file)}
-        placeholder="Выберите или перетащите изображение"
-        cropShape="round"
-        enableCrop={true}
-        onRemoveFile={() => onSelect(null)}
-      />
-      <Button className={s.button} disabled={!avatarUrl}>
-        <Save />
-      </Button>
-    </Card>
+    <Box className={s.wrapper}>
+      <Card className={s.container} onClick={handleBackdropClick}>
+        <ImageUploader
+          className={s.imageUploader}
+          onImageSelect={(file) => onSelect(file)}
+          placeholder="Выберите или перетащите изображение"
+          cropShape="round"
+          enableCrop={false}
+          onRemoveFile={() => onSelect(null)}
+        />
+        <Button className={s.button} disabled={!avatarUrl}>
+          <Save />
+        </Button>
+      </Card>
+    </Box>
   );
 }
