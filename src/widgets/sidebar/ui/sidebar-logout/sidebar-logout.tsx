@@ -19,6 +19,7 @@ export function SidebarLogout({ collapsed }: Props) {
       <Box className={clsx(s.container, collapsed && s.hidden, s.hiddenMobile)}>
         <UserPreview
           name={user.name}
+          avatarUrl={user.avatarUrl}
           isOnline={isOnline}
           rightInfoSlot={
             <Box className={s.rightInfo}>

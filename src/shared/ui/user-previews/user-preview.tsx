@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { Avatar, Box, Typography } from "@zhenyzh/common-ui/components";
+import { patchUrl } from "@/shared/configs";
 import s from "./user-preview.module.scss";
 
 export type UserCardPreviewsProps = {
@@ -21,7 +22,7 @@ export function UserPreview({
   return (
     <Box className={s.content}>
       <Avatar
-        image={avatarUrl}
+        image={patchUrl(avatarUrl)}
         variant="cropped"
         size={55}
         className={clsx(s.avatar, isOnline && s.online)}

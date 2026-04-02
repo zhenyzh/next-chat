@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import type { Message } from "@/entities/messages/model/types";
 import { MessageContent, MessageText } from "@/entities/messages";
+import { patchUrl } from "@/shared/configs";
 import s from "./messages.module.scss";
 
 type Props = {
@@ -19,7 +20,7 @@ export function Messages({ message, subContent }: Props) {
 
   return (
     <Card className={clsx(s.message, fromMe && s.me)}>
-      <Avatar image={avatarUrl} className={s.avatar} />
+      <Avatar image={patchUrl(avatarUrl)} className={s.avatar} />
       <Card>
         <Box className={s.bubble}>
           <Typography variant="h3" className={s.name}>

@@ -2,5 +2,5 @@ export type User = {
   id: number;
   name: string;
   email: string;
-  avatarUrl?: File;
+  avatarUrl?: string;
 };
