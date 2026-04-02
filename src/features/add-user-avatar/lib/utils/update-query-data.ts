@@ -2,14 +2,14 @@ import { queryClient } from "@/shared/api";
 import type { MessagesDto } from "@/entities/messages/api";
 import type { User } from "@/entities/user/model/types";
 
-export function updateUserData<T>(queryKey: T[], avatarUrl: string) {
+export function updateUserData<K>(queryKey: K[], avatarUrl: string) {
   queryClient.setQueryData<User>(queryKey, (old) =>
     old ? { ...old, avatarUrl } : old,
   );
 }
 
-export function updateMessagesData<T>(
-  queryKey: T[],
+export function updateMessagesData<K>(
+  queryKey: K[],
   avatarUrl: string,
   senderId?: number,
 ) {
