@@ -1,17 +1,26 @@
 import { useMutation } from "@tanstack/react-query";
 import { addUserAvatarApi } from "@/features/add-user-avatar/api";
 import { userApi } from "@/entities/user/api";
+import { messagesApi } from "@/entities/messages/api";
+import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
 import { queryClient } from "@/shared/api";
 
 export function useUserAvatarAction() {
+  const { chatId } = useOpenCurrentChat();
+
   const queryKeyUser = userApi.getUserQueryOptions().queryKey;
+  const queryKeyMessages = messagesApi.getMessageQueryOptions({
+    chatId,
+  }).queryKey;
 
   const mutation = useMutation({
     mutationFn: addUserAvatarApi.sendFile,
     onMutate: async (file: File) => {
       await queryClient.cancelQueries({ queryKey: queryKeyUser });
+      await queryClient.cancelQueries({ queryKey: queryKeyMessages });
 
       const previousUser = queryClient.getQueryData(queryKeyUser);
+      const previousMessages = queryClient.getQueryData(queryKeyMessages);
 
       const mockAvatarUrl = URL.createObjectURL(file);
 
@@ -19,24 +28,50 @@ export function useUserAvatarAction() {
         old ? { ...old, avatarUrl: mockAvatarUrl } : old,
       );
 
+      queryClient.setQueryData(queryKeyMessages, (old) =>
+        (old ?? []).map((msg) =>
+          msg.senderId === previousUser?.id
+            ? {
+                ...msg,
+                sender: { ...msg.sender, avatarUrl: mockAvatarUrl },
+              }
+            : msg,
+        ),
+      );
+
       return {
         previousUser,
+        previousMessages,
         mockAvatarUrl,
+        senderId: previousUser?.id,
       };
     },
 
-    onSuccess: ({ avatarUrl }) => {
+    onSuccess: ({ avatarUrl }, _, context) => {
       queryClient.setQueryData(queryKeyUser, (old) =>
         old ? { ...old, avatarUrl } : old,
+      );
+
+      queryClient.setQueryData(queryKeyMessages, (old) =>
+        (old ?? []).map((msg) =>
+          msg.senderId === context?.senderId
+            ? {
+                ...msg,
+                sender: { ...msg.sender, avatarUrl: avatarUrl },
+              }
+            : msg,
+        ),
       );
     },
 
     onError: (_, __, context) => {
       queryClient.setQueryData(queryKeyUser, context?.previousUser);
+      queryClient.setQueryData(queryKeyMessages, context?.previousMessages);
     },
 
     onSettled: (_, __, ___, context) => {
       queryClient.invalidateQueries({ queryKey: queryKeyUser });
+      queryClient.invalidateQueries({ queryKey: queryKeyMessages });
       if (context?.mockAvatarUrl) {
         URL.revokeObjectURL(context.mockAvatarUrl);
       }
