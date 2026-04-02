@@ -18,11 +18,11 @@ export function AddDropdownMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className={s.triggerMenu}>
-        <Button style={{ display: "contents" }} variant="outline">
+        <Button className={s.button} variant="outline">
           <CirclePlus className={s.pointer} />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start">
+      <DropdownMenuContent>
         {dropdownMenuItem.map((item, i) => (
           <DropdownMenuItem key={i}>
             <item.icon />
