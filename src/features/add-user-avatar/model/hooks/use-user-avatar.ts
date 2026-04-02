@@ -1,8 +1,8 @@
 import { useState, MouseEvent } from "react";
-import { useUserAvatarAction } from "./use-user-avatar-action";
+import { useSendUserAvatar } from "./use-send-user-avatar";
 
 export function useUserAvatar(onClose?: () => void) {
-  const { onSendUserAvatar, isPending } = useUserAvatarAction();
+  const { onSendUserAvatar, isPending } = useSendUserAvatar();
   const [avatarUrl, setAvatarUrl] = useState<File | null>();
 
   const handleSelect = (file: File) => {

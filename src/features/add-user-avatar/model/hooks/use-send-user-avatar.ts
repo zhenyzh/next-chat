@@ -1,12 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
 import { addUserAvatarApi } from "../../api";
-import { updateMessagesData, updateUserData } from "../../lib/utils";
+import { updateUserCache, updateMessagesCache } from "../../lib/utils";
 import { userApi } from "@/entities/user/api";
 import { messagesApi } from "@/entities/messages/api";
 import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
 import { queryClient } from "@/shared/api";
 
-export function useUserAvatarAction() {
+export function useSendUserAvatar() {
   const { chatId } = useOpenCurrentChat();
 
   const queryKeyUser = userApi.getUserQueryOptions().queryKey;
@@ -25,8 +25,8 @@ export function useUserAvatarAction() {
 
       const mockAvatarUrl = URL.createObjectURL(file);
 
-      updateUserData(queryKeyUser, mockAvatarUrl);
-      updateMessagesData(queryKeyMessages, mockAvatarUrl, previousUser?.id);
+      updateUserCache(queryKeyUser, mockAvatarUrl);
+      updateMessagesCache(queryKeyMessages, mockAvatarUrl, previousUser?.id);
 
       return {
         previousUser,
@@ -37,8 +37,8 @@ export function useUserAvatarAction() {
     },
 
     onSuccess: ({ avatarUrl }, _, context) => {
-      updateUserData(queryKeyUser, avatarUrl);
-      updateMessagesData(queryKeyMessages, avatarUrl, context?.senderId);
+      updateUserCache(queryKeyUser, avatarUrl);
+      updateMessagesCache(queryKeyMessages, avatarUrl, context?.senderId);
     },
 
     onError: (_, __, context) => {

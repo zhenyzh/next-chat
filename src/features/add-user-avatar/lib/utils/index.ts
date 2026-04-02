@@ -1,1 +1,1 @@
-export * from "./update-query-data";
+export * from "./update-сache-data.utils";

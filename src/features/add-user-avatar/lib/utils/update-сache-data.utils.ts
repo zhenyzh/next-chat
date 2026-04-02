@@ -2,13 +2,13 @@ import type { MessagesDto } from "@/entities/messages/api";
 import type { User } from "@/entities/user/model/types";
 import { queryClient } from "@/shared/api";
 
-export function updateUserData<K>(queryKey: K[], avatarUrl: string) {
+export function updateUserCache<K>(queryKey: K[], avatarUrl: string) {
   queryClient.setQueryData<User>(queryKey, (old) =>
     old ? { ...old, avatarUrl } : old,
   );
 }
 
-export function updateMessagesData<K>(
+export function updateMessagesCache<K>(
   queryKey: K[],
   avatarUrl: string,
   senderId?: number,
