@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { updateMessagesData, updateUserData } from "../../lib/utils";
 import { addUserAvatarApi } from "@/features/add-user-avatar/api";
 import { userApi } from "@/entities/user/api";
 import { messagesApi } from "@/entities/messages/api";
@@ -24,20 +25,8 @@ export function useUserAvatarAction() {
 
       const mockAvatarUrl = URL.createObjectURL(file);
 
-      queryClient.setQueryData(queryKeyUser, (old) =>
-        old ? { ...old, avatarUrl: mockAvatarUrl } : old,
-      );
-
-      queryClient.setQueryData(queryKeyMessages, (old) =>
-        (old ?? []).map((msg) =>
-          msg.senderId === previousUser?.id
-            ? {
-                ...msg,
-                sender: { ...msg.sender, avatarUrl: mockAvatarUrl },
-              }
-            : msg,
-        ),
-      );
+      updateUserData(queryKeyUser, mockAvatarUrl);
+      updateMessagesData(queryKeyMessages, mockAvatarUrl, previousUser?.id);
 
       return {
         previousUser,
@@ -48,20 +37,8 @@ export function useUserAvatarAction() {
     },
 
     onSuccess: ({ avatarUrl }, _, context) => {
-      queryClient.setQueryData(queryKeyUser, (old) =>
-        old ? { ...old, avatarUrl } : old,
-      );
-
-      queryClient.setQueryData(queryKeyMessages, (old) =>
-        (old ?? []).map((msg) =>
-          msg.senderId === context?.senderId
-            ? {
-                ...msg,
-                sender: { ...msg.sender, avatarUrl: avatarUrl },
-              }
-            : msg,
-        ),
-      );
+      updateUserData(queryKeyUser, avatarUrl);
+      updateMessagesData(queryKeyMessages, avatarUrl, context?.senderId);
     },
 
     onError: (_, __, context) => {
