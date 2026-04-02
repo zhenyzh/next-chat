@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
+import { addUserAvatarApi } from "../../api";
 import { updateMessagesData, updateUserData } from "../../lib/utils";
-import { addUserAvatarApi } from "@/features/add-user-avatar/api";
 import { userApi } from "@/entities/user/api";
 import { messagesApi } from "@/entities/messages/api";
 import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
