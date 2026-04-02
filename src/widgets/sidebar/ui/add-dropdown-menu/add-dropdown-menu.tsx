@@ -1,4 +1,4 @@
-import { Image, Ellipsis, UserRoundX, LogOut } from "lucide-react";
+import { Camera, Ellipsis, UserRoundX, LogOut } from "lucide-react";
 import {
   Button,
   DropdownMenu,
@@ -16,7 +16,7 @@ export function AddDropdownMenu() {
   const { logout, isPending } = useLogout();
 
   const items = [
-    { label: "Добавить фото", icon: Image, onClick: handleOpen },
+    { label: "Добавить фото", icon: Camera, onClick: handleOpen },
     { label: "Удалить профиль", icon: UserRoundX },
     {
       label: "Выйти",

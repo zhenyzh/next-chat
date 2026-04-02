@@ -1,5 +1,5 @@
 import React from "react";
-import { Camera, CirclePlus, File } from "lucide-react";
+import { Image, CirclePlus, File } from "lucide-react";
 import {
   Button,
   DropdownMenu,
@@ -11,8 +11,8 @@ import s from "./add-dropdown-menu.module.scss";
 
 export function AddDropdownMenu() {
   const dropdownMenuItem = [
-    { icon: <Camera />, label: "Добавить фото" },
-    { icon: <File />, label: "Добавить файл" },
+    { icon: Image, label: "Добавить фото" },
+    { icon: File, label: "Добавить файл" },
   ];
 
   return (
@@ -25,7 +25,7 @@ export function AddDropdownMenu() {
       <DropdownMenuContent align="start">
         {dropdownMenuItem.map((item, i) => (
           <DropdownMenuItem key={i}>
-            {item.icon}
+            <item.icon />
             <span>{item.label}</span>
           </DropdownMenuItem>
         ))}
