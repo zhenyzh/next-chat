@@ -21,8 +21,8 @@ importers:
         specifier: ^5.90.21
         version: 5.90.21(react@19.2.3)
       '@zhenyzh/common-ui':
-        specifier: ^2.16.0
-        version: 2.16.0(@types/react@19.2.11)
+        specifier: ^2.16.1
+        version: 2.16.1(@types/react@19.2.11)
       axios:
         specifier: ^1.13.6
         version: 1.13.6
@@ -829,8 +829,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@zhenyzh/common-ui@2.16.0':
-    resolution: {integrity: sha512-Rc+FppxKbSJZV5OzS7Q+ejQbOm5e4x1fmg7eiHsBm5iYZInANx+pUh3JNPWXXNrsG/w9pMJAclZGE0CLYpJCaA==, tarball: https://npm.pkg.github.com/download/@zhenyzh/common-ui/2.16.0/b06ea7d9a903a9c972bbecf0415df2defd32d713}
+  '@zhenyzh/common-ui@2.16.1':
+    resolution: {integrity: sha512-Kai9TfU5O9kxvJ5h3ZIlwD4AVjrE2FfrX0De86wR33uanUxyPZXtKHt6WHo6wLflJr9fu2yXWCKCi+nbwi/T4A==, tarball: https://npm.pkg.github.com/download/@zhenyzh/common-ui/2.16.1/e700d9d3dee45f5bea8494f00c7ad636a08c461c}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -2899,7 +2899,7 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@zhenyzh/common-ui@2.16.0(@types/react@19.2.11)':
+  '@zhenyzh/common-ui@2.16.1(@types/react@19.2.11)':
     dependencies:
       '@headlessui/react': 2.2.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       clsx: 2.1.1
