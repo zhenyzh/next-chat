@@ -27,27 +27,25 @@ export function AddDropdownMenu() {
   ];
 
   return (
-    <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild={true}>
-          <Button className={s.container}>
-            <Ellipsis width={28} height={28} />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          {items.map((item, i) => (
-            <DropdownMenuItem
-              key={i}
-              onClick={item.onClick}
-              disabled={item.disabled}
-            >
-              <item.icon />
-              <span>{item.label}</span>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild={true}>
+        <Button className={s.container}>
+          <Ellipsis width={28} height={28} />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        {items.map((item, i) => (
+          <DropdownMenuItem
+            key={i}
+            onClick={item.onClick}
+            disabled={item.disabled}
+          >
+            <item.icon />
+            <span>{item.label}</span>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
       {isOpen && <AddUserAvatar onClose={handleClose} />}
-    </>
+    </DropdownMenu>
   );
 }

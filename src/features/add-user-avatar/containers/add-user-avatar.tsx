@@ -19,21 +19,21 @@ export function AddUserAvatar({ onClose }: Props) {
     setAvatarUrl(file);
   };
 
-  const handleBackdropClick = (e: React.MouseEvent) => {
+  const handleClose = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose?.();
     }
   };
 
   return (
-    <Box className={s.wrapper}>
-      <Card className={s.container} onClick={handleBackdropClick}>
+    <Box className={s.wrapper} onClick={handleClose}>
+      <Card>
         <ImageUploader
           className={s.imageUploader}
           onImageSelect={(file) => onSelect(file)}
           placeholder="Выберите или перетащите изображение"
           cropShape="round"
-          enableCrop={false}
+          enableCrop={true}
           onRemoveFile={() => onSelect(null)}
         />
         <Button className={s.button} disabled={!avatarUrl}>
