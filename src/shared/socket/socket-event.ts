@@ -16,6 +16,7 @@ export const socketEvent = {
   message_delivered: "message_delivered",
   message_read: "message_read",
   chat_users_update: "chat_users_update",
+  user_avatar_updated: "user_avatar_updated",
 } as const;
 
 export type SocketEvent = (typeof socketEvent)[keyof typeof socketEvent];
