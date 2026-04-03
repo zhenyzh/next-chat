@@ -1,1 +1,1 @@
-export * from "./use-subscribe-user-avatar-updated";
+export * from "./use-subscribe-user-avatar-update";
