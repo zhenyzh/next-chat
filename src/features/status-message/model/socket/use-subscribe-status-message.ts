@@ -1,7 +1,7 @@
 import { useEffect } from "react";
+import { updateStatusCache } from "../../lib/utils";
 import { messagesApi } from "@/entities/messages/api";
 import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
-import { queryClient } from "@/shared/api";
 import { socketEvent, socketService } from "@/shared/socket";
 
 export function useSubscribeStatusMessage() {
@@ -12,18 +12,10 @@ export function useSubscribeStatusMessage() {
   useEffect(() => {
     const unsubscribes = [
       socketService<number>(socketEvent.message_delivered, (messageId) => {
-        queryClient.setQueryData(queryKey, (old) =>
-          (old ?? []).map((msg) =>
-            msg.id === messageId ? { ...msg, isDelivered: true } : msg,
-          ),
-        );
+        updateStatusCache(queryKey, messageId, "isDelivered");
       }),
       socketService<number>(socketEvent.message_read, (messageId) => {
-        queryClient.setQueryData(queryKey, (old) =>
-          (old ?? []).map((msg) =>
-            msg.id === messageId ? { ...msg, isRead: true } : msg,
-          ),
-        );
+        updateStatusCache(queryKey, messageId, "isRead");
       }),
     ];
 

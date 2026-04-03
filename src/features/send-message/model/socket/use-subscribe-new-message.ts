@@ -18,8 +18,10 @@ export function useSubscribeNewMessage() {
         if (message.chatId !== chatId) return;
 
         queryClient.setQueryData(queryKey, (old = []) => {
-          if (old.some((msg) => msg.clientId === message.clientId)) return old;
-          return [...old, message];
+          const isDuplicate = old.some(
+            (msg) => msg.clientId === message.clientId,
+          );
+          return isDuplicate ? old : [...old, message];
         });
       },
     );
