@@ -13,7 +13,7 @@ export function updateUserCache(queryKey: QueryKey, avatarUrl: string) {
 export function updateChatUsersCache(
   queryKey: QueryKey,
   avatarUrl: string,
-  senderId?: number,
+  senderId: number | undefined,
 ) {
   queryClient.setQueryData<ChatUsersDto[]>(queryKey, (old) => {
     if (!old || !senderId) return old;
@@ -26,7 +26,7 @@ export function updateChatUsersCache(
 export function updateMessagesCache(
   queryKey: QueryKey,
   avatarUrl: string,
-  senderId?: number,
+  senderId: number | undefined,
 ) {
   queryClient.setQueryData<MessagesDto[]>(queryKey, (old) => {
     if (!old || !senderId) return old;
