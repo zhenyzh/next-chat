@@ -21,6 +21,17 @@
     right: 0;
     bottom: 3px;
   }
+
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: var(--avatar-online-bg, var(--color-bg-primary));
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    right: 0;
+    bottom: 3px;
+  }
 }
 
 .infoSection {
