@@ -1,4 +1,4 @@
-import type { Message } from "@/entities/messages";
+import type { Message } from "@/entities/messages/model/types";
 
 export type ChatMessageGroup = {
   date: string;

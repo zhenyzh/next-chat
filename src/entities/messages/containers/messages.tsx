@@ -1,7 +1,8 @@
 import clsx from "clsx";
 import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
-import type { Message } from "@/entities/messages/model/types";
-import { MessageContent, MessageText } from "@/entities/messages";
+import type { Message } from "../model/types";
+import { MessageContent } from "../ui/message-content";
+import { MessageText } from "../ui/message-text";
 import { patchUrl } from "@/shared/configs";
 import s from "./messages.module.scss";
 

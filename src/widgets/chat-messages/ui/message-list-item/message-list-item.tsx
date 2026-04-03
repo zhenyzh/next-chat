@@ -3,7 +3,8 @@ import { SubStatusMessage } from "../sub-status-message";
 import { UnreadMessages } from "../unread-messages";
 import { firstIndexUnreadMessage } from "../../lib/utils";
 import { useStatusMessageConnection } from "@/features/status-message/model/socket";
-import { type Message, Messages } from "@/entities/messages";
+import { Messages } from "@/entities/messages/containers";
+import { type Message } from "@/entities/messages/model/types";
 
 type Props = {
   messages: Message[];
@@ -25,8 +26,12 @@ export const MessageListItem = ({ messages, isBottom }: Props) => {
               <SubStatusMessage
                 fromMe={msg.fromMe}
                 statusMessage={msg.statusMessage}
-                onDelivered={() => markAsDelivered(msg.id, msg.chatId)}
-                onRead={() => markAsRead(msg.id, msg.chatId)}
+                onDelivered={() =>
+                  markAsDelivered({ messageId: msg.id, chatId: msg.chatId })
+                }
+                onRead={() =>
+                  markAsRead({ messageId: msg.id, chatId: msg.chatId })
+                }
                 isBottom={isBottom}
               />
             }

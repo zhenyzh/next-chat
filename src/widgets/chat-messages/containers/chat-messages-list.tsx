@@ -7,7 +7,7 @@ import { DownButton } from "../ui/down-button";
 import { useMessagesList } from "../model/hooks";
 import { useScrollToBottom } from "../model/hooks";
 import { useChatMessageSubscribes } from "../model/socket";
-import { MessagesSkeleton } from "@/entities/messages";
+import { MessagesSkeleton } from "@/entities/messages/ui/message-skeleton";
 import { List, ScrollBar } from "@/shared/ui";
 import s from "./chat-messages-list.module.scss";
 

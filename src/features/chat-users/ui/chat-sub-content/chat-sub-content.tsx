@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import { SubStatusMessage } from "../sub-status-message";
-import type { StatusMessage } from "@/entities/messages";
+import type { StatusMessage } from "@/entities/messages/model/types";
 import { UnreadIndicator } from "@/shared/ui";
 import s from "./chat-sub-content.module.scss";
 

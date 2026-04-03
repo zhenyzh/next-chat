@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { CheckCheck, Check } from "lucide-react";
-import type { StatusMessage } from "@/entities/messages";
+import type { StatusMessage } from "@/entities/messages/model/types";
 import s from "./sub-status-message.module.scss";
 
 type Props = {
