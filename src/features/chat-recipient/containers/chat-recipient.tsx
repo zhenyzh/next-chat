@@ -1,7 +1,11 @@
-import { Box, Typography } from "@zhenyzh/common-ui/components";
+import { Typography } from "@zhenyzh/common-ui/components";
 import { useChatRecipient } from "../model/hooks";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
-import { UserPreview, UserPreviewSkeleton } from "@/shared/ui";
+import {
+  UserPreview,
+  UserPreviewSkeleton,
+  AvatarPreviewOnlineWrapper,
+} from "@/shared/ui";
 import s from "./chat-recipient.module.scss";
 
 export function ChatRecipient() {
@@ -13,7 +17,7 @@ export function ChatRecipient() {
   }
 
   return (
-    <Box style={{ "--avatar-online-bg": "var(--color-bg-primary-v1)" }}>
+    <AvatarPreviewOnlineWrapper>
       <UserPreview
         name={recipient.name}
         avatarUrl={recipient.avatarUrl}
@@ -24,6 +28,6 @@ export function ChatRecipient() {
           </Typography>
         }
       />
-    </Box>
+    </AvatarPreviewOnlineWrapper>
   );
 }
