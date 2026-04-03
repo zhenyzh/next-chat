@@ -2,8 +2,9 @@
 
 import { Box, Container } from "@zhenyzh/common-ui/components";
 import { ChatMessagesList } from "@/widgets/chat-messages";
-import { SendMessage } from "@/features/send-message";
-import { ChatUsersList } from "@/features/chat-users";
+import { SendMessage } from "@/features/send-message/containers";
+import { ChatUsersList } from "@/features/chat-users/containers";
+import { ChatRecipient } from "@/features/chat-recipient/containers";
 import s from "./page.module.scss";
 
 export default function ChatPage() {
@@ -13,7 +14,9 @@ export default function ChatPage() {
         <ChatUsersList />
       </Box>
       <Box className={s.userHead}>
-        <Box className={s.contentHeader}>хедер контент</Box>
+        <Box className={s.contentHeader}>
+          <ChatRecipient />
+        </Box>
       </Box>
       <Box className={s.contentMessage}>
         <ChatMessagesList />
