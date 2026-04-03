@@ -10,17 +10,17 @@ export function useScrollToBottom() {
   const typingUsersIds = useTypingUsersIds();
   const { ref: refWatchBottom, isBottom } = useBottomObserver();
 
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollBarRef = useRef<HTMLDivElement>(null);
   const lastMessageIdRef = useRef<number | null>(null);
 
-  const scrollToBottom = () => {
-    const el = scrollRef.current;
+  const handleScrollToBottom = () => {
+    const el = scrollBarRef.current;
     if (!el) return;
     el.scrollTop = el.scrollHeight;
   };
 
   useEffect(() => {
-    scrollToBottom();
+    handleScrollToBottom();
     lastMessageIdRef.current = null;
   }, [chatId]);
 
@@ -36,22 +36,22 @@ export function useScrollToBottom() {
     const isLastFromMe = lastMessage.fromMe;
 
     if (isLastFromMe || isBottom) {
-      scrollToBottom();
+      handleScrollToBottom();
     }
   }, [messages, isBottom]);
 
   // находимся в конце, под скроллим новые сообщения
   useEffect(() => {
     if (isBottom) {
-      scrollToBottom();
+      handleScrollToBottom();
     }
   }, [typingUsersIds, isBottom]);
 
   return {
-    scrollRef,
+    scrollBarRef,
     refWatchBottom,
     isBottom,
     isTyping: !!typingUsersIds.length,
-    scrollToBottom,
+    handleScrollToBottom,
   };
 }

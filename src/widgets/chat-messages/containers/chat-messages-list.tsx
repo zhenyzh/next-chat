@@ -12,13 +12,18 @@ import { List, ScrollBar } from "@/shared/ui";
 import s from "./chat-messages-list.module.scss";
 
 export function ChatMessagesList() {
-  const { scrollRef, refWatchBottom, isBottom, isTyping, scrollToBottom } =
-    useScrollToBottom();
-  useChatMessageSubscribes(isBottom);
   const { messages, hasChatId, isLoading } = useMessagesList();
+  const {
+    scrollBarRef,
+    refWatchBottom,
+    isBottom,
+    isTyping,
+    handleScrollToBottom,
+  } = useScrollToBottom();
+  useChatMessageSubscribes(isBottom);
 
   return (
-    <ScrollBar className={s.scrollList} ref={scrollRef}>
+    <ScrollBar className={s.scrollList} ref={scrollBarRef}>
       <List
         data={messages}
         isLoading={isLoading}
@@ -39,7 +44,9 @@ export function ChatMessagesList() {
         }
         footer={
           <>
-            {hasChatId && !isBottom && <DownButton onClick={scrollToBottom} />}
+            {hasChatId && !isBottom && (
+              <DownButton onClick={handleScrollToBottom} />
+            )}
             {isTyping && isBottom && <TypingIndicator />}
             <Box ref={refWatchBottom} style={{ height: 1 }} />
           </>
