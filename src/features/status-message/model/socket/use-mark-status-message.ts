@@ -5,7 +5,7 @@ type MarkAsMessage = {
   chatId: number | undefined;
 };
 
-export function useMarkMessageStatus() {
+export function useMarkStatusMessage() {
   const socket = getSocket();
 
   const markAsDelivered = ({ messageId, chatId }: MarkAsMessage) => {
