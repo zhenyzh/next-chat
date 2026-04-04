@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Container } from "@zhenyzh/common-ui/components";
-import { ChatMessagesList } from "@/widgets/chat-messages";
+import { ChatMessagesList } from "@/widgets/chat-messages/containers";
 import { SendMessage } from "@/features/send-message/containers";
 import { ChatUsersList } from "@/features/chat-users/containers";
 import { ChatRecipient } from "@/features/chat-recipient/containers";

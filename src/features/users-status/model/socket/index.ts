@@ -1,1 +1,1 @@
-export * from "./use-subscribe-users-status";
+export * from "./use-subscribe-to-users-status";

@@ -2,7 +2,7 @@ import { Box } from "@zhenyzh/common-ui/components";
 import { SubStatusMessage } from "../sub-status-message";
 import { UnreadMessages } from "../unread-messages";
 import { firstIndexUnreadMessage } from "../../lib/utils";
-import { useStatusMessageConnection } from "@/features/status-message/model/socket";
+import { useMarkMessageStatus } from "@/features/status-message/model/socket";
 import { Messages } from "@/entities/messages/containers";
 import { type Message } from "@/entities/messages/model/types";
 
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const MessageListItem = ({ messages, isBottom }: Props) => {
-  const { markAsDelivered, markAsRead } = useStatusMessageConnection();
+  const { markAsDelivered, markAsRead } = useMarkMessageStatus();
   const firstIndex = firstIndexUnreadMessage(messages);
 
   return (

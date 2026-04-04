@@ -3,9 +3,9 @@
 import React, { ReactNode } from "react";
 import { Box } from "@zhenyzh/common-ui/components";
 import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
-import { Sidebar } from "@/widgets/sidebar";
-import { useSubscribeUsersStatus } from "@/features/users-status/model/socket";
-import { useSubscribeUserAvatarUpdate } from "@/features/add-user-avatar/model/socket";
+import { Sidebar } from "@/widgets/sidebar/containers";
+import { useSubscribeToUsersStatus } from "@/features/users-status/model/socket";
+import { useSubscribeToUserAvatarUpdate } from "@/features/add-user-avatar/model/socket";
 import { useInitializeUser } from "@/entities/user/model/hooks";
 import { useRefresh } from "@/shared/api";
 import s from "./layout.module.scss";
@@ -17,8 +17,8 @@ export default function RootLayout({
 }>) {
   const loadingRefresh = useRefresh();
   const loadingUser = useInitializeUser();
-  useSubscribeUsersStatus();
-  useSubscribeUserAvatarUpdate();
+  useSubscribeToUsersStatus();
+  useSubscribeToUserAvatarUpdate();
 
   if (loadingRefresh || loadingUser) return <AnimationLogoIcon />;
 

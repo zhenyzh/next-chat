@@ -4,7 +4,7 @@ import { messagesApi } from "@/entities/messages/api";
 import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
 import { socketEvent, socketService } from "@/shared/socket";
 
-export function useSubscribeStatusMessage() {
+export function useSubscribeToStatusMessage() {
   const { chatId } = useOpenCurrentChat();
 
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;

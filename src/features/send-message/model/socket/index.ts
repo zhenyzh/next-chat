@@ -1,1 +1,1 @@
-export * from "./use-subscribe-new-message";
+export * from "./use-subscribe-to-new-message";

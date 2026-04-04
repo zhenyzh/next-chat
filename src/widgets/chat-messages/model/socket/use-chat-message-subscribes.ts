@@ -1,13 +1,13 @@
-import { useSubscribeNewMessage } from "@/features/send-message/model/socket";
-import { useSubscribeTyping } from "@/features/typing/model/socket";
-import { useSubscribeStatusMessage } from "@/features/status-message/model/socket";
-import { useSubscribeUpdateChatUsers } from "@/features/chat-users/model/socket";
-import { useChatConnection } from "@/entities/chat/model/socket";
+import { useSubscribeToNewMessage } from "@/features/send-message/model/socket";
+import { useSubscribeToTyping } from "@/features/typing/model/socket";
+import { useSubscribeToStatusMessage } from "@/features/status-message/model/socket";
+import { useSubscribeToChatUsersUpdate } from "@/features/chat-users/model/socket";
+import { useChatRoom } from "@/entities/chat/model/socket";
 
 export function useChatMessageSubscribes(isBottom: boolean) {
-  useChatConnection();
-  useSubscribeNewMessage();
-  useSubscribeTyping();
-  useSubscribeStatusMessage();
-  useSubscribeUpdateChatUsers(isBottom);
+  useChatRoom();
+  useSubscribeToNewMessage();
+  useSubscribeToTyping();
+  useSubscribeToStatusMessage();
+  useSubscribeToChatUsersUpdate(isBottom);
 }

@@ -3,7 +3,7 @@ import type { ChatOpenDto } from "../../api";
 import { useOpenCurrentChat } from "../hooks";
 import { getSocket, socketEvent, socketService } from "@/shared/socket";
 
-export function useChatConnection() {
+export function useChatRoom() {
   const { chatId } = useOpenCurrentChat();
 
   useEffect(() => {
