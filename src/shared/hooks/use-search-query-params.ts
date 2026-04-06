@@ -10,13 +10,13 @@ export function useSearchQueryParams() {
   const setQuery = (newParams: Record<string, any>) => {
     const newSearchParams = new URLSearchParams(params);
     Object.entries(newParams).forEach(([key, value]) => {
-      if (!value === undefined || value === null) {
+      if (value === undefined || value === null) {
         newSearchParams.delete(key);
       } else {
         newSearchParams.set(key, value);
       }
     });
-    router.push(`${patchName}?${newSearchParams}`);
+    router.replace(`${patchName}?${newSearchParams}`);
   };
 
   const removeQuery = (keys: string[]) => {
@@ -24,7 +24,7 @@ export function useSearchQueryParams() {
     keys.forEach((key) => {
       newSearchParams.delete(key);
     });
-    router.push(`${patchName}?${newSearchParams}`);
+    router.replace(`${patchName}?${newSearchParams}`);
   };
 
   return { query, setQuery, removeQuery };
