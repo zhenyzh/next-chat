@@ -1,0 +1,31 @@
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+export function useSearchQueryParams() {
+  const params = useSearchParams();
+  const router = useRouter();
+  const patchName = usePathname();
+
+  const query = Object.fromEntries(params);
+
+  const setQuery = (newParams: Record<string, any>) => {
+    const newSearchParams = new URLSearchParams(params);
+    Object.entries(newParams).forEach(([key, value]) => {
+      if (!value) {
+        newSearchParams.delete(key);
+      } else {
+        newSearchParams.set(key, value);
+      }
+    });
+    router.push(`${patchName}?${newSearchParams}`);
+  };
+
+  const removeQuery = (keys: string[]) => {
+    const newSearchParams = new URLSearchParams(params);
+    keys.forEach((key) => {
+      newSearchParams.delete(key);
+    });
+    router.push(`${patchName}?${newSearchParams}`);
+  };
+
+  return { query, setQuery, removeQuery };
+}

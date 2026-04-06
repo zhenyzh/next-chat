@@ -36,12 +36,7 @@ export function ChatMessagesList() {
             <MessageListItem messages={group.messages} isBottom={isBottom} />
           </>
         )}
-        empty={
-          <EmptyContent
-            hasMessages={!!messages?.length}
-            hasChatId={hasChatId}
-          />
-        }
+        empty={!messages.length && !hasChatId && <EmptyContent />}
         footer={
           <>
             {hasChatId && !isBottom && (
