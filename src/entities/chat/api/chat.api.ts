@@ -3,11 +3,11 @@ import type { ChatOpenDto } from "./chat.dto";
 
 export const chatApi = {
   baseKey: "chat",
-  chatOpen: ({ userIdOther }: { userIdOther: number }) => {
+  chatOpen: ({ recipientId }: { recipientId: number }) => {
     return jsonApiInstance<ChatOpenDto>("chats/open", {
       method: "POST",
       json: {
-        userIdOther,
+        recipientId,
       },
     });
   },

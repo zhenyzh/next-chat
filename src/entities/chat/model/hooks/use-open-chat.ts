@@ -12,8 +12,8 @@ export function useOpenChat() {
     },
   });
 
-  const handleChatOpen = (userIdOther: number) => {
-    mutation.mutate({ userIdOther });
+  const handleChatOpen = (recipientId: number) => {
+    mutation.mutate({ recipientId });
   };
 
   return {
