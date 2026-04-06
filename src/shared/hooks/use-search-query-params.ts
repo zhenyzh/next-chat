@@ -10,7 +10,7 @@ export function useSearchQueryParams() {
   const setQuery = (newParams: Record<string, any>) => {
     const newSearchParams = new URLSearchParams(params);
     Object.entries(newParams).forEach(([key, value]) => {
-      if (!value) {
+      if (!value === undefined || value === null) {
         newSearchParams.delete(key);
       } else {
         newSearchParams.set(key, value);
