@@ -5,12 +5,16 @@ import { ChatUserItem } from "../ui/chat-user-item";
 import { useChatUsersList } from "../model/hooks";
 import { useOpenChat } from "@/entities/chat/model/hooks";
 import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
+import { useSearchQueryParams } from "@/shared/hooks";
 import s from "./chat-users-list.module.scss";
 
 export function ChatUsersList() {
+  const {
+    setQuery,
+    query: { recipientId },
+  } = useSearchQueryParams();
   const { usersChat, isLoading } = useChatUsersList();
   const { handleChatOpen } = useOpenChat();
-  const [activeUserId, setActiveUserId] = useState<number | null>(null);
 
   return (
     <ScrollBar>
@@ -21,13 +25,13 @@ export function ChatUsersList() {
         skeleton={<UserPreviewSkeleton />}
         className={s.container}
         listClassName={(item) =>
-          clsx(s.list, item.id === activeUserId && s.active)
+          clsx(s.list, item.id === +recipientId && s.active)
         }
         renderItem={(item) => (
           <Box
             onClick={() => {
               handleChatOpen(item.id);
-              setActiveUserId(item.id);
+              setQuery({ recipientId: item.id });
             }}
           >
             <ChatUserItem data={item} />

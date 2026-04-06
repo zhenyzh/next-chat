@@ -5,19 +5,26 @@ import { ChatMessagesList } from "@/widgets/chat-messages/containers";
 import { SendMessage } from "@/features/send-message/containers";
 import { ChatUsersList } from "@/features/chat-users/containers";
 import { ChatRecipient } from "@/features/chat-recipient/containers";
+import { useSearchQueryParams } from "@/shared/hooks";
 import s from "./page.module.scss";
 
 export default function ChatPage() {
+  const {
+    query: { recipientId },
+  } = useSearchQueryParams();
+
   return (
     <Container className={s.container}>
       <Box className={s.userCard}>
         <ChatUsersList />
       </Box>
-      <Box className={s.userHead}>
-        <Box className={s.contentHeader}>
-          <ChatRecipient />
+      {!!recipientId && (
+        <Box className={s.userHead}>
+          <Box className={s.contentHeader}>
+            <ChatRecipient />
+          </Box>
         </Box>
-      </Box>
+      )}
       <Box className={s.contentMessage}>
         <ChatMessagesList />
       </Box>

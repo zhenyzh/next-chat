@@ -1,4 +1,4 @@
-import { Typography } from "@zhenyzh/common-ui/components";
+import { Box, Typography } from "@zhenyzh/common-ui/components";
 import { useChatRecipient } from "../model/hooks";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import {
@@ -9,18 +9,22 @@ import {
 import s from "./chat-recipient.module.scss";
 
 export function ChatRecipient() {
-  const { recipient, isLoading } = useChatRecipient();
-  const isOnline = useHasUserStatus(4);
+  const { recipientId, recipientData, isLoading } = useChatRecipient();
+  const isOnline = useHasUserStatus(recipientId);
 
-  if (isLoading || !recipient) {
-    return <UserPreviewSkeleton />;
+  if (isLoading || !recipientData) {
+    return (
+      <Box>
+        <UserPreviewSkeleton className={s.skeletonContainer} />
+      </Box>
+    );
   }
 
   return (
     <AvatarPreviewOnlineWrapper>
       <UserPreview
-        name={recipient.name}
-        avatarUrl={recipient.avatarUrl}
+        name={recipientData.name}
+        avatarUrl={recipientData.avatarUrl}
         isOnline={isOnline}
         subInfoSlot={
           <Typography className={s.subInfo} variant="label">

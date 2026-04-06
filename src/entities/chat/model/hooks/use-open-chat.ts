@@ -3,12 +3,10 @@ import { chatApi } from "@/entities/chat/api";
 import { queryClient } from "@/shared/api";
 
 export function useOpenChat() {
-  const queryKey = [chatApi.baseKey];
-
   const mutation = useMutation({
     mutationFn: chatApi.chatOpen,
-    onSuccess: (data) => {
-      queryClient.setQueryData(queryKey, data);
+    onSuccess: (data, { recipientId }) => {
+      queryClient.setQueryData([chatApi.baseKey, recipientId], data);
     },
   });
 
