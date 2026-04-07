@@ -8,11 +8,17 @@ import { useMessagesList } from "../model/hooks";
 import { useScrollToBottom } from "../model/hooks";
 import { useChatMessageSubscribes } from "../model/socket";
 import { MessagesSkeleton } from "@/entities/messages/ui/message-skeleton";
+import { useSearchQueryParams } from "@/shared/hooks";
 import { List, ScrollBar } from "@/shared/ui";
 import s from "./chat-messages-list.module.scss";
 
 export function ChatMessagesList() {
+  const {
+    query: { recipientId },
+  } = useSearchQueryParams();
+
   const { messages, hasChatId, isLoading } = useMessagesList();
+
   const {
     scrollBarRef,
     refWatchBottom,
@@ -20,6 +26,7 @@ export function ChatMessagesList() {
     isTyping,
     handleScrollToBottom,
   } = useScrollToBottom();
+
   useChatMessageSubscribes(isBottom);
 
   return (
@@ -36,7 +43,7 @@ export function ChatMessagesList() {
             <MessageListItem messages={group.messages} isBottom={isBottom} />
           </>
         )}
-        empty={!messages.length && !hasChatId && <EmptyContent />}
+        empty={!recipientId && <EmptyContent />}
         footer={
           <>
             {hasChatId && !isBottom && (
