@@ -1,4 +1,3 @@
-import { useState } from "react";
 import clsx from "clsx";
 import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../ui/chat-user-item";
