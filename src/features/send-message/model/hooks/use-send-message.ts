@@ -23,7 +23,7 @@ export function useSendMessage() {
       const previousMessage = queryClient.getQueryData(queryKey);
 
       const mockMessage = {
-        id: Math.random(),
+        id: Math.floor(Math.random() * 100),
         ...newMessage,
         sender: user,
         createdAt: new Date().toISOString(),
