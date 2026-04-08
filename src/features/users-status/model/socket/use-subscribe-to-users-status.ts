@@ -12,7 +12,6 @@ export function useSubscribeToUsersStatus() {
     if (!userId) return;
 
     const socket = getSocket();
-    socket.connect();
 
     socket.emit(socketEvent.user_online_connect, userId);
     socket.emit(socketEvent.get_online_users);
