@@ -6,7 +6,7 @@ export const userApi = {
   baseKey: "user",
   getUserQueryOptions: () => {
     return queryOptions({
-      queryKey: [userApi.baseKey, "list"],
+      queryKey: [userApi.baseKey, "item"],
       queryFn: (meta) =>
         jsonApiInstance<User>("users/me", { signal: meta.signal }),
     });
