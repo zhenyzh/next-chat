@@ -23,7 +23,7 @@ export function useSendMessage() {
       const previousMessage = queryClient.getQueryData(queryKey);
 
       const mockMessage = {
-        id: Date.now(),
+        id: Math.random(),
         ...newMessage,
         sender: user,
         createdAt: new Date().toISOString(),
@@ -35,7 +35,7 @@ export function useSendMessage() {
 
       queryClient.setQueryData(queryKey, (old = []) => [...old, mockMessage]);
 
-      return { previousMessage, clientId: newMessage.clientId };
+      return { previousMessage, clientId };
     },
 
     onSuccess: (data, _, context) => {
