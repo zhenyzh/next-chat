@@ -17,9 +17,9 @@ export function useSubscribeToAllReadMessage() {
 
     const unsubscribe = socketService<{ chatId: number; userId: number }>(
       socketEvent.chat_read,
-      ({ chatId: eventChatId, userId: readerId }) => {
-        if (chatId !== eventChatId) return;
-        updateAllMessageToReadCache(queryKey, eventChatId, readerId);
+      ({ chatId: chatIdSocket, userId: readerId }) => {
+        if (chatId !== chatIdSocket) return;
+        updateAllMessageToReadCache(queryKey, chatIdSocket, readerId);
       },
     );
 
