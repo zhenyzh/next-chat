@@ -12,8 +12,9 @@ export function useSubscribeToAllReadMessage() {
   useEffect(() => {
     const unsubscribe = socketService<{ chatId: number; userId: number }>(
       socketEvent.chat_read,
-      ({ userId }) => {
-        updateAllMessageToReadCache(queryKey, userId);
+      ({ chatId: chatIdSocket }) => {
+        if (chatId !== chatIdSocket) return;
+        updateAllMessageToReadCache(queryKey, chatIdSocket);
       },
     );
 
