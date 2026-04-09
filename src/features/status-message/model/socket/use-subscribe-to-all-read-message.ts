@@ -13,7 +13,7 @@ export function useSubscribeToAllReadMessage() {
   useEffect(() => {
     if (!chatId) return;
 
-    queryClient.invalidateQueries({ queryKey });
+    void queryClient.invalidateQueries({ queryKey });
 
     const unsubscribe = socketService<{ chatId: number; userId: number }>(
       socketEvent.chat_read,
