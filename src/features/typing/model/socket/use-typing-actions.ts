@@ -3,7 +3,7 @@ import { useUser } from "@/entities/user/model/store";
 import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
 import { getSocket, socketEvent } from "@/shared/socket";
 
-export function useTypingActions(delay: number = 2000) {
+export function useTypingActions(delay: number = 1000) {
   const { chatId } = useOpenCurrentChat();
   const { id: userId } = useUser();
 

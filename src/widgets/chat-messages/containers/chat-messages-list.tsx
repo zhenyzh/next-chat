@@ -7,27 +7,23 @@ import { DownButton } from "../ui/down-button";
 import { useMessagesList } from "../model/hooks";
 import { useScrollToBottom } from "../model/hooks";
 import { useChatMessageSubscribes } from "../model/socket";
+import { useTypingMe } from "@/features/typing/model/hooks";
 import { MessagesSkeleton } from "@/entities/messages/ui/message-skeleton";
 import { useSearchQueryParams } from "@/shared/hooks";
 import { List, ScrollBar } from "@/shared/ui";
 import s from "./chat-messages-list.module.scss";
 
 export function ChatMessagesList() {
+  useChatMessageSubscribes();
+
   const {
     query: { recipientId },
   } = useSearchQueryParams();
 
   const { messages, hasChatId, isLoading } = useMessagesList();
-
-  const {
-    scrollBarRef,
-    refWatchBottom,
-    isBottom,
-    isTyping,
-    handleScrollToBottom,
-  } = useScrollToBottom();
-
-  useChatMessageSubscribes(isBottom);
+  const { isTyping } = useTypingMe();
+  const { scrollBarRef, refWatchBottom, isBottom, handleScrollToBottom } =
+    useScrollToBottom();
 
   return (
     <ScrollBar className={s.scrollList} ref={scrollBarRef}>

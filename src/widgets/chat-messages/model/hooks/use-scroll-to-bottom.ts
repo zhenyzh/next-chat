@@ -51,7 +51,6 @@ export function useScrollToBottom() {
     scrollBarRef,
     refWatchBottom,
     isBottom,
-    isTyping: !!typingUsersIds.length,
     handleScrollToBottom,
   };
 }

@@ -8,12 +8,12 @@ import {
 import { useSubscribeToChatUsersUpdate } from "@/features/chat-users/model/socket";
 import { useChatRoom } from "@/entities/chat/model/socket";
 
-export function useChatMessageSubscribes(isBottom: boolean) {
+export function useChatMessageSubscribes() {
   useChatRoom();
   useMarkReadMessage();
   useSubscribeToTyping();
   useSubscribeToNewMessage();
   useSubscribeToStatusMessage();
   useSubscribeToAllReadMessage();
-  useSubscribeToChatUsersUpdate(isBottom);
+  useSubscribeToChatUsersUpdate();
 }

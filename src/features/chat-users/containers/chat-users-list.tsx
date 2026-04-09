@@ -12,6 +12,7 @@ export function ChatUsersList() {
     setQuery,
     query: { recipientId },
   } = useSearchQueryParams();
+
   const { usersChat, isLoading } = useChatUsersList();
   const { handleChatOpen } = useOpenChat();
 
