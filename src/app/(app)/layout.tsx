@@ -1,13 +1,13 @@
 "use client";
 
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 import { Box } from "@zhenyzh/common-ui/components";
 import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
 import { Sidebar } from "@/widgets/sidebar/containers";
 import { useSubscribeToUsersStatus } from "@/features/users-status/model/socket";
 import { useSubscribeToUserAvatarUpdate } from "@/features/add-user-avatar/model/socket";
 import { useInitializeUser } from "@/entities/user/model/hooks";
-import { getSocket } from "@/shared/socket";
+import { useSocketConnect } from "@/shared/socket";
 import { useRefresh } from "@/shared/api";
 import s from "./layout.module.scss";
 
@@ -18,16 +18,9 @@ export default function RootLayout({
 }>) {
   const loadingRefresh = useRefresh();
   const loadingUser = useInitializeUser();
+  useSocketConnect();
   useSubscribeToUsersStatus();
   useSubscribeToUserAvatarUpdate();
-
-  useEffect(() => {
-    const socket = getSocket();
-    socket.connect();
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
 
   if (loadingRefresh || loadingUser) return <AnimationLogoIcon />;
 
