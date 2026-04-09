@@ -14,3 +14,17 @@ export function updateStatusCache(
     );
   });
 }
+
+export function updateAllMessageToReadCache(
+  queryKey: QueryKey,
+  userId: number,
+) {
+  queryClient.setQueryData<MessagesDto[]>(queryKey, (old) => {
+    if (!old) return old;
+    return old.map((msg) =>
+      msg.senderId !== userId
+        ? { ...msg, isDelivered: true, isRead: true }
+        : msg,
+    );
+  });
+}

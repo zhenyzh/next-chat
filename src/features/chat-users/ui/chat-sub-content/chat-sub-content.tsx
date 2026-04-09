@@ -28,7 +28,7 @@ export function ChatSubContent({
         {typedLastI || message}
       </Typography>
       <Box className={s.shrink}>
-        {status?.isRead || !countMessage ? (
+        {!countMessage ? (
           <SubStatusMessage status={status} />
         ) : (
           <UnreadIndicator count={countMessage} />

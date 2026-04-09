@@ -15,6 +15,7 @@ export const socketEvent = {
   online_users: "online_users",
   message_delivered: "message_delivered",
   message_read: "message_read",
+  chat_read: "chat_read",
   chat_users_update: "chat_users_update",
   user_avatar_updated: "user_avatar_updated",
 } as const;
