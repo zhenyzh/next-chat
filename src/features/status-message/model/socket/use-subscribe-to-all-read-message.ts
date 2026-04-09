@@ -3,6 +3,7 @@ import { updateAllMessageToReadCache } from "../../lib/utils";
 import { messagesApi } from "@/entities/messages/api";
 import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
 import { socketEvent, socketService } from "@/shared/socket";
+import { queryClient } from "@/shared/api";
 
 export function useSubscribeToAllReadMessage() {
   const { chatId } = useOpenCurrentChat();
@@ -10,11 +11,15 @@ export function useSubscribeToAllReadMessage() {
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;
 
   useEffect(() => {
+    if (!chatId) return;
+
+    queryClient.invalidateQueries({ queryKey });
+
     const unsubscribe = socketService<{ chatId: number; userId: number }>(
       socketEvent.chat_read,
-      ({ chatId: chatIdSocket }) => {
-        if (chatId !== chatIdSocket) return;
-        updateAllMessageToReadCache(queryKey, chatIdSocket);
+      ({ chatId: eventChatId, userId: readerId }) => {
+        if (chatId !== eventChatId) return;
+        updateAllMessageToReadCache(queryKey, eventChatId, readerId);
       },
     );
 
