@@ -8,6 +8,7 @@ export function useChatUsersList() {
   const {
     query: { recipientSearch },
   } = useSearchQueryParams();
+
   const recipientSearchDebounce = useDebounce(recipientSearch);
 
   const isTypingSearch =
