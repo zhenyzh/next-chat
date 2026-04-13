@@ -25,7 +25,7 @@ export const MessageListItem = ({ messages, isBottom }: Props) => {
             subContent={
               <SubStatusMessage
                 fromMe={msg.fromMe}
-                statusMessage={msg.statusMessage}
+                status={msg.statusMessage}
                 onDelivered={() =>
                   markAsDelivered({ messageId: msg.id, chatId: msg.chatId })
                 }

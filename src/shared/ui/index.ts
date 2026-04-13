@@ -4,3 +4,4 @@ export * from "./scrollbar";
 export * from "./list";
 export * from "./date-time";
 export * from "./user-previews";
+export * from "./check-status-message";

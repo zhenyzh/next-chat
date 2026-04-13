@@ -1,13 +1,12 @@
 import { useEffect } from "react";
+import type { StatusMessage } from "@/entities/messages/model/types";
 
 type Props = {
   fromMe: boolean;
-  isDelivered: boolean;
-  isRead: boolean;
   onDelivered?: () => void;
   onRead?: () => void;
   isBottom?: boolean;
-};
+} & Omit<StatusMessage, "isSent">;
 
 export function useChangeStatusMessage({
   fromMe,
