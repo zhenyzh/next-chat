@@ -45,7 +45,7 @@ export function Registration() {
             label="Введите новый пароль"
             name="confirmPassword"
             type="password"
-            iconStart={<LockKeyhole />}
+            iconStart={<LockKeyholeIcon />}
           />
         </Box>
         <Button fullWidth type="submit">
