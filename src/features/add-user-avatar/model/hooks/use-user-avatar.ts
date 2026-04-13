@@ -16,6 +16,10 @@ export function useUserAvatar(onClose?: () => void) {
     onClose?.();
   };
 
+  const handleRemove = () => {
+    setAvatarUrl(null);
+  };
+
   const handleClose = (e: MouseEvent) => {
     if (e.target === e.currentTarget) {
       setAvatarUrl(null);
@@ -26,6 +30,7 @@ export function useUserAvatar(onClose?: () => void) {
   return {
     isAvatarUrl: !!avatarUrl,
     handleSelect,
+    handleRemove,
     handleClose,
     handleSendUserAvatar,
     isPending,

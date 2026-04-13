@@ -17,6 +17,7 @@ export function AddUserAvatar({ onClose }: Props) {
     isAvatarUrl,
     handleSendUserAvatar,
     handleSelect,
+    handleRemove,
     handleClose,
     isPending,
   } = useUserAvatar(onClose);
@@ -27,6 +28,7 @@ export function AddUserAvatar({ onClose }: Props) {
         <ImageUploader
           className={s.imageUploader}
           onImageSelect={(file) => handleSelect(file)}
+          onRemoveFile={handleRemove}
           placeholder="Выберите или перетащите изображение"
           cropShape="round"
           enableCrop={true}
