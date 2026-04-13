@@ -16,7 +16,7 @@ export function SearchChatUsers() {
       endIcon={
         value?.trim() && (
           <CloseIcon
-            className={s.containerX}
+            className={s.closeIconContainer}
             width={38}
             height={38}
             onClick={onReset}

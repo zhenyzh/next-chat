@@ -3,7 +3,7 @@ import { useSearchQueryParams } from "@/shared/hooks";
 
 export function useSearchChatUsers() {
   const { setQuery, removeQuery } = useSearchQueryParams();
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>();
 
   const onChange = (value: string) => {
     setValue(value);
