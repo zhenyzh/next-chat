@@ -14,7 +14,7 @@ export function ChatUsersList() {
     query: { recipientId, recipientSearch },
   } = useSearchQueryParams();
 
-  const { usersChat, isLoading, isFetched } = useChatUsersList();
+  const { usersChat, isLoading } = useChatUsersList();
   const { handleChatOpen } = useOpenChat();
 
   return (
@@ -22,7 +22,7 @@ export function ChatUsersList() {
       <List
         data={usersChat}
         getKey={(key) => key.id}
-        isLoading={isLoading && isFetched}
+        isLoading={isLoading}
         skeleton={<UserPreviewSkeleton />}
         className={s.container}
         listClassName={(item) =>

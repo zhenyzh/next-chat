@@ -10,9 +10,10 @@ export function useSearchChatUsers() {
 
     if (!value.trim()) {
       onReset();
-    } else {
-      setQuery({ recipientSearch: value });
+      return;
     }
+
+    setQuery({ recipientSearch: value });
   };
 
   const onReset = () => {
