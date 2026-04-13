@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import { ChevronDown } from "lucide-react";
 import { Button } from "@zhenyzh/common-ui/components";
+import { ChevronDownIcon } from "@zhenyzh/common-ui/icons";
 import { useMessageFieldHeight } from "@/features/message-field-height/model/store";
 import s from "./down-button.module.scss";
 
@@ -14,7 +14,7 @@ export function DownButton({ onClick }: { onClick: () => void }) {
       variant="secondary"
       onClick={onClick}
     >
-      <ChevronDown className={s.shrinkIcon} />
+      <ChevronDownIcon className={s.shrinkIcon} />
     </Button>
   );
 }

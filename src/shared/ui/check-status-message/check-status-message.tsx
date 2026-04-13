@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { CheckCheck, Check } from "lucide-react";
+import { CheckCheckIcon, CheckIcon } from "@zhenyzh/common-ui/icons";
 import s from "./check-status-message.module.scss";
 
 type Props = {
@@ -23,9 +23,9 @@ export function CheckStatusMessage({
   return (
     show && (
       <>
-        {isSent && !isDelivered && <Check className={classNameCheck} />}
+        {isSent && !isDelivered && <CheckIcon className={classNameCheck} />}
         {isDelivered && (
-          <CheckCheck
+          <CheckCheckIcon
             className={clsx(
               classNameCheckCheck,
               isDelivered && isRead && s.activeCheck,

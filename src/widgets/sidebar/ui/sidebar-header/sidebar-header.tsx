@@ -1,7 +1,7 @@
 import Link from "next/link";
 import clsx from "clsx";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Avatar, Box, Button } from "@zhenyzh/common-ui/components";
+import { ChevronLeftIcon, ChevronRightIcon } from "@zhenyzh/common-ui/icons";
 import LogoIcon from "@/shared/assets/images/logo.svg";
 import s from "./sidebar-header.module.scss";
 
@@ -19,9 +19,9 @@ export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
       </Link>
       <Button onClick={() => setCollapsed(!collapsed)} className={s.toggleBtn}>
         {collapsed ? (
-          <ChevronRight width={20} height={20} />
+          <ChevronRightIcon width={20} height={20} />
         ) : (
-          <ChevronLeft width={20} height={20} />
+          <ChevronLeftIcon width={20} height={20} />
         )}
       </Button>
     </Box>

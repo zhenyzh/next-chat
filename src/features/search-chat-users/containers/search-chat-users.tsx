@@ -1,5 +1,5 @@
-import { X } from "lucide-react";
 import { SearchField } from "@zhenyzh/common-ui/components";
+import { CloseIcon } from "@zhenyzh/common-ui/icons";
 import { useSearchChatUsers } from "../model/hooks";
 import s from "./search-chat-users.module.scss";
 
@@ -15,7 +15,7 @@ export function SearchChatUsers() {
       classNameInput={s.input}
       endIcon={
         value?.trim() && (
-          <X
+          <CloseIcon
             className={s.containerX}
             width={38}
             height={38}

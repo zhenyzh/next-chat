@@ -1,5 +1,4 @@
 import React from "react";
-import { Image, CirclePlus, File } from "lucide-react";
 import {
   Button,
   DropdownMenu,
@@ -7,19 +6,20 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@zhenyzh/common-ui/components";
+import { ImageIcon, CirclePlusIcon, FileIcon } from "@zhenyzh/common-ui/icons";
 import s from "./add-dropdown-menu.module.scss";
 
 export function AddDropdownMenu() {
   const dropdownMenuItem = [
-    { icon: Image, label: "Добавить фото" },
-    { icon: File, label: "Добавить файл" },
+    { icon: ImageIcon, label: "Добавить фото" },
+    { icon: FileIcon, label: "Добавить файл" },
   ];
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className={s.triggerMenu}>
         <Button className={s.button} variant="outline">
-          <CirclePlus className={s.pointer} />
+          <CirclePlusIcon className={s.pointer} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

@@ -3,8 +3,12 @@
 import { useRouter } from "next/navigation";
 import { FormProvider } from "react-hook-form";
 import clsx from "clsx";
-import { UserPen, LockKeyhole, Mail } from "lucide-react";
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
+import {
+  UserPenIcon,
+  LockKeyholeIcon,
+  MailIcon,
+} from "@zhenyzh/common-ui/icons";
 import { useRegistration } from "../model/hooks";
 import { Paths } from "@/shared/configs";
 import { FormTextField } from "@/shared/form";
@@ -24,18 +28,18 @@ export function Registration() {
           <FormTextField
             label="Введите почту"
             name="email"
-            iconStart={<Mail />}
+            iconStart={<MailIcon />}
           />
           <FormTextField
             label="Введите имя"
             name="name"
-            iconStart={<UserPen />}
+            iconStart={<UserPenIcon />}
           />
           <FormTextField
             label="Введите пароль"
             name="password"
             type="password"
-            iconStart={<LockKeyhole />}
+            iconStart={<LockKeyholeIcon />}
           />
           <FormTextField
             label="Введите новый пароль"

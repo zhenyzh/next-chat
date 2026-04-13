@@ -1,10 +1,10 @@
-import { Save } from "lucide-react";
 import {
   ImageUploader,
   Button,
   Card,
   Box,
 } from "@zhenyzh/common-ui/components";
+import { SaveIcon } from "@zhenyzh/common-ui/icons";
 import { useUserAvatar } from "../model/hooks";
 import s from "./add-user-avatar.module.scss";
 
@@ -36,7 +36,7 @@ export function AddUserAvatar({ onClose }: Props) {
           disabled={!isAvatarUrl || isPending}
           onClick={handleSendUserAvatar}
         >
-          <Save />
+          <SaveIcon />
         </Button>
       </Card>
     </Box>

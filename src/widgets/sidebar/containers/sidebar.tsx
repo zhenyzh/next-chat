@@ -3,8 +3,12 @@
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import clsx from "clsx";
-import { MessageCircleMore, Settings, UserPen } from "lucide-react";
 import { Box } from "@zhenyzh/common-ui/components";
+import {
+  MessageCircleMoreIcon,
+  SettingsIcon,
+  UserPenIcon,
+} from "@zhenyzh/common-ui/icons";
 import { SideBarHeader, SideBarNavigation, SidebarLogout } from "../ui";
 import type { LinkType } from "../model/types";
 import { Paths } from "@/shared/configs";
@@ -18,17 +22,17 @@ export function Sidebar() {
     {
       link: Paths.profile(),
       label: "Профиль",
-      icon: <UserPen />,
+      icon: <UserPenIcon />,
     },
     {
       link: Paths.chat(),
       label: "Чат",
-      icon: <MessageCircleMore />,
+      icon: <MessageCircleMoreIcon />,
     },
     {
       link: Paths.settings(),
       label: "Настройки",
-      icon: <Settings />,
+      icon: <SettingsIcon />,
     },
   ];
 

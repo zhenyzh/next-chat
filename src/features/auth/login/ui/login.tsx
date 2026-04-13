@@ -3,8 +3,9 @@
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { FormProvider } from "react-hook-form";
-import { Mail, LockKeyhole } from "lucide-react";
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
+import { MailIcon, LockKeyholeIcon } from "@zhenyzh/common-ui/icons";
+
 import { useLogin } from "@/features/auth/login/model/hooks";
 import { FormTextField } from "@/shared/form";
 import { Paths } from "@/shared/configs";
@@ -24,13 +25,13 @@ export function Login() {
           <FormTextField
             name="email"
             label="Введите почту"
-            iconStart={<Mail />}
+            iconStart={<MailIcon />}
           />
           <FormTextField
             name="password"
             type="password"
             label="Введите пароль"
-            iconStart={<LockKeyhole />}
+            iconStart={<LockKeyholeIcon />}
           />
         </Box>
         <Button fullWidth type="submit" disabled={login.isPending}>

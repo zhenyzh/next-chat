@@ -1,5 +1,6 @@
-import { SendHorizontal } from "lucide-react";
 import { Button } from "@zhenyzh/common-ui/components";
+import { SendHorizontalIcon } from "@zhenyzh/common-ui/icons";
+
 import { useSendMessage } from "../../model/hooks";
 import { useTypingActions } from "@/features/typing/model/socket";
 import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
@@ -18,7 +19,7 @@ export function Sending() {
 
   return (
     <Button variant="outline" className={s.container} onClick={onSending}>
-      <SendHorizontal />
+      <SendHorizontalIcon />
     </Button>
   );
 }

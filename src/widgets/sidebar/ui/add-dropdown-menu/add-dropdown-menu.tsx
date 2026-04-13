@@ -1,4 +1,3 @@
-import { Camera, Ellipsis, UserRoundX, LogOut } from "lucide-react";
 import {
   Button,
   DropdownMenu,
@@ -6,6 +5,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@zhenyzh/common-ui/components";
+import {
+  CameraIcon,
+  EllipsisIcon,
+  UserRoundXIcon,
+  LogOutIcon,
+} from "@zhenyzh/common-ui/icons";
 import { useLogout } from "@/features/auth/logout/model/hooks";
 import { AddUserAvatar } from "@/features/add-user-avatar/containers";
 import { useModal } from "@/shared/hooks";
@@ -16,11 +21,11 @@ export function AddDropdownMenu() {
   const { logout, isPending } = useLogout();
 
   const items = [
-    { label: "Добавить фото", icon: Camera, onClick: handleOpen },
-    { label: "Удалить профиль", icon: UserRoundX },
+    { label: "Добавить фото", icon: CameraIcon, onClick: handleOpen },
+    { label: "Удалить профиль", icon: UserRoundXIcon },
     {
       label: "Выйти",
-      icon: LogOut,
+      icon: LogOutIcon,
       onClick: logout,
       disabled: isPending,
     },
@@ -30,7 +35,7 @@ export function AddDropdownMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild={true}>
         <Button className={s.container}>
-          <Ellipsis width={28} height={28} />
+          <EllipsisIcon width={28} height={28} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
