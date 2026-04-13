@@ -8,16 +8,18 @@ export function useChatUsersList() {
   const {
     query: { recipientSearch },
   } = useSearchQueryParams();
-  const recipientDebounce = useDebounce(recipientSearch);
+  const recipientSearchDebounce = useDebounce(recipientSearch);
 
-  const { data, isLoading, isFetched } = useQuery({
-    ...chatUsersApi.getChatUsersAllQueryOptions(recipientDebounce),
+  const isTypingSearch =
+    !!recipientSearch && recipientSearchDebounce !== recipientSearch;
+
+  const { data, isLoading } = useQuery({
+    ...chatUsersApi.getChatUsersAllQueryOptions(recipientSearchDebounce),
     select: (data) => sortDataByCreatedAt(data),
   });
 
   return {
     usersChat: modifiedChatUsersModel(data),
-    isLoading,
-    isFetched,
+    isLoading: isLoading || isTypingSearch,
   };
 }
