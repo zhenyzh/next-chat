@@ -5,11 +5,14 @@ import { jsonApiInstance } from "@/shared/api";
 export const chatUsersApi = {
   baseKey: "chatUser",
 
-  getChatUsersAllQueryOptions: () => {
+  getChatUsersAllQueryOptions: (search?: string) => {
     return queryOptions({
-      queryKey: [chatUsersApi.baseKey, "list"],
+      queryKey: [chatUsersApi.baseKey, "list", search],
       queryFn: (meta) =>
-        jsonApiInstance<ChatUsersDto[]>("chat-users", { signal: meta.signal }),
+        jsonApiInstance<ChatUsersDto[]>(`chat-users`, {
+          signal: meta.signal,
+          params: { search },
+        }),
     });
   },
 };

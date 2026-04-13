@@ -1,7 +1,6 @@
 import { Box } from "@zhenyzh/common-ui/components";
 import { SubDateContent } from "../ui/sub-time-content";
 import { MessageListItem } from "../ui/message-list-item";
-import { EmptyContent } from "../ui/empty-content";
 import { TypingIndicator } from "../ui/typing-indicator";
 import { DownButton } from "../ui/down-button";
 import { useMessagesList } from "../model/hooks";
@@ -10,7 +9,7 @@ import { useChatMessageSubscribes } from "../model/socket";
 import { useTypingMe } from "@/features/typing/model/hooks";
 import { MessagesSkeleton } from "@/entities/messages/ui/message-skeleton";
 import { useSearchQueryParams } from "@/shared/hooks";
-import { List, ScrollBar } from "@/shared/ui";
+import { List, ScrollBar, EmptyContent } from "@/shared/ui";
 import s from "./chat-messages-list.module.scss";
 
 export function ChatMessagesList() {
@@ -39,7 +38,11 @@ export function ChatMessagesList() {
             <MessageListItem messages={group.messages} isBottom={isBottom} />
           </>
         )}
-        empty={!recipientId && <EmptyContent />}
+        empty={
+          !recipientId && (
+            <EmptyContent label="Кликните на список чтобы увидеть чат" />
+          )
+        }
         footer={
           <>
             {hasChatId && !isBottom && (

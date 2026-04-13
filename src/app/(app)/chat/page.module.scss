@@ -11,10 +11,18 @@ $border: 2px solid var(--color-bg-primary);
   overflow: hidden;
 
   grid-template:
-    "user-card user-head" auto
+    "user-search user-head" auto
     "user-card content-message" 1fr
     "user-card content-input" auto
     / minmax(50px, 400px) 1fr;
+}
+
+.userSearch {
+  display: grid;
+  grid-area: user-search;
+  border-right: $border;
+  border-bottom: $border;
+  min-height: 0;
 }
 
 .userCard {

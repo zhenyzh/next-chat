@@ -1,0 +1,27 @@
+.container {
+  margin: 8px;
+}
+
+.containerX {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.input {
+  border-radius: var(--border-radius-size-xxxs);
+  border: 1px solid var(--color-bg-primary);
+  color: var(--color-bg-primary-v1);
+  background-color: var(--color-bg-primary);
+}
+
+@include max-width(330px) {
+  .input {
+    padding: 0;
+
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+}

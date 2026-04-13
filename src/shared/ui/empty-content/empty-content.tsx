@@ -1,11 +1,15 @@
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import s from "./empty-content.module.scss";
 
-export function EmptyContent() {
+type Props = {
+  label: string;
+};
+
+export function EmptyContent({ label }: Props) {
   return (
     <Box className={s.container}>
       <Typography variant="label" className={s.text}>
-        Кликните на список чтобы увидеть чат
+        {label}
       </Typography>
     </Box>
   );

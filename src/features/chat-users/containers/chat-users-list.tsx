@@ -5,12 +5,13 @@ import { useChatUsersList } from "../model/hooks";
 import { useOpenChat } from "@/entities/chat/model/hooks";
 import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
 import { useSearchQueryParams } from "@/shared/hooks";
+import { EmptyContent } from "@/shared/ui";
 import s from "./chat-users-list.module.scss";
 
 export function ChatUsersList() {
   const {
     setQuery,
-    query: { recipientId },
+    query: { recipientId, recipientsSearch },
   } = useSearchQueryParams();
 
   const { usersChat, isLoading } = useChatUsersList();
@@ -37,6 +38,10 @@ export function ChatUsersList() {
             <ChatUserItem data={item} />
           </Box>
         )}
+        empty={
+          !usersChat.length &&
+          !!recipientsSearch && <EmptyContent label="Нет такого пользователя" />
+        }
       />
     </ScrollBar>
   );

@@ -16,6 +16,7 @@ export const jsonApiInstance = async <T>(
     json?: unknown;
     method?: "GET" | "POST" | "DELETE" | "PUT" | "PATCH";
     signal?: AbortSignal;
+    params?: Record<string, unknown>;
   },
 ): Promise<T> => {
   try {
@@ -24,6 +25,7 @@ export const jsonApiInstance = async <T>(
       method: config?.method ?? "GET",
       data: config?.json,
       signal: config?.signal,
+      params: config?.params,
     });
     return response.data;
   } catch (err) {
