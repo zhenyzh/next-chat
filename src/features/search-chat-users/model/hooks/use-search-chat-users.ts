@@ -11,13 +11,13 @@ export function useSearchChatUsers() {
     if (!value.trim()) {
       onReset();
     } else {
-      setQuery({ recipientsSearch: value });
+      setQuery({ recipientSearch: value });
     }
   };
 
   const onReset = () => {
     setValue("");
-    removeQuery(["recipientsSearch"]);
+    removeQuery(["recipientSearch"]);
   };
 
   return { value, onChange, onReset };

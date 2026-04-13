@@ -11,10 +11,10 @@ import s from "./chat-users-list.module.scss";
 export function ChatUsersList() {
   const {
     setQuery,
-    query: { recipientId, recipientsSearch },
+    query: { recipientId, recipientSearch },
   } = useSearchQueryParams();
 
-  const { usersChat, isLoading } = useChatUsersList();
+  const { usersChat, isLoading, isFetched } = useChatUsersList();
   const { handleChatOpen } = useOpenChat();
 
   return (
@@ -22,7 +22,7 @@ export function ChatUsersList() {
       <List
         data={usersChat}
         getKey={(key) => key.id}
-        isLoading={isLoading}
+        isLoading={isLoading && isFetched}
         skeleton={<UserPreviewSkeleton />}
         className={s.container}
         listClassName={(item) =>
@@ -40,7 +40,7 @@ export function ChatUsersList() {
         )}
         empty={
           !usersChat.length &&
-          !!recipientsSearch && <EmptyContent label="Нет такого пользователя" />
+          !!recipientSearch && <EmptyContent label="Нет такого пользователя" />
         }
       />
     </ScrollBar>

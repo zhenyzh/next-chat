@@ -6,17 +6,18 @@ import { useDebounce, useSearchQueryParams } from "@/shared/hooks";
 
 export function useChatUsersList() {
   const {
-    query: { recipientsSearch },
+    query: { recipientSearch },
   } = useSearchQueryParams();
-  const recipientsDebounce = useDebounce(recipientsSearch);
+  const recipientDebounce = useDebounce(recipientSearch);
 
-  const { data, isLoading } = useQuery({
-    ...chatUsersApi.getChatUsersAllQueryOptions(recipientsDebounce),
+  const { data, isLoading, isFetched } = useQuery({
+    ...chatUsersApi.getChatUsersAllQueryOptions(recipientDebounce),
     select: (data) => sortDataByCreatedAt(data),
   });
 
   return {
     usersChat: modifiedChatUsersModel(data),
     isLoading,
+    isFetched,
   };
 }
