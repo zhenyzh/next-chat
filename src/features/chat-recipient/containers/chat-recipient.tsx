@@ -1,12 +1,12 @@
-import { Box, Typography } from "@zhenyzh/common-ui/components";
+import { Box } from "@zhenyzh/common-ui/components";
 import { useChatRecipient } from "../model/hooks";
+import { StatusRecipient } from "../ui/status-recipient";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import {
   UserPreview,
   UserPreviewSkeleton,
   AvatarPreviewOnlineWrapper,
 } from "@/shared/ui";
-import s from "./chat-recipient.module.scss";
 
 export function ChatRecipient() {
   const { recipientId, recipientData, isLoading } = useChatRecipient();
@@ -15,7 +15,7 @@ export function ChatRecipient() {
   if (isLoading || !recipientData) {
     return (
       <Box>
-        <UserPreviewSkeleton className={s.skeletonContainer} />
+        <UserPreviewSkeleton style={{ padding: 0 }} />
       </Box>
     );
   }
@@ -26,11 +26,7 @@ export function ChatRecipient() {
         name={recipientData.name}
         avatarUrl={recipientData.avatarUrl}
         isOnline={isOnline}
-        subInfoSlot={
-          <Typography className={s.subInfo} variant="label">
-            {isOnline ? "Online" : "Offline"}
-          </Typography>
-        }
+        subInfoSlot={<StatusRecipient isOnline={isOnline} />}
       />
     </AvatarPreviewOnlineWrapper>
   );

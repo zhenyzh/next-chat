@@ -1,16 +1,18 @@
 "use client";
 
+import { CSSProperties } from "react";
 import clsx from "clsx";
 import { Box, Skeleton } from "@zhenyzh/common-ui/components";
 import s from "./user-preview.skeleton.module.scss";
 
 type Props = {
   className?: string;
+  style?: CSSProperties;
 };
 
-export function UserPreviewSkeleton({ className }: Props) {
+export function UserPreviewSkeleton({ className, style }: Props) {
   return (
-    <Box className={clsx(s.container, className)}>
+    <Box className={clsx(s.container, className)} style={style}>
       <Box className={s.content}>
         <Skeleton circle width={55} height={55} className={s.avatar} />
         <Box className={s.infoSection}>
