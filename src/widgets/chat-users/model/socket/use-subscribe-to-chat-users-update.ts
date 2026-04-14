@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { chatUsersApi, type ChatUsersDto } from "@/features/chat-users/api";
+import { chatUsersApi, type ChatUsersDto } from "@/widgets/chat-users/api";
 import { socketService, socketEvent } from "@/shared/socket";
 import { useSearchQueryParams } from "@/shared/hooks";
 import { queryClient } from "@/shared/api";

@@ -1,5 +1,5 @@
 import type { QueryKey } from "@tanstack/react-query";
-import type { ChatUsersDto } from "@/features/chat-users/api";
+import type { ChatUsersDto } from "@/widgets/chat-users/api";
 import type { MessagesDto } from "@/entities/messages/api";
 import type { User } from "@/entities/user/model/types";
 import { queryClient } from "@/shared/api";

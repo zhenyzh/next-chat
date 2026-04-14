@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { updateChatUsersCache, updateMessagesCache } from "../../lib/utils";
-import { chatUsersApi } from "@/features/chat-users/api";
+import { chatUsersApi } from "@/widgets/chat-users/api";
 import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
 import { messagesApi } from "@/entities/messages/api";
 import { socketEvent, socketService } from "@/shared/socket";

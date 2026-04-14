@@ -1,5 +1,5 @@
-import type { ChatUsersDto } from "@/features/chat-users/api";
-import type { ChatUsers } from "@/features/chat-users/model/types";
+import type { ChatUsersDto } from "@/widgets/chat-users/api";
+import type { ChatUsers } from "@/widgets/chat-users/model/types";
 
 export function modifiedChatUsersModel(
   data: ChatUsersDto[] | undefined,
