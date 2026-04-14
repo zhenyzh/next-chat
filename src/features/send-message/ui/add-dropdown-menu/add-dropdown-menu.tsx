@@ -1,5 +1,5 @@
-import React from "react";
 import {
+  Box,
   Button,
   DropdownMenu,
   DropdownMenuContent,
@@ -26,7 +26,7 @@ export function AddDropdownMenu() {
         {dropdownMenuItem.map((item, i) => (
           <DropdownMenuItem key={i}>
             <item.icon />
-            <span>{item.label}</span>
+            <Box as="span">{item.label}</Box>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

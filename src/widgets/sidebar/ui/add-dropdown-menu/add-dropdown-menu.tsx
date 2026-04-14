@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   DropdownMenu,
   DropdownMenuContent,
@@ -21,11 +22,15 @@ export function AddDropdownMenu() {
   const { logout, isPending } = useLogout();
 
   const items = [
-    { label: "Добавить фото", icon: CameraIcon, onClick: handleOpen },
-    { label: "Удалить профиль", icon: UserRoundXIcon },
+    { label: "Добавить фото", icon: <CameraIcon />, onClick: handleOpen },
+    {
+      label: "Удалить профиль",
+      icon: <UserRoundXIcon className={s.deleteProfile} />,
+      className: s.deleteProfile,
+    },
     {
       label: "Выйти",
-      icon: LogOutIcon,
+      icon: <LogOutIcon />,
       onClick: logout,
       disabled: isPending,
     },
@@ -45,8 +50,10 @@ export function AddDropdownMenu() {
             onClick={item.onClick}
             disabled={item.disabled}
           >
-            <item.icon />
-            <span>{item.label}</span>
+            {item.icon}
+            <Box as="span" className={item.className}>
+              {item.label}
+            </Box>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
