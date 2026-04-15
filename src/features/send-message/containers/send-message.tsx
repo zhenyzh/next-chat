@@ -9,6 +9,8 @@ import { Microphone } from "../ui/microphone";
 import { AddDropdownMenu } from "../ui/add-dropdown-menu";
 import { useTypingActions } from "@/features/typing/model/socket";
 import { useMessageFieldAutoHeight } from "@/features/message-field-height/model/hooks";
+import { FileAttach } from "@/features/file-attach/containers";
+import s from "@/features/file-attach/containers/file-attach.module.scss";
 
 export function SendMessage() {
   const message = useMessage();
@@ -18,25 +20,29 @@ export function SendMessage() {
   const { heightResizeRef } = useMessageFieldAutoHeight();
 
   return (
-    <TextareaAutosizeField
-      ref={(el) => {
-        textareaRef.current = el;
-        heightResizeRef.current = el;
-      }}
-      value={message}
-      onChange={(e) => {
-        setText(e.target.value);
-        sendTyping();
-      }}
-      placeholder="Сообщение"
-      style={{ paddingRight: 85 }}
-      iconStart={<AddDropdownMenu />}
-      iconEnd={
-        <>
-          <EmojiSmile />
-          {message.trim() ? <Sending /> : <Microphone />}
-        </>
-      }
-    />
+    <>
+      <FileAttach />
+      <TextareaAutosizeField
+        className={s.send}
+        ref={(el) => {
+          textareaRef.current = el;
+          heightResizeRef.current = el;
+        }}
+        value={message}
+        onChange={(e) => {
+          setText(e.target.value);
+          sendTyping();
+        }}
+        placeholder="Сообщение"
+        style={{ paddingRight: 85 }}
+        iconStart={<AddDropdownMenu />}
+        iconEnd={
+          <>
+            <EmojiSmile />
+            {message.trim() ? <Sending /> : <Microphone />}
+          </>
+        }
+      />
+    </>
   );
 }

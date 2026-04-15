@@ -15,7 +15,7 @@ export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
   return (
     <Box className={s.header}>
       <Link href={defaultLink} className={clsx(collapsed && s.hidden)}>
-        <Avatar image={LogoIcon.src} variant="whole" />
+        <Avatar image={LogoIcon.src} variant="whole" size={50} />
       </Link>
       <Button onClick={() => setCollapsed(!collapsed)} className={s.toggleBtn}>
         {collapsed ? (

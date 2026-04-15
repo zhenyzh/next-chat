@@ -47,4 +47,5 @@ $border: 2px solid var(--color-bg-primary);
   grid-area: content-input;
   padding: 0 $padding $padding $padding;
   z-index: 1;
+  min-width: 0;
 }

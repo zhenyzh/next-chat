@@ -1,7 +1,19 @@
-.scroll {
-  height: 100%;
+@mixin scroll {
   position: relative;
+  scrollbar-color: var(--color-bg-hover) transparent;
+}
+
+.vertical {
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-color: var(--color-bg-hover) transparent;
+  @include scroll;
+}
+
+.horizontal {
+  display: flex;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  @include scroll;
 }

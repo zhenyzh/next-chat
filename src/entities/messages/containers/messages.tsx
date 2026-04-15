@@ -21,7 +21,7 @@ export function Messages({ message, subContent }: Props) {
 
   return (
     <Card className={clsx(s.message, fromMe && s.me)}>
-      <Avatar image={patchUrl(avatarUrl)} className={s.avatar} />
+      <Avatar image={patchUrl(avatarUrl)} className={s.avatar} size={50} />
       <Card>
         <Box className={s.bubble}>
           <Typography variant="h3" className={s.name}>
