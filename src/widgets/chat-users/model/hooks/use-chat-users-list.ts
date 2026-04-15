@@ -11,8 +11,7 @@ export function useChatUsersList() {
 
   const recipientSearchDebounce = useDebounce(recipientSearch);
 
-  const isTypingSearch =
-    !!recipientSearch && recipientSearchDebounce !== recipientSearch;
+  const isTypingSearch = recipientSearchDebounce !== recipientSearch;
 
   const { data, isLoading } = useQuery({
     ...chatUsersApi.getChatUsersAllQueryOptions(recipientSearchDebounce),
