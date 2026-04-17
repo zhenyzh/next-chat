@@ -1,7 +1,15 @@
 export type FileAttachStore = FileAttach & { actions: FileAttachActions };
 
 export type FileAttach = {
-  files: string;
+  files: FileItem[];
 };
 
-export type FileAttachActions = {};
+export type FileItem = { id: string; typeFile: FileType; file: File };
+
+export type FileType = "image" | "file";
+
+export type FileAttachActions = {
+  setFile: (file: File) => void;
+  clearFile: (id: string) => void;
+  clearAll: () => void;
+};

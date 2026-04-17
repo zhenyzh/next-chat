@@ -1,27 +1,33 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import type { FileAttachStore } from "./file-attach.types";
+import type { FileAttach, FileAttachStore } from "./file-attach.types";
+import { getFileType } from "../../lib/utils";
 
-const defaultMessage = {
-  message: "",
+const defaultFile: FileAttach = {
+  files: [],
 };
 
 export const useFileAttachStore = create<FileAttachStore>()(
   immer((set) => ({
-    ...defaultMessage,
+    ...defaultFile,
 
     actions: {
-      setText: (text) => {
+      setFile: (file) => {
         set((state) => {
-          state.message = text;
+          const newFile = {
+            id: crypto.randomUUID(),
+            typeFile: getFileType(file),
+            file,
+          };
+          state.files = [...state.files, newFile];
         });
       },
-      appendEmoji: (emoji) => {
+      clearFile: (id) => {
         set((state) => {
-          state.message += emoji;
+          state.files = state.files.filter((file) => file.id !== id);
         });
       },
-      clearMessage: () => set(defaultMessage),
+      clearAll: () => set((state) => (state.files = [])),
     },
   })),
 );

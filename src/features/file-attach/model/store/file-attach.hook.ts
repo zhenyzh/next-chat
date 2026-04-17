@@ -1,18 +1,18 @@
 import { useShallow } from "zustand/react/shallow";
-import { useSendMessageStore } from "./file-attach.store";
+import { useFileAttachStore } from "./file-attach.store";
 import {
-  messageActionsSelector,
-  allMessageSelector,
-  messageSelector,
+  filesSelector,
+  allFilesAttachSelector,
+  filesAttachActionsSelector,
 } from "./file-attach.selectors";
 import type { FileAttachStore } from "./file-attach.types";
 
-export const useMessage = (): FileAttachStore["message"] =>
-  useSendMessageStore(messageSelector);
+export const useFiles = (): FileAttachStore["files"] =>
+  useFileAttachStore(filesSelector);
 
-export const useMessageActions = (): FileAttachStore["actions"] =>
-  useSendMessageStore(messageActionsSelector);
+export const useFilesActions = (): FileAttachStore["actions"] =>
+  useFileAttachStore(filesAttachActionsSelector);
 
 export const useAllMessages = (): {
-  message: FileAttachStore["message"];
-} => useSendMessageStore(useShallow(allMessageSelector));
+  files: FileAttachStore["files"];
+} => useFileAttachStore(useShallow(allFilesAttachSelector));
