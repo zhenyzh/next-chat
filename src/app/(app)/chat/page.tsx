@@ -24,9 +24,7 @@ export default function ChatPage() {
       </Box>
       {!!recipientId && (
         <Box className={s.userHead}>
-          <Box className={s.contentHeader}>
-            <ChatRecipient />
-          </Box>
+          <ChatRecipient />
         </Box>
       )}
       <Box className={s.contentMessage}>

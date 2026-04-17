@@ -41,11 +41,13 @@ $border: 2px solid var(--color-bg-primary);
 .contentMessage {
   grid-area: content-message;
   min-height: 0;
+  min-width: 170px;
 }
 
 .contentInput {
   grid-area: content-input;
   padding: 0 $padding $padding $padding;
   z-index: 1;
-  min-width: 0;
+  min-width: 170px;
+
 }
