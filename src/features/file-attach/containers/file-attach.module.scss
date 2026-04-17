@@ -16,18 +16,18 @@
   cursor: pointer;
 }
 
-.closeIconContainer2 {
-  position: absolute;
-  right: -5px;
-  top: -4px;
-  border-radius: 50%;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  cursor: pointer;
-}
-
-.scrollHorizontal {
+.list {
+  display: flex;
+  flex-shrink: 0;
   gap: 10px;
+
+  &:first-child {
+    margin-left: 10px;
+  }
+
+  &:last-child {
+    margin-right: 10px;
+  }
 }
 
 

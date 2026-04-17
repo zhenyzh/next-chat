@@ -6,17 +6,9 @@
   max-height: 140px;
   border-radius: var(--border-radius-size-xxxs);
   background-color: var(--color-bg-secondary);
-
-  &:first-child {
-    margin-left: 10px;
-  }
-
-  &:last-child {
-    margin-right: 10px;
-  }
 }
 
-.closeIconContainer2 {
+.closeIconContainer {
   position: absolute;
   right: -5px;
   top: -4px;

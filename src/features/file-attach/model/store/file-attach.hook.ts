@@ -7,10 +7,10 @@ import {
 } from "./file-attach.selectors";
 import type { FileAttachStore } from "./file-attach.types";
 
-export const useFiles = (): FileAttachStore["files"] =>
+export const useFilesAttach = (): FileAttachStore["files"] =>
   useFileAttachStore(filesSelector);
 
-export const useFilesActions = (): FileAttachStore["actions"] =>
+export const useFilesAttachActions = (): FileAttachStore["actions"] =>
   useFileAttachStore(filesAttachActionsSelector);
 
 export const useAllMessages = (): {

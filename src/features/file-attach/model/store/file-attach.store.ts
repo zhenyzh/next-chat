@@ -27,7 +27,11 @@ export const useFileAttachStore = create<FileAttachStore>()(
           state.files = state.files.filter((file) => file.id !== id);
         });
       },
-      clearAll: () => set((state) => (state.files = [])),
+      clearAll: () => {
+        set((state) => {
+          state.files = [];
+        });
+      },
     },
   })),
 );
