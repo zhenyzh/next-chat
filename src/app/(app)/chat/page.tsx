@@ -2,7 +2,7 @@
 
 import { Box, Container } from "@zhenyzh/common-ui/components";
 import { ChatUsersList } from "@/widgets/chat-users/containers";
-import { ChatRecipient } from "@/widgets/chat-recipient/containers";
+import { ChatRecipient } from "@/features/chat-recipient/containers";
 import { ChatMessagesList } from "@/widgets/chat-messages/containers";
 import { MessageInput } from "@/widgets/message-input/conteiners";
 import { SearchChatUsers } from "@/features/search-chat-users/containers";
