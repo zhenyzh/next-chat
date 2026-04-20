@@ -3,11 +3,11 @@ import { addUserAvatarApi } from "../../api";
 import { updateUserCache, updateMessagesCache } from "../../lib/utils";
 import { userApi } from "@/entities/user/api";
 import { messagesApi } from "@/entities/messages/api";
-import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
+import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { queryClient } from "@/shared/api";
 
 export function useSendUserAvatar() {
-  const { chatId } = useOpenCurrentChat();
+  const { chatId } = useCurrentChat();
 
   const queryKeyUser = userApi.getUserQueryOptions().queryKey;
   const queryKeyMessages = messagesApi.getMessageQueryOptions({

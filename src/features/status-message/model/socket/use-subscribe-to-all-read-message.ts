@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { updateAllMessageToReadCache } from "../../lib/utils";
 import { messagesApi } from "@/entities/messages/api";
-import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
+import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { socketEvent, socketService } from "@/shared/socket";
 import { queryClient } from "@/shared/api";
 
 export function useSubscribeToAllReadMessage() {
-  const { chatId } = useOpenCurrentChat();
+  const { chatId } = useCurrentChat();
 
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;
 

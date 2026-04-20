@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { chatApi } from "@/entities/chat/api";
 import { useSearchQueryParams } from "@/shared/hooks";
 
-export function useOpenCurrentChat() {
+export function useCurrentChat() {
   const {
     query: { recipientId: id },
   } = useSearchQueryParams();

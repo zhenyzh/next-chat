@@ -6,13 +6,13 @@ import {
 } from "../../lib/utils";
 import { chatUsersApi } from "@/widgets/chat-users/api";
 import { chatRecipientApi } from "@/features/chat-recipient/api";
-import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
+import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { messagesApi } from "@/entities/messages/api";
 import { socketEvent, socketService } from "@/shared/socket";
 import { useSearchQueryParams } from "@/shared/hooks";
 
 export function useSubscribeToUserAvatarUpdate() {
-  const { chatId } = useOpenCurrentChat();
+  const { chatId } = useCurrentChat();
   const {
     query: { recipientId },
   } = useSearchQueryParams();
@@ -38,5 +38,11 @@ export function useSubscribeToUserAvatarUpdate() {
       },
     );
     return () => unsubscribe();
-  }, [chatId, queryKeyChatUsers, queryKeyRecipient, queryKeyMessages]);
+  }, [
+    chatId,
+    recipientId,
+    queryKeyChatUsers,
+    queryKeyRecipient,
+    queryKeyMessages,
+  ]);
 }

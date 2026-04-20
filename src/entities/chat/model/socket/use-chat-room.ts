@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import type { ChatOpenDto } from "../../api";
-import { useOpenCurrentChat } from "../hooks";
+import { useCurrentChat } from "../hooks";
 import { getSocket, socketEvent, socketService } from "@/shared/socket";
 
 export function useChatRoom() {
-  const { chatId } = useOpenCurrentChat();
+  const { chatId } = useCurrentChat();
 
   useEffect(() => {
     if (!chatId) return;
