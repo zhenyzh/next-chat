@@ -7,12 +7,12 @@ import {
   DropdownMenuTrigger,
 } from "@zhenyzh/common-ui/components";
 import { ImageIcon, CirclePlusIcon, FileIcon } from "@zhenyzh/common-ui/icons";
-import { ImageUpload } from "../image-upload";
-import { FileUpload } from "../file-upload";
+import { ImageUpload } from "../ui/image-upload";
+import { FileUpload } from "../ui/file-upload";
 import { useModal } from "@/shared/hooks";
-import s from "./add-dropdown-menu.module.scss";
+import s from "./file-attach-dropdown-menu.module.scss";
 
-export function AddDropdownMenu() {
+export function FileAttachDropdownMenu() {
   const {
     isOpen: isOpenImage,
     handleOpen: handleOpenImage,

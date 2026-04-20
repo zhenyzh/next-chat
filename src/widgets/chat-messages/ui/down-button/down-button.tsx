@@ -10,7 +10,7 @@ export function DownButton({ onClick }: { onClick: () => void }) {
   return (
     <Button
       className={clsx(s.container, s.button)}
-      style={{ bottom: `calc(50px + ${height}px)` }}
+      style={{ bottom: `calc(60px + ${height}px)` }}
       variant="secondary"
       onClick={onClick}
     >

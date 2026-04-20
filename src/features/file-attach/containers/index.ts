@@ -1,1 +1,1 @@
-export * from "./file-attach";
+export * from "./file-attach-dropdown-menu";

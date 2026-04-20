@@ -20,7 +20,7 @@ export const chatApi = {
   chatOpen: ({ recipientId }: { recipientId: number }) => {
     return jsonApiInstance<ChatOpenDto>("chats/open", {
       method: "POST",
-      json: {
+      data: {
         recipientId,
       },
     });

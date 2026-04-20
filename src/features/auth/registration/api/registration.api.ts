@@ -13,7 +13,7 @@ export const registrationApi = {
   }) => {
     return jsonApiInstance("/auth/registration", {
       method: "POST",
-      json: { name, email, password },
+      data: { name, email, password },
     });
   },
 };

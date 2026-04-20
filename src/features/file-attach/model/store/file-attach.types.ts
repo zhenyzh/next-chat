@@ -1,12 +1,10 @@
+import type { FileAttachmentType } from "../types";
+
 export type FileAttachStore = FileAttach & { actions: FileAttachActions };
 
 export type FileAttach = {
-  files: FileItem[];
+  files: FileAttachmentType[];
 };
-
-export type FileItem = { id: string; typeFile: FileType; file: File };
-
-export type FileType = "image" | "file";
 
 export type FileAttachActions = {
   setFile: (file: File) => void;

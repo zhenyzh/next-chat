@@ -8,7 +8,7 @@ export const addUserAvatarApi = {
     formData.append("file", file);
     return jsonApiInstance<AddUserAvatarDto>("/users/upload", {
       method: "POST",
-      json: formData,
+      data: formData,
     });
   },
 };

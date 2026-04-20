@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { sendMessageApi } from "../../api";
 import { useMessageActions, useMessage } from "../store";
+import { useFilesAttach } from "@/features/file-attach/model/store";
 import { messagesApi, type MessagesDto } from "@/entities/messages/api";
 import { useOpenCurrentChat } from "@/entities/chat/model/hooks";
 import { useUser } from "@/entities/user/model/store";
@@ -9,8 +10,9 @@ import { queryClient } from "@/shared/api";
 export function useSendMessage() {
   const user = useUser();
   const { chatId } = useOpenCurrentChat();
-  const message = useMessage();
   const { clearMessage } = useMessageActions();
+  const message = useMessage();
+  const attachments = useFilesAttach();
 
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;
   const clientId = crypto.randomUUID();
@@ -55,7 +57,13 @@ export function useSendMessage() {
   });
 
   const onSendMessage = () => {
-    mutation.mutate({ chatId, senderId: user.id, text: message, clientId });
+    mutation.mutate({
+      chatId,
+      senderId: user.id,
+      text: message,
+      clientId,
+      attachments,
+    });
   };
 
   return {

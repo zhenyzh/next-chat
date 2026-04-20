@@ -5,7 +5,7 @@ import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
 import { Box, Button } from "@zhenyzh/common-ui/components";
 import { SmileIcon } from "@zhenyzh/common-ui/icons";
-import { useMessageActions } from "../../model/store";
+import { useMessageActions } from "@/features/send-message/model/store";
 import { useTypingActions } from "@/features/typing/model/socket";
 import s from "./emoji-smile.module.scss";
 

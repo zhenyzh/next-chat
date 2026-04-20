@@ -6,7 +6,7 @@ export const loginApi = {
   login: ({ email, password }: { email: string; password: string }) => {
     return jsonApiInstance<LoginDto>("/auth/login", {
       method: "POST",
-      json: { email, password },
+      data: { email, password },
     });
   },
 };

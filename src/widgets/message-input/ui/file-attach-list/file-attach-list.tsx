@@ -1,19 +1,22 @@
-import { CardItemFile } from "../ui/card-item-file";
-import { CardItemImage } from "../ui/card-item-image";
-import { WrapperCardClose } from "../ui/wrapper-card-close";
-import { useFilesAttach, useFilesAttachActions } from "../model/store";
+import { WrapperCardClose } from "@/features/file-attach/ui/wrapper-card-close";
+import { CardItemFile } from "@/features/file-attach/ui/card-item-file";
+import { CardItemImage } from "@/features/file-attach/ui/card-item-image";
+import {
+  useFilesAttach,
+  useFilesAttachActions,
+} from "@/features/file-attach/model/store";
 import { List, ScrollBar } from "@/shared/ui";
-import s from "./file-attach.module.scss";
+import s from "./file-attach-list.module.scss";
 
-export function FileAttach() {
-  const { clearAll } = useFilesAttachActions();
+export function FileAttachList() {
   const files = useFilesAttach();
+  const { clearAll } = useFilesAttachActions();
 
   return (
     !!files.length && (
       <WrapperCardClose
         className={s.wrapper}
-        classNameClose={s.closeIconContainer}
+        classNameClose={s.closeIcon}
         onClose={clearAll}
       >
         <ScrollBar variant="horizontal">

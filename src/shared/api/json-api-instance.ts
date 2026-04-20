@@ -13,7 +13,7 @@ export class ApiError extends Error {
 export const jsonApiInstance = async <T>(
   url: string,
   config?: {
-    json?: unknown;
+    data?: unknown;
     method?: "GET" | "POST" | "DELETE" | "PUT" | "PATCH";
     signal?: AbortSignal;
     params?: Record<string, unknown>;
@@ -23,7 +23,7 @@ export const jsonApiInstance = async <T>(
     const response = await api.request<T>({
       url,
       method: config?.method ?? "GET",
-      data: config?.json,
+      data: config?.data,
       signal: config?.signal,
       params: config?.params,
     });

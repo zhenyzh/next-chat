@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useMessage } from "../store";
+import { useMessage } from "@/features/send-message/model/store";
 
 export function useTextareaFocus() {
   const message = useMessage();

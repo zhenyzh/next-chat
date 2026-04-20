@@ -4,7 +4,7 @@ import { Box, Container } from "@zhenyzh/common-ui/components";
 import { ChatUsersList } from "@/widgets/chat-users/containers";
 import { ChatRecipient } from "@/widgets/chat-recipient/containers";
 import { ChatMessagesList } from "@/widgets/chat-messages/containers";
-import { SendMessage } from "@/features/send-message/containers";
+import { MessageInput } from "@/widgets/message-input/conteiners";
 import { SearchChatUsers } from "@/features/search-chat-users/containers";
 import { useSearchQueryParams } from "@/shared/hooks";
 import s from "./page.module.scss";
@@ -31,7 +31,7 @@ export default function ChatPage() {
         <ChatMessagesList />
       </Box>
       <Box className={s.contentInput}>
-        <SendMessage />
+        <MessageInput />
       </Box>
     </Container>
   );
