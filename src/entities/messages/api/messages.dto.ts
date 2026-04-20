@@ -1,4 +1,4 @@
-import type { StatusMessage } from "../model/types";
+import type { FileAttach, StatusMessage } from "../model/types";
 import type { User } from "@/entities/user/model/types";
 
 export type MessagesDto = {
@@ -9,4 +9,5 @@ export type MessagesDto = {
   text: string;
   createdAt: string;
   clientId?: string;
+  attachments: FileAttach[];
 } & StatusMessage;

@@ -7,7 +7,7 @@ type Props = {
 };
 
 export function ImageUpload({ onClose }: Props) {
-  const { file, onSetFile, onSaveFile, onRemoveFile, handleClose } =
+  const { file, isPending, onSetFile, onSaveFile, onRemoveFile, handleClose } =
     useFile(onClose);
 
   return (
@@ -17,7 +17,7 @@ export function ImageUpload({ onClose }: Props) {
       onImageSelect={onSetFile}
       onRemoveFile={onRemoveFile}
       buttonIcon={<PlusIcon />}
-      disabledButton={!file}
+      disabledButton={!file || isPending}
     />
   );
 }

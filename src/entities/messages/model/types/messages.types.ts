@@ -15,10 +15,20 @@ export type Message = {
 
 export type MessageContentType = {
   text?: string;
-  images?: string[];
-  files?: { file: File }[];
+  images?: FileAttach[];
+  files?: FileAttach[];
   sticker?: string;
 };
+
+export type FileAttach = {
+  id: string;
+  url: string;
+  name: string;
+  size: number;
+  type: FileAttachType;
+};
+
+export type FileAttachType = "image" | "file";
 
 export type StatusMessage = {
   isSent: boolean;

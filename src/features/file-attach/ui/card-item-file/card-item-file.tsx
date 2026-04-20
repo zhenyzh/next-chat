@@ -2,14 +2,15 @@ import clsx from "clsx";
 import { Avatar, Typography } from "@zhenyzh/common-ui/components";
 import { WrapperCardClose } from "../wrapper-card-close";
 import { formatFileSize, getIconByFileExtension } from "../../lib/utils";
-import { type FileItem, useFilesAttachActions } from "../../model/store";
+import { useFilesAttachActions } from "../../model/store";
+import type { FileAttach } from "@/entities/messages/model/types";
 import s from "./card-item-file.module.scss";
 
 type Props = {
-  fileItem: FileItem;
+  file: FileAttach;
 };
 
-export function CardItemFile({ fileItem: { id, file } }: Props) {
+export function CardItemFile({ file }: Props) {
   const { clearFile } = useFilesAttachActions();
   const fileIcon = getIconByFileExtension(file.name);
   const size = formatFileSize(file.size);
@@ -18,7 +19,7 @@ export function CardItemFile({ fileItem: { id, file } }: Props) {
     <WrapperCardClose
       className={s.card}
       classNameClose={s.closeIcon}
-      onClose={() => clearFile(id)}
+      onClose={() => clearFile(file.id)}
     >
       <Avatar variant="whole" size={55} image={fileIcon.src} />
       <Typography variant="label" className={clsx(s.label, s.ellipsis)}>

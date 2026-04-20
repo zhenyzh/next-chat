@@ -1,8 +1,8 @@
 import { MouseEvent, useState } from "react";
-import { useFilesAttachActions } from "../store";
+import { useUploadFileAttach } from "../hooks";
 
 export function useFile(onClose?: () => void) {
-  const { setFile: setFilesAttach } = useFilesAttachActions();
+  const { onUploadFileAttach, isPending } = useUploadFileAttach();
   const [file, setFile] = useState<File | null>(null);
 
   const onSetFile = (file: File) => {
@@ -12,7 +12,7 @@ export function useFile(onClose?: () => void) {
   const onSaveFile = () => {
     if (!file) return;
     onRemoveFile();
-    setFilesAttach(file);
+    onUploadFileAttach(file);
     onClose?.();
   };
 
@@ -29,6 +29,7 @@ export function useFile(onClose?: () => void) {
 
   return {
     file,
+    isPending,
     onSetFile,
     onSaveFile,
     onRemoveFile,

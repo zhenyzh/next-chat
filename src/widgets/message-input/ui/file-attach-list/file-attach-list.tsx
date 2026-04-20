@@ -10,14 +10,14 @@ import s from "./file-attach-list.module.scss";
 
 export function FileAttachList() {
   const files = useFilesAttach();
-  const { clearAll } = useFilesAttachActions();
+  const { clearFiles } = useFilesAttachActions();
 
   return (
     !!files.length && (
       <WrapperCardClose
         className={s.wrapper}
         classNameClose={s.closeIcon}
-        onClose={clearAll}
+        onClose={clearFiles}
       >
         <ScrollBar variant="horizontal">
           <List
@@ -25,8 +25,8 @@ export function FileAttachList() {
             data={files}
             renderItem={(file) => (
               <>
-                {file.typeFile === "file" && <CardItemFile fileItem={file} />}
-                {file.typeFile === "image" && <CardItemImage fileItem={file} />}
+                {file.type === "file" && <CardItemFile file={file} />}
+                {file.type === "image" && <CardItemImage file={file} />}
               </>
             )}
           />

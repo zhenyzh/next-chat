@@ -8,14 +8,14 @@ type Props = {
 };
 
 export function FileUpload({ onClose }: Props) {
-  const { file, onSetFile, onSaveFile, onRemoveFile, handleClose } =
+  const { file, isPending, onSetFile, onSaveFile, onRemoveFile, handleClose } =
     useFile(onClose);
 
   return (
     <FileUploaderContainer
       onClickContainer={handleClose}
       onClickButton={onSaveFile}
-      disabledButton={!file}
+      disabledButton={!file || isPending}
       buttonIcon={<PlusIcon />}
     >
       <FileUploader

@@ -1,13 +1,13 @@
-import type { FileAttachmentType } from "../types";
+import type { FileAttach } from "@/entities/messages/model/types";
 
-export type FileAttachStore = FileAttach & { actions: FileAttachActions };
+export type FileAttachStore = FileAttachment & { actions: FileAttachActions };
 
-export type FileAttach = {
-  files: FileAttachmentType[];
+export type FileAttachment = {
+  files: FileAttach[];
 };
 
 export type FileAttachActions = {
-  setFile: (file: File) => void;
+  setFile: (file: FileAttach) => void;
   clearFile: (id: string) => void;
-  clearAll: () => void;
+  clearFiles: () => void;
 };
