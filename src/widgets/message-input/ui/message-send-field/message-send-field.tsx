@@ -11,7 +11,7 @@ import {
 import { useFilesAttach } from "@/features/file-attach/model/store";
 import { FileAttachDropdownMenu } from "@/features/file-attach/containers";
 
-export function MessageInputField() {
+export function MessageSendField() {
   const { setText } = useMessageActions();
   const { sendTyping } = useTypingActions();
   const { textareaRef } = useTextareaFocus();
