@@ -1,10 +1,10 @@
 import { Avatar, Box } from "@zhenyzh/common-ui/components";
-import s from "./message-image.module.scss";
+import s from "./message-images.module.scss";
 
-export function MessageImage({ imageUrl }: { imageUrl: string[] }) {
+export function MessageImages({ images }: { images: string[] }) {
   return (
     <Box className={s.container}>
-      {imageUrl.map((url, i) => (
+      {images.map((url, i) => (
         <Avatar
           key={i}
           image={url}

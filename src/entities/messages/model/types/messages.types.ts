@@ -15,7 +15,7 @@ export type Message = {
 
 export type MessageContentType = {
   text?: string;
-  imageUrl?: string[];
+  images?: string[];
   files?: { file: File }[];
   sticker?: string;
 };

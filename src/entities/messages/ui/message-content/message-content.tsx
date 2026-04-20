@@ -1,8 +1,8 @@
 import type { MessageContentType } from "@/entities/messages/model/types";
-import { MessageImage } from "../message-image";
+import { MessageImages } from "../message-images";
 
 export function MessageContent(content: MessageContentType) {
-  const { imageUrl } = content;
+  const { images } = content;
 
-  return <>{!!imageUrl?.length && <MessageImage imageUrl={imageUrl} />}</>;
+  return <>{!!images?.length && <MessageImages images={images} />}</>;
 }
