@@ -3,12 +3,11 @@
   padding: 0;
   flex-shrink: 0;
   max-width: 125px;
-  max-height: 140px;
   border-radius: var(--border-radius-size-xxxs);
   background-color: var(--color-bg-secondary);
 }
 
-.closeIconContainer {
+.closeIcon {
   position: absolute;
   right: -5px;
   top: -4px;
@@ -19,8 +18,7 @@
 }
 
 .image {
-  width: 100%;
-  height: 100%;
+  height: 130px;
   border: 1px solid var(--color-border-base);
   border-radius: var(--border-radius-size-xxxs);
   overflow: hidden;

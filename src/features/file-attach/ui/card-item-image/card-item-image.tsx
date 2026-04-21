@@ -16,7 +16,7 @@ export function CardItemImage({ file }: Props) {
   return (
     <WrapperCardClose
       className={s.cardImage}
-      classNameClose={s.closeIconContainer}
+      classNameClose={s.closeIcon}
       onClose={() => clearFile(file.id)}
     >
       <Avatar variant="whole" className={s.image} image={image} />
