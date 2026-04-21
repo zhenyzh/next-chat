@@ -3,6 +3,7 @@ import type { ChatUsers } from "../../model/types";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import { CardPreviewWrapper, DateTime, CardPreview } from "@/shared/ui";
 import { formatDateTimeAgo } from "@/shared/utils";
+import { patchUrl } from "@/shared/configs";
 
 export function ChatUserItem({ data }: { data: ChatUsers }) {
   const isOnline = useHasUserStatus(data.id);
@@ -10,8 +11,8 @@ export function ChatUserItem({ data }: { data: ChatUsers }) {
   return (
     <CardPreviewWrapper>
       <CardPreview
-        name={data.name}
-        avatarUrl={data?.avatarUrl}
+        title={data.name}
+        url={patchUrl(data?.avatarUrl)}
         isOnline={isOnline}
         rightInfoSlot={<DateTime value={formatDateTimeAgo(data.createdAt)} />}
         subInfoSlot={

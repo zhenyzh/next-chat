@@ -7,6 +7,7 @@ import {
   CardPreviewSkeleton,
   CardPreviewWrapper,
 } from "@/shared/ui";
+import { patchUrl } from "@/shared/configs";
 
 export function ChatRecipient() {
   const { recipientId, recipientData, isLoading } = useChatRecipient();
@@ -23,8 +24,8 @@ export function ChatRecipient() {
   return (
     <CardPreviewWrapper>
       <CardPreview
-        name={recipientData.name}
-        avatarUrl={recipientData.avatarUrl}
+        title={recipientData.name}
+        url={patchUrl(recipientData.avatarUrl)}
         isOnline={isOnline}
         subInfoSlot={<StatusRecipient isOnline={isOnline} />}
       />

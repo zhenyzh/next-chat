@@ -10,7 +10,7 @@ import OtherIcon from "@/shared/assets/images/other_icon.png";
 
 type FileExtension = "ppt" | "doc" | "docx" | "xls" | "pptx" | "pdf" | "txt";
 
-const mapIcon: Record<FileExtension, StaticImageData> = {
+const icon: Record<FileExtension, StaticImageData> = {
   ppt: PptIcon,
   doc: DocIcon,
   docx: DocxIcon,
@@ -22,5 +22,5 @@ const mapIcon: Record<FileExtension, StaticImageData> = {
 
 export function getIconByFileExtension(fileName: string) {
   const extension = fileName.split(".").pop()?.toLowerCase() || "";
-  return mapIcon[extension as FileExtension] || OtherIcon;
+  return icon[extension as FileExtension] || OtherIcon;
 }

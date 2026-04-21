@@ -1,36 +1,46 @@
 import React from "react";
 import clsx from "clsx";
-import { Avatar, Box, Typography } from "@zhenyzh/common-ui/components";
-import { patchUrl } from "@/shared/configs";
+import {
+  type AvatarVariant,
+  Avatar,
+  Box,
+  Typography,
+} from "@zhenyzh/common-ui/components";
 import s from "./card-preview.module.scss";
 
 export type UserCardPreviewsProps = {
-  name: string;
-  avatarUrl?: string;
+  title: string;
+  url: string | undefined | null;
+  variantUrl?: AvatarVariant;
   isOnline?: boolean;
+  classNameContainer?: string;
+  classNameTitle?: string;
   rightInfoSlot?: React.ReactNode;
   subInfoSlot?: React.ReactNode;
 };
 
 export function CardPreview({
-  name,
-  avatarUrl,
+  title,
+  url,
+  variantUrl = "cropped",
+  classNameContainer,
+  classNameTitle,
   rightInfoSlot, // дата, метка, кнопка
   subInfoSlot, // сообщение, статус прочтения, иконки
   isOnline = false,
 }: UserCardPreviewsProps) {
   return (
-    <Box className={s.content}>
+    <Box className={clsx(s.content, classNameContainer)}>
       <Avatar
-        image={patchUrl(avatarUrl)}
-        variant="cropped"
+        image={url}
+        variant={variantUrl}
         size={55}
         className={clsx(s.avatar, isOnline && s.online)}
       />
       <Box className={s.infoSection}>
         <Box className={s.basicInfo}>
-          <Typography variant="h2" className={s.ellipsis}>
-            {name}
+          <Typography variant="h2" className={clsx(s.ellipsis, classNameTitle)}>
+            {title}
           </Typography>
 
           {rightInfoSlot}

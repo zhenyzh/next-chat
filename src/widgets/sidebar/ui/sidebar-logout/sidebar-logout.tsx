@@ -4,6 +4,7 @@ import { AddDropdownMenu } from "../add-dropdown-menu";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import { useUser } from "@/entities/user/model/store";
 import { CardPreview } from "@/shared/ui";
+import { patchUrl } from "@/shared/configs";
 import s from "./sidebar-logout.module.scss";
 
 type Props = {
@@ -18,8 +19,8 @@ export function SidebarLogout({ collapsed }: Props) {
     <>
       <Box className={clsx(s.container, collapsed && s.hidden, s.hiddenMobile)}>
         <CardPreview
-          name={user.name}
-          avatarUrl={user.avatarUrl}
+          title={user.name}
+          url={patchUrl(user.avatarUrl)}
           isOnline={isOnline}
           rightInfoSlot={
             <Box className={s.rightInfo}>

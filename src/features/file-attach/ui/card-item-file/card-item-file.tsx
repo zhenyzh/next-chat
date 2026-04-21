@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import { Avatar, Typography } from "@zhenyzh/common-ui/components";
 import { WrapperCardClose } from "../wrapper-card-close";
-import { formatFileSize, getIconByFileExtension } from "../../lib/utils";
 import { useFilesAttachActions } from "../../model/store";
 import type { FileAttach } from "@/entities/messages/model/types";
+import { formatFileSize, getIconByFileExtension } from "@/shared/utils";
 import s from "./card-item-file.module.scss";
 
 type Props = {
