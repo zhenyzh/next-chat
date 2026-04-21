@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-type WatchSticking = Partial<{
+type StickingObserver = Partial<{
   root: HTMLElement | null;
   rootMargin: string;
   threshold: number | number[];
@@ -10,7 +10,7 @@ export function useStickingObserver({
   root = null,
   rootMargin = "0px",
   threshold = 0,
-}: WatchSticking = {}) {
+}: StickingObserver = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const [isStuck, setIsStuck] = useState(false);
 

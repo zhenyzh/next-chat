@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-type WatchBottom<T> = Partial<{
+type BottomObserver<T> = Partial<{
   root?: HTMLElement | null;
   rootMargin?: string;
   threshold?: number | number[];
@@ -12,7 +12,7 @@ export function useBottomObserver<T>({
   rootMargin = "0px",
   threshold = 0,
   dependencies = [],
-}: WatchBottom<T> = {}) {
+}: BottomObserver<T> = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const [isBottom, setIsBottom] = useState(false);
 
