@@ -3,14 +3,14 @@
 import { CSSProperties } from "react";
 import clsx from "clsx";
 import { Box, Skeleton } from "@zhenyzh/common-ui/components";
-import s from "./user-preview.skeleton.module.scss";
+import s from "./card-preview.skeleton.module.scss";
 
 type Props = {
   className?: string;
   style?: CSSProperties;
 };
 
-export function UserPreviewSkeleton({ className, style }: Props) {
+export function CardPreviewSkeleton({ className, style }: Props) {
   return (
     <Box className={clsx(s.container, className)} style={style}>
       <Box className={s.content}>

@@ -3,7 +3,7 @@ import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../ui/chat-user-item";
 import { useChatUsersList } from "../model/hooks";
 import { useOpenChat } from "@/entities/chat/model/hooks";
-import { List, ScrollBar, UserPreviewSkeleton } from "@/shared/ui";
+import { List, ScrollBar, CardPreviewSkeleton } from "@/shared/ui";
 import { useSearchQueryParams } from "@/shared/hooks";
 import { EmptyContent } from "@/shared/ui";
 import s from "./chat-users-list.module.scss";
@@ -23,7 +23,7 @@ export function ChatUsersList() {
         data={usersChat}
         getKey={(key) => key.id}
         isLoading={isLoading}
-        skeleton={<UserPreviewSkeleton />}
+        skeleton={<CardPreviewSkeleton />}
         className={s.container}
         listClassName={(item) =>
           clsx(s.list, item.id === +recipientId && s.active)

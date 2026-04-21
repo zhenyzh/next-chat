@@ -3,9 +3,9 @@ import { useChatRecipient } from "../model/hooks";
 import { StatusRecipient } from "../ui/status-recipient";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import {
-  UserPreview,
-  UserPreviewSkeleton,
-  AvatarPreviewOnlineWrapper,
+  CardPreview,
+  CardPreviewSkeleton,
+  CardPreviewWrapper,
 } from "@/shared/ui";
 
 export function ChatRecipient() {
@@ -15,19 +15,19 @@ export function ChatRecipient() {
   if (isLoading || !recipientData) {
     return (
       <Box>
-        <UserPreviewSkeleton style={{ padding: 0 }} />
+        <CardPreviewSkeleton style={{ padding: 0 }} />
       </Box>
     );
   }
 
   return (
-    <AvatarPreviewOnlineWrapper>
-      <UserPreview
+    <CardPreviewWrapper>
+      <CardPreview
         name={recipientData.name}
         avatarUrl={recipientData.avatarUrl}
         isOnline={isOnline}
         subInfoSlot={<StatusRecipient isOnline={isOnline} />}
       />
-    </AvatarPreviewOnlineWrapper>
+    </CardPreviewWrapper>
   );
 }

@@ -5,7 +5,7 @@ type Props = {
   children: ReactNode;
 };
 
-export function AvatarPreviewOnlineWrapper({ children }: Props) {
+export function CardPreviewWrapper({ children }: Props) {
   return (
     <Box style={{ "--avatar-online-bg": "var(--color-bg-primary-v1)" }}>
       {children}

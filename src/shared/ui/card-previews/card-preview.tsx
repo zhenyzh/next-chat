@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { Avatar, Box, Typography } from "@zhenyzh/common-ui/components";
 import { patchUrl } from "@/shared/configs";
-import s from "./user-preview.module.scss";
+import s from "./card-preview.module.scss";
 
 export type UserCardPreviewsProps = {
   name: string;
@@ -12,7 +12,7 @@ export type UserCardPreviewsProps = {
   subInfoSlot?: React.ReactNode;
 };
 
-export function UserPreview({
+export function CardPreview({
   name,
   avatarUrl,
   rightInfoSlot, // дата, метка, кнопка

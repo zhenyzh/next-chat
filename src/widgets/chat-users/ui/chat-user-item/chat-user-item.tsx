@@ -1,15 +1,15 @@
 import { ChatSubContent } from "../chat-sub-content";
 import type { ChatUsers } from "../../model/types";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
-import { AvatarPreviewOnlineWrapper, DateTime, UserPreview } from "@/shared/ui";
+import { CardPreviewWrapper, DateTime, CardPreview } from "@/shared/ui";
 import { formatDateTimeAgo } from "@/shared/utils";
 
 export function ChatUserItem({ data }: { data: ChatUsers }) {
   const isOnline = useHasUserStatus(data.id);
 
   return (
-    <AvatarPreviewOnlineWrapper>
-      <UserPreview
+    <CardPreviewWrapper>
+      <CardPreview
         name={data.name}
         avatarUrl={data?.avatarUrl}
         isOnline={isOnline}
@@ -23,6 +23,6 @@ export function ChatUserItem({ data }: { data: ChatUsers }) {
           />
         }
       />
-    </AvatarPreviewOnlineWrapper>
+    </CardPreviewWrapper>
   );
 }
