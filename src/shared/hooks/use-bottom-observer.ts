@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
 type BottomObserver<T> = Partial<{
-  root?: HTMLElement | null;
-  rootMargin?: string;
-  threshold?: number | number[];
-  dependencies?: T[];
+  root: HTMLElement | null;
+  rootMargin: string;
+  threshold: number | number[];
+  dependencies: T[];
 }>;
 
 export function useBottomObserver<T>({
