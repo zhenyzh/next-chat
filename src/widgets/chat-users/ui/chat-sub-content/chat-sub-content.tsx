@@ -1,5 +1,3 @@
-"use client";
-
 import clsx from "clsx";
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import { SubStatusMessage } from "../sub-status-message";
