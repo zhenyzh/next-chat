@@ -11,6 +11,7 @@ import s from "./file-attach-list.module.scss";
 export function FileAttachList() {
   const files = useFilesAttach();
   const { clearFiles } = useFilesAttachActions();
+  const { clearFile } = useFilesAttachActions();
 
   return (
     !!files.length && (
@@ -25,8 +26,18 @@ export function FileAttachList() {
             data={files}
             renderItem={(file) => (
               <>
-                {file.type === "file" && <CardItemFile file={file} />}
-                {file.type === "image" && <CardItemImage file={file} />}
+                {file.type === "file" && (
+                  <CardItemFile
+                    file={file}
+                    onRemove={() => clearFile(file.id)}
+                  />
+                )}
+                {file.type === "image" && (
+                  <CardItemImage
+                    file={file}
+                    onRemove={() => clearFile(file.id)}
+                  />
+                )}
               </>
             )}
           />
