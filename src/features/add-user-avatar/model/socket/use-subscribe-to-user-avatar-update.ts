@@ -5,7 +5,7 @@ import {
   updateUserCache,
 } from "../../lib/utils";
 import { chatUsersApi } from "@/widgets/chat-users/api";
-import { chatRecipientApi } from "@/features/chat-recipient/api";
+import { userRecipientApi } from "@/entities/user/user-recipient/api";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { messagesApi } from "@/entities/messages/api";
 import { socketEvent, socketService } from "@/shared/socket";
@@ -18,8 +18,8 @@ export function useSubscribeToUserAvatarUpdate() {
   } = useSearchQueryParams();
 
   const queryKeyChatUsers = chatUsersApi.getChatUsersAllQueryOptions().queryKey;
-  const queryKeyRecipient =
-    chatRecipientApi.getChatRecipientQueryOptions(+recipientId).queryKey;
+  const queryKeyUserRecipient =
+    userRecipientApi.getChatRecipientQueryOptions(+recipientId).queryKey;
   const queryKeyMessages = messagesApi.getMessageQueryOptions({
     chatId,
   }).queryKey;
@@ -30,7 +30,7 @@ export function useSubscribeToUserAvatarUpdate() {
       ({ userId, avatarUrl }) => {
         updateChatUsersCache(queryKeyChatUsers, avatarUrl, userId);
         if (userId === +recipientId) {
-          updateUserCache(queryKeyRecipient, avatarUrl);
+          updateUserCache(queryKeyUserRecipient, avatarUrl);
         }
         if (chatId) {
           updateMessagesCache(queryKeyMessages, avatarUrl, userId);
@@ -42,7 +42,7 @@ export function useSubscribeToUserAvatarUpdate() {
     chatId,
     recipientId,
     queryKeyChatUsers,
-    queryKeyRecipient,
+    queryKeyUserRecipient,
     queryKeyMessages,
   ]);
 }

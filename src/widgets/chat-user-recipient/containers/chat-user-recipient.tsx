@@ -1,6 +1,6 @@
 import { Box } from "@zhenyzh/common-ui/components";
-import { useChatRecipient } from "../model/hooks";
 import { StatusRecipient } from "../ui/status-recipient";
+import { useUserRecipient } from "@/entities/user/user-recipient/model/hooks";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
 import {
   CardPreview,
@@ -9,8 +9,8 @@ import {
 } from "@/shared/ui";
 import { patchUrl } from "@/shared/configs";
 
-export function ChatRecipient() {
-  const { recipientId, recipientData, isLoading } = useChatRecipient();
+export function ChatUserRecipient() {
+  const { recipientId, recipientData, isLoading } = useUserRecipient();
   const isOnline = useHasUserStatus(recipientId);
 
   if (isLoading || !recipientData) {
