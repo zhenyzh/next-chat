@@ -20,7 +20,9 @@ export function MessageFiles({ files }: { files: FileAttach[] }) {
             classNameContainer={s.cardContainer}
             url={getIconByFileExtension(file.name).src}
             variantUrl="whole"
-            subInfoSlot={<>{formatFileSize(file.size)}</>}
+            subInfoSlot={
+              <Box className={s.ellipsis}>{formatFileSize(file.size)}</Box>
+            }
           />
         </Box>
       ))}
