@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../ui/chat-user-item";
 import { useChatUsersList } from "../model/hooks";
-import { useOpenChat } from "@/entities/chat/model/hooks";
+import { useOpenCurrentChat } from "@/features/open-current-chat/model";
 import { List, ScrollBar, CardPreviewSkeleton } from "@/shared/ui";
 import { useSearchQueryParams } from "@/shared/hooks";
 import { EmptyContent } from "@/shared/ui";
@@ -15,7 +15,7 @@ export function ChatUsersList() {
   } = useSearchQueryParams();
 
   const { usersChat, isLoading } = useChatUsersList();
-  const { handleChatOpen } = useOpenChat();
+  const { handleChatOpen } = useOpenCurrentChat();
 
   return (
     <ScrollBar>

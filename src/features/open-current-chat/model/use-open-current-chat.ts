@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { chatApi } from "@/entities/chat/api";
 
-export function useOpenChat() {
+export function useOpenCurrentChat() {
   const mutation = useMutation({
     mutationFn: chatApi.chatOpen,
   });
