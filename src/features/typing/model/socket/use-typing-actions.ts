@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useUser } from "@/entities/user/user/model/store";
+import { useUser } from "@/entities/user/model/store";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { getSocket, socketEvent } from "@/shared/socket";
 

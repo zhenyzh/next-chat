@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useLogoutAction } from "./use-logout-action";
-import { useUserActions } from "@/entities/user/user/model/store";
+import { useUserActions } from "@/entities/user/model/store";
 import { Paths } from "@/shared/configs";
 import { useTokenService } from "@/shared/token-service";
 import { queryClient } from "@/shared/api";

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { modifiedChatUsersModel } from "../../lib/selectors";
 import { sortDataByCreatedAt } from "../../lib/utils";
-import { usersRecipientApi } from "@/entities/user/users-recipient/api";
+import { chatUsersApi } from "@/entities/chat-user/api";
 import { useDebounce, useSearchQueryParams } from "@/shared/hooks";
 
 export function useChatUsersList() {
@@ -14,7 +14,7 @@ export function useChatUsersList() {
   const isTypingSearch = recipientSearchDebounce !== recipientSearch;
 
   const { data, isLoading } = useQuery({
-    ...usersRecipientApi.getChatUsersAllQueryOptions(recipientSearchDebounce),
+    ...chatUsersApi.getChatUsersAllQueryOptions(recipientSearchDebounce),
     select: (data) => sortDataByCreatedAt(data),
   });
 

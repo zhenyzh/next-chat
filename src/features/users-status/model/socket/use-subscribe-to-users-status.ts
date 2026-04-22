@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useUsersStatusActions } from "../store";
-import { useUser } from "@/entities/user/user/model/store";
+import { useUser } from "@/entities/user/model/store";
 import { socketEvent, getSocket, socketService } from "@/shared/socket";
 
 export function useSubscribeToUsersStatus() {

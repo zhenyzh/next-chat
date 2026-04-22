@@ -1,9 +1,9 @@
-import type { UsersRecipientDto } from "@/entities/user/users-recipient/api";
-import type { UsersRecipient } from "@/entities/user/users-recipient/model/types";
+import { ChatUsersDto } from "@/entities/chat-user/api";
+import type { ChatUsers } from "@/entities/chat-user/model/types";
 
 export function modifiedChatUsersModel(
-  data: UsersRecipientDto[] | undefined,
-): UsersRecipient[] {
+  data: ChatUsersDto[] | undefined,
+): ChatUsers[] {
   return (data ?? []).map(({ isSent, isDelivered, isRead, ...rest }) => ({
     ...rest,
     status: {

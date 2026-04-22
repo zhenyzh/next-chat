@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
-import { useUser } from "@/entities/user/user/model/store";
+import { useUser } from "@/entities/user/model/store";
 import { getSocket, socketEvent } from "@/shared/socket";
 
 export function useMarkReadMessage() {

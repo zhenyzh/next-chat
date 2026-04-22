@@ -7,7 +7,7 @@ import {
 } from "@/features/file-attach/model/store";
 import { messagesApi, type MessagesDto } from "@/entities/messages/api";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
-import { useUser } from "@/entities/user/user/model/store";
+import { useUser } from "@/entities/user/model/store";
 import { queryClient } from "@/shared/api";
 
 export function useSendMessage() {

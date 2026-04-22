@@ -1,15 +1,15 @@
 import { queryOptions } from "@tanstack/react-query";
-import type { UsersRecipientDto } from "./users-recipient.dto";
+import type { ChatUsersDto } from "./chat-users.dto";
 import { jsonApiInstance } from "@/shared/api";
 
-export const usersRecipientApi = {
-  baseKey: "chatUser",
+export const chatUsersApi = {
+  baseKey: "chatUsers",
 
   getChatUsersAllQueryOptions: (search?: string) => {
     return queryOptions({
-      queryKey: [usersRecipientApi.baseKey, "list", search],
+      queryKey: [chatUsersApi.baseKey, "list", search],
       queryFn: (meta) =>
-        jsonApiInstance<UsersRecipientDto[]>(`chat-users`, {
+        jsonApiInstance<ChatUsersDto[]>(`chat-users`, {
           signal: meta.signal,
           params: { search },
         }),

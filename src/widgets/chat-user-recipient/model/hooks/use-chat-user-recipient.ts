@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { userRecipientApi } from "@/entities/user/user-recipient/api";
+import { chatUserCurrentApi } from "@/entities/chat-user/api";
 import { useSearchQueryParams } from "@/shared/hooks";
 
 export function useChatUserRecipient() {
@@ -10,7 +10,7 @@ export function useChatUserRecipient() {
   const recipientId = Number(id);
 
   const { data: recipientData, isLoading } = useQuery({
-    ...userRecipientApi.getChatRecipientQueryOptions(recipientId),
+    ...chatUserCurrentApi.getChatUserCurrentQueryOptions(recipientId),
     enabled: !!recipientId,
   });
 
