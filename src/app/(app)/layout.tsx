@@ -3,12 +3,9 @@
 import React, { ReactNode } from "react";
 import { Box } from "@zhenyzh/common-ui/components";
 import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
-import { useChatProvider } from "@/app/use-chat-provider";
+import { useChatSocketProvider } from "../use-chat-socket-provider";
 import { Sidebar } from "@/widgets/sidebar/containers";
-import { useSubscribeToUsersStatus } from "@/features/users-status/model/socket";
-import { useSubscribeToUserAvatarUpdate } from "@/features/add-user-avatar/model/socket";
 import { useInitializeUserLogin } from "@/entities/user/user-login/model/hooks";
-import { useSocketConnect } from "@/shared/socket";
 import { useRefresh } from "@/shared/api";
 import s from "./layout.module.scss";
 
@@ -19,10 +16,7 @@ export default function RootLayout({
 }>) {
   const loadingRefresh = useRefresh();
   const loadingUser = useInitializeUserLogin();
-  useSocketConnect();
-  useSubscribeToUsersStatus();
-  useSubscribeToUserAvatarUpdate();
-  useChatProvider();
+  useChatSocketProvider();
 
   if (loadingRefresh || loadingUser) return <AnimationLogoIcon />;
 
