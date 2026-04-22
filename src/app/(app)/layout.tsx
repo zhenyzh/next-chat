@@ -3,6 +3,7 @@
 import React, { ReactNode } from "react";
 import { Box } from "@zhenyzh/common-ui/components";
 import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
+import { useChatProvider } from "@/app/use-chat-provider";
 import { Sidebar } from "@/widgets/sidebar/containers";
 import { useSubscribeToUsersStatus } from "@/features/users-status/model/socket";
 import { useSubscribeToUserAvatarUpdate } from "@/features/add-user-avatar/model/socket";
@@ -21,6 +22,7 @@ export default function RootLayout({
   useSocketConnect();
   useSubscribeToUsersStatus();
   useSubscribeToUserAvatarUpdate();
+  useChatProvider();
 
   if (loadingRefresh || loadingUser) return <AnimationLogoIcon />;
 

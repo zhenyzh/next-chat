@@ -5,15 +5,15 @@ import {
   useSubscribeToAllReadMessage,
   useSubscribeToStatusMessage,
 } from "@/features/status-message/model/socket";
-import { useSubscribeToChatUsersUpdate } from "@/widgets/chat-users/model/socket";
+import { useSubscribeToChatUsersRecipientUpdate } from "@/entities/user/users-recipient/model/socket";
 import { useChatRoom } from "@/entities/chat/model/socket";
 
-export function useChatMessageSubscribes() {
+export function useChatProvider() {
   useChatRoom();
   useMarkReadMessage();
   useSubscribeToTyping();
   useSubscribeToNewMessage();
   useSubscribeToStatusMessage();
   useSubscribeToAllReadMessage();
-  useSubscribeToChatUsersUpdate();
+  useSubscribeToChatUsersRecipientUpdate();
 }

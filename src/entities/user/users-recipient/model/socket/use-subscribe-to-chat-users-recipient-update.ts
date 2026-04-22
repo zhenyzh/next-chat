@@ -1,13 +1,10 @@
 import { useEffect } from "react";
-import {
-  usersRecipientApi,
-  type UsersRecipientDto,
-} from "@/entities/user/users-recipient/api";
+import { usersRecipientApi, type UsersRecipientDto } from "../../api";
 import { socketService, socketEvent } from "@/shared/socket";
 import { useSearchQueryParams } from "@/shared/hooks";
 import { queryClient } from "@/shared/api";
 
-export function useSubscribeToChatUsersUpdate() {
+export function useSubscribeToChatUsersRecipientUpdate() {
   const {
     query: { recipientId },
   } = useSearchQueryParams();
