@@ -4,7 +4,7 @@ import { Box, Container } from "@zhenyzh/common-ui/components";
 import { ChatUsersList } from "@/widgets/chat-users/containers";
 import { ChatUserRecipient } from "@/widgets/chat-user-recipient/containers";
 import { ChatMessagesList } from "@/widgets/chat-messages/containers";
-import { MessageInput } from "../../../widgets/message-input/containers";
+import { MessageInput } from "@/widgets/message-input/containers";
 import { SearchChatUsers } from "@/features/search-chat-users/containers";
 import { useSearchQueryParams } from "@/shared/hooks";
 import s from "./page.module.scss";
