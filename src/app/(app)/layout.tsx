@@ -6,7 +6,7 @@ import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
 import { Sidebar } from "@/widgets/sidebar/containers";
 import { useSubscribeToUsersStatus } from "@/features/users-status/model/socket";
 import { useSubscribeToUserAvatarUpdate } from "@/features/add-user-avatar/model/socket";
-import { useInitializeUser } from "@/entities/user/model/hooks";
+import { useInitializeUserLogin } from "@/entities/user/user-login/model/hooks";
 import { useSocketConnect } from "@/shared/socket";
 import { useRefresh } from "@/shared/api";
 import s from "./layout.module.scss";
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   const loadingRefresh = useRefresh();
-  const loadingUser = useInitializeUser();
+  const loadingUser = useInitializeUserLogin();
   useSocketConnect();
   useSubscribeToUsersStatus();
   useSubscribeToUserAvatarUpdate();

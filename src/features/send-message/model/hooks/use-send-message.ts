@@ -7,11 +7,11 @@ import {
 } from "@/features/file-attach/model/store";
 import { messagesApi, type MessagesDto } from "@/entities/messages/api";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
-import { useUser } from "@/entities/user/model/store";
+import { useUserLogin } from "@/entities/user/user-login/model/store";
 import { queryClient } from "@/shared/api";
 
 export function useSendMessage() {
-  const user = useUser();
+  const user = useUserLogin();
   const { chatId } = useCurrentChat();
   const { clearMessage } = useMessageActions();
   const { clearFiles } = useFilesAttachActions();
