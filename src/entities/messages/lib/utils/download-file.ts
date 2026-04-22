@@ -3,9 +3,10 @@ import { patchUrl } from "@/shared/configs";
 
 export async function downloadFile(file: FileAttach) {
   const url = patchUrl(file.url);
-  if (!url) return;
-  const res = await fetch(url);
 
+  if (!url) return;
+
+  const res = await fetch(url);
   const blob = await res.blob();
   const objectUrl = URL.createObjectURL(blob);
 
