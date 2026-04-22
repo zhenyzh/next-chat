@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { userLoginApi } from "../../api";
+import { userApi } from "../../api";
 
-export function useCurrentUserLogin() {
+export function useCurrentUser() {
   const query = useQuery({
-    ...userLoginApi.getUserLoginQueryOptions(),
+    ...userApi.getUserQueryOptions(),
   });
 
   return {

@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useLogoutAction } from "./use-logout-action";
-import { useUserLoginActions } from "@/entities/user/user-login/model/store";
+import { useUserActions } from "@/entities/user/user/model/store";
 import { Paths } from "@/shared/configs";
 import { useTokenService } from "@/shared/token-service";
 import { queryClient } from "@/shared/api";
@@ -10,7 +10,7 @@ export function useLogout() {
   const router = useRouter();
   const mutation = useLogoutAction();
   const tokenService = useTokenService();
-  const { clearUser } = useUserLoginActions();
+  const { clearUser } = useUserActions();
   const socket = getSocket();
 
   const logout = () => {

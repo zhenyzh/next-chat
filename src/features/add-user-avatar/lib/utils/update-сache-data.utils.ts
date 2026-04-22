@@ -1,11 +1,11 @@
 import type { QueryKey } from "@tanstack/react-query";
 import type { UsersRecipientDto } from "@/entities/user/users-recipient/api";
 import type { MessagesDto } from "@/entities/messages/api";
-import type { UserLogin } from "@/entities/user/user-login/model/types";
+import type { User } from "@/entities/user/user/model/types";
 import { queryClient } from "@/shared/api";
 
 export function updateUserCache(queryKey: QueryKey, avatarUrl: string) {
-  queryClient.setQueryData<UserLogin>(queryKey, (old) =>
+  queryClient.setQueryData<User>(queryKey, (old) =>
     old ? { ...old, avatarUrl } : old,
   );
 }

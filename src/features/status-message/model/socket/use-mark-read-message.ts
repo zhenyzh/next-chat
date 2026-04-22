@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
-import { useUserLogin } from "@/entities/user/user-login/model/store";
+import { useUser } from "@/entities/user/user/model/store";
 import { getSocket, socketEvent } from "@/shared/socket";
 
 export function useMarkReadMessage() {
   const { chatId } = useCurrentChat();
-  const { id: userId } = useUserLogin();
+  const { id: userId } = useUser();
 
   useEffect(() => {
     if (!chatId) return;

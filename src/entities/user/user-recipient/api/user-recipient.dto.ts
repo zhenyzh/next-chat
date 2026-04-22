@@ -1,3 +1,3 @@
-import type { UserLogin } from "@/entities/user/user-login/model/types";
+import type { User } from "@/entities/user/user/model/types";
 
-export type UserRecipientDto = UserLogin;
+export type UserRecipientDto = User;

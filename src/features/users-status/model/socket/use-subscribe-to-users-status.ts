@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useUsersStatusActions } from "../store";
-import { useUserLogin } from "@/entities/user/user-login/model/store";
+import { useUser } from "@/entities/user/user/model/store";
 import { socketEvent, getSocket, socketService } from "@/shared/socket";
 
 export function useSubscribeToUsersStatus() {
-  const { id: userId } = useUserLogin();
+  const { id: userId } = useUser();
   const { setOnlineUsers, setOnlineUser, setOfflineUser } =
     useUsersStatusActions();
 

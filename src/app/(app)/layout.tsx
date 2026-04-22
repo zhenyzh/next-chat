@@ -5,7 +5,7 @@ import { Box } from "@zhenyzh/common-ui/components";
 import { AnimationLogoIcon } from "@zhenyzh/common-ui/icons";
 import { useChatSocketProvider } from "../use-chat-socket-provider";
 import { Sidebar } from "@/widgets/sidebar/containers";
-import { useInitializeUserLogin } from "@/entities/user/user-login/model/hooks";
+import { useInitializeUser } from "@/entities/user/user/model/hooks";
 import { useRefresh } from "@/shared/api";
 import s from "./layout.module.scss";
 
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   const loadingRefresh = useRefresh();
-  const loadingUser = useInitializeUserLogin();
+  const loadingUser = useInitializeUser();
   useChatSocketProvider();
 
   if (loadingRefresh || loadingUser) return <AnimationLogoIcon />;

@@ -1,4 +1,4 @@
-import type { UserLogin } from "@/entities/user/user-login/model/types";
+import type { User } from "@/entities/user/user/model/types";
 import type { StatusMessage } from "@/entities/messages/model/types";
 
 export type UsersRecipient = {
@@ -7,4 +7,4 @@ export type UsersRecipient = {
   countUnreadMessage: number;
   status: StatusMessage;
   typedI: boolean;
-} & Omit<UserLogin, "email">;
+} & Omit<User, "email">;

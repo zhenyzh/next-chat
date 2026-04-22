@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { addUserAvatarApi } from "../../api";
 import { updateUserCache, updateMessagesCache } from "../../lib/utils";
-import { userLoginApi } from "@/entities/user/user-login/api";
+import { userApi } from "@/entities/user/user/api";
 import { messagesApi } from "@/entities/messages/api";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { queryClient } from "@/shared/api";
@@ -9,7 +9,7 @@ import { queryClient } from "@/shared/api";
 export function useSendUserAvatar() {
   const { chatId } = useCurrentChat();
 
-  const queryKeyUser = userLoginApi.getUserLoginQueryOptions().queryKey;
+  const queryKeyUser = userApi.getUserQueryOptions().queryKey;
   const queryKeyMessages = messagesApi.getMessageQueryOptions({
     chatId,
   }).queryKey;

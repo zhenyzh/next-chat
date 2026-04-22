@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import { AddDropdownMenu } from "../add-dropdown-menu";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
-import { useUserLogin } from "@/entities/user/user-login/model/store";
+import { useUser } from "@/entities/user/user/model/store";
 import { CardPreview } from "@/shared/ui";
 import { patchUrl } from "@/shared/configs";
 import s from "./sidebar-logout.module.scss";
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export function SidebarLogout({ collapsed }: Props) {
-  const user = useUserLogin();
+  const user = useUser();
   const isOnline = useHasUserStatus(user.id);
 
   return (

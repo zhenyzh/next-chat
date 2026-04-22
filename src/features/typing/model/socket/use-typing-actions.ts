@@ -1,11 +1,11 @@
 import { useRef } from "react";
-import { useUserLogin } from "@/entities/user/user-login/model/store";
+import { useUser } from "@/entities/user/user/model/store";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { getSocket, socketEvent } from "@/shared/socket";
 
 export function useTypingActions(delay: number = 1000) {
   const { chatId } = useCurrentChat();
-  const { id: userId } = useUserLogin();
+  const { id: userId } = useUser();
 
   const socket = getSocket();
   const timeoutRef = useRef<NodeJS.Timeout>(null);
