@@ -1,11 +1,11 @@
 import type { QueryKey } from "@tanstack/react-query";
-import type { ChatUsersDto } from "@/widgets/chat-users/api";
+import type { UsersRecipientDto } from "@/entities/user/users-recipient/api";
 import type { MessagesDto } from "@/entities/messages/api";
-import type { User } from "@/entities/user/user-login/model/types";
+import type { UserLogin } from "@/entities/user/user-login/model/types";
 import { queryClient } from "@/shared/api";
 
 export function updateUserCache(queryKey: QueryKey, avatarUrl: string) {
-  queryClient.setQueryData<User>(queryKey, (old) =>
+  queryClient.setQueryData<UserLogin>(queryKey, (old) =>
     old ? { ...old, avatarUrl } : old,
   );
 }
@@ -15,7 +15,7 @@ export function updateChatUsersCache(
   avatarUrl: string,
   senderId: number | undefined,
 ) {
-  queryClient.setQueryData<ChatUsersDto[]>(queryKey, (old) => {
+  queryClient.setQueryData<UsersRecipientDto[]>(queryKey, (old) => {
     if (!old || !senderId) return old;
     return old.map((item) =>
       item.id === senderId ? { ...item, avatarUrl } : item,

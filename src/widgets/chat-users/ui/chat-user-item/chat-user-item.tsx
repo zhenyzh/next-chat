@@ -1,11 +1,11 @@
 import { ChatSubContent } from "../chat-sub-content";
-import type { ChatUsers } from "../../model/types";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
+import type { UsersRecipient } from "@/entities/user/users-recipient/model/types";
 import { CardPreviewWrapper, DateTime, CardPreview } from "@/shared/ui";
 import { formatDateTimeAgo } from "@/shared/utils";
 import { patchUrl } from "@/shared/configs";
 
-export function ChatUserItem({ data }: { data: ChatUsers }) {
+export function ChatUserItem({ data }: { data: UsersRecipient }) {
   const isOnline = useHasUserStatus(data.id);
 
   return (

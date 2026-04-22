@@ -1,5 +1,8 @@
 import { useEffect } from "react";
-import { chatUsersApi, type ChatUsersDto } from "@/widgets/chat-users/api";
+import {
+  usersRecipientApi,
+  type UsersRecipientDto,
+} from "@/entities/user/users-recipient/api";
 import { socketService, socketEvent } from "@/shared/socket";
 import { useSearchQueryParams } from "@/shared/hooks";
 import { queryClient } from "@/shared/api";
@@ -9,12 +12,12 @@ export function useSubscribeToChatUsersUpdate() {
     query: { recipientId },
   } = useSearchQueryParams();
 
-  const queryKey = chatUsersApi.getChatUsersAllQueryOptions().queryKey;
+  const queryKey = usersRecipientApi.getChatUsersAllQueryOptions().queryKey;
 
   useEffect(() => {
     void queryClient.invalidateQueries({ queryKey });
 
-    const unsubscribe = socketService<ChatUsersDto[]>(
+    const unsubscribe = socketService<UsersRecipientDto[]>(
       socketEvent.chat_users_update,
       (data) => queryClient.setQueryData(queryKey, data),
     );
