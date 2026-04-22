@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
+import clsx from "clsx";
 import { Box } from "@zhenyzh/common-ui/components";
 import { CloseIcon } from "@zhenyzh/common-ui/icons";
 import s from "./wrapper-card-close.module.scss";
-import clsx from "clsx";
 
 type Props = {
   children: ReactNode;

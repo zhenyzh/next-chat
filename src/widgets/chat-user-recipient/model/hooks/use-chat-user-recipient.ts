@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { userRecipientApi } from "../../api";
+import { userRecipientApi } from "@/entities/user/user-recipient/api";
 import { useSearchQueryParams } from "@/shared/hooks";
 
-export function useUserRecipient() {
+export function useChatUserRecipient() {
   const {
     query: { recipientId: id },
   } = useSearchQueryParams();
