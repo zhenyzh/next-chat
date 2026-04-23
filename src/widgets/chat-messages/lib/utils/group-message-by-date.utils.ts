@@ -1,7 +1,10 @@
 import type { ChatMessageGroup } from "../../model/types";
-import { filteredFilesByType } from "./filtered-files-by-type.utils";
 import type { MessagesDto } from "@/entities/messages/api";
-import { formatDate_yyyy_MM_dd, formatDate_HH_mm } from "@/shared/utils";
+import {
+  filteredFilesByType,
+  formatDate_yyyy_MM_dd,
+  formatDate_HH_mm,
+} from "@/shared/utils";
 
 export function groupMessagesByDate(
   messages: MessagesDto[] | undefined,

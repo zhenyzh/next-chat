@@ -1,12 +1,17 @@
 import clsx from "clsx";
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import { SubStatusMessage } from "../sub-status-message";
-import type { StatusMessage } from "@/entities/messages/model/types";
+import type {
+  FileAttach,
+  StatusMessage,
+} from "@/entities/messages/model/types";
 import { UnreadIndicator } from "@/shared/ui";
 import s from "./chat-sub-content.module.scss";
+import { lastMessage } from "@/widgets/chat-users/lib/utils";
 
 type Props = {
   message: string | null;
+  attachments: FileAttach[] | null;
   status: StatusMessage;
   countMessage: number;
   typedI: boolean;
@@ -14,16 +19,18 @@ type Props = {
 
 export function ChatSubContent({
   message,
+  attachments,
   status,
   countMessage,
   typedI,
 }: Props) {
-  const typedLastI = typedI && `Вы:${message}`;
+  const lastMsg = lastMessage(message, attachments);
+  const typedLastI = typedI && `Вы: ${lastMsg}`;
 
   return (
     <Box className={clsx(s.container, s.shrink)}>
       <Typography variant="label" className={s.ellipsis}>
-        {typedLastI || message}
+        {typedLastI || lastMsg}
       </Typography>
       <Box className={s.shrink}>
         {!countMessage ? (

@@ -18,6 +18,7 @@ export function ChatUserItem({ data }: { data: ChatUsers }) {
         subInfoSlot={
           <ChatSubContent
             message={data.lastMessage}
+            attachments={data.attachments}
             status={data.status}
             countMessage={data.countUnreadMessage}
             typedI={data.typedI}
