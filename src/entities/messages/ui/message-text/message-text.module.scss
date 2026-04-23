@@ -1,6 +1,16 @@
-.text {
-  color: var(--color-text-primary);
+@mixin break-word {
   white-space: normal;
   word-break: break-word;
   overflow-wrap: break-word;
+}
+
+.text {
+  color: var(--color-text-primary);
+  @include break-word;
+}
+
+.link {
+  color: var(--color-link-v2);
+  text-decoration: underline;
+  @include break-word;
 }
