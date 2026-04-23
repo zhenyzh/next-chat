@@ -5,18 +5,27 @@ import { patchUrl } from "@/shared/configs";
 import s from "./message-images.module.scss";
 
 export function MessageImages({ images }: { images: FileAttach[] }) {
+  const isOdd = images.length % 2 !== 0;
+
   return (
     <Box className={s.container}>
-      {images.map((img) => (
-        <Box key={img.id} onClick={() => downloadFile(img)}>
-          <Avatar
-            image={patchUrl(img.url)}
-            size={120}
-            variant="whole"
-            className={s.image}
-          />
-        </Box>
-      ))}
+      {images.map((img, index) => {
+        const lastOddImage = isOdd && index === images.length - 1;
+
+        return (
+          <Box
+            key={img.id}
+            className={lastOddImage && s.fullLastImage}
+            onClick={() => downloadFile(img)}
+          >
+            <Avatar
+              image={patchUrl(img.url)}
+              variant="whole"
+              className={s.image}
+            />
+          </Box>
+        );
+      })}
     </Box>
   );
 }

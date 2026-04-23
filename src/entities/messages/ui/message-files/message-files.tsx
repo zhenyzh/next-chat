@@ -17,7 +17,6 @@ export function MessageFiles({ files }: { files: FileAttach[] }) {
           <CardPreview
             title={file.name}
             classNameTitle={s.title}
-            classNameContainer={s.cardContainer}
             url={getIconByFileExtension(file.name).src}
             variantUrl="whole"
             subInfoSlot={
