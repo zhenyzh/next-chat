@@ -3,10 +3,13 @@ import { declination, filteredFilesByType } from "@/shared/utils";
 
 export function lastMessage(
   message: string | null,
-  files: FileAttach[] | null,
+  attachments: FileAttach[] | null,
 ) {
-  const imageSize = filteredFilesByType<FileAttach>(files, "image")?.length;
-  const fileSize = filteredFilesByType<FileAttach>(files, "file")?.length;
+  const imageSize = filteredFilesByType<FileAttach>(
+    attachments,
+    "image",
+  )?.length;
+  const fileSize = filteredFilesByType<FileAttach>(attachments, "file")?.length;
 
   if (imageSize && fileSize) {
     const sum = imageSize + fileSize;
