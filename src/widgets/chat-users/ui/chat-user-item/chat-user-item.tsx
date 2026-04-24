@@ -17,6 +17,7 @@ export function ChatUserItem({ data }: { data: ChatUsers }) {
         rightInfoSlot={<DateTime value={formatDateTimeAgo(data.createdAt)} />}
         subInfoSlot={
           <ChatSubContent
+            chatUserId={data.id}
             message={data.lastMessage}
             attachments={data.attachments}
             status={data.status}

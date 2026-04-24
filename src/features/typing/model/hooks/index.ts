@@ -1,1 +1,1 @@
-export * from "./use-typing-me";
+export * from "./use-typing";

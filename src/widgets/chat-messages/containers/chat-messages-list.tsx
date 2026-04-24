@@ -5,7 +5,7 @@ import { TypingIndicator } from "../ui/typing-indicator";
 import { DownButton } from "../ui/down-button";
 import { useMessagesList } from "../model/hooks";
 import { useScrollToBottom } from "../model/hooks";
-import { useTypingMe } from "@/features/typing/model/hooks";
+import { useTyping } from "@/features/typing/model/hooks";
 import { MessagesSkeleton } from "@/entities/messages/ui/message-skeleton";
 import { useSearchQueryParams } from "@/shared/hooks";
 import { List, ScrollBar, EmptyContent } from "@/shared/ui";
@@ -17,7 +17,7 @@ export function ChatMessagesList() {
   } = useSearchQueryParams();
 
   const { messages, hasChatId, isLoading } = useMessagesList();
-  const { isTyping } = useTypingMe();
+  const { isTyping } = useTyping(+recipientId);
   const { scrollBarRef, refWatchBottom, isBottom, handleScrollToBottom } =
     useScrollToBottom();
 

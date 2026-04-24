@@ -1,18 +1,16 @@
 import { useRef } from "react";
 import { useUser } from "@/entities/user/model/store";
-import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { getSocket, socketEvent } from "@/shared/socket";
 
 export function useTypingActions(delay: number = 1000) {
-  const { chatId } = useCurrentChat();
   const { id: userId } = useUser();
 
   const socket = getSocket();
   const timeoutRef = useRef<NodeJS.Timeout>(null);
 
   const getData = () => {
-    if (!chatId || !userId) return;
-    return { chatId, userId };
+    if (!userId) return;
+    return { userId };
   };
 
   const clearTimer = () => {
@@ -39,7 +37,7 @@ export function useTypingActions(delay: number = 1000) {
     const data = getData();
     if (!data) return;
 
-    socket.emit(socketEvent.stop_typing, { chatId, userId });
+    socket.emit(socketEvent.stop_typing, { userId });
 
     clearTimer();
   };
