@@ -20,7 +20,7 @@ export function FileAttachList() {
         classNameClose={s.closeIcon}
         onClose={clearFiles}
       >
-        <ScrollBar variant="horizontal">
+        <ScrollBar variant="horizontal" className={s.scrollHidden}>
           <List
             className={s.list}
             data={files}

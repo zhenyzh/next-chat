@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { TextareaAutosizeField } from "@zhenyzh/common-ui/components";
 import { useTextareaFocus } from "../../hooks";
 import { EmojiSmile } from "../emoji-smile";
@@ -10,6 +11,7 @@ import {
 } from "@/features/send-message/model/store";
 import { useFilesAttach } from "@/features/file-attach/model/store";
 import { FileAttachDropdownMenu } from "@/features/file-attach/containers";
+import s from "./message-send-field.module.scss";
 
 export function MessageSendField() {
   const { setText } = useMessageActions();
@@ -22,6 +24,7 @@ export function MessageSendField() {
     <TextareaAutosizeField
       ref={textareaRef}
       value={message}
+      classNameTextarea={clsx(!!files.length && s.container)}
       onChange={(e) => {
         setText(e.target.value);
         sendTyping();

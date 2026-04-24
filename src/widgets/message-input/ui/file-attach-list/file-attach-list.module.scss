@@ -1,9 +1,9 @@
 .wrapper {
   position: relative;
   background-color: var(--color-bg-primary);
-  border-radius: var(--border-radius-size-xxxs);
+  border-top-right-radius: var(--border-radius-size-xxxs);
+  border-top-left-radius: var(--border-radius-size-xxxs);
   padding: 10px 0;
-  margin-bottom: 5px;
 }
 
 .closeIcon {
@@ -30,5 +30,9 @@
   }
 }
 
+.scrollHidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
 

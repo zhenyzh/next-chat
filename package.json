@@ -17,7 +17,7 @@
     "@tanstack/react-query-devtools": "^5.96.2",
     "@tanstack/react-query-persist-client": "^5.96.2",
     "@types/react-linkify": "^1.0.4",
-    "@zhenyzh/common-ui": "^2.18.1",
+    "@zhenyzh/common-ui": "^2.18.2",
     "axios": "^1.13.6",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
