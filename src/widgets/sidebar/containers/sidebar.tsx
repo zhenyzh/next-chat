@@ -1,7 +1,4 @@
-"use client";
-
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import clsx from "clsx";
 import { Box } from "@zhenyzh/common-ui/components";
 import {
@@ -10,13 +7,14 @@ import {
   UserPenIcon,
 } from "@zhenyzh/common-ui/icons";
 import { SideBarHeader, SideBarNavigation, SidebarLogout } from "../ui";
+import { useCollapsed } from "../model/hooks";
 import type { LinkType } from "../model/types";
 import { Paths } from "@/shared/configs";
 import s from "./sidebar.module.scss";
 
 export function Sidebar() {
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
+  const { collapsed, setCollapsed } = useCollapsed();
 
   const linkItem: LinkType[] = [
     {

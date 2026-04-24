@@ -5,7 +5,7 @@ import { useLoginAction } from "./use-login-action";
 import type { LoginFormValues } from "../types";
 import { loginSchema } from "../shemas";
 import { Paths } from "@/shared/configs";
-import { useTokenService } from "@/shared/token-service";
+import { useTokenService } from "@/shared/service";
 
 export function useLogin() {
   const router = useRouter();

@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useTokenService } from "../token-service";
+import { useTokenService } from "../service";
 import { Paths } from "../configs";
 
 export function useRefresh() {

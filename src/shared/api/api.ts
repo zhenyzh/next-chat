@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useTokenService } from "../token-service";
+import { useTokenService } from "../service";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api`;
 

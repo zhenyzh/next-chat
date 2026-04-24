@@ -8,7 +8,7 @@ import s from "./sidebar-header.module.scss";
 type Props = {
   defaultLink: string;
   collapsed: boolean;
-  setCollapsed: (collapse: boolean) => void;
+  setCollapsed: () => void;
 };
 
 export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
@@ -17,7 +17,7 @@ export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
       <Link href={defaultLink} className={clsx(collapsed && s.hidden)}>
         <Avatar image={LogoIcon.src} variant="whole" size={50} />
       </Link>
-      <Button onClick={() => setCollapsed(!collapsed)} className={s.toggleBtn}>
+      <Button onClick={() => setCollapsed()} className={s.toggleBtn}>
         {collapsed ? (
           <ChevronRightIcon width={20} height={20} />
         ) : (
