@@ -1,6 +1,6 @@
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import { Bubble } from "@/shared/ui";
-import s from "./typing-content.module.scss";
+import s from "./typing-indicator.module.scss";
 
 export function TypingIndicator() {
   return (

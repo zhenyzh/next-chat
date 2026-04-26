@@ -7,13 +7,13 @@ export function useSearchQueryParams() {
 
   const query = Object.fromEntries(params);
 
-  const setQuery = (newParams: Record<string, any>) => {
+  const setQuery = <T>(newParams: Record<string, T>) => {
     const newSearchParams = new URLSearchParams(params);
     Object.entries(newParams).forEach(([key, value]) => {
       if (value === undefined || value === null) {
         newSearchParams.delete(key);
       } else {
-        newSearchParams.set(key, value);
+        newSearchParams.set(key, JSON.stringify(value));
       }
     });
     router.replace(`${patchName}?${newSearchParams}`);
