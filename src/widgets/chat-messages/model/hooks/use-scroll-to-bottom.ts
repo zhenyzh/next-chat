@@ -8,7 +8,9 @@ export function useScrollToBottom() {
   const { messages } = useMessagesList();
   const { chatId } = useCurrentChat();
   const typingUsersIds = useTypingUsersIds();
-  const { ref: refWatchBottom, isBottom } = useBottomObserver();
+  const { ref: refWatchBottom, isBottom } = useBottomObserver({
+    dependencies: [chatId],
+  });
 
   const scrollBarRef = useRef<HTMLDivElement>(null);
   const lastMessageIdRef = useRef<number | null>(null);

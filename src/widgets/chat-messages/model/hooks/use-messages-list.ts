@@ -16,6 +16,5 @@ export function useMessagesList() {
   return {
     messages: groupMessagesByDate(messagesData, id),
     isLoading,
-    hasChatId: !!chatId,
   };
 }

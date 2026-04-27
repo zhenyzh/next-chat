@@ -7,6 +7,7 @@ import { useMessagesList } from "../model/hooks";
 import { useScrollToBottom } from "../model/hooks";
 import { useTyping } from "@/features/typing/model/hooks";
 import { MessagesSkeleton } from "@/entities/messages/ui/message-skeleton";
+import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { useSearchQueryParams } from "@/shared/hooks";
 import { List, ScrollBar, EmptyContent } from "@/shared/ui";
 import s from "./chat-messages-list.module.scss";
@@ -15,8 +16,8 @@ export function ChatMessagesList() {
   const {
     query: { recipientId },
   } = useSearchQueryParams();
-
-  const { messages, hasChatId, isLoading } = useMessagesList();
+  const { chatId } = useCurrentChat();
+  const { messages, isLoading } = useMessagesList();
   const { isTyping } = useTyping(+recipientId);
   const { scrollBarRef, refWatchBottom, isBottom, handleScrollToBottom } =
     useScrollToBottom();
@@ -42,7 +43,7 @@ export function ChatMessagesList() {
         }
         footer={
           <>
-            {hasChatId && !isBottom && (
+            {!!chatId && !isBottom && (
               <DownButton onClick={handleScrollToBottom} />
             )}
             {isTyping && isBottom && <TypingIndicator />}
