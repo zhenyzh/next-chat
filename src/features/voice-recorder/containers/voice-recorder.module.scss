@@ -1,0 +1,55 @@
+.container {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--border-radius-size-xxxs);
+}
+
+.content {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.contentRecord {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  border-radius: var(--border-radius-size-xxxs);
+  background-color: var(--color-border-input-primary);
+}
+
+.button {
+  display: contents;
+}
+
+.label {
+  color: var(--color-text-primary);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.closeIcon, .sendHorizontalIcon, .stopIcon, .playIcon, .micIcon {
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.micIcon {
+  color: var(--color-tertiary);
+}
+
+.playIcon {
+  color: var(--color-secondary);
+}
+
+.stopIcon {
+  color: var(--color-accent);
+}
+
+
+@include max-width(860px) {
+  .contentRecord {
+    gap: 0;
+  }
+}
