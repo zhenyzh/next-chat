@@ -1,0 +1,20 @@
+.button {
+  display: contents;
+}
+
+.closeIcon, .sendHorizontalIcon, .stopIcon, .playIcon, .micIcon {
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.micIcon {
+  color: var(--color-tertiary);
+}
+
+.playIcon {
+  color: var(--color-secondary);
+}
+
+.stopIcon {
+  color: var(--color-accent);
+}

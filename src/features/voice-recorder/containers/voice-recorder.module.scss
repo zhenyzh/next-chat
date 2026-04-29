@@ -4,24 +4,24 @@
 }
 
 .content {
-  flex-direction: row;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 5px;
+}
+
+.button {
+  padding: 0 8px;
 }
 
 .contentRecord {
   width: 100%;
   min-width: 0;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  padding: 0 5px 0 0;
   gap: 5px;
-  border-radius: var(--border-radius-size-xxxs);
+  border-radius: var(--border-radius-size-s);
   background-color: var(--color-border-input-primary);
-}
-
-.button {
-  display: contents;
 }
 
 .label {
@@ -29,24 +29,6 @@
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-
-.closeIcon, .sendHorizontalIcon, .stopIcon, .playIcon, .micIcon {
-  flex-shrink: 0;
-  border-radius: 50%;
-}
-
-.micIcon {
-  color: var(--color-tertiary);
-}
-
-.playIcon {
-  color: var(--color-secondary);
-}
-
-.stopIcon {
-  color: var(--color-accent);
-}
-
 
 @include max-width(860px) {
   .contentRecord {

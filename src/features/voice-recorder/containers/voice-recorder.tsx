@@ -1,20 +1,16 @@
-import { Box, Button, Card, Typography } from "@zhenyzh/common-ui/components";
-import {
-  CloseIcon,
-  CircleStopIcon,
-  CirclePlayIcon,
-  MicIcon,
-  SendHorizontalIcon,
-} from "@zhenyzh/common-ui/icons";
+import { useEffect } from "react";
+import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
+import { CloseIcon, SendHorizontalIcon } from "@zhenyzh/common-ui/icons";
+import { ButtonStatus } from "../ui/button-status";
 import { WaveRecorder } from "../ui/wave-recorder";
 import { useVoiceRecorder } from "../model/hooks";
+import { useVoiceRecorderActions } from "../model/store";
 import { formatTime_Min_Colon_Sec } from "@/shared/utils";
 import s from "./voice-recorder.module.scss";
-import { useEffect } from "react";
 
 export function VoiceRecorder() {
-  const { status, time, bars, start, pause, resume, cancel } =
-    useVoiceRecorder();
+  const { closeRecorder } = useVoiceRecorderActions();
+  const { time, bars, start, play, pause, resume, cancel } = useVoiceRecorder();
 
   useEffect(() => {
     start();
@@ -22,34 +18,30 @@ export function VoiceRecorder() {
 
   return (
     <Box className={s.container}>
-      <Card className={s.content}>
-        <Button variant="outline" className={s.button} onClick={cancel}>
+      <Box className={s.content}>
+        <Button
+          variant="outline"
+          className={s.button}
+          onClick={() => {
+            cancel();
+            closeRecorder();
+          }}
+        >
           <CloseIcon className={s.closeIcon} />
         </Button>
-        <Card className={s.contentRecord}>
-          <Button className={s.button}>
-            {status === "recording" ? (
-              <CircleStopIcon className={s.stopIcon} onClick={pause} />
-            ) : (
-              status === "paused" && (
-                <MicIcon className={s.micIcon} onClick={resume} />
-              )
-            )}
-            {status === "paused" && ( // воспроизвести
-              <CirclePlayIcon className={s.playIcon} />
-            )}
-          </Button>
 
+        <Box className={s.contentRecord}>
+          <ButtonStatus play={play} pause={pause} resume={resume} />
           <WaveRecorder bars={bars} />
-
           <Typography variant="label" className={s.label}>
             {formatTime_Min_Colon_Sec(time)}
           </Typography>
-        </Card>
+        </Box>
+
         <Button variant="outline" className={s.button}>
           <SendHorizontalIcon className={s.sendHorizontalIcon} />
         </Button>
-      </Card>
+      </Box>
     </Box>
   );
 }

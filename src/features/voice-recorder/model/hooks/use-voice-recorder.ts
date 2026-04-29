@@ -1,14 +1,24 @@
-import { useEffect, useRef, useState } from "react";
-import type { AudioAnalyser, VoiceRecorderStatus } from "../types";
-
-const BARS_COUNT = 200;
+import { useEffect, useRef } from "react";
+import type { AudioAnalyser } from "../types";
+import {
+  useAllVoiceRecorder,
+  useVoiceRecorderActions,
+  useVoiceRecorderStore,
+} from "../store";
 
 export function useVoiceRecorder() {
-  const [status, setStatus] = useState<VoiceRecorderStatus>("idle");
-  const [time, setTime] = useState(0);
-  const [audio, setAudio] = useState<string | null>(null);
-  const [volume, setVolume] = useState(0);
-  const [bars, setBars] = useState<number[]>(Array(BARS_COUNT).fill(4));
+  const { audioUrl, status, time, volume, bars, barsCount } =
+    useAllVoiceRecorder();
+
+  const {
+    setAudioUrl,
+    setStatus,
+    incrementTime,
+    resetTime,
+    setVolume,
+    setBars,
+    reset,
+  } = useVoiceRecorderActions();
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
@@ -20,9 +30,9 @@ export function useVoiceRecorder() {
   useEffect(() => {
     if (status !== "recording") return;
 
-    const timer = setInterval(() => setTime((p) => p + 1), 1000);
+    const timer = setInterval(() => incrementTime(), 1000);
     return () => clearInterval(timer);
-  }, [status]);
+  }, [status, incrementTime]);
 
   const start = async () => {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -37,7 +47,7 @@ export function useVoiceRecorder() {
     recorder.onstop = () => {
       const blob = new Blob(chunksRef.current, { type: "audio/webm" });
       const url = URL.createObjectURL(blob);
-      setAudio(url);
+      setAudioUrl(url);
       setStatus("preview");
     };
 
@@ -55,6 +65,8 @@ export function useVoiceRecorder() {
     analyserRef.current = { analyser, data, ctx };
 
     const tick = () => {
+      const { status } = useVoiceRecorderStore.getState();
+
       if (status === "paused") {
         rafRef.current = requestAnimationFrame(tick);
         return;
@@ -63,18 +75,16 @@ export function useVoiceRecorder() {
       analyser.getByteFrequencyData(data);
 
       const avg = data.reduce((a, b) => a + b, 0) / data.length;
-      setVolume((v) => v * 0.8 + avg * 0.2);
+      setVolume(avg);
 
-      const step = Math.floor(data.length / BARS_COUNT);
+      const step = Math.floor(data.length / barsCount);
 
-      const newBars = Array.from({ length: BARS_COUNT }).map((_, i) => {
+      const newBars = Array.from({ length: barsCount }).map((_, i) => {
         const slice = data.slice(i * step, (i + 1) * step);
-        const sliceAvg = slice.reduce((a, b) => a + b, 0) / slice.length;
-
-        return sliceAvg;
+        return slice.reduce((a, b) => a + b, 0) / slice.length;
       });
 
-      setBars((prev) => newBars.map((v, i) => prev[i] * 0.7 + v * 0.3));
+      setBars(newBars);
 
       rafRef.current = requestAnimationFrame(tick);
     };
@@ -82,7 +92,13 @@ export function useVoiceRecorder() {
     tick();
 
     setStatus("recording");
-    setTime(0);
+    resetTime();
+  };
+
+  const play = () => {
+    if (!audioUrl) return;
+    const audio = new Audio(audioUrl);
+    audio.play();
   };
 
   const pause = () => {
@@ -97,30 +113,23 @@ export function useVoiceRecorder() {
 
   const cancel = () => {
     mediaRecorderRef.current?.stop();
-    cleanup();
-
-    setStatus("idle");
-    setAudio(null);
-    setTime(0);
-    setBars(Array(BARS_COUNT).fill(4));
-  };
-
-  const cleanup = () => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
     analyserRef.current?.ctx.close();
 
     if (rafRef.current) {
       cancelAnimationFrame(rafRef.current);
     }
+    reset();
   };
 
   return {
     status,
     time,
-    audio,
+    audioUrl,
     volume,
     bars,
     start,
+    play,
     pause,
     resume,
     cancel,
