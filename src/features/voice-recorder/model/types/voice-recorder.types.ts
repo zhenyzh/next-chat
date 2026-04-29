@@ -1,4 +1,9 @@
-export type VoiceRecorderStatus = "idle" | "recording" | "preview" | "paused";
+export type VoiceRecorderStatus =
+  | "idle"
+  | "recording"
+  | "ready"
+  | "paused"
+  | "playing";
 
 export type AudioAnalyser = {
   analyser: AnalyserNode;

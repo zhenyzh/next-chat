@@ -2,7 +2,7 @@
   display: contents;
 }
 
-.closeIcon, .sendHorizontalIcon, .stopIcon, .playIcon, .micIcon {
+.closeIcon, .sendHorizontalIcon, .stopIcon, .playIcon, .pauseIcon, .micIcon {
   flex-shrink: 0;
   border-radius: 50%;
 }
@@ -12,6 +12,10 @@
 }
 
 .playIcon {
+  color: var(--color-secondary);
+}
+
+.pauseIcon {
   color: var(--color-secondary);
 }
 

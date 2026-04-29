@@ -21,6 +21,7 @@ export function useVoiceRecorder() {
   } = useVoiceRecorderActions();
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
 
@@ -35,6 +36,7 @@ export function useVoiceRecorder() {
   }, [status, incrementTime]);
 
   const start = async () => {
+    setStatus("recording");
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     streamRef.current = stream;
 
@@ -48,7 +50,7 @@ export function useVoiceRecorder() {
       const blob = new Blob(chunksRef.current, { type: "audio/webm" });
       const url = URL.createObjectURL(blob);
       setAudioUrl(url);
-      setStatus("preview");
+      setStatus("ready");
     };
 
     recorder.start();
@@ -97,8 +99,27 @@ export function useVoiceRecorder() {
 
   const play = () => {
     if (!audioUrl) return;
-    const audio = new Audio(audioUrl);
-    audio.play();
+
+    if (!audioRef.current) {
+      const audio = new Audio(audioUrl);
+
+      audio.onended = () => {
+        setStatus("ready");
+      };
+
+      audioRef.current = audio;
+    }
+
+    audioRef.current.play();
+    setStatus("playing");
+  };
+
+  const stopPlayback = () => {
+    if (!audioRef.current) return;
+
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+    setStatus("ready");
   };
 
   const pause = () => {
@@ -120,6 +141,7 @@ export function useVoiceRecorder() {
       cancelAnimationFrame(rafRef.current);
     }
     reset();
+    setStatus("recording");
   };
 
   return {
@@ -130,6 +152,7 @@ export function useVoiceRecorder() {
     bars,
     start,
     play,
+    stopPlayback,
     pause,
     resume,
     cancel,
