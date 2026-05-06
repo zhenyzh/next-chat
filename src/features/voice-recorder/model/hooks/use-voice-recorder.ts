@@ -1,18 +1,11 @@
 import { useRef } from "react";
-import {
-  useStatusVoiceRecorder,
-  useVoiceRecorderActions,
-  useVoiceRecorderStore,
-} from "../store";
+import { useVoiceRecorderActions, useVoiceRecorderStore } from "../store";
 import { useWave } from "./use-wave";
 
 export function useVoiceRecorder() {
-  const status = useStatusVoiceRecorder();
-
   const {
     setAudioUrl,
     setStatus,
-    incrementPlaybackTime,
     incrementRecorderTime,
     resetPlaybackTime,
     resetRecorderTime,
@@ -27,9 +20,7 @@ export function useVoiceRecorder() {
   const audioUrlRef = useRef<string | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const rafRef = useRef<number | null>(null);
-
   const recordIntervalRef = useRef<number | null>(null);
-  const playIntervalRef = useRef<number | null>(null);
 
   const startRecordTimer = () => {
     if (recordIntervalRef.current) return;
@@ -45,20 +36,6 @@ export function useVoiceRecorder() {
     }
   };
 
-  const startPlayTimer = () => {
-    if (playIntervalRef.current) return;
-    playIntervalRef.current = window.setInterval(() => {
-      incrementPlaybackTime();
-    }, 1000);
-  };
-
-  const stopPlayTimer = () => {
-    if (playIntervalRef.current) {
-      clearInterval(playIntervalRef.current);
-      playIntervalRef.current = null;
-    }
-  };
-
   const startRecorder = async () => {
     setStatus("recording");
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -66,7 +43,11 @@ export function useVoiceRecorder() {
     const recorder = new MediaRecorder(stream);
     mediaRecorderRef.current = recorder;
     chunksRef.current = [];
-    recorder.ondataavailable = (e) => chunksRef.current.push(e.data);
+    recorder.ondataavailable = (e) => {
+      if (e.data.size > 0) {
+        chunksRef.current.push(e.data);
+      }
+    };
     recorder.onstop = () => {
       const blob = new Blob(chunksRef.current, { type: "audio/webm" });
       const url = URL.createObjectURL(blob);
@@ -80,46 +61,79 @@ export function useVoiceRecorder() {
     startRecordTimer();
   };
 
-  const stopRecorder = () => {
-    mediaRecorderRef.current?.stop();
+  const buildPreviewUrl = () => {
+    const blob = new Blob(chunksRef.current, { type: "audio/webm" });
+    return URL.createObjectURL(blob);
+  };
+
+  const pauseRecorder = () => {
+    mediaRecorderRef.current?.pause();
+    stopRecordTimer();
+    const url = buildPreviewUrl();
+    audioUrlRef.current = url;
+    setAudioUrl(url);
     stopWave();
-    stopRecordTimer(); // 👈
-    setStatus("paused");
+    setStatus("paused_recording");
   };
 
   const resumeRecorder = () => {
     const recorder = mediaRecorderRef.current;
     recorder?.resume();
-    startRecordTimer(); // 👈
+    startRecordTimer();
     setStatus("recording");
+  };
+
+  const syncPlaybackTime = () => {
+    if (!audioRef.current) return;
+    const tick = () => {
+      if (!audioRef.current) return;
+      const current = Math.floor(audioRef.current.currentTime);
+      useVoiceRecorderStore.setState({
+        playbackTime: current,
+      });
+      if (!audioRef.current.paused) {
+        rafRef.current = requestAnimationFrame(tick);
+      }
+    };
+    tick();
   };
 
   const playAudio = () => {
     const url = audioUrlRef.current;
     if (!url) return;
-    if (!audioRef.current) {
-      const audio = new Audio(url);
-      audio.onended = () => {
-        stopPlayTimer(); // 👈
-        setStatus("ready");
-      };
-      audioRef.current = audio;
+
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
     }
 
-    stopPlayTimer();
-    resetPlaybackTime();
+    const audio = new Audio(url);
 
-    startPlayTimer();
+    audio.onended = () => {
+      setStatus("ready");
+    };
 
-    audioRef.current.play();
+    audioRef.current = audio;
+
     setStatus("playing");
+    audio.play().catch((e) => {
+      console.error("Audio play failed:", e);
+    });
+
+    syncPlaybackTime();
   };
 
   const stopAudio = () => {
     if (!audioRef.current) return;
+
     audioRef.current.pause();
+
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
     stopWave();
-    setStatus("ready");
+    setStatus("paused");
   };
 
   const cancel = () => {
@@ -132,8 +146,7 @@ export function useVoiceRecorder() {
     streamRef.current = null;
     analyserRef.current = null;
     chunksRef.current = [];
-    stopRecordTimer(); // 👈
-    stopPlayTimer(); // 👈
+    stopRecordTimer();
 
     if (rafRef.current) {
       cancelAnimationFrame(rafRef.current);
@@ -146,7 +159,7 @@ export function useVoiceRecorder() {
     startRecorder,
     playAudio,
     stopAudio,
-    stopRecorder,
+    pauseRecorder,
     resumeRecorder,
     cancel,
   };

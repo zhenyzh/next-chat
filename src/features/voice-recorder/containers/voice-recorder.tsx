@@ -12,7 +12,7 @@ export function VoiceRecorder() {
     startRecorder,
     playAudio,
     stopAudio,
-    stopRecorder,
+    pauseRecorder,
     resumeRecorder,
     cancel,
   } = useVoiceRecorder();
@@ -32,7 +32,7 @@ export function VoiceRecorder() {
           <ButtonStatus
             playAudio={playAudio}
             stopAudio={stopAudio}
-            stopRecorder={stopRecorder}
+            pauseRecorder={pauseRecorder}
             resumeRecorder={resumeRecorder}
           />
           <WaveRecorder />

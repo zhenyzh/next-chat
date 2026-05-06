@@ -3,6 +3,7 @@ export type VoiceRecorderStatus =
   | "recording"
   | "ready"
   | "paused"
+  | "paused_recording"
   | "playing";
 
 export type AudioAnalyser = {

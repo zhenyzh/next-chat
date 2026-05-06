@@ -11,25 +11,26 @@ import s from "./button-status.module.scss";
 type Props = {
   playAudio: () => void;
   stopAudio: () => void;
-  stopRecorder: () => void;
+  pauseRecorder: () => void;
   resumeRecorder: () => void;
 };
 
 export function ButtonStatus({
   playAudio,
   stopAudio,
-  stopRecorder,
+  pauseRecorder,
   resumeRecorder,
 }: Props) {
-  const { isRecording, isPlaying, isPaused, isReady } = useAudioStatus();
+  const { isRecording, isPlaying, isPausedRecording, isPaused, isReady } =
+    useAudioStatus();
 
   return (
     <Button className={s.button}>
       {isRecording && (
-        <CircleStopIcon className={s.stopIcon} onClick={stopRecorder} />
+        <CircleStopIcon className={s.stopIcon} onClick={pauseRecorder} />
       )}
 
-      {(isPaused || isPlaying || isReady) && (
+      {(isPausedRecording || isPaused || isReady || isPlaying) && (
         <>
           <MicIcon className={s.micIcon} onClick={resumeRecorder} />
           {isPlaying ? (

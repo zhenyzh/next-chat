@@ -8,11 +8,11 @@ import { formatTime_Min_Colon_Sec } from "@/shared/utils";
 import s from "./time.module.scss";
 
 export function Time() {
-  const { isPlaying, isReady } = useAudioStatus();
+  const { isPausedRecording, isRecording } = useAudioStatus();
   const recorderTime = useRecorderTimeVoiceRecorder();
   const playbackTime = usePlaybackTimeVoiceRecorder();
-  console.log({ recorderTime, playbackTime });
-  const time = isPlaying || isReady ? playbackTime : recorderTime;
+
+  const time = isPausedRecording || isRecording ? recorderTime : playbackTime;
 
   return (
     <Typography variant="label" className={s.label}>

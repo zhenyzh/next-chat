@@ -8,5 +8,6 @@ export function useAudioStatus() {
     isPaused: status === "paused",
     isPlaying: status === "playing",
     isReady: status === "ready",
+    isPausedRecording: status === "paused_recording",
   };
 }
