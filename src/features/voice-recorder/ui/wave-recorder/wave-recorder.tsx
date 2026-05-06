@@ -1,11 +1,10 @@
 import { Box } from "@zhenyzh/common-ui/components";
+import { useBarsVoiceRecorder } from "../../model/store";
 import s from "./wave-recorder.module.scss";
 
-type Props = {
-  bars: number[];
-};
+export function WaveRecorder() {
+  const bars = useBarsVoiceRecorder();
 
-export function WaveRecorder({ bars }: Props) {
   return (
     <Box className={s.container}>
       {bars.map((v, i) => (

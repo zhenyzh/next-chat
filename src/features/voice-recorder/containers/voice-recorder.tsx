@@ -4,13 +4,11 @@ import { CloseIcon, SendHorizontalIcon } from "@zhenyzh/common-ui/icons";
 import { ButtonStatus } from "../ui/button-status";
 import { WaveRecorder } from "../ui/wave-recorder";
 import { useVoiceRecorder } from "../model/hooks";
-import { useVoiceRecorderActions } from "../model/store";
 import { formatTime_Min_Colon_Sec } from "@/shared/utils";
 import s from "./voice-recorder.module.scss";
 
 export function VoiceRecorder() {
-  const { closeRecorder } = useVoiceRecorderActions();
-  const { time, bars, start, play, stopPlayback, pause, resume, cancel } =
+  const { time, start, play, stopPlayback, pause, resume, cancel } =
     useVoiceRecorder();
 
   useEffect(() => {
@@ -20,14 +18,7 @@ export function VoiceRecorder() {
   return (
     <Box className={s.container}>
       <Box className={s.content}>
-        <Button
-          variant="outline"
-          className={s.button}
-          onClick={() => {
-            cancel();
-            closeRecorder();
-          }}
-        >
+        <Button variant="outline" className={s.button} onClick={cancel}>
           <CloseIcon className={s.closeIcon} />
         </Button>
 
@@ -38,7 +29,7 @@ export function VoiceRecorder() {
             pause={pause}
             resume={resume}
           />
-          <WaveRecorder bars={bars} />
+          <WaveRecorder />
           <Typography variant="label" className={s.label}>
             {formatTime_Min_Colon_Sec(time)}
           </Typography>

@@ -136,20 +136,20 @@ export function useVoiceRecorder() {
     mediaRecorderRef.current?.stop();
     streamRef.current?.getTracks().forEach((t) => t.stop());
     analyserRef.current?.ctx.close();
-
+    mediaRecorderRef.current = null;
+    audioRef.current = null;
+    chunksRef.current = [];
+    streamRef.current = null;
+    analyserRef.current = null;
     if (rafRef.current) {
       cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
     }
     reset();
-    setStatus("recording");
   };
 
   return {
-    status,
     time,
-    audioUrl,
-    volume,
-    bars,
     start,
     play,
     stopPlayback,
