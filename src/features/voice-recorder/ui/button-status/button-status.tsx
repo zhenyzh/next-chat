@@ -5,30 +5,37 @@ import {
   CirclePauseIcon,
   MicIcon,
 } from "@zhenyzh/common-ui/icons";
-import { useButtonStatus } from "../../model/hooks";
+import { useAudioStatus } from "../../model/hooks";
 import s from "./button-status.module.scss";
 
 type Props = {
-  play: () => void;
-  stopPlayback: () => void;
-  pause: () => void;
-  resume: () => void;
+  playAudio: () => void;
+  stopAudio: () => void;
+  stopRecorder: () => void;
+  resumeRecorder: () => void;
 };
 
-export function ButtonStatus({ play, stopPlayback, pause, resume }: Props) {
-  const { isRecording, isPlaying, isPaused, isReady } = useButtonStatus();
+export function ButtonStatus({
+  playAudio,
+  stopAudio,
+  stopRecorder,
+  resumeRecorder,
+}: Props) {
+  const { isRecording, isPlaying, isPaused, isReady } = useAudioStatus();
 
   return (
     <Button className={s.button}>
-      {isRecording && <CircleStopIcon className={s.stopIcon} onClick={pause} />}
+      {isRecording && (
+        <CircleStopIcon className={s.stopIcon} onClick={stopRecorder} />
+      )}
 
       {(isPaused || isPlaying || isReady) && (
         <>
-          <MicIcon className={s.micIcon} onClick={resume} />
+          <MicIcon className={s.micIcon} onClick={resumeRecorder} />
           {isPlaying ? (
-            <CirclePauseIcon className={s.pauseIcon} onClick={stopPlayback} />
+            <CirclePauseIcon className={s.pauseIcon} onClick={stopAudio} />
           ) : (
-            <CirclePlayIcon className={s.playIcon} onClick={play} />
+            <CirclePlayIcon className={s.playIcon} onClick={playAudio} />
           )}
         </>
       )}

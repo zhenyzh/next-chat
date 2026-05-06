@@ -7,11 +7,12 @@ const BARS_COUNT = 200;
 const defaultFile: VoiceRecorder = {
   audioUrl: null,
   status: "idle",
-  time: 0,
   volume: 0,
   bars: Array(BARS_COUNT).fill(4),
   barsCount: BARS_COUNT,
   isRecorderOpen: false,
+  playbackTime: 0,
+  recorderTime: 0,
 };
 
 export const useVoiceRecorderStore = create<VoiceRecorderStore>()(
@@ -29,14 +30,24 @@ export const useVoiceRecorderStore = create<VoiceRecorderStore>()(
           state.status = status;
         });
       },
-      incrementTime: () => {
+      incrementPlaybackTime: () => {
         set((state) => {
-          state.time += 1;
+          state.playbackTime += 1;
         });
       },
-      resetTime: () => {
+      incrementRecorderTime: () => {
         set((state) => {
-          state.time = 0;
+          state.recorderTime += 1;
+        });
+      },
+      resetRecorderTime: () => {
+        set((state) => {
+          state.recorderTime = 0;
+        });
+      },
+      resetPlaybackTime: () => {
+        set((state) => {
+          state.playbackTime = 0;
         });
       },
       setVolume: (next) => {

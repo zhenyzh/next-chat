@@ -3,10 +3,11 @@ import { useVoiceRecorderStore } from "./voice-recorder.store";
 import {
   audioUrlSelector,
   statusSelector,
-  timeSelector,
   volumeSelector,
   barsSelector,
   barsCountSelector,
+  playbackTimeSelector,
+  recorderTimeSelector,
   isRecorderOpenSelector,
   allVoiceRecorderSelector,
   voiceRecorderActionsSelector,
@@ -19,8 +20,13 @@ export const useAudioUrlVoiceRecorder = (): VoiceRecorderStore["audioUrl"] =>
 export const useStatusVoiceRecorder = (): VoiceRecorderStore["status"] =>
   useVoiceRecorderStore(statusSelector);
 
-export const useTimeVoiceRecorder = (): VoiceRecorderStore["time"] =>
-  useVoiceRecorderStore(timeSelector);
+export const useRecorderTimeVoiceRecorder =
+  (): VoiceRecorderStore["recorderTime"] =>
+    useVoiceRecorderStore(recorderTimeSelector);
+
+export const usePlaybackTimeVoiceRecorder =
+  (): VoiceRecorderStore["playbackTime"] =>
+    useVoiceRecorderStore(playbackTimeSelector);
 
 export const useVolumeVoiceRecorder = (): VoiceRecorderStore["volume"] =>
   useVoiceRecorderStore(volumeSelector);
@@ -41,9 +47,10 @@ export const useVoiceRecorderActions = (): VoiceRecorderStore["actions"] =>
 export const useAllVoiceRecorder = (): {
   audioUrl: VoiceRecorderStore["audioUrl"];
   status: VoiceRecorderStore["status"];
-  time: VoiceRecorderStore["time"];
   volume: VoiceRecorderStore["volume"];
   bars: VoiceRecorderStore["bars"];
   barsCount: VoiceRecorderStore["barsCount"];
   isRecorderOpen: VoiceRecorderStore["isRecorderOpen"];
+  playbackTime: VoiceRecorderStore["playbackTime"];
+  recorderTime: VoiceRecorderStore["recorderTime"];
 } => useVoiceRecorderStore(useShallow(allVoiceRecorderSelector));

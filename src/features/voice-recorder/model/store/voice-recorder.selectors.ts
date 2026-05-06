@@ -4,7 +4,11 @@ export const audioUrlSelector = (state: VoiceRecorderStore) => state.audioUrl;
 
 export const statusSelector = (state: VoiceRecorderStore) => state.status;
 
-export const timeSelector = (state: VoiceRecorderStore) => state.time;
+export const recorderTimeSelector = (state: VoiceRecorderStore) =>
+  state.recorderTime;
+
+export const playbackTimeSelector = (state: VoiceRecorderStore) =>
+  state.playbackTime;
 
 export const volumeSelector = (state: VoiceRecorderStore) => state.volume;
 
@@ -21,9 +25,10 @@ export const voiceRecorderActionsSelector = (state: VoiceRecorderStore) =>
 export const allVoiceRecorderSelector = (state: VoiceRecorderStore) => ({
   audioUrl: state.audioUrl,
   status: state.status,
-  time: state.time,
   volume: state.volume,
   bars: state.bars,
   barsCount: state.barsCount,
   isRecorderOpen: state.isRecorderOpen,
+  recorderTime: state.recorderTime,
+  playbackTime: state.playbackTime,
 });

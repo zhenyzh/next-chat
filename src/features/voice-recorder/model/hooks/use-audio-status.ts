@@ -1,8 +1,8 @@
 import { useStatusVoiceRecorder } from "../store";
 
-export function useButtonStatus() {
+export function useAudioStatus() {
   const status = useStatusVoiceRecorder();
-
+  console.log({ status });
   return {
     isRecording: status === "recording",
     isPaused: status === "paused",

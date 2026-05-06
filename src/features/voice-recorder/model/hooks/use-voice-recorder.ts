@@ -1,135 +1,125 @@
-import { useEffect, useRef } from "react";
-import type { AudioAnalyser } from "../types";
+import { useRef } from "react";
 import {
-  useAllVoiceRecorder,
+  useStatusVoiceRecorder,
   useVoiceRecorderActions,
   useVoiceRecorderStore,
 } from "../store";
+import { useWave } from "./use-wave";
 
 export function useVoiceRecorder() {
-  const { audioUrl, status, time, volume, bars, barsCount } =
-    useAllVoiceRecorder();
+  const status = useStatusVoiceRecorder();
 
   const {
     setAudioUrl,
     setStatus,
-    incrementTime,
-    resetTime,
-    setVolume,
-    setBars,
+    incrementPlaybackTime,
+    incrementRecorderTime,
+    resetPlaybackTime,
+    resetRecorderTime,
     reset,
   } = useVoiceRecorderActions();
 
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
-  const streamRef = useRef<MediaStream | null>(null);
+  const { analyserRef, startWave, stopWave } = useWave();
 
-  const analyserRef = useRef<AudioAnalyser | null>(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioUrlRef = useRef<string | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
   const rafRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    if (status !== "recording") return;
+  const recordIntervalRef = useRef<number | null>(null);
+  const playIntervalRef = useRef<number | null>(null);
 
-    const timer = setInterval(() => incrementTime(), 1000);
-    return () => clearInterval(timer);
-  }, [status, incrementTime]);
+  const startRecordTimer = () => {
+    if (recordIntervalRef.current) return;
+    recordIntervalRef.current = window.setInterval(() => {
+      incrementRecorderTime();
+    }, 1000);
+  };
 
-  const start = async () => {
+  const stopRecordTimer = () => {
+    if (recordIntervalRef.current) {
+      clearInterval(recordIntervalRef.current);
+      recordIntervalRef.current = null;
+    }
+  };
+
+  const startPlayTimer = () => {
+    if (playIntervalRef.current) return;
+    playIntervalRef.current = window.setInterval(() => {
+      incrementPlaybackTime();
+    }, 1000);
+  };
+
+  const stopPlayTimer = () => {
+    if (playIntervalRef.current) {
+      clearInterval(playIntervalRef.current);
+      playIntervalRef.current = null;
+    }
+  };
+
+  const startRecorder = async () => {
     setStatus("recording");
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     streamRef.current = stream;
-
     const recorder = new MediaRecorder(stream);
     mediaRecorderRef.current = recorder;
     chunksRef.current = [];
-
     recorder.ondataavailable = (e) => chunksRef.current.push(e.data);
-
     recorder.onstop = () => {
       const blob = new Blob(chunksRef.current, { type: "audio/webm" });
       const url = URL.createObjectURL(blob);
+      audioUrlRef.current = url;
       setAudioUrl(url);
       setStatus("ready");
     };
-
+    startWave(stream);
     recorder.start();
-
-    const ctx = new AudioContext();
-    const source = ctx.createMediaStreamSource(stream);
-    const analyser = ctx.createAnalyser();
-
-    analyser.fftSize = 1024;
-
-    const data = new Uint8Array(analyser.frequencyBinCount);
-
-    source.connect(analyser);
-    analyserRef.current = { analyser, data, ctx };
-
-    const tick = () => {
-      const { status } = useVoiceRecorderStore.getState();
-
-      if (status === "paused") {
-        rafRef.current = requestAnimationFrame(tick);
-        return;
-      }
-
-      analyser.getByteFrequencyData(data);
-
-      const avg = data.reduce((a, b) => a + b, 0) / data.length;
-      setVolume(avg);
-
-      const step = Math.floor(data.length / barsCount);
-
-      const newBars = Array.from({ length: barsCount }).map((_, i) => {
-        const slice = data.slice(i * step, (i + 1) * step);
-        return slice.reduce((a, b) => a + b, 0) / slice.length;
-      });
-
-      setBars(newBars);
-
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    tick();
-
-    setStatus("recording");
-    resetTime();
+    resetRecorderTime();
+    startRecordTimer();
   };
 
-  const play = () => {
-    if (!audioUrl) return;
+  const stopRecorder = () => {
+    mediaRecorderRef.current?.stop();
+    stopWave();
+    stopRecordTimer(); // 👈
+    setStatus("paused");
+  };
 
+  const resumeRecorder = () => {
+    const recorder = mediaRecorderRef.current;
+    recorder?.resume();
+    startRecordTimer(); // 👈
+    setStatus("recording");
+  };
+
+  const playAudio = () => {
+    const url = audioUrlRef.current;
+    if (!url) return;
     if (!audioRef.current) {
-      const audio = new Audio(audioUrl);
-
+      const audio = new Audio(url);
       audio.onended = () => {
+        stopPlayTimer(); // 👈
         setStatus("ready");
       };
-
       audioRef.current = audio;
     }
+
+    stopPlayTimer();
+    resetPlaybackTime();
+
+    startPlayTimer();
 
     audioRef.current.play();
     setStatus("playing");
   };
 
-  const stopPlayback = () => {
+  const stopAudio = () => {
     if (!audioRef.current) return;
-
     audioRef.current.pause();
-    audioRef.current.currentTime = 0;
+    stopWave();
     setStatus("ready");
-  };
-
-  const pause = () => {
-    mediaRecorderRef.current?.pause();
-    setStatus("paused");
-  };
-
-  const resume = () => {
-    mediaRecorderRef.current?.resume();
-    setStatus("recording");
   };
 
   const cancel = () => {
@@ -138,9 +128,13 @@ export function useVoiceRecorder() {
     analyserRef.current?.ctx.close();
     mediaRecorderRef.current = null;
     audioRef.current = null;
-    chunksRef.current = [];
+    audioUrlRef.current = null;
     streamRef.current = null;
     analyserRef.current = null;
+    chunksRef.current = [];
+    stopRecordTimer(); // 👈
+    stopPlayTimer(); // 👈
+
     if (rafRef.current) {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
@@ -149,12 +143,11 @@ export function useVoiceRecorder() {
   };
 
   return {
-    time,
-    start,
-    play,
-    stopPlayback,
-    pause,
-    resume,
+    startRecorder,
+    playAudio,
+    stopAudio,
+    stopRecorder,
+    resumeRecorder,
     cancel,
   };
 }

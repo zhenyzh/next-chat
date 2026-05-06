@@ -1,18 +1,24 @@
 import { useEffect } from "react";
-import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
+import { Box, Button } from "@zhenyzh/common-ui/components";
 import { CloseIcon, SendHorizontalIcon } from "@zhenyzh/common-ui/icons";
 import { ButtonStatus } from "../ui/button-status";
 import { WaveRecorder } from "../ui/wave-recorder";
+import { Time } from "../ui/time";
 import { useVoiceRecorder } from "../model/hooks";
-import { formatTime_Min_Colon_Sec } from "@/shared/utils";
 import s from "./voice-recorder.module.scss";
 
 export function VoiceRecorder() {
-  const { time, start, play, stopPlayback, pause, resume, cancel } =
-    useVoiceRecorder();
+  const {
+    startRecorder,
+    playAudio,
+    stopAudio,
+    stopRecorder,
+    resumeRecorder,
+    cancel,
+  } = useVoiceRecorder();
 
   useEffect(() => {
-    start();
+    startRecorder();
   }, []);
 
   return (
@@ -24,15 +30,13 @@ export function VoiceRecorder() {
 
         <Box className={s.contentRecord}>
           <ButtonStatus
-            play={play}
-            stopPlayback={stopPlayback}
-            pause={pause}
-            resume={resume}
+            playAudio={playAudio}
+            stopAudio={stopAudio}
+            stopRecorder={stopRecorder}
+            resumeRecorder={resumeRecorder}
           />
           <WaveRecorder />
-          <Typography variant="label" className={s.label}>
-            {formatTime_Min_Colon_Sec(time)}
-          </Typography>
+          <Time />
         </Box>
 
         <Button variant="outline" className={s.button}>
