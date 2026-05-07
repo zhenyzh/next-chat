@@ -75,7 +75,7 @@ export function useVoiceRecorder() {
     setStatus("playing");
   };
 
-  const pauseAudio = async () => {
+  const pauseAudio = () => {
     waveSurferRef.current?.pause();
     setStatus("paused");
   };
