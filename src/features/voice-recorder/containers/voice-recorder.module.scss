@@ -24,12 +24,6 @@
   background-color: var(--color-border-input-primary);
 }
 
-.label {
-  color: var(--color-text-primary);
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
 @include max-width(860px) {
   .contentRecord {
     gap: 0;

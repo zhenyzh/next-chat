@@ -23,6 +23,7 @@ export function useWave() {
       barRadius: 999,
       cursorWidth: 0,
       normalize: true,
+      minPxPerSec: 1,
     });
     const record = waveSurfer.registerPlugin(
       RecordPlugin.create({

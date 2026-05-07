@@ -19,8 +19,8 @@ export function VoiceRecorder() {
   } = useVoiceRecorder();
 
   useEffect(() => {
-    startRecording();
-  }, []);
+    void startRecording();
+  }, [startRecording]);
 
   return (
     <Box className={s.container}>
@@ -28,7 +28,6 @@ export function VoiceRecorder() {
         <Button variant="outline" className={s.button} onClick={cancel}>
           <CloseIcon className={s.closeIcon} />
         </Button>
-
         <Box className={s.contentRecord}>
           <ButtonStatus
             playAudio={playAudio}
@@ -39,7 +38,6 @@ export function VoiceRecorder() {
           <WaveRecorder waveRef={containerRef} />
           <Time />
         </Box>
-
         <Button variant="outline" className={s.button}>
           <SendHorizontalIcon className={s.sendHorizontalIcon} />
         </Button>
