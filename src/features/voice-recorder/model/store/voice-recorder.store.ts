@@ -24,24 +24,14 @@ export const useVoiceRecorderStore = create<VoiceRecorderStore>()(
           state.status = status;
         });
       },
-      incrementPlaybackTime: () => {
+      setPlaybackTime: (time) => {
         set((state) => {
-          state.playbackTime += 1;
+          state.playbackTime = time;
         });
       },
-      incrementRecorderTime: () => {
+      setRecorderTime: (time) => {
         set((state) => {
-          state.recorderTime += 1;
-        });
-      },
-      resetRecorderTime: () => {
-        set((state) => {
-          state.recorderTime = 0;
-        });
-      },
-      resetPlaybackTime: () => {
-        set((state) => {
-          state.playbackTime = 0;
+          state.recorderTime = time;
         });
       },
       openRecorder: () => {

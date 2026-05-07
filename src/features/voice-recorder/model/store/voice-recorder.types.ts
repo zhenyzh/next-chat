@@ -14,10 +14,8 @@ export type VoiceRecorder = {
 
 export type VoiceRecorderActions = {
   setAudioUrl: (url: string | null) => void;
-  incrementRecorderTime: () => void;
-  incrementPlaybackTime: () => void;
-  resetRecorderTime: () => void;
-  resetPlaybackTime: () => void;
+  setRecorderTime: (time: number) => void;
+  setPlaybackTime: (time: number) => void;
   setStatus: (status: VoiceRecorderStatus) => void;
   openRecorder: () => void;
   closeRecorder: () => void;

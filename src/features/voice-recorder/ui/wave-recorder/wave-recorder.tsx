@@ -9,7 +9,7 @@ type Props = {
 export function WaveRecorder({ waveRef }: Props) {
   return (
     <Box className={s.container}>
-      <div ref={waveRef} className={s.waveform} />
+      <Box ref={waveRef} className={s.waveform} />
     </Box>
   );
 }

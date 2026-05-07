@@ -4,7 +4,8 @@ import RecordPlugin from "wavesurfer.js/plugins/record";
 import { useVoiceRecorderActions, useVoiceRecorderStore } from "../store";
 
 export function useVoiceRecorder() {
-  const { setAudioUrl, setStatus, reset } = useVoiceRecorderActions();
+  const { setAudioUrl, setStatus, reset, setRecorderTime, setPlaybackTime } =
+    useVoiceRecorderActions();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const waveSurferRef = useRef<WaveSurfer>(null);
@@ -30,12 +31,22 @@ export function useVoiceRecorder() {
         continuousWaveformDuration: 18,
       }),
     );
+    record.on("record-start", () => {
+      setStatus("recording");
+    });
     record.on("record-end", (blob: Blob) => {
       const url = URL.createObjectURL(blob);
       setAudioUrl(url);
       setStatus("ready");
     });
+    record.on("record-progress", (ms) => {
+      setRecorderTime(Math.floor(ms / 1000));
+    });
+    waveSurfer.on("timeupdate", (seconds) => {
+      setPlaybackTime(Math.floor(seconds));
+    });
     waveSurfer.on("finish", () => {
+      waveSurferRef.current?.stop();
       setStatus("ready");
     });
     waveSurferRef.current = waveSurfer;
@@ -43,7 +54,7 @@ export function useVoiceRecorder() {
     return () => {
       waveSurfer.destroy();
     };
-  }, [setAudioUrl, setStatus]);
+  }, [setAudioUrl, setStatus, setPlaybackTime, setRecorderTime]);
 
   const startRecording = async () => {
     setStatus("recording");
@@ -56,11 +67,11 @@ export function useVoiceRecorder() {
   };
 
   const resumeRecording = () => {
+    setStatus("recording");
     waveSurferRef.current?.setOptions({
       progressColor: "#fff",
     });
     recordRef.current?.resumeRecording();
-    setStatus("recording");
   };
 
   const playAudio = async () => {
