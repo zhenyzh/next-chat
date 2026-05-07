@@ -46,8 +46,8 @@ export function useVoiceRecorder() {
   }, [setAudioUrl, setStatus]);
 
   const startRecording = async () => {
-    await recordRef.current?.startRecording();
     setStatus("recording");
+    await recordRef.current?.startRecording();
   };
 
   const pauseRecording = () => {
