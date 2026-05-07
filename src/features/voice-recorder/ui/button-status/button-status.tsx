@@ -24,13 +24,15 @@ export function ButtonStatus({
   const { isRecording, isPlaying, isPausedRecording, isPaused, isReady } =
     useAudioStatus();
 
+  const showAudioContent =
+    isPausedRecording || isPaused || isReady || isPlaying;
+
   return (
     <Button className={s.button}>
       {isRecording && (
         <CircleStopIcon className={s.stopIcon} onClick={pauseRecorder} />
       )}
-
-      {(isPausedRecording || isPaused || isReady || isPlaying) && (
+      {showAudioContent && (
         <>
           <MicIcon className={s.micIcon} onClick={resumeRecorder} />
           {isPlaying ? (
