@@ -8,12 +8,11 @@ import { formatTimeSeconds } from "@/shared/utils";
 import s from "./time.module.scss";
 
 export function Time() {
-  const { isPausedRecording, isRecording, isReady } = useAudioStatus();
+  const { isPlaying, isPaused } = useAudioStatus();
   const recorderTime = useRecorderTimeVoiceRecorder();
   const playbackTime = usePlaybackTimeVoiceRecorder();
 
-  const time =
-    isPausedRecording || isRecording || isReady ? recorderTime : playbackTime;
+  const time = isPlaying || isPaused ? playbackTime : recorderTime;
 
   return (
     <Typography variant="label" className={s.label}>
