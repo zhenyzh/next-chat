@@ -1,166 +1,100 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import WaveSurfer from "wavesurfer.js";
+import RecordPlugin from "wavesurfer.js/plugins/record";
 import { useVoiceRecorderActions, useVoiceRecorderStore } from "../store";
-import { useWave } from "./use-wave";
 
 export function useVoiceRecorder() {
-  const {
-    setAudioUrl,
-    setStatus,
-    incrementRecorderTime,
-    resetPlaybackTime,
-    resetRecorderTime,
-    reset,
-  } = useVoiceRecorderActions();
+  const { setAudioUrl, setStatus, reset } = useVoiceRecorderActions();
 
-  const { analyserRef, startWave, stopWave } = useWave();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const waveSurferRef = useRef<WaveSurfer>(null);
+  const recordRef = useRef<RecordPlugin>(null);
 
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const streamRef = useRef<MediaStream | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const audioUrlRef = useRef<string | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
-  const rafRef = useRef<number | null>(null);
-  const recordIntervalRef = useRef<number | null>(null);
-
-  const startRecordTimer = () => {
-    if (recordIntervalRef.current) return;
-    recordIntervalRef.current = window.setInterval(() => {
-      incrementRecorderTime();
-    }, 1000);
-  };
-
-  const stopRecordTimer = () => {
-    if (recordIntervalRef.current) {
-      clearInterval(recordIntervalRef.current);
-      recordIntervalRef.current = null;
-    }
-  };
-
-  const startRecorder = async () => {
-    setStatus("recording");
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    streamRef.current = stream;
-    const recorder = new MediaRecorder(stream);
-    mediaRecorderRef.current = recorder;
-    chunksRef.current = [];
-    recorder.ondataavailable = (e) => {
-      if (e.data.size > 0) {
-        chunksRef.current.push(e.data);
-      }
-    };
-    recorder.onstop = () => {
-      const blob = new Blob(chunksRef.current, { type: "audio/webm" });
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const waveSurfer = WaveSurfer.create({
+      container: containerRef.current,
+      waveColor: "#fff",
+      progressColor: "#fff",
+      height: 20,
+      barWidth: 3,
+      barGap: 2,
+      barRadius: 999,
+      cursorWidth: 0,
+      normalize: true,
+    });
+    const record = waveSurfer.registerPlugin(
+      RecordPlugin.create({
+        scrollingWaveform: true,
+        continuousWaveform: true,
+        continuousWaveformDuration: 18,
+      }),
+    );
+    record.on("record-end", (blob: Blob) => {
       const url = URL.createObjectURL(blob);
-      audioUrlRef.current = url;
       setAudioUrl(url);
       setStatus("ready");
+    });
+    waveSurfer.on("finish", () => {
+      setStatus("ready");
+    });
+    waveSurferRef.current = waveSurfer;
+    recordRef.current = record;
+    return () => {
+      waveSurfer.destroy();
     };
-    startWave(stream);
-    recorder.start();
-    resetRecorderTime();
-    startRecordTimer();
+  }, [setAudioUrl, setStatus]);
+
+  const startRecording = async () => {
+    await recordRef.current?.startRecording();
+    setStatus("recording");
   };
 
-  const buildPreviewUrl = () => {
-    const blob = new Blob(chunksRef.current, { type: "audio/webm" });
-    return URL.createObjectURL(blob);
-  };
-
-  const pauseRecorder = () => {
-    mediaRecorderRef.current?.pause();
-    stopRecordTimer();
-    const url = buildPreviewUrl();
-    audioUrlRef.current = url;
-    setAudioUrl(url);
-    stopWave();
+  const pauseRecording = () => {
+    recordRef.current?.pauseRecording();
     setStatus("paused_recording");
   };
 
-  const resumeRecorder = () => {
-    const recorder = mediaRecorderRef.current;
-    recorder?.resume();
-    startRecordTimer();
+  const resumeRecording = () => {
+    waveSurferRef.current?.setOptions({
+      progressColor: "#fff",
+    });
+    recordRef.current?.resumeRecording();
     setStatus("recording");
   };
 
-  const syncPlaybackTime = () => {
-    if (!audioRef.current) return;
-    const tick = () => {
-      if (!audioRef.current) return;
-      const current = Math.floor(audioRef.current.currentTime);
-      useVoiceRecorderStore.setState({
-        playbackTime: current,
-      });
-      if (!audioRef.current.paused) {
-        rafRef.current = requestAnimationFrame(tick);
-      }
-    };
-    tick();
-  };
-
-  const playAudio = () => {
-    const url = audioUrlRef.current;
-    if (!url) return;
-
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current = null;
+  const playAudio = async () => {
+    const ws = waveSurferRef.current;
+    if (useVoiceRecorderStore.getState().status === "paused_recording") {
+      ws?.seekTo(0);
     }
-
-    const audio = new Audio(url);
-
-    audio.onended = () => {
-      setStatus("ready");
-    };
-
-    audioRef.current = audio;
-
-    setStatus("playing");
-    audio.play().catch((e) => {
-      console.error("Audio play failed:", e);
+    ws?.setOptions({
+      progressColor: "#df7a7a",
     });
-
-    syncPlaybackTime();
+    await ws?.play();
+    setStatus("playing");
   };
 
-  const stopAudio = () => {
-    if (!audioRef.current) return;
-
-    audioRef.current.pause();
-
-    if (rafRef.current) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-    stopWave();
+  const pauseAudio = async () => {
+    waveSurferRef.current?.pause();
     setStatus("paused");
   };
 
   const cancel = () => {
-    mediaRecorderRef.current?.stop();
-    streamRef.current?.getTracks().forEach((t) => t.stop());
-    analyserRef.current?.ctx.close();
-    mediaRecorderRef.current = null;
-    audioRef.current = null;
-    audioUrlRef.current = null;
-    streamRef.current = null;
-    analyserRef.current = null;
-    chunksRef.current = [];
-    stopRecordTimer();
-
-    if (rafRef.current) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
+    recordRef.current?.stopRecording();
+    waveSurferRef.current?.destroy();
+    recordRef.current = null;
+    waveSurferRef.current = null;
     reset();
   };
 
   return {
-    startRecorder,
+    containerRef,
+    startRecording,
+    pauseRecording,
+    resumeRecording,
     playAudio,
-    stopAudio,
-    pauseRecorder,
-    resumeRecorder,
+    pauseAudio,
     cancel,
   };
 }

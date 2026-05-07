@@ -17,7 +17,7 @@
     "@tanstack/react-query-devtools": "^5.96.2",
     "@tanstack/react-query-persist-client": "^5.96.2",
     "@types/react-linkify": "^1.0.4",
-    "@zhenyzh/common-ui": "^2.20.0",
+    "@zhenyzh/common-ui": "^2.21.0",
     "axios": "^1.13.6",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -31,6 +31,7 @@
     "sass": "^1.97.2",
     "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3",
+    "wavesurfer.js": "^7.12.6",
     "zod": "^4.3.6",
     "zustand": "^5.0.11"
   },

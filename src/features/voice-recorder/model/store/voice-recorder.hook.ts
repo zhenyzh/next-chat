@@ -3,9 +3,6 @@ import { useVoiceRecorderStore } from "./voice-recorder.store";
 import {
   audioUrlSelector,
   statusSelector,
-  volumeSelector,
-  barsSelector,
-  barsCountSelector,
   playbackTimeSelector,
   recorderTimeSelector,
   isRecorderOpenSelector,
@@ -28,15 +25,6 @@ export const usePlaybackTimeVoiceRecorder =
   (): VoiceRecorderStore["playbackTime"] =>
     useVoiceRecorderStore(playbackTimeSelector);
 
-export const useVolumeVoiceRecorder = (): VoiceRecorderStore["volume"] =>
-  useVoiceRecorderStore(volumeSelector);
-
-export const useBarsVoiceRecorder = (): VoiceRecorderStore["bars"] =>
-  useVoiceRecorderStore(barsSelector);
-
-export const useBarsCountVoiceRecorder = (): VoiceRecorderStore["barsCount"] =>
-  useVoiceRecorderStore(barsCountSelector);
-
 export const useIsOpenVoiceRecorder =
   (): VoiceRecorderStore["isRecorderOpen"] =>
     useVoiceRecorderStore(isRecorderOpenSelector);
@@ -47,9 +35,6 @@ export const useVoiceRecorderActions = (): VoiceRecorderStore["actions"] =>
 export const useAllVoiceRecorder = (): {
   audioUrl: VoiceRecorderStore["audioUrl"];
   status: VoiceRecorderStore["status"];
-  volume: VoiceRecorderStore["volume"];
-  bars: VoiceRecorderStore["bars"];
-  barsCount: VoiceRecorderStore["barsCount"];
   isRecorderOpen: VoiceRecorderStore["isRecorderOpen"];
   playbackTime: VoiceRecorderStore["playbackTime"];
   recorderTime: VoiceRecorderStore["recorderTime"];

@@ -10,14 +10,14 @@ import s from "./button-status.module.scss";
 
 type Props = {
   playAudio: () => void;
-  stopAudio: () => void;
+  pauseAudio: () => void;
   pauseRecorder: () => void;
   resumeRecorder: () => void;
 };
 
 export function ButtonStatus({
   playAudio,
-  stopAudio,
+  pauseAudio,
   pauseRecorder,
   resumeRecorder,
 }: Props) {
@@ -34,7 +34,7 @@ export function ButtonStatus({
         <>
           <MicIcon className={s.micIcon} onClick={resumeRecorder} />
           {isPlaying ? (
-            <CirclePauseIcon className={s.pauseIcon} onClick={stopAudio} />
+            <CirclePauseIcon className={s.pauseIcon} onClick={pauseAudio} />
           ) : (
             <CirclePlayIcon className={s.playIcon} onClick={playAudio} />
           )}

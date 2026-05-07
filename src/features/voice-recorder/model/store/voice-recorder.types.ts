@@ -5,11 +5,8 @@ export type VoiceRecorderStore = VoiceRecorder & {
 };
 
 export type VoiceRecorder = {
-  barsCount: number;
   audioUrl: string | null;
-  volume: number;
   status: VoiceRecorderStatus;
-  bars: number[];
   isRecorderOpen: boolean;
   recorderTime: number;
   playbackTime: number;
@@ -21,10 +18,8 @@ export type VoiceRecorderActions = {
   incrementPlaybackTime: () => void;
   resetRecorderTime: () => void;
   resetPlaybackTime: () => void;
-  setVolume: (volume: number) => void;
   setStatus: (status: VoiceRecorderStatus) => void;
-  setBars: (bars: number[]) => void;
-  reset: () => void;
   openRecorder: () => void;
   closeRecorder: () => void;
+  reset: () => void;
 };

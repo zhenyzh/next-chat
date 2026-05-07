@@ -2,23 +2,17 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import type { VoiceRecorderStore, VoiceRecorder } from "./voice-recorder.types";
 
-const BARS_COUNT = 200;
-
 const defaultFile: VoiceRecorder = {
   audioUrl: null,
   status: "idle",
-  volume: 0,
-  bars: Array(BARS_COUNT).fill(4),
-  barsCount: BARS_COUNT,
-  isRecorderOpen: false,
   playbackTime: 0,
   recorderTime: 0,
+  isRecorderOpen: false,
 };
 
 export const useVoiceRecorderStore = create<VoiceRecorderStore>()(
   immer((set) => ({
     ...defaultFile,
-
     actions: {
       setAudioUrl: (audioUrl) => {
         set((state) => {
@@ -48,16 +42,6 @@ export const useVoiceRecorderStore = create<VoiceRecorderStore>()(
       resetPlaybackTime: () => {
         set((state) => {
           state.playbackTime = 0;
-        });
-      },
-      setVolume: (next) => {
-        set((state) => {
-          state.volume = state.volume * 0.8 + next * 0.2;
-        });
-      },
-      setBars: (newBars) => {
-        set((state) => {
-          state.bars = newBars.map((v, i) => state.bars[i] * 0.7 + v * 0.3);
         });
       },
       openRecorder: () => {

@@ -33,8 +33,8 @@ importers:
         specifier: ^1.0.4
         version: 1.0.4
       '@zhenyzh/common-ui':
-        specifier: ^2.20.0
-        version: 2.20.0(@types/react@19.2.11)
+        specifier: ^2.21.0
+        version: 2.21.0(@types/react@19.2.11)
       axios:
         specifier: ^1.13.6
         version: 1.13.6
@@ -74,6 +74,9 @@ importers:
       socket.io-client:
         specifier: ^4.8.3
         version: 4.8.3
+      wavesurfer.js:
+        specifier: ^7.12.6
+        version: 7.12.6
       zod:
         specifier: ^4.3.6
         version: 4.3.6
@@ -868,8 +871,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@zhenyzh/common-ui@2.20.0':
-    resolution: {integrity: sha512-2EqUXGK4ZX2E4pxtRG4XtQAopF1NupWx1RgKoU0NSeLrH4Svo65yxYC9dxe0aEKDJLA6euTOscuK9aJLUqtifw==, tarball: https://npm.pkg.github.com/download/@zhenyzh/common-ui/2.20.0/0283a93c93721646301ca395799dbdfd0e11d2e9}
+  '@zhenyzh/common-ui@2.21.0':
+    resolution: {integrity: sha512-xlg42cqcyXnOE2/Ir2ZpTsilAwNfiVzFL0bVMKK1pz0Fqv1gYq4MR4rhKyWaQzwfzDGGXm4DWAYAgxGYKXO1Yg==, tarball: https://npm.pkg.github.com/download/@zhenyzh/common-ui/2.21.0/2970ffe3a53add67220960135bfbfca749e65e4f}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -2165,6 +2168,9 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
+  wavesurfer.js@7.12.6:
+    resolution: {integrity: sha512-zSxPgOFprtyJ31ppHQF0+E9jAmjAhi1rR36yIW6h1GOYdpRxDe6mbkYtlChqLK0Iz8ROBweiEFw2zus7tDFibA==}
+
   which-boxed-primitive@1.1.1:
     resolution: {integrity: sha512-TbX3mj8n0odCBFVlY8AxkqcHASw3L60jIuF8jFP78az3C2YhmGvqbHBpAjTRH2/xqYunrJ9g1jSyjCjpoWzIAA==}
     engines: {node: '>= 0.4'}
@@ -2980,7 +2986,7 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@zhenyzh/common-ui@2.20.0(@types/react@19.2.11)':
+  '@zhenyzh/common-ui@2.21.0(@types/react@19.2.11)':
     dependencies:
       '@headlessui/react': 2.2.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       clsx: 2.1.1
@@ -4596,6 +4602,8 @@ snapshots:
       react: 19.2.3
 
   vary@1.1.2: {}
+
+  wavesurfer.js@7.12.6: {}
 
   which-boxed-primitive@1.1.1:
     dependencies:

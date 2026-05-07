@@ -9,16 +9,17 @@ import s from "./voice-recorder.module.scss";
 
 export function VoiceRecorder() {
   const {
-    startRecorder,
+    containerRef,
+    startRecording,
+    pauseRecording,
+    resumeRecording,
     playAudio,
-    stopAudio,
-    pauseRecorder,
-    resumeRecorder,
+    pauseAudio,
     cancel,
   } = useVoiceRecorder();
 
   useEffect(() => {
-    startRecorder();
+    startRecording();
   }, []);
 
   return (
@@ -31,11 +32,11 @@ export function VoiceRecorder() {
         <Box className={s.contentRecord}>
           <ButtonStatus
             playAudio={playAudio}
-            stopAudio={stopAudio}
-            pauseRecorder={pauseRecorder}
-            resumeRecorder={resumeRecorder}
+            pauseAudio={pauseAudio}
+            pauseRecorder={pauseRecording}
+            resumeRecorder={resumeRecording}
           />
-          <WaveRecorder />
+          <WaveRecorder waveRef={containerRef} />
           <Time />
         </Box>
 
