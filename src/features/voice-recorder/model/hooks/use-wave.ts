@@ -53,6 +53,7 @@ export function useWave() {
     waveSurferRef.current = waveSurfer;
     recordRef.current = record;
     return () => {
+      record.destroy();
       waveSurfer.destroy();
     };
   }, [setAudioUrl, setStatus, setPlaybackTime, setRecorderTime]);

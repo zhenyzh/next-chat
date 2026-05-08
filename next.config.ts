@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
     includePaths: [path.join(__dirname, "@/app/themas")],
   },
   reactCompiler: true,
+  reactStrictMode: false,
 };
 
 export default nextConfig;
