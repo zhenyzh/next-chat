@@ -1,5 +1,5 @@
-import { Box } from "@zhenyzh/common-ui/components";
 import { type Ref } from "react";
+import { Box } from "@zhenyzh/common-ui/components";
 import s from "./wave-recorder.module.scss";
 
 type Props = {
