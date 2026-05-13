@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import { useSubscribeToChatUsersUpdate } from "@/widgets/chat-users/model/socket";
 import { useSubscribeToNewMessage } from "@/features/send-message/model/socket";
 import { useSubscribeToTyping } from "@/features/typing/model/socket";
