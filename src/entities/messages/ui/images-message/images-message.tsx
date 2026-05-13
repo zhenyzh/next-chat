@@ -2,9 +2,9 @@ import { Avatar, Box } from "@zhenyzh/common-ui/components";
 import type { FileAttach } from "../../model/types";
 import { downloadFile } from "../../lib/utils";
 import { patchUrl } from "@/shared/configs";
-import s from "./message-images.module.scss";
+import s from "./images-message.module.scss";
 
-export function MessageImages({ images }: { images: FileAttach[] }) {
+export function ImagesMessage({ images }: { images: FileAttach[] }) {
   const isOdd = images.length % 2 !== 0;
 
   return (

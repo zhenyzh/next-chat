@@ -1,10 +1,11 @@
 import clsx from "clsx";
 import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import type { Message } from "../model/types";
-import { MessageContent } from "../ui/message-content";
-import { MessageText } from "../ui/message-text";
+import { ContentMessage } from "../ui/content-message";
+import { TextMessage } from "../ui/text-message";
 import { patchUrl } from "@/shared/configs";
 import s from "./messages.module.scss";
+import { AudioMessage } from "@/entities/messages/ui/audio-message";
 
 type Props = {
   message: Message;
@@ -15,7 +16,7 @@ export function Messages({ message, subContent }: Props) {
   const {
     sender: { avatarUrl, name } = {},
     fromMe,
-    content: { text, ...rest },
+    content: { text, audio, ...rest },
     time,
   } = message;
 
@@ -27,8 +28,9 @@ export function Messages({ message, subContent }: Props) {
           <Typography variant="h3" className={s.name}>
             {name}
           </Typography>
-          {text && <MessageText text={text} />}
-          <MessageContent {...rest} />
+          {text && <TextMessage text={text} />}
+          {audio && <AudioMessage audio={audio} />}
+          <ContentMessage {...rest} />
         </Box>
         <Typography variant="label" className={s.time}>
           {time}

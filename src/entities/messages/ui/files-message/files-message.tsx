@@ -3,9 +3,9 @@ import type { FileAttach } from "../../model/types";
 import { downloadFile } from "../../lib/utils";
 import { CardPreview } from "@/shared/ui";
 import { formatFileSize, getIconByFileExtension } from "@/shared/utils";
-import s from "./message-files.module.scss";
+import s from "./files-message.module.scss";
 
-export function MessageFiles({ files }: { files: FileAttach[] }) {
+export function FilesMessage({ files }: { files: FileAttach[] }) {
   return (
     <>
       {files.map((file) => (

@@ -18,6 +18,7 @@ export type MessageContentType = {
   images?: FileAttach[];
   files?: FileAttach[];
   sticker?: string;
+  audio?: string;
 };
 
 export type FileAttach = {

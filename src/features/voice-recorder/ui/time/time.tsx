@@ -1,10 +1,10 @@
-import { Typography } from "@zhenyzh/common-ui/components";
 import {
   useRecorderTimeVoiceRecorder,
   usePlaybackTimeVoiceRecorder,
 } from "../../model/store";
 import { useAudioStatus } from "../../model/hooks";
 import { formatTimeSeconds } from "@/shared/utils";
+import { DateTime } from "@/shared/ui";
 import s from "./time.module.scss";
 
 export function Time() {
@@ -14,9 +14,5 @@ export function Time() {
 
   const time = isPlaying || isPaused ? playbackTime : recorderTime;
 
-  return (
-    <Typography variant="label" className={s.label}>
-      {formatTimeSeconds(time)}
-    </Typography>
-  );
+  return <DateTime value={formatTimeSeconds(time)} className={s.label} />;
 }

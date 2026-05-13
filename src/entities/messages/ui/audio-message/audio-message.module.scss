@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.button {
+  background-color: var(--color-bg-card);
+  padding: 0;
+}
+
+.icon {
+  border-radius: 50%;
+  background-color: var(--color-bg-primary);
+  flex-shrink: 0;
+}
+
+.waveContainer {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.wave {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.time {
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
