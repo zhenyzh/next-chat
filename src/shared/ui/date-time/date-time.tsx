@@ -6,12 +6,14 @@ export function DateTime({
   value,
   className,
 }: {
-  value: string;
+  value: string | undefined | null;
   className?: string;
 }) {
   return (
-    <Typography variant="label" className={clsx(s.dateTime, className)}>
-      {value}
-    </Typography>
+    value && (
+      <Typography variant="label" className={clsx(s.dateTime, className)}>
+        {value}
+      </Typography>
+    )
   );
 }

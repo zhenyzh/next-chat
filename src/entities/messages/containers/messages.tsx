@@ -1,15 +1,17 @@
+import type { ReactNode } from "react";
 import clsx from "clsx";
 import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import type { Message } from "../model/types";
 import { ContentMessage } from "../ui/content-message";
 import { TextMessage } from "../ui/text-message";
+import { AudioMessage } from "../ui/audio-message";
 import { patchUrl } from "@/shared/configs";
+import { DateTime } from "@/shared/ui";
 import s from "./messages.module.scss";
-import { AudioMessage } from "@/entities/messages/ui/audio-message";
 
 type Props = {
   message: Message;
-  subContent?: React.ReactNode;
+  subContent?: ReactNode;
 };
 
 export function Messages({ message, subContent }: Props) {
@@ -32,9 +34,7 @@ export function Messages({ message, subContent }: Props) {
           {audio && <AudioMessage audio={audio} />}
           <ContentMessage {...rest} />
         </Box>
-        <Typography variant="label" className={s.time}>
-          {time}
-        </Typography>
+        <DateTime className={s.time} value={time} />
       </Card>
       {subContent && subContent}
     </Card>
