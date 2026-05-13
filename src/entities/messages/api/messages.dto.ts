@@ -6,8 +6,9 @@ export type MessagesDto = {
   chatId: number | undefined;
   senderId: number | undefined;
   sender: User;
-  text: string;
   createdAt: string;
+  text?: string;
+  audio?: FileAttach;
   clientId?: string;
-  attachments: FileAttach[];
+  attachments?: FileAttach[];
 } & StatusMessage;

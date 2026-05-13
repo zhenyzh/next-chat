@@ -3,6 +3,7 @@ import { useVoiceRecorderStore } from "./voice-recorder.store";
 import {
   audioUrlSelector,
   statusSelector,
+  audioBlobSelector,
   playbackTimeSelector,
   recorderTimeSelector,
   isRecorderOpenSelector,
@@ -13,6 +14,9 @@ import type { VoiceRecorderStore } from "./voice-recorder.types";
 
 export const useAudioUrlVoiceRecorder = (): VoiceRecorderStore["audioUrl"] =>
   useVoiceRecorderStore(audioUrlSelector);
+
+export const useAudioBlobVoiceRecorder = (): VoiceRecorderStore["audioBlob"] =>
+  useVoiceRecorderStore(audioBlobSelector);
 
 export const useStatusVoiceRecorder = (): VoiceRecorderStore["status"] =>
   useVoiceRecorderStore(statusSelector);

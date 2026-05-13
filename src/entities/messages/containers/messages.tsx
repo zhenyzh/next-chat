@@ -4,7 +4,6 @@ import { Avatar, Box, Card, Typography } from "@zhenyzh/common-ui/components";
 import type { Message } from "../model/types";
 import { ContentMessage } from "../ui/content-message";
 import { TextMessage } from "../ui/text-message";
-import { AudioMessage } from "../ui/audio-message";
 import { patchUrl } from "@/shared/configs";
 import { DateTime } from "@/shared/ui";
 import s from "./messages.module.scss";
@@ -18,7 +17,7 @@ export function Messages({ message, subContent }: Props) {
   const {
     sender: { avatarUrl, name } = {},
     fromMe,
-    content: { text, audio, ...rest },
+    content: { text, ...rest },
     time,
   } = message;
 
@@ -31,7 +30,6 @@ export function Messages({ message, subContent }: Props) {
             {name}
           </Typography>
           {text && <TextMessage text={text} />}
-          {audio && <AudioMessage audio={audio} />}
           <ContentMessage {...rest} />
         </Box>
         <DateTime className={s.time} value={time} />

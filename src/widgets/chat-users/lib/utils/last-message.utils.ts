@@ -4,6 +4,7 @@ import { declination, filteredFilesByType } from "@/shared/utils";
 export function lastMessage(
   message: string | null,
   attachments: FileAttach[] | null,
+  audio: FileAttach | null,
 ) {
   const imageSize = filteredFilesByType<FileAttach>(
     attachments,
@@ -11,10 +12,16 @@ export function lastMessage(
   )?.length;
   const fileSize = filteredFilesByType<FileAttach>(attachments, "file")?.length;
 
+  let forceMessage = message;
+
+  if (audio?.url && audio?.size) {
+    forceMessage = "Голосовое сообщение";
+  }
+
   if (imageSize && fileSize) {
     const sum = imageSize + fileSize;
     const word = declination(sum, ["Вложение", "Вложения", "Вложений"]);
-    return messageJoin(message, sum, word);
+    return messageJoin(forceMessage, sum, word);
   }
 
   if (imageSize) {
@@ -23,14 +30,14 @@ export function lastMessage(
       "Фотографии",
       "Фотографий",
     ]);
-    return messageJoin(message, imageSize, word);
+    return messageJoin(forceMessage, imageSize, word);
   }
   if (fileSize) {
     const word = declination(fileSize, ["Файл", "Файла", "Файлов"]);
-    return messageJoin(message, fileSize, word);
+    return messageJoin(forceMessage, fileSize, word);
   }
 
-  return message;
+  return forceMessage;
 }
 
 const messageJoin = (msg: string | null, value: number, word: string) =>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import WaveSurfer from "wavesurfer.js";
 
-export function useAudio(audio: string) {
+export function useAudio(audioUrl: string) {
   const containerRef = useRef<HTMLDivElement>(null);
   const waveSurferRef = useRef<WaveSurfer>(null);
 
@@ -21,7 +21,7 @@ export function useAudio(audio: string) {
       height: 48,
     });
 
-    waveSurferRef.current.load(audio);
+    waveSurferRef.current.load(audioUrl);
 
     waveSurferRef.current.on("play", () => setIsPlay(true));
     waveSurferRef.current.on("pause", () => setIsPlay(false));
@@ -32,7 +32,7 @@ export function useAudio(audio: string) {
     return () => {
       waveSurferRef.current?.destroy();
     };
-  }, [audio]);
+  }, [audioUrl]);
 
   return {
     containerRef,

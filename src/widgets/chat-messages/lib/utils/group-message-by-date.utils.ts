@@ -34,6 +34,7 @@ export function groupMessagesByDate(
       sender: msg.sender,
       content: {
         text: msg.text,
+        audio: msg.audio,
         images: filteredFilesByType(msg.attachments, "image"),
         files: filteredFilesByType(msg.attachments, "file"),
       },

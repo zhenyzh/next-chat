@@ -20,6 +20,7 @@ export function ChatUserItem({ data }: { data: ChatUsers }) {
             chatUserId={data.id}
             message={data.lastMessage}
             attachments={data.attachments}
+            audio={data.audio}
             status={data.status}
             countMessage={data.countUnreadMessage}
             typedI={data.typedI}

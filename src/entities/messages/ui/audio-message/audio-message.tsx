@@ -1,12 +1,13 @@
 import { Box, Button } from "@zhenyzh/common-ui/components";
 import { CirclePlayIcon, CirclePauseIcon } from "@zhenyzh/common-ui/icons";
 import { useAudio } from "../../model/hooks";
+import type { FileAttach } from "../../model/types";
 import { DateTime } from "@/shared/ui";
 import { formatTimeSeconds } from "@/shared/utils";
 import s from "./audio-message.module.scss";
 
-export function AudioMessage({ audio }: { audio: string }) {
-  const { containerRef, isPlay, time, onPlayPause } = useAudio(audio);
+export function AudioMessage({ audio: { url } }: { audio: FileAttach }) {
+  const { containerRef, isPlay, time, onPlayPause } = useAudio(url);
 
   return (
     <Box className={s.container}>

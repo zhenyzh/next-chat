@@ -4,8 +4,13 @@ import RecordPlugin from "wavesurfer.js/plugins/record";
 import { useVoiceRecorderActions } from "../../model/store";
 
 export function useWaveVoiceRecorder() {
-  const { setAudioUrl, setStatus, setRecorderTime, setPlaybackTime } =
-    useVoiceRecorderActions();
+  const {
+    setAudioUrl,
+    setAudioBlob,
+    setStatus,
+    setRecorderTime,
+    setPlaybackTime,
+  } = useVoiceRecorderActions();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const waveSurferRef = useRef<WaveSurfer>(null);
@@ -35,8 +40,9 @@ export function useWaveVoiceRecorder() {
     record.on("record-start", () => {
       setStatus("recording");
     });
-    record.on("record-pause", (blob: Blob) => {
+    record.on("record-end", (blob: Blob) => {
       const url = URL.createObjectURL(blob);
+      setAudioBlob(blob);
       setAudioUrl(url);
       setStatus("paused_recording");
     });
@@ -56,7 +62,7 @@ export function useWaveVoiceRecorder() {
       record.destroy();
       waveSurfer.destroy();
     };
-  }, [setAudioUrl, setStatus, setPlaybackTime, setRecorderTime]);
+  }, [setAudioUrl, setAudioBlob, setStatus, setPlaybackTime, setRecorderTime]);
 
   return { containerRef, waveSurferRef, recordRef };
 }

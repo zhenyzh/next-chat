@@ -6,6 +6,7 @@ export type VoiceRecorderStore = VoiceRecorder & {
 
 export type VoiceRecorder = {
   audioUrl: string | null;
+  audioBlob: Blob | null;
   status: VoiceRecorderStatus;
   isRecorderOpen: boolean;
   recorderTime: number;
@@ -14,6 +15,7 @@ export type VoiceRecorder = {
 
 export type VoiceRecorderActions = {
   setAudioUrl: (url: string | null) => void;
+  setAudioBlob: (url: Blob | null) => void;
   setRecorderTime: (time: number) => void;
   setPlaybackTime: (time: number) => void;
   setStatus: (status: VoiceRecorderStatus) => void;

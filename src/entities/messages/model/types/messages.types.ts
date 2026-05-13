@@ -18,7 +18,7 @@ export type MessageContentType = {
   images?: FileAttach[];
   files?: FileAttach[];
   sticker?: string;
-  audio?: string;
+  audio?: FileAttach;
 };
 
 export type FileAttach = {
@@ -29,7 +29,7 @@ export type FileAttach = {
   type: FileAttachType;
 };
 
-export type FileAttachType = "image" | "file";
+export type FileAttachType = "image" | "file" | "audio";
 
 export type StatusMessage = {
   isSent: boolean;

@@ -15,6 +15,7 @@ type Props = {
   chatUserId: number;
   message: string | null;
   attachments: FileAttach[] | null;
+  audio: FileAttach | null;
   status: StatusMessage;
   countMessage: number;
   typedI: boolean;
@@ -24,12 +25,13 @@ export function ChatSubContent({
   chatUserId,
   message,
   attachments,
+  audio,
   status,
   countMessage,
   typedI,
 }: Props) {
   const { isTyping } = useTyping(chatUserId);
-  const lastMsg = lastMessage(message, attachments);
+  const lastMsg = lastMessage(message, attachments, audio);
   const typedLastI = typedI && `Вы: ${lastMsg}`;
 
   return (

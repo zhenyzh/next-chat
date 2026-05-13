@@ -1,36 +1,33 @@
 import { useMutation } from "@tanstack/react-query";
-import { sendMessageApi } from "../../api";
-import { useMessageActions, useMessage } from "../store";
+import { voiceRecorderApi } from "../../api";
 import {
-  useFilesAttach,
-  useFilesAttachActions,
-} from "@/features/file-attach/model/store";
-import { messagesApi, type MessagesDto } from "@/entities/messages/api";
-import { useCurrentChat } from "@/entities/chat/model/hooks";
+  useAudioBlobVoiceRecorder,
+  useVoiceRecorderActions,
+} from "../../model/store";
 import { useUser } from "@/entities/user/model/store";
+import { useCurrentChat } from "@/entities/chat/model/hooks";
+import { messagesApi, type MessagesDto } from "@/entities/messages/api";
 import { queryClient } from "@/shared/api";
 
-export function useSendMessage() {
+export function useSendVoiceRecorder() {
   const user = useUser();
   const { chatId } = useCurrentChat();
-  const { clearMessage } = useMessageActions();
-  const { clearFiles } = useFilesAttachActions();
-  const message = useMessage();
-  const files = useFilesAttach();
+  const audioBlob = useAudioBlobVoiceRecorder();
+  const { reset } = useVoiceRecorderActions();
 
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;
   const clientId = crypto.randomUUID();
 
   const mutation = useMutation({
-    mutationFn: sendMessageApi.sendMessage,
-    onMutate: async (newMessage) => {
+    mutationFn: voiceRecorderApi.sendAudio,
+    onMutate: async (newData) => {
       await queryClient.cancelQueries({ queryKey });
 
       const previousMessage = queryClient.getQueryData(queryKey);
 
       const mockMessage = {
         id: Math.floor(Math.random() * 100),
-        ...newMessage,
+        ...newData,
         sender: user,
         createdAt: new Date().toISOString(),
         clientId,
@@ -41,7 +38,7 @@ export function useSendMessage() {
 
       queryClient.setQueryData(queryKey, (old = []) => [...old, mockMessage]);
 
-      return { previousMessage, clientId: newMessage.clientId };
+      return { previousMessage, clientId: newData.clientId };
     },
 
     onSuccess: (data, _, context) => {
@@ -50,29 +47,30 @@ export function useSendMessage() {
           msg.clientId === context.clientId ? data : msg,
         ),
       );
-      clearMessage();
-      clearFiles();
     },
 
     onError: (_, __, context) => {
       queryClient.setQueryData(queryKey, context?.previousMessage);
     },
 
-    onSettled: () => queryClient.invalidateQueries({ queryKey }),
+    onSettled: async () => {
+      await queryClient.invalidateQueries({ queryKey });
+      reset();
+    },
   });
 
-  const onSendMessage = () => {
+  const onSendVoiceRecord = () => {
+    if (!audioBlob) return;
     mutation.mutate({
       chatId,
       senderId: user.id,
-      text: message,
+      audioBlob,
       clientId,
-      attachments: files,
     });
   };
 
   return {
-    onSendMessage,
+    onSendVoiceRecord,
     isPending: mutation.isPending,
     error: mutation.error,
   };

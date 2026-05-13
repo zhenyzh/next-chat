@@ -8,6 +8,7 @@ export type ChatUsers = {
   createdAt: string;
   lastMessage: string;
   attachments: FileAttach[];
+  audio: FileAttach;
   countUnreadMessage: number;
   status: StatusMessage;
   typedI: boolean;

@@ -2,6 +2,8 @@ import type { VoiceRecorderStore } from "./voice-recorder.types";
 
 export const audioUrlSelector = (state: VoiceRecorderStore) => state.audioUrl;
 
+export const audioBlobSelector = (state: VoiceRecorderStore) => state.audioBlob;
+
 export const statusSelector = (state: VoiceRecorderStore) => state.status;
 
 export const recorderTimeSelector = (state: VoiceRecorderStore) =>

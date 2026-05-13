@@ -4,41 +4,39 @@ import { CloseIcon, SendHorizontalIcon } from "@zhenyzh/common-ui/icons";
 import { ButtonStatus } from "../ui/button-status";
 import { WaveRecorder } from "../ui/wave-recorder";
 import { Time } from "../ui/time";
-import { useVoiceRecorder } from "../model/hooks";
+import { useSendVoiceRecorder, useVoiceRecorder } from "../model/hooks";
 import s from "./voice-recorder.module.scss";
 
 export function VoiceRecorder() {
-  const {
-    containerRef,
-    startRecording,
-    pauseRecording,
-    resumeRecording,
-    playAudio,
-    pauseAudio,
-    cancel,
-  } = useVoiceRecorder();
+  const vrSend = useSendVoiceRecorder();
+  const vr = useVoiceRecorder();
 
   useEffect(() => {
-    void startRecording();
-  }, [startRecording]);
+    void vr.startRecording();
+  });
 
   return (
     <Box className={s.container}>
       <Box className={s.content}>
-        <Button variant="outline" className={s.button} onClick={cancel}>
+        <Button variant="outline" className={s.button} onClick={vr.cancel}>
           <CloseIcon className={s.closeIcon} />
         </Button>
         <Box className={s.contentRecord}>
           <ButtonStatus
-            playAudio={playAudio}
-            pauseAudio={pauseAudio}
-            pauseRecorder={pauseRecording}
-            resumeRecorder={resumeRecording}
+            playAudio={vr.playAudio}
+            pauseAudio={vr.pauseAudio}
+            pauseRecorder={vr.pauseRecording}
+            resumeRecorder={vr.resumeRecording}
           />
-          <WaveRecorder waveRef={containerRef} />
+          <WaveRecorder waveRef={vr.containerRef} />
           <Time />
         </Box>
-        <Button variant="outline" className={s.button}>
+        <Button
+          variant="outline"
+          className={s.button}
+          onClick={vrSend.onSendVoiceRecord}
+          disabled={vrSend.isPending}
+        >
           <SendHorizontalIcon className={s.sendHorizontalIcon} />
         </Button>
       </Box>

@@ -4,6 +4,7 @@ import type { VoiceRecorderStore, VoiceRecorder } from "./voice-recorder.types";
 
 const defaultFile: VoiceRecorder = {
   audioUrl: null,
+  audioBlob: null,
   status: "idle",
   playbackTime: 0,
   recorderTime: 0,
@@ -17,6 +18,11 @@ export const useVoiceRecorderStore = create<VoiceRecorderStore>()(
       setAudioUrl: (audioUrl) => {
         set((state) => {
           state.audioUrl = audioUrl;
+        });
+      },
+      setAudioBlob: (audioBlob) => {
+        set((state) => {
+          state.audioBlob = audioBlob;
         });
       },
       setStatus: (status) => {
