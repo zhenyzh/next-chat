@@ -3,7 +3,7 @@ import WaveSurfer from "wavesurfer.js";
 import RecordPlugin from "wavesurfer.js/plugins/record";
 import { useVoiceRecorderActions } from "../../model/store";
 
-export function useWaveVoiceRecorderTs() {
+export function useWaveVoiceRecorder() {
   const { setAudioUrl, setStatus, setRecorderTime, setPlaybackTime } =
     useVoiceRecorderActions();
 

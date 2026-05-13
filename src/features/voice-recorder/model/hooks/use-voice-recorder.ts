@@ -1,9 +1,9 @@
-import { useWaveVoiceRecorderTs } from "../hooks";
+import { useWaveVoiceRecorder } from "../hooks";
 import { useVoiceRecorderActions, useVoiceRecorderStore } from "../store";
 
 export function useVoiceRecorder() {
   const { setStatus, reset } = useVoiceRecorderActions();
-  const { containerRef, waveSurferRef, recordRef } = useWaveVoiceRecorderTs();
+  const { containerRef, waveSurferRef, recordRef } = useWaveVoiceRecorder();
 
   const startRecording = async () => {
     setStatus("recording");
