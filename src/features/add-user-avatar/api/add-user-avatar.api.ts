@@ -1,4 +1,4 @@
-import { jsonApiInstance } from "@/shared/api";
+import { apiInstance } from "@/shared/api";
 import type { AddUserAvatarDto } from "./add-user-avatar.dto";
 
 export const addUserAvatarApi = {
@@ -6,7 +6,7 @@ export const addUserAvatarApi = {
   sendFile: (file: File) => {
     const formData = new FormData();
     formData.append("file", file);
-    return jsonApiInstance<AddUserAvatarDto>("/users/upload", {
+    return apiInstance<AddUserAvatarDto>("/users/upload", {
       method: "POST",
       data: formData,
     });

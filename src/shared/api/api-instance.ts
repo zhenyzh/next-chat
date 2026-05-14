@@ -10,7 +10,7 @@ export class ApiError extends Error {
   }
 }
 
-export const jsonApiInstance = async <T>(
+export const apiInstance = async <T>(
   url: string,
   config?: {
     data?: unknown;

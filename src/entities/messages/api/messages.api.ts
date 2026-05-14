@@ -1,6 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 import type { MessagesDto } from "./messages.dto";
-import { jsonApiInstance } from "@/shared/api";
+import { apiInstance } from "@/shared/api";
 
 export const messagesApi = {
   baseKey: "messages",
@@ -8,7 +8,7 @@ export const messagesApi = {
     return queryOptions({
       queryKey: [messagesApi.baseKey, "list", chatId],
       queryFn: (meta) =>
-        jsonApiInstance<MessagesDto[]>(`messages/${chatId}`, {
+        apiInstance<MessagesDto[]>(`messages/${chatId}`, {
           signal: meta.signal,
         }),
     });

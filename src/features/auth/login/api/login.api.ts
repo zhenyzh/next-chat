@@ -1,10 +1,10 @@
 import type { LoginDto } from "./login.dto";
-import { jsonApiInstance } from "@/shared/api";
+import { apiInstance } from "@/shared/api";
 
 export const loginApi = {
   baseKey: "login",
   login: ({ email, password }: { email: string; password: string }) => {
-    return jsonApiInstance<LoginDto>("/auth/login", {
+    return apiInstance<LoginDto>("/auth/login", {
       method: "POST",
       data: { email, password },
     });

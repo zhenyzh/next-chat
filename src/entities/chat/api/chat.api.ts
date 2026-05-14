@@ -1,6 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 import type { ChatOpenDto } from "./chat.dto";
-import { jsonApiInstance } from "@/shared/api";
+import { apiInstance } from "@/shared/api";
 
 export const chatApi = {
   baseKey: "chat",
@@ -12,13 +12,13 @@ export const chatApi = {
     return queryOptions({
       queryKey: [chatApi.baseKey, recipientId],
       queryFn: (meta) =>
-        jsonApiInstance<ChatOpenDto>(`chats/current/${recipientId}`, {
+        apiInstance<ChatOpenDto>(`chats/current/${recipientId}`, {
           signal: meta.signal,
         }),
     });
   },
   chatOpen: ({ recipientId }: { recipientId: number }) => {
-    return jsonApiInstance<ChatOpenDto>("chats/open", {
+    return apiInstance<ChatOpenDto>("chats/open", {
       method: "POST",
       data: {
         recipientId,

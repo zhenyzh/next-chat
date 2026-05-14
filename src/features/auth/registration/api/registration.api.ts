@@ -1,4 +1,4 @@
-import { jsonApiInstance } from "@/shared/api";
+import { apiInstance } from "@/shared/api";
 
 export const registrationApi = {
   baseKey: "registration",
@@ -11,7 +11,7 @@ export const registrationApi = {
     email: string;
     password: string;
   }) => {
-    return jsonApiInstance("/auth/registration", {
+    return apiInstance("/auth/registration", {
       method: "POST",
       data: { name, email, password },
     });

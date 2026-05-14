@@ -1,6 +1,6 @@
 import type { MessagesDto } from "@/entities/messages/api";
 import type { FileAttach } from "@/entities/messages/model/types";
-import { jsonApiInstance } from "@/shared/api";
+import { apiInstance } from "@/shared/api";
 
 export const sendMessageApi = {
   baseKey: "sendMessage",
@@ -17,7 +17,7 @@ export const sendMessageApi = {
     clientId?: string;
     attachments: FileAttach[];
   }) => {
-    return jsonApiInstance<MessagesDto>("/messages/send-message", {
+    return apiInstance<MessagesDto>("/messages/send-message", {
       method: "POST",
       data: { chatId, senderId, text, clientId, attachments },
     });

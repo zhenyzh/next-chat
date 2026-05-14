@@ -1,8 +1,8 @@
-import { jsonApiInstance } from "@/shared/api";
+import { apiInstance } from "@/shared/api";
 
 export const logoutApi = {
   baseKey: "logout",
   logout: () => {
-    return jsonApiInstance("/auth/logout", { method: "POST" });
+    return apiInstance("/auth/logout", { method: "POST" });
   },
 };
