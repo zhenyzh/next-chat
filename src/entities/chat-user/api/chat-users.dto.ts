@@ -8,6 +8,7 @@ export type ChatUsersDto = {
   createdAt: string;
   lastMessage: string;
   attachments: FileAttach[];
+  audio: FileAttach;
   countUnreadMessage: number;
   typedI: boolean;
 } & Omit<User, "email"> &

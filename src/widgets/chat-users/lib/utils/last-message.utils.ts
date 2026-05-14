@@ -1,3 +1,4 @@
+import { messageJoin } from "./message-join.utils";
 import type { FileAttach } from "@/entities/messages/model/types";
 import { declination, filteredFilesByType } from "@/shared/utils";
 
@@ -14,7 +15,7 @@ export function lastMessage(
 
   let forceMessage = message;
 
-  if (audio?.url && audio?.size) {
+  if (audio?.size) {
     forceMessage = "Голосовое сообщение";
   }
 
@@ -39,6 +40,3 @@ export function lastMessage(
 
   return forceMessage;
 }
-
-const messageJoin = (msg: string | null, value: number, word: string) =>
-  [msg, `${value} ${word}`].filter(Boolean).join(", ");

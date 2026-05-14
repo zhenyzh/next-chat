@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Typography } from "@zhenyzh/common-ui/components";
 import s from "./unread-indicator.module.scss";
 

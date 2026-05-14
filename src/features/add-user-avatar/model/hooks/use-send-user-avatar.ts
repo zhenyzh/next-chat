@@ -46,9 +46,9 @@ export function useSendUserAvatar() {
       queryClient.setQueryData(queryKeyMessages, context?.previousMessages);
     },
 
-    onSettled: (_, __, ___, context) => {
-      void queryClient.invalidateQueries({ queryKey: queryKeyUser });
-      void queryClient.invalidateQueries({ queryKey: queryKeyMessages });
+    onSettled: async (_, __, ___, context) => {
+      await queryClient.invalidateQueries({ queryKey: queryKeyUser });
+      await queryClient.invalidateQueries({ queryKey: queryKeyMessages });
       if (context?.mockAvatarUrl) {
         URL.revokeObjectURL(context.mockAvatarUrl);
       }
