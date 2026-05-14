@@ -19,15 +19,23 @@ export function useSendVoiceRecorder() {
 
   const mutation = useMutation({
     mutationFn: voiceRecorderApi.sendAudio,
-    onMutate: async (newData) => {
+    onMutate: async ({ audioBlob, ...newData }) => {
       await queryClient.cancelQueries({ queryKey });
 
+      const mockAudioUrl = URL.createObjectURL(audioBlob);
       const previousMessage = queryClient.getQueryData(queryKey);
 
       const mockMessage = {
         id: Math.floor(Math.random() * 100),
         ...newData,
         sender: user,
+        audio: {
+          id: crypto.randomUUID(),
+          name: "voice.webm",
+          url: mockAudioUrl,
+          size: audioBlob.size,
+          type: "audio",
+        },
         createdAt: new Date().toISOString(),
         clientId: crypto.randomUUID(),
         isSent: true,
@@ -37,7 +45,7 @@ export function useSendVoiceRecorder() {
 
       queryClient.setQueryData(queryKey, (old = []) => [...old, mockMessage]);
 
-      return { previousMessage, clientId: newData.clientId };
+      return { previousMessage, mockAudioUrl, clientId: newData.clientId };
     },
 
     onSuccess: (data, _, context) => {
@@ -52,8 +60,11 @@ export function useSendVoiceRecorder() {
       queryClient.setQueryData(queryKey, context?.previousMessage);
     },
 
-    onSettled: async () => {
+    onSettled: async (_, __, ___, context) => {
       await queryClient.invalidateQueries({ queryKey });
+      if (context?.mockAudioUrl) {
+        URL.revokeObjectURL(context.mockAudioUrl);
+      }
       reset();
     },
   });
