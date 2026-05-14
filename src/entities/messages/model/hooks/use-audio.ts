@@ -5,13 +5,13 @@ export function useAudio(audioUrl: string) {
   const containerRef = useRef<HTMLDivElement>(null);
   const waveSurferRef = useRef<WaveSurfer>(null);
 
-  const [isPlay, setIsPlay] = useState(false);
   const [time, setTime] = useState(0);
+  const [isPlay, setIsPlay] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    waveSurferRef.current = WaveSurfer.create({
+    const waveSurfer = WaveSurfer.create({
       container: containerRef.current,
       waveColor: "#fff",
       progressColor: "#1F2936",
@@ -20,17 +20,16 @@ export function useAudio(audioUrl: string) {
       barRadius: 2,
       height: 48,
     });
+    waveSurferRef.current = waveSurfer;
+    waveSurfer.load(audioUrl);
 
-    waveSurferRef.current.load(audioUrl);
+    waveSurfer.on("play", () => setIsPlay(true));
+    waveSurfer.on("pause", () => setIsPlay(false));
+    waveSurfer.on("finish", () => setIsPlay(false));
+    waveSurfer.on("timeupdate", (seconds) => setTime(Math.floor(seconds)));
 
-    waveSurferRef.current.on("play", () => setIsPlay(true));
-    waveSurferRef.current.on("pause", () => setIsPlay(false));
-    waveSurferRef.current.on("finish", () => setIsPlay(false));
-    waveSurferRef.current.on("timeupdate", (seconds) =>
-      setTime(Math.floor(seconds)),
-    );
     return () => {
-      waveSurferRef.current?.destroy();
+      waveSurfer.destroy();
     };
   }, [audioUrl]);
 
