@@ -4,7 +4,7 @@ import { apiInstance } from "@/shared/api";
 
 export const voiceRecorderApi = {
   baseKey: "voiceRecorder",
-  sendAudio: async ({
+  sendAudio: ({
     chatId,
     senderId,
     audioBlob,
