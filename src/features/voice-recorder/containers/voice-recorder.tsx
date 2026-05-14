@@ -13,7 +13,7 @@ export function VoiceRecorder() {
 
   useEffect(() => {
     void vr.startRecording();
-  });
+  }, []);
 
   return (
     <Box className={s.container}>

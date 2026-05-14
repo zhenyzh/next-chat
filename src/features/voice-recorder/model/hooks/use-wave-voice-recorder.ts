@@ -40,7 +40,7 @@ export function useWaveVoiceRecorder() {
     record.on("record-start", () => {
       setStatus("recording");
     });
-    record.on("record-end", (blob: Blob) => {
+    record.on("record-pause", (blob: Blob) => {
       const url = URL.createObjectURL(blob);
       setAudioBlob(blob);
       setAudioUrl(url);
