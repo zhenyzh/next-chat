@@ -41,9 +41,8 @@ export function useWaveVoiceRecorder() {
       setStatus("recording");
     });
     record.on("record-pause", (blob: Blob) => {
-      const url = URL.createObjectURL(blob);
       setAudioBlob(blob);
-      setAudioUrl(url);
+      setAudioUrl(URL.createObjectURL(blob));
       setStatus("paused_recording");
     });
     record.on("record-progress", (ms) => {
@@ -58,6 +57,7 @@ export function useWaveVoiceRecorder() {
     });
     waveSurferRef.current = waveSurfer;
     recordRef.current = record;
+
     return () => {
       record.destroy();
       waveSurfer.destroy();

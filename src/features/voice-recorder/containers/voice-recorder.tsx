@@ -11,6 +11,12 @@ export function VoiceRecorder() {
   const vrSend = useSendVoiceRecorder();
   const vr = useVoiceRecorder();
 
+  const onSend = async () => {
+    const blob = await vr.endRecording();
+    vrSend.onSendVoiceRecord(blob);
+    vr.cancel();
+  };
+
   useEffect(() => {
     void vr.startRecording();
   }, []);
@@ -34,7 +40,7 @@ export function VoiceRecorder() {
         <Button
           variant="outline"
           className={s.button}
-          onClick={vrSend.onSendVoiceRecord}
+          onClick={onSend}
           disabled={vrSend.isPending}
         >
           <SendHorizontalIcon className={s.sendHorizontalIcon} />

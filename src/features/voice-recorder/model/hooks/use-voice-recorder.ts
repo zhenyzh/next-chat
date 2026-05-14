@@ -15,6 +15,13 @@ export function useVoiceRecorder() {
     setStatus("paused_recording");
   };
 
+  const endRecording = () => {
+    return new Promise<Blob>((resolve) => {
+      recordRef.current?.once("record-end", (blob) => resolve(blob));
+      recordRef.current?.stopRecording();
+    });
+  };
+
   const resumeRecording = () => {
     setStatus("recording");
     waveSurferRef.current?.setOptions({
@@ -41,7 +48,6 @@ export function useVoiceRecorder() {
   };
 
   const cancel = () => {
-    recordRef.current?.stopRecording();
     recordRef.current?.destroy();
     waveSurferRef.current?.destroy();
     recordRef.current = null;
@@ -53,6 +59,7 @@ export function useVoiceRecorder() {
     containerRef,
     startRecording,
     pauseRecording,
+    endRecording,
     resumeRecording,
     playAudio,
     pauseAudio,
