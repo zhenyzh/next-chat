@@ -13,15 +13,13 @@ export function AudioMessage({ audio: { url } }: { audio: FileAttach }) {
     <Box className={s.container}>
       <Button onClick={onPlayPause} className={s.button}>
         {isPlay ? (
-          <CirclePauseIcon className={s.icon} width={28} height={28} />
+          <CirclePauseIcon className={s.icon} />
         ) : (
-          <CirclePlayIcon className={s.icon} width={28} height={28} />
+          <CirclePlayIcon className={s.icon} />
         )}
       </Button>
       <DateTime className={s.time} value={formatTimeSeconds(time)} />
-      <Box className={s.waveContainer}>
-        <Box ref={containerRef} className={s.wave}></Box>
-      </Box>
+      <Box ref={containerRef} className={s.wave}></Box>
     </Box>
   );
 }
