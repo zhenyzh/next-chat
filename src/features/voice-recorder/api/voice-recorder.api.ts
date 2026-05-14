@@ -1,4 +1,5 @@
 import type { MessagesDto } from "@/entities/messages/api";
+import { formDataVoiceRecorder } from "../lib/utils";
 import { jsonApiInstance } from "@/shared/api";
 
 export const voiceRecorderApi = {
@@ -14,15 +15,9 @@ export const voiceRecorderApi = {
     audioBlob: Blob;
     clientId?: string;
   }) => {
-    const formData = new FormData();
-    formData.append("file", audioBlob, "voice.webm");
-    formData.append("chatId", String(chatId));
-    formData.append("senderId", String(senderId));
-    formData.append("clientId", String(clientId));
-
     return jsonApiInstance<MessagesDto>("/messages/send-audio", {
       method: "POST",
-      data: formData,
+      data: formDataVoiceRecorder(chatId, senderId, audioBlob, clientId),
     });
   },
 };
