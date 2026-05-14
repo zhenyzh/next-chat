@@ -3,13 +3,11 @@ import { voiceRecorderApi } from "../../api";
 import {
   useAudioBlobVoiceRecorder,
   useVoiceRecorderActions,
-  useVoiceRecorderStore,
 } from "../../model/store";
 import { useUser } from "@/entities/user/model/store";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { messagesApi, type MessagesDto } from "@/entities/messages/api";
 import { queryClient } from "@/shared/api";
-import { useVoiceRecorder } from "@/features/voice-recorder/model/hooks/use-voice-recorder";
 
 export function useSendVoiceRecorder() {
   const user = useUser();
