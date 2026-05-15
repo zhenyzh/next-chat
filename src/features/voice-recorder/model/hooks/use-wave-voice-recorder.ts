@@ -59,8 +59,10 @@ export function useWaveVoiceRecorder() {
     recordRef.current = record;
 
     return () => {
-      record.destroy();
-      waveSurfer.destroy();
+      if (record.isPaused()) {
+        record.destroy();
+        waveSurfer.destroy();
+      }
     };
   }, [setAudioUrl, setAudioBlob, setStatus, setPlaybackTime, setRecorderTime]);
 

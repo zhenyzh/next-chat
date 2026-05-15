@@ -18,7 +18,7 @@ export const MessageListItem = ({ messages, isBottom }: Props) => {
   return (
     <>
       {messages.map((msg: Message, index) => (
-        <Box key={msg.id}>
+        <Box key={`${msg.id}-${msg.time}`}>
           {firstIndex === index && !isBottom && <UnreadMessages />}
           <Messages
             message={msg}
