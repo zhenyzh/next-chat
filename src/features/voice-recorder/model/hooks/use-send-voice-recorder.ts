@@ -16,6 +16,7 @@ export function useSendVoiceRecorder() {
   const { reset } = useVoiceRecorderActions();
 
   const queryKey = messagesApi.getMessageQueryOptions({ chatId }).queryKey;
+  const clientId = crypto.randomUUID();
 
   const mutation = useMutation({
     mutationFn: voiceRecorderApi.sendAudio,
@@ -30,14 +31,14 @@ export function useSendVoiceRecorder() {
         ...newData,
         sender: user,
         audio: {
-          id: crypto.randomUUID(),
+          id: clientId,
           name: "voice.webm",
           url: mockAudioUrl,
           size: audioBlob.size,
           type: "audio",
         },
         createdAt: new Date().toISOString(),
-        clientId: crypto.randomUUID(),
+        clientId,
         isSent: true,
         isRead: false,
         isDelivered: false,
@@ -74,7 +75,7 @@ export function useSendVoiceRecorder() {
       chatId,
       senderId: user.id,
       audioBlob: audioBlob ?? blob,
-      clientId: crypto.randomUUID(),
+      clientId,
     });
   };
 
