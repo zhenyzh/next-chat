@@ -48,11 +48,14 @@ export function useVoiceRecorder() {
   };
 
   const cancel = () => {
-    recordRef.current?.destroy();
-    waveSurferRef.current?.destroy();
-    recordRef.current = null;
-    waveSurferRef.current = null;
-    reset();
+    if (recordRef.current?.isPaused()) {
+      recordRef.current?.stopRecording();
+      recordRef.current?.destroy();
+      waveSurferRef.current?.destroy();
+      recordRef.current = null;
+      waveSurferRef.current = null;
+      reset();
+    }
   };
 
   return {
