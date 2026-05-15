@@ -15,6 +15,8 @@ export function groupMessagesByDate(
   const map = new Map<string, ChatMessageGroup>();
 
   for (const msg of messages) {
+    if (!msg) continue;
+
     const date = formatDate_yyyy_MM_dd(msg.createdAt);
 
     let group = map.get(date);
