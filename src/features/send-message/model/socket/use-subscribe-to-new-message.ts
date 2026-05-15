@@ -15,7 +15,7 @@ export function useSubscribeToNewMessage() {
     const unsubscribe = socketService<MessagesDto>(
       socketEvent.chat_message_new,
       (message) => {
-        if (message.chatId !== chatId) return;
+        if (Number(message.chatId) !== chatId) return;
 
         queryClient.setQueryData(queryKey, (old = []) => {
           const isDuplicate = old.some(
