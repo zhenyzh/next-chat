@@ -1,1 +1,1 @@
-export * from "./form-data-voice-recorder.utills";
+export * from "./form-data-voice-recorder.utils";
