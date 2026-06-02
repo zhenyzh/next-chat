@@ -8,3 +8,4 @@ export * from "./check-status-message";
 export * from "./empty-content";
 export * from "./file-uploader";
 export * from "./image-uploader";
+export * from "./error-component";
