@@ -3,7 +3,7 @@ import { useSendUserAvatar } from "./use-send-user-avatar";
 
 export function useUserAvatar(onClose?: () => void) {
   const { onSendUserAvatar, isPending } = useSendUserAvatar();
-  const [avatarUrl, setAvatarUrl] = useState<File | null>();
+  const [avatarUrl, setAvatarUrl] = useState<File | null>(null);
 
   const handleSelect = (file: File) => {
     setAvatarUrl(file);
