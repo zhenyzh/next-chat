@@ -9,7 +9,7 @@ import {
 import { SideBarHeader, SideBarNavigation, SidebarLogout } from "../ui";
 import { useCollapsed } from "../model/hooks";
 import type { LinkType } from "../model/types";
-import { Paths } from "@/shared/configs";
+import { paths } from "@/shared/configs";
 import s from "./sidebar.module.scss";
 
 export function Sidebar() {
@@ -18,17 +18,17 @@ export function Sidebar() {
 
   const linkItem: LinkType[] = [
     {
-      link: Paths.profile(),
+      link: paths.profile(),
       label: "Профиль",
       icon: <UserPenIcon />,
     },
     {
-      link: Paths.chat(),
+      link: paths.chat(),
       label: "Чат",
       icon: <MessageCircleMoreIcon />,
     },
     {
-      link: Paths.settings(),
+      link: paths.settings(),
       label: "Настройки",
       icon: <SettingsIcon />,
     },
@@ -41,7 +41,7 @@ export function Sidebar() {
         className={clsx(s.sidebar, collapsed ? s.collapsed : s.expanded)}
       >
         <SideBarHeader
-          defaultLink={Paths.profile()}
+          defaultLink={paths.profile()}
           collapsed={collapsed}
           setCollapsed={setCollapsed}
         />

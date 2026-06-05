@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRegistrationAction } from "./use-registration-action";
 import type { RegistrationFormValues } from "../types";
 import { registrationSchema } from "../shemas";
-import { Paths } from "@/shared/configs";
+import { paths } from "@/shared/configs";
 
 export function useRegistration() {
   const router = useRouter();
@@ -23,7 +23,7 @@ export function useRegistration() {
 
   const submit = form.handleSubmit((data: RegistrationFormValues) => {
     mutation.handleRegistration(data, {
-      onSuccess: () => router.push(Paths.login()),
+      onSuccess: () => router.push(paths.login()),
     });
   });
 

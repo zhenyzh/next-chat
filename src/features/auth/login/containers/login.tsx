@@ -8,7 +8,7 @@ import { MailIcon, LockKeyholeIcon } from "@zhenyzh/common-ui/icons";
 
 import { useLogin } from "@/features/auth/login/model/hooks";
 import { FormTextField } from "@/shared/form";
-import { Paths } from "@/shared/configs";
+import { paths } from "@/shared/configs";
 import s from "../../auth.module.scss";
 
 export function Login() {
@@ -42,7 +42,7 @@ export function Login() {
           variant="outline"
           type="button"
           className={clsx(s.text, s.link)}
-          onClick={() => router.push(Paths.registration())}
+          onClick={() => router.push(paths.registration())}
         >
           Зарегистрироваться
         </Button>

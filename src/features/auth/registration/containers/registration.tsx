@@ -10,7 +10,7 @@ import {
   MailIcon,
 } from "@zhenyzh/common-ui/icons";
 import { useRegistration } from "../model/hooks";
-import { Paths } from "@/shared/configs";
+import { paths } from "@/shared/configs";
 import { FormTextField } from "@/shared/form";
 import s from "../../auth.module.scss";
 
@@ -56,7 +56,7 @@ export function Registration() {
           variant="outline"
           type="button"
           className={clsx(s.text, s.link)}
-          onClick={() => router.push(Paths.login())}
+          onClick={() => router.push(paths.login())}
           disabled={registration.isPending}
         >
           Авторизоваться

@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useTokenService } from "../service";
-import { Paths } from "../configs";
+import { paths } from "../configs";
 
 export function useRefresh() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export function useRefresh() {
         useTokenService.getState().set(data.accessToken);
       } catch {
         useTokenService.getState().clear();
-        router.push(Paths.login());
+        router.push(paths.login());
       } finally {
         setTimeout(() => setLoading(false), 1000);
       }

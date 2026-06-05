@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginAction } from "./use-login-action";
 import type { LoginFormValues } from "../types";
 import { loginSchema } from "../shemas";
-import { Paths } from "@/shared/configs";
+import { paths } from "@/shared/configs";
 import { useTokenService } from "@/shared/service";
 
 export function useLogin() {
@@ -25,7 +25,7 @@ export function useLogin() {
     mutation.handleLogin(data, {
       onSuccess: (data) => {
         tokenService.set(data.accessToken);
-        router.push(Paths.home());
+        router.push(paths.home());
       },
     });
   });
