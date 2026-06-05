@@ -1,5 +1,6 @@
 import { AxiosError } from "axios";
 import { api } from "./api";
+import { errorToast, concatNonEmptyData } from "../utils";
 
 export class ApiError extends Error {
   response?: any;
@@ -29,7 +30,13 @@ export const apiInstance = async <T>(
     });
     return response.data;
   } catch (err) {
-    if (err instanceof AxiosError && err.response) {
+    if (err instanceof AxiosError) {
+      const error = concatNonEmptyData(
+        [err?.response?.data?.message, err?.message],
+        "\n",
+      );
+
+      errorToast(error);
       throw new ApiError(err.response);
     }
     throw err;
