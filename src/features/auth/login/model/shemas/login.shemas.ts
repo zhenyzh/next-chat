@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ERROR_MESSAGES } from "@/shared/utils";
+import { ERROR_MESSAGES } from "@/shared/constants";
 
 export const loginSchema = z.object({
   email: z
