@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ERROR_MESSAGES } from "@/shared/constants";
+import { ERROR_MESSAGES } from "@/shared/validation";
 
 export const registrationSchema = z
   .object({
