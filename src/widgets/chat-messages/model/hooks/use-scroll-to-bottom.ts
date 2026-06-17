@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { useMessagesList } from "./use-messages-list";
 import { useTypingUsersIds } from "@/features/typing/model/store";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
@@ -21,12 +21,12 @@ export function useScrollToBottom() {
     el.scrollTop = el.scrollHeight;
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     handleScrollToBottom();
     lastMessageIdRef.current = null;
   }, [chatId]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!messages.length) return;
 
     const lastGroup = messages[messages.length - 1].messages;
