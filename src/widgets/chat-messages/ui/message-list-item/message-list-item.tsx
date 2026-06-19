@@ -11,14 +11,14 @@ type Props = {
   isBottom?: boolean;
 };
 
-export const MessageListItem = ({ messages, isBottom }: Props) => {
+export function MessageListItem({ messages, isBottom }: Props) {
   const { markAsDelivered, markAsRead } = useMarkStatusMessage();
   const firstIndex = firstIndexUnreadMessage(messages);
 
   return (
     <>
       {messages.map((msg: Message, index) => (
-        <Box key={`${msg.id}-${msg.time}`}>
+        <Box key={msg.id}>
           {firstIndex === index && !isBottom && <UnreadMessages />}
           <Messages
             message={msg}
@@ -40,4 +40,4 @@ export const MessageListItem = ({ messages, isBottom }: Props) => {
       ))}
     </>
   );
-};
+}
