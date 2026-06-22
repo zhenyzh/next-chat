@@ -46,7 +46,7 @@ export function ChatMessagesList() {
             {!!chatId && !isBottom && (
               <DownButton onClick={handleScrollToBottom} />
             )}
-            {isTyping && isBottom && <TypingIndicator />}
+            {<TypingIndicator visible={isTyping && isBottom} />}
             <Box ref={refWatchBottom} style={{ height: 1 }} />
           </>
         }
