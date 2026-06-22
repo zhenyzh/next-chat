@@ -4,31 +4,29 @@ import { useCurrentChat } from "@/entities/chat/model/hooks";
 
 const BOTTOM_STOCK = 200;
 
-export function useScrollToBottom() {
+export function useScrollBottom() {
   const { messages } = useMessagesList();
   const { chatId } = useCurrentChat();
 
-  const scrollBarRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const lastMessageIdRef = useRef<number | null>(null);
   const autoScrollRef = useRef(true);
-
   const [isBottom, setIsBottom] = useState(true);
 
   const checkIsBottom = () => {
-    const el = scrollBarRef.current;
+    const el = scrollRef.current;
     if (!el) return true;
     return el.scrollTop + el.clientHeight >= el.scrollHeight - BOTTOM_STOCK;
   };
 
   const onBottom = () => {
-    const el = scrollBarRef.current;
+    const el = scrollRef.current;
     if (!el) return;
     el.scrollTop = el.scrollHeight;
   };
 
-  //Следим за скроллом пользователя
   useEffect(() => {
-    const el = scrollBarRef.current;
+    const el = scrollRef.current;
     if (!el) return;
 
     const onScroll = () => {
@@ -58,15 +56,13 @@ export function useScrollToBottom() {
     if (lastMessageIdRef.current === lastMessage.id) return;
     lastMessageIdRef.current = lastMessage.id;
 
-    const isLastFromMe = lastMessage.fromMe;
-
-    if (isLastFromMe || autoScrollRef.current) {
+    if (lastMessage.fromMe || autoScrollRef.current) {
       onBottom();
     }
   }, [messages]);
 
   return {
-    scrollBarRef,
+    scrollRef,
     isBottom,
     onBottom,
   };
