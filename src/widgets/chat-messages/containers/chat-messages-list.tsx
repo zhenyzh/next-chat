@@ -9,7 +9,7 @@ import { useTyping } from "@/features/typing/model/hooks";
 import { MessagesSkeleton } from "@/entities/messages/ui/message-skeleton";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
 import { useSearchQueryParams } from "@/shared/hooks";
-import { List, ScrollBar, EmptyContent } from "@/shared/ui";
+import { List, ScrollBar, EmptyContent, VisibleWrapper } from "@/shared/ui";
 import s from "./chat-messages-list.module.scss";
 
 export function ChatMessagesList() {
@@ -43,10 +43,12 @@ export function ChatMessagesList() {
         }
         footer={
           <>
-            {!!chatId && !isBottom && (
+            <VisibleWrapper visible={!!chatId && !isBottom}>
               <DownButton onClick={handleScrollToBottom} />
-            )}
-            {<TypingIndicator visible={isTyping && isBottom} />}
+            </VisibleWrapper>
+            <VisibleWrapper visible={isTyping && isBottom}>
+              <TypingIndicator />
+            </VisibleWrapper>
             <Box ref={refWatchBottom} style={{ height: 1 }} />
           </>
         }
