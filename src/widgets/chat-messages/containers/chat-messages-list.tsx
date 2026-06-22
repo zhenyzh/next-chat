@@ -1,4 +1,3 @@
-import { Box } from "@zhenyzh/common-ui/components";
 import { SubDateContent } from "../ui/sub-time-content";
 import { MessageListItem } from "../ui/message-list-item";
 import { TypingIndicator } from "../ui/typing-indicator";
@@ -19,8 +18,7 @@ export function ChatMessagesList() {
   const { chatId } = useCurrentChat();
   const { messages, isLoading } = useMessagesList();
   const { isTyping } = useTyping(+recipientId);
-  const { scrollBarRef, refWatchBottom, isBottom, handleScrollToBottom } =
-    useScrollToBottom();
+  const { scrollBarRef, isBottom, onBottom } = useScrollToBottom();
 
   return (
     <ScrollBar className={s.scrollList} ref={scrollBarRef}>
@@ -44,12 +42,11 @@ export function ChatMessagesList() {
         footer={
           <>
             <VisibleWrapper visible={!!chatId && !isBottom}>
-              <DownButton onClick={handleScrollToBottom} />
+              <DownButton onBottom={onBottom} />
             </VisibleWrapper>
             <VisibleWrapper visible={isTyping && isBottom}>
               <TypingIndicator />
             </VisibleWrapper>
-            <Box ref={refWatchBottom} style={{ height: 1 }} />
           </>
         }
       />

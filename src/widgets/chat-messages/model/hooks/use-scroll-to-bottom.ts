@@ -1,27 +1,51 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useMessagesList } from "./use-messages-list";
-import { useTypingUsersIds } from "@/features/typing/model/store";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
-import { useBottomObserver } from "@/shared/hooks";
+
+const BOTTOM_STOCK = 200;
 
 export function useScrollToBottom() {
   const { messages } = useMessagesList();
   const { chatId } = useCurrentChat();
-  const typingUsersIds = useTypingUsersIds();
-  const { ref: refWatchBottom, isBottom } = useBottomObserver();
 
   const scrollBarRef = useRef<HTMLDivElement>(null);
   const lastMessageIdRef = useRef<number | null>(null);
+  const autoScrollRef = useRef(true);
 
-  const handleScrollToBottom = () => {
+  const [isBottom, setIsBottom] = useState(true);
+
+  const checkIsBottom = () => {
+    const el = scrollBarRef.current;
+    if (!el) return true;
+    return el.scrollTop + el.clientHeight >= el.scrollHeight - BOTTOM_STOCK;
+  };
+
+  const onBottom = () => {
     const el = scrollBarRef.current;
     if (!el) return;
     el.scrollTop = el.scrollHeight;
   };
 
+  //Следим за скроллом пользователя
+  useEffect(() => {
+    const el = scrollBarRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const isBottom = checkIsBottom();
+      setIsBottom(isBottom);
+      autoScrollRef.current = isBottom;
+    };
+
+    el.addEventListener("scroll", onScroll);
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // При смене чата скролл вниз
   useLayoutEffect(() => {
-    handleScrollToBottom();
+    onBottom();
     lastMessageIdRef.current = null;
+    autoScrollRef.current = true;
   }, [chatId]);
 
   useLayoutEffect(() => {
@@ -30,27 +54,20 @@ export function useScrollToBottom() {
     const lastGroup = messages[messages.length - 1].messages;
     const lastMessage = lastGroup[lastGroup.length - 1];
 
+    // Пишем пользователю, он читает историю у него скролл после отправки сообщения не уходит вниз
     if (lastMessageIdRef.current === lastMessage.id) return;
     lastMessageIdRef.current = lastMessage.id;
 
     const isLastFromMe = lastMessage.fromMe;
 
-    if (isLastFromMe || isBottom) {
-      handleScrollToBottom();
+    if (isLastFromMe || autoScrollRef.current) {
+      onBottom();
     }
-  }, [messages, isBottom]);
-
-  // находимся в конце, под скроллим новые сообщения
-  useEffect(() => {
-    if (isBottom) {
-      handleScrollToBottom();
-    }
-  }, [typingUsersIds, isBottom]);
+  }, [messages]);
 
   return {
     scrollBarRef,
-    refWatchBottom,
     isBottom,
-    handleScrollToBottom,
+    onBottom,
   };
 }

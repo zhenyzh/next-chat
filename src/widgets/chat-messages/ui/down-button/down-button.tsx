@@ -4,7 +4,7 @@ import { ChevronDownIcon } from "@zhenyzh/common-ui/icons";
 import { useMessageFieldHeight } from "@/features/message-field-height/model/store";
 import s from "./down-button.module.scss";
 
-export function DownButton({ onClick }: { onClick: () => void }) {
+export function DownButton({ onBottom }: { onBottom: () => void }) {
   const height = useMessageFieldHeight();
 
   return (
@@ -12,7 +12,7 @@ export function DownButton({ onClick }: { onClick: () => void }) {
       className={clsx(s.container, s.button)}
       style={{ bottom: `calc(60px + ${height}px)` }}
       variant="secondary"
-      onClick={onClick}
+      onClick={onBottom}
     >
       <ChevronDownIcon className={s.shrinkIcon} />
     </Button>
