@@ -3,7 +3,12 @@ import { Box } from "@zhenyzh/common-ui/components";
 import { ChatUserItem } from "../ui/chat-user-item";
 import { useChatUsersList } from "../model/hooks";
 import { useOpenCurrentChat } from "@/features/open-current-chat/model";
-import { List, ScrollBar, CardPreviewSkeleton } from "@/shared/ui";
+import {
+  List,
+  ScrollBar,
+  CardPreviewSkeleton,
+  VisibleWrapper,
+} from "@/shared/ui";
 import { useSearchQueryParams } from "@/shared/hooks";
 import { EmptyContent } from "@/shared/ui";
 import s from "./chat-users-list.module.scss";
@@ -39,8 +44,9 @@ export function ChatUsersList() {
           </Box>
         )}
         empty={
-          !usersChat.length &&
-          !!recipientSearch && <EmptyContent label="Нет такого пользователя" />
+          <VisibleWrapper visible={!usersChat.length && !!recipientSearch}>
+            <EmptyContent label="Нет такого пользователя" />
+          </VisibleWrapper>
         }
       />
     </ScrollBar>
