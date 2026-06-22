@@ -4,14 +4,12 @@ type BottomObserver<T> = Partial<{
   root: HTMLElement | null;
   rootMargin: string;
   threshold: number | number[];
-  dependencies: T[];
 }>;
 
 export function useBottomObserver<T>({
   root = null,
   rootMargin = "0px",
   threshold = 0,
-  dependencies = [],
 }: BottomObserver<T> = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const [isBottom, setIsBottom] = useState(false);
@@ -27,7 +25,7 @@ export function useBottomObserver<T>({
     }
 
     return () => observer.disconnect();
-  }, [root, rootMargin, threshold, dependencies]);
+  }, [root, rootMargin, threshold]);
 
   return { ref, isBottom };
 }
