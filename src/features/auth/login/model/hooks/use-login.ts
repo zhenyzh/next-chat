@@ -31,7 +31,7 @@ export function useLogin() {
   });
 
   return {
-    form,
+    ...form,
     submit,
     isPending: mutation.isPending,
   };

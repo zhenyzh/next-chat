@@ -28,7 +28,7 @@ export function useRegistration() {
   });
 
   return {
-    form,
+    ...form,
     submit,
     isPending: mutation.isPending,
   };

@@ -1,6 +1,5 @@
 import { Button } from "@zhenyzh/common-ui/components";
 import { LogOutIcon } from "@zhenyzh/common-ui/icons";
-
 import { useLogout } from "../model/hooks";
 import s from "./logout.module.scss";
 

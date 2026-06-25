@@ -1,24 +1,35 @@
 "use client";
 
-import { Controller, useFormContext } from "react-hook-form";
+import {
+  type Control,
+  Controller,
+  type FieldPath,
+  type FieldValues,
+  useFormState,
+} from "react-hook-form";
 import { TextField, type TextFieldProps } from "@zhenyzh/common-ui/components";
 
-type Props = TextFieldProps & {
-  name: string;
+type Props<T extends FieldValues> = TextFieldProps & {
+  name: FieldPath<T>;
+  control: Control<T>;
 };
 
-export function FormTextField({ name, ...props }: Props) {
-  const formContext = useFormContext();
+export function FormTextField<T extends FieldValues>({
+  name,
+  control,
+  ...props
+}: Props<T>) {
+  const { errors } = useFormState({ control, name });
 
   return (
     <Controller
       name={name}
-      control={formContext.control}
-      render={({ field, formState }) => (
+      control={control}
+      render={({ field }) => (
         <TextField
           {...props}
           {...field}
-          errorMessage={formState.errors[name]?.message as string}
+          errorMessage={errors[name]?.message as string}
         />
       )}
     />
