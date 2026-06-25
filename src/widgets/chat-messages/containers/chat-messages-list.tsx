@@ -15,9 +15,9 @@ export function ChatMessagesList() {
   const {
     query: { recipientId },
   } = useSearchQueryParams();
+  const { isTyping } = useTyping(+recipientId);
   const { chatId } = useCurrentChat();
   const { messages, isLoading } = useMessagesList();
-  const { isTyping } = useTyping(+recipientId);
   const { scrollRef, isBottom, onBottom } = useScrollBottom();
 
   return (
