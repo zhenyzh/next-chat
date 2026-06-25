@@ -1,10 +1,10 @@
-import { Box } from "@zhenyzh/common-ui/components";
 import { SubStatusMessage } from "../sub-status-message";
 import { UnreadMessages } from "../unread-messages";
 import { firstIndexUnreadMessage } from "../../lib/utils";
 import { useMarkStatusMessage } from "@/features/status-message/model/socket";
 import { Messages } from "@/entities/messages/containers";
 import { type Message } from "@/entities/messages/model/types";
+import { List } from "@/shared/ui";
 
 type Props = {
   messages: Message[];
@@ -16,9 +16,11 @@ export function MessageListItem({ messages, isBottom }: Props) {
   const firstIndex = firstIndexUnreadMessage(messages);
 
   return (
-    <>
-      {messages.map((msg: Message, index) => (
-        <Box key={`${msg.time}-${msg.id}`}>
+    <List
+      data={messages}
+      getKey={(item) => `${item.time}-${item.id}`}
+      renderItem={(msg, index) => (
+        <>
           {firstIndex === index && !isBottom && <UnreadMessages />}
           <Messages
             message={msg}
@@ -36,8 +38,8 @@ export function MessageListItem({ messages, isBottom }: Props) {
               />
             }
           />
-        </Box>
-      ))}
-    </>
+        </>
+      )}
+    />
   );
 }
