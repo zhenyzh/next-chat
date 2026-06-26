@@ -12,27 +12,27 @@ export function formItems(control: Control<RegistrationFormValues>) {
       control,
       label: "Введите почту",
       name: "email",
-      iconStart: MailIcon,
+      iconStart: <MailIcon />,
     },
     {
       control,
       label: "Введите имя",
       name: "name",
-      iconStart: UserPenIcon,
+      iconStart: <UserPenIcon />,
     },
     {
       control,
       label: "Введите пароль",
       name: "password",
       type: "password",
-      iconStart: LockKeyholeIcon,
+      iconStart: <LockKeyholeIcon />,
     },
     {
       control,
       label: "Введите новый пароль",
       name: "confirmPassword",
       type: "password",
-      iconStart: LockKeyholeIcon,
+      iconStart: <LockKeyholeIcon />,
     },
   ] as const;
 }

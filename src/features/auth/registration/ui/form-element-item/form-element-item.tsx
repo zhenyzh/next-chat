@@ -18,7 +18,7 @@ export function FormElementItem({ control }: Props) {
           control={item.control}
           label={item.label}
           name={item.name}
-          iconStart={<item.iconStart />}
+          iconStart={item.iconStart}
         />
       ))}
     </>
