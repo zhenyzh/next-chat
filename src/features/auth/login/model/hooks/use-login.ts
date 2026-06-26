@@ -18,7 +18,6 @@ export function useLogin() {
       password: "",
     },
     resolver: zodResolver(loginSchema),
-    mode: "onBlur",
   });
 
   const submit = form.handleSubmit((data) => {

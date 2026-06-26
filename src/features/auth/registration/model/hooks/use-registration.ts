@@ -18,7 +18,6 @@ export function useRegistration() {
       confirmPassword: "",
     },
     resolver: zodResolver(registrationSchema),
-    mode: "onBlur",
   });
 
   const submit = form.handleSubmit((data: RegistrationFormValues) => {
