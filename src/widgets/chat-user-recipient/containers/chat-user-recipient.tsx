@@ -1,4 +1,3 @@
-import { Box } from "@zhenyzh/common-ui/components";
 import { StatusRecipient } from "../ui/status-recipient";
 import { useChatUserRecipient } from "../model/hooks";
 import { useHasUserStatus } from "@/features/users-status/model/hooks";
@@ -14,11 +13,7 @@ export function ChatUserRecipient() {
   const isOnline = useHasUserStatus(recipientId);
 
   if (isLoading || !recipientData) {
-    return (
-      <Box>
-        <CardPreviewSkeleton style={{ padding: 0 }} />
-      </Box>
-    );
+    return <CardPreviewSkeleton style={{ padding: 0 }} />;
   }
 
   return (
