@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useTokenService } from "../service";
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api`;
@@ -60,8 +60,10 @@ api.interceptors.response.use(
         onRefreshed(newToken);
         originalRequest.headers.Authorization = `Bearer ${newToken}`;
         return api(originalRequest);
-      } catch {
-        console.log("Пользователь не авторизован");
+      } catch (err) {
+        if (err instanceof AxiosError) {
+          console.error(err?.response?.data);
+        }
         useTokenService.getState().clear();
       } finally {
         isRefreshing = false;

@@ -35,7 +35,9 @@ export const apiInstance = async <T>(
         [err?.response?.data?.message, err?.message],
         "\n",
       );
-
+      if (err.status === 401 || err?.response?.status === 401) {
+        throw new ApiError(err.response);
+      }
       errorToast(error);
       throw new ApiError(err.response);
     }
