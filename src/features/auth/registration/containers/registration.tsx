@@ -3,19 +3,14 @@
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { Box, Button, Typography } from "@zhenyzh/common-ui/components";
-import {
-  UserPenIcon,
-  LockKeyholeIcon,
-  MailIcon,
-} from "@zhenyzh/common-ui/icons";
 import { useRegistration } from "../model/hooks";
+import { FormElementItem } from "../ui/form-element-item";
 import { paths } from "@/shared/configs";
-import { FormTextField } from "@/shared/form";
 import s from "../../auth.module.scss";
 
 export function Registration() {
-  const form = useRegistration();
   const router = useRouter();
+  const form = useRegistration();
 
   return (
     <Box as="form" className={s.container} onSubmit={form.submit}>
@@ -23,32 +18,7 @@ export function Registration() {
         Регистрация
       </Typography>
       <Box className={s.inputContainer}>
-        <FormTextField
-          control={form.control}
-          label="Введите почту"
-          name="email"
-          iconStart={<MailIcon />}
-        />
-        <FormTextField
-          control={form.control}
-          label="Введите имя"
-          name="name"
-          iconStart={<UserPenIcon />}
-        />
-        <FormTextField
-          control={form.control}
-          label="Введите пароль"
-          name="password"
-          type="password"
-          iconStart={<LockKeyholeIcon />}
-        />
-        <FormTextField
-          control={form.control}
-          label="Введите новый пароль"
-          name="confirmPassword"
-          type="password"
-          iconStart={<LockKeyholeIcon />}
-        />
+        <FormElementItem control={form.control} />
       </Box>
       <Button fullWidth type="submit">
         Зарегистрироваться
