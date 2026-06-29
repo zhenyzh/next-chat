@@ -1,1 +1,1 @@
-export * from "./collapsed-key";
+export * from "./collapsed-key.config";

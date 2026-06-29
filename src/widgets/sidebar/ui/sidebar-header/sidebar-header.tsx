@@ -2,19 +2,19 @@ import Link from "next/link";
 import clsx from "clsx";
 import { Avatar, Box, Button } from "@zhenyzh/common-ui/components";
 import { ChevronLeftIcon, ChevronRightIcon } from "@zhenyzh/common-ui/icons";
+import { paths } from "@/shared/configs";
 import LogoIcon from "@/shared/assets/images/logo.svg";
 import s from "./sidebar-header.module.scss";
 
 type Props = {
-  defaultLink: string;
   collapsed: boolean;
   setCollapsed: () => void;
 };
 
-export function SideBarHeader({ defaultLink, collapsed, setCollapsed }: Props) {
+export function SideBarHeader({ collapsed, setCollapsed }: Props) {
   return (
     <Box className={s.header}>
-      <Link href={defaultLink} className={clsx(collapsed && s.hidden)}>
+      <Link href={paths.profile()} className={clsx(collapsed && s.hidden)}>
         <Avatar image={LogoIcon.src} variant="whole" size={50} />
       </Link>
       <Button onClick={() => setCollapsed()} className={s.toggleBtn}>

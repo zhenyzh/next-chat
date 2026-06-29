@@ -1,38 +1,11 @@
-import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { Box } from "@zhenyzh/common-ui/components";
-import {
-  MessageCircleMoreIcon,
-  SettingsIcon,
-  UserPenIcon,
-} from "@zhenyzh/common-ui/icons";
 import { SideBarHeader, SideBarNavigation, SidebarLogout } from "../ui";
 import { useCollapsed } from "../model/hooks";
-import type { LinkType } from "../model/types";
-import { paths } from "@/shared/configs";
 import s from "./sidebar.module.scss";
 
 export function Sidebar() {
-  const pathname = usePathname();
   const { collapsed, setCollapsed } = useCollapsed();
-
-  const linkItem: LinkType[] = [
-    {
-      link: paths.profile(),
-      label: "Профиль",
-      icon: <UserPenIcon />,
-    },
-    {
-      link: paths.chat(),
-      label: "Чат",
-      icon: <MessageCircleMoreIcon />,
-    },
-    {
-      link: paths.settings(),
-      label: "Настройки",
-      icon: <SettingsIcon />,
-    },
-  ];
 
   return (
     <Box className={s.container}>
@@ -40,16 +13,8 @@ export function Sidebar() {
         as="aside"
         className={clsx(s.sidebar, collapsed ? s.collapsed : s.expanded)}
       >
-        <SideBarHeader
-          defaultLink={paths.profile()}
-          collapsed={collapsed}
-          setCollapsed={setCollapsed}
-        />
-        <SideBarNavigation
-          linkItem={linkItem}
-          pathname={pathname}
-          collapsed={collapsed}
-        />
+        <SideBarHeader collapsed={collapsed} setCollapsed={setCollapsed} />
+        <SideBarNavigation collapsed={collapsed} />
       </Box>
       <SidebarLogout collapsed={collapsed} />
     </Box>
