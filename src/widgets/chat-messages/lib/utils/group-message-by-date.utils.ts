@@ -1,10 +1,7 @@
 import type { ChatMessageGroup } from "../../model/types";
+import { messageGroup } from "../selectors";
 import type { MessagesDto } from "@/entities/messages/api";
-import {
-  filteredFilesByType,
-  formatDate_yyyy_MM_dd,
-  formatDate_HH_mm,
-} from "@/shared/utils";
+import { formatDate_yyyy_MM_dd } from "@/shared/utils";
 
 export function groupMessagesByDate(
   messages: MessagesDto[] | undefined,
@@ -17,8 +14,8 @@ export function groupMessagesByDate(
   for (const msg of messages) {
     if (!msg) continue;
 
+    const message = messageGroup(msg, userIdMe);
     const date = formatDate_yyyy_MM_dd(msg.createdAt);
-
     let group = map.get(date);
 
     if (!group) {
@@ -29,24 +26,7 @@ export function groupMessagesByDate(
       map.set(date, group);
     }
 
-    group.messages.push({
-      id: msg.id,
-      fromMe: msg.senderId === userIdMe,
-      chatId: msg.chatId,
-      sender: msg.sender,
-      content: {
-        text: msg.text,
-        audio: msg.audio,
-        images: filteredFilesByType(msg.attachments, "image"),
-        files: filteredFilesByType(msg.attachments, "file"),
-      },
-      statusMessage: {
-        isSent: msg.isSent,
-        isDelivered: msg.isDelivered,
-        isRead: msg.isRead,
-      },
-      time: formatDate_HH_mm(msg.createdAt),
-    });
+    group.messages.push(message);
   }
   return [...map.values()];
 }
