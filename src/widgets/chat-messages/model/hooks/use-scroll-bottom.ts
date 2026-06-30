@@ -7,11 +7,12 @@ const BOTTOM_STOCK = 200;
 export function useScrollBottom() {
   const { messages } = useMessagesList();
   const { chatId } = useCurrentChat();
-
   const scrollRef = useRef<HTMLDivElement>(null);
   const lastMessageIdRef = useRef<number | null>(null);
   const autoScrollRef = useRef(true);
   const [isBottom, setIsBottom] = useState(true);
+
+  const lastMessage = messages?.at(-1)?.messages?.at(-1);
 
   const checkIsBottom = () => {
     const el = scrollRef.current;
@@ -47,10 +48,7 @@ export function useScrollBottom() {
   }, [chatId]);
 
   useLayoutEffect(() => {
-    if (!messages?.length) return;
-
-    const lastGroup = messages[messages?.length - 1].messages;
-    const lastMessage = lastGroup[lastGroup?.length - 1];
+    if (!lastMessage) return;
 
     // Пишем пользователю, он читает историю у него скролл после отправки сообщения не уходит вниз
     if (lastMessageIdRef.current === lastMessage.id) return;
@@ -59,7 +57,7 @@ export function useScrollBottom() {
     if (lastMessage.fromMe || autoScrollRef.current) {
       onBottom();
     }
-  }, [messages]);
+  }, [lastMessage]);
 
   return {
     scrollRef,
