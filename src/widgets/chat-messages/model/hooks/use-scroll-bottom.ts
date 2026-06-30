@@ -47,10 +47,10 @@ export function useScrollBottom() {
   }, [chatId]);
 
   useLayoutEffect(() => {
-    if (!messages.length) return;
+    if (!messages?.length) return;
 
-    const lastGroup = messages[messages.length - 1].messages;
-    const lastMessage = lastGroup[lastGroup.length - 1];
+    const lastGroup = messages[messages?.length - 1].messages;
+    const lastMessage = lastGroup[lastGroup?.length - 1];
 
     // Пишем пользователю, он читает историю у него скролл после отправки сообщения не уходит вниз
     if (lastMessageIdRef.current === lastMessage.id) return;

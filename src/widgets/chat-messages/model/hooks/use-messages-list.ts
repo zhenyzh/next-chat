@@ -8,13 +8,14 @@ export function useMessagesList() {
   const { chatId } = useCurrentChat();
   const { id } = useUser();
 
-  const { data: messagesData, isLoading } = useQuery({
+  const { data: messages, isLoading } = useQuery({
     ...messagesApi.getMessageQueryOptions({ chatId }),
     enabled: !!chatId,
+    select: (message) => groupMessagesByDate(message, id),
   });
 
   return {
-    messages: groupMessagesByDate(messagesData, id),
+    messages,
     isLoading,
   };
 }
