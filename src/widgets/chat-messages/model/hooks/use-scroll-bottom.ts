@@ -7,9 +7,11 @@ const BOTTOM_STOCK = 200;
 export function useScrollBottom() {
   const { messages } = useMessagesList();
   const { chatId } = useCurrentChat();
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const lastMessageIdRef = useRef<number | null>(null);
   const autoScrollRef = useRef(true);
+
   const [isBottom, setIsBottom] = useState(true);
 
   const lastMessage = messages?.at(-1)?.messages?.at(-1);
