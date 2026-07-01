@@ -4,7 +4,7 @@ import { useCurrentChat } from "@/entities/chat/model/hooks";
 
 const BOTTOM_STOCK = 200;
 
-export function useScrollBottom() {
+export function useScroll() {
   const { messages } = useMessagesList();
   const { chatId } = useCurrentChat();
 

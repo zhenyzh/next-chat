@@ -3,7 +3,7 @@ import { MessageListItem } from "../ui/message-list-item";
 import { TypingIndicator } from "../ui/typing-indicator";
 import { DownButton } from "../ui/down-button";
 import { useMessagesList } from "../model/hooks";
-import { useScrollBottom } from "../model/hooks";
+import { useScroll } from "../model/hooks";
 import { useTyping } from "@/features/typing/model/hooks";
 import { MessagesSkeleton } from "@/entities/messages/ui/message-skeleton";
 import { useCurrentChat } from "@/entities/chat/model/hooks";
@@ -18,7 +18,7 @@ export function ChatMessagesList() {
   const { isTyping } = useTyping(+recipientId);
   const { chatId } = useCurrentChat();
   const { messages, isLoading } = useMessagesList();
-  const { scrollRef, isBottom, onBottom } = useScrollBottom();
+  const { scrollRef, isBottom, onBottom } = useScroll();
 
   return (
     <ScrollBar className={s.scroll} ref={scrollRef}>
