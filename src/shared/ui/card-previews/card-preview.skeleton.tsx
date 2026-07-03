@@ -1,5 +1,3 @@
-"use client";
-
 import { CSSProperties } from "react";
 import clsx from "clsx";
 import { Box, Skeleton } from "@zhenyzh/common-ui/components";

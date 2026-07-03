@@ -11,7 +11,7 @@ import s from "./chat-users-list.module.scss";
 export function ChatUsersList() {
   const {
     setQuery,
-    query: { recipientId, recipientSearch },
+    query: { recipientId },
   } = useSearchQueryParams();
   const { usersChat, isLoading } = useChatUsersList();
   const { handleChatOpen } = useOpenCurrentChat();
@@ -37,10 +37,7 @@ export function ChatUsersList() {
             <ChatUserItem data={item} />
           </Box>
         )}
-        empty={
-          !usersChat.length &&
-          !!recipientSearch && <EmptyContent label="Нет такого пользователя" />
-        }
+        empty={<EmptyContent label="Нет такого пользователя" />}
       />
     </ScrollBar>
   );

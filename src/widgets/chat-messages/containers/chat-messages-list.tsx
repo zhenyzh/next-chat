@@ -34,11 +34,7 @@ export function ChatMessagesList() {
             <MessageListItem messages={group.messages} isBottom={isBottom} />
           </>
         )}
-        empty={
-          !recipientId && (
-            <EmptyContent label="Кликните на список чтобы увидеть чат" />
-          )
-        }
+        empty={<EmptyContent label="Кликните на список чтобы увидеть чат" />}
         footer={
           <>
             {!!chatId && !isBottom && <DownButton onBottom={onBottom} />}
